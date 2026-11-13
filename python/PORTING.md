@@ -8,6 +8,7 @@ implementations represent pending capabilities. All MATLAB sources are retained.
 | Original area | Native Python | Validation and current boundary |
 | --- | --- | --- |
 | TBkit, HR, HK, Htrig | common bands/DOS, HR Fourier, polynomial/sin-cos, symbolic extraction | analytic spectra, finite differences, exact HR/fft.m numerical body via Octave |
+| exact symbolic/presentation layer | SymbolicHamiltonian, retained parameters, exact constant symmetry/invariants, total-degree Taylor, Pauli tensors, matrix/ket/operator LaTeX and notebook rich display | analytic Dirac/QWZ, TR/PH/C4, exact reconstruction, independent spectra/Taylor convergence; detailed pending list in SYMBOLIC.zh-CN.md |
 | sparse HR, EIGENCAR_gen_sparse | CSR storage, COO Numba kernels, sparse shift-invert | dense/sparse numerical parity and real memory benchmark |
 | hrdat_read, from_wannier90 | indexed complex data, degeneracies, wsvec expansion | round trips, wsvec phases/gradients; hr.dat requires external lattice |
 | HR/Htrig/HK conversion | exact commensurate Fourier/trig, Taylor expansion, quadratic lattice regularization | analytic examples and derivative tests |

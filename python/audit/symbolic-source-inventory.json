@@ -1,0 +1,3217 @@
+{
+  "repository": "https://github.com/BUAA-TCMP/TBkit.git",
+  "commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "source_files": 880,
+  "candidate_files": 252,
+  "meaning": "lexical candidates, not completed APIs or verified physics",
+  "limitations": "full comment lines excluded; inline comments and strings may match; dynamic calls may be missed",
+  "signal_file_counts": {
+    "assume": 2,
+    "diff": 15,
+    "equationsToMatrix": 1,
+    "expand": 16,
+    "latex": 15,
+    "legendreP": 1,
+    "matlabFunction": 12,
+    "pretty": 12,
+    "rewrite": 28,
+    "simplify": 62,
+    "solve": 4,
+    "subs": 51,
+    "sym": 173,
+    "syms": 31,
+    "symvar": 23,
+    "taylor": 2,
+    "vpa": 10
+  },
+  "files": [
+    {
+      "path": "src/classes/@BasisFunc/BasisFunc.m",
+      "signals": {
+        "sym": [
+          28,
+          56,
+          62
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/Degree2Kinds.m",
+      "signals": {
+        "expand": [
+          30
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/HK.m",
+      "signals": {
+        "sym": [
+          45,
+          58,
+          140,
+          143,
+          144,
+          159,
+          162,
+          163,
+          172,
+          175,
+          176,
+          214,
+          235,
+          240,
+          288
+        ],
+        "latex": [
+          228
+        ],
+        "simplify": [
+          291
+        ],
+        "subs": [
+          309
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/HstrL_classify.m",
+      "signals": {
+        "symvar": [
+          35
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/Hstr_mapping.m",
+      "signals": {
+        "simplify": [
+          135
+        ],
+        "symvar": [
+          136
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/PlaneWaveExpand.m",
+      "signals": {
+        "sym": [
+          37,
+          72,
+          90
+        ],
+        "syms": [
+          64
+        ],
+        "symvar": [
+          68
+        ],
+        "simplify": [
+          81
+        ],
+        "expand": [
+          81
+        ],
+        "subs": [
+          85,
+          93
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/Subsall.m",
+      "signals": {
+        "subs": [
+          15,
+          26,
+          30,
+          31
+        ],
+        "symvar": [
+          16
+        ],
+        "syms": [
+          35
+        ],
+        "matlabFunction": [
+          36,
+          56,
+          100
+        ],
+        "diff": [
+          41,
+          42,
+          43,
+          63,
+          64,
+          65,
+          68,
+          69,
+          70,
+          73,
+          74,
+          75,
+          78,
+          79,
+          80
+        ],
+        "sym": [
+          50,
+          85
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/applyOper.m",
+      "signals": {
+        "sym": [
+          32
+        ],
+        "simplify": [
+          67,
+          92,
+          110
+        ],
+        "subs": [
+          75,
+          76
+        ],
+        "symvar": [
+          79,
+          115
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/applyR.m",
+      "signals": {
+        "sym": [
+          28
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/applyRU.m",
+      "signals": {
+        "sym": [
+          29
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/applyU.m",
+      "signals": {
+        "sym": [
+          39
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/checkDegree.m",
+      "signals": {
+        "sym": [
+          26
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/coeff_extract.m",
+      "signals": {
+        "sym": [
+          28
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/get_dH_dk_func.m",
+      "signals": {
+        "syms": [
+          2
+        ],
+        "diff": [
+          5,
+          6,
+          7
+        ],
+        "matlabFunction": [
+          18
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/hermitize.m",
+      "signals": {
+        "sym": [
+          33
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/horzcat.m",
+      "signals": {
+        "sym": [
+          35,
+          42
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/init.m",
+      "signals": {
+        "sym": [
+          25
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/k_symbol2Kind.m",
+      "signals": {
+        "symvar": [
+          27
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/kp2TB.m",
+      "signals": {
+        "sym": [
+          95,
+          104,
+          116,
+          126,
+          131,
+          161
+        ],
+        "rewrite": [
+          108,
+          152
+        ],
+        "symvar": [
+          119,
+          137
+        ],
+        "vpa": [
+          122
+        ],
+        "simplify": [
+          124
+        ],
+        "solve": [
+          125
+        ],
+        "subs": [
+          136,
+          156
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/matgen.m",
+      "signals": {
+        "sym": [
+          44
+        ],
+        "subs": [
+          54
+        ],
+        "simplify": [
+          57
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/plus.m",
+      "signals": {
+        "sym": [
+          62
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/reseq.m",
+      "signals": {
+        "sym": [
+          38,
+          42
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/setup.m",
+      "signals": {
+        "sym": [
+          44
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/setup_rough.m",
+      "signals": {
+        "expand": [
+          32
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/simplify.m",
+      "signals": {
+        "simplify": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/subs.m",
+      "signals": {
+        "subs": [
+          1,
+          31,
+          32,
+          34,
+          35,
+          37,
+          38
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/sym.m",
+      "signals": {
+        "sym": [
+          1,
+          20
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HK/unique.m",
+      "signals": {
+        "sym": [
+          32,
+          42,
+          43
+        ],
+        "expand": [
+          45
+        ],
+        "subs": [
+          47
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/GenfromOrth.m",
+      "signals": {
+        "vpa": [
+          43,
+          50,
+          51
+        ],
+        "sym": [
+          44,
+          52,
+          53
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/GetInit.m",
+      "signals": {
+        "rewrite": [
+          27,
+          29
+        ],
+        "simplify": [
+          28
+        ],
+        "solve": [
+          56
+        ],
+        "vpa": [
+          57
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/HR.m",
+      "signals": {
+        "sym": [
+          96,
+          157,
+          159,
+          283
+        ],
+        "subs": [
+          280
+        ],
+        "simplify": [
+          281
+        ],
+        "rewrite": [
+          382
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/HR2HK.m",
+      "signals": {
+        "rewrite": [
+          36
+        ],
+        "sym": [
+          46,
+          47
+        ],
+        "taylor": [
+          58,
+          75
+        ],
+        "simplify": [
+          76,
+          85
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/HR2Htrig.m",
+      "signals": {
+        "sym": [
+          45,
+          46,
+          52,
+          86,
+          98,
+          117
+        ],
+        "rewrite": [
+          57,
+          80,
+          127
+        ],
+        "simplify": [
+          59,
+          127
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/HRforHckt.m",
+      "signals": {
+        "rewrite": [
+          36
+        ],
+        "sym": [
+          41
+        ],
+        "assume": [
+          42
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/H_TBSK_gen.m",
+      "signals": {
+        "subs": [
+          103
+        ],
+        "sym": [
+          138
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/H_TBSK_gen_sparse.m",
+      "signals": {
+        "sym": [
+          133
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/H_TB_gen_SK.m",
+      "signals": {
+        "sym": [
+          53,
+          61
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/H_TB_gen_SK_sparse.m",
+      "signals": {
+        "subs": [
+          69,
+          70,
+          84
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/Smatgen.m",
+      "signals": {
+        "syms": [
+          31
+        ],
+        "subs": [
+          34,
+          37,
+          40
+        ],
+        "simplify": [
+          42
+        ],
+        "expand": [
+          42
+        ],
+        "sym": [
+          65,
+          71
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/Subsall.m",
+      "signals": {
+        "subs": [
+          37,
+          55,
+          57
+        ],
+        "symvar": [
+          38
+        ],
+        "sym": [
+          49
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/TBSK_Coeff_gen.m",
+      "signals": {
+        "sym": [
+          29
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/TBSK_Var_gen.m",
+      "signals": {
+        "sym": [
+          91,
+          92,
+          93,
+          98,
+          99,
+          100
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/TBSK_Var_gen_single.m",
+      "signals": {
+        "syms": [
+          37,
+          40,
+          43
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/TBSK_hop_gen_sparse.m",
+      "signals": {
+        "sym": [
+          46,
+          47
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/Test_TBSK_Var_gen.m",
+      "signals": {
+        "sym": [
+          28,
+          31,
+          44,
+          59,
+          62
+        ],
+        "simplify": [
+          44
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/add_empty_one.m",
+      "signals": {
+        "sym": [
+          75,
+          84
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/alpharule.m",
+      "signals": {
+        "symvar": [
+          55
+        ],
+        "subs": [
+          64,
+          68
+        ],
+        "sym": [
+          74,
+          78,
+          95,
+          98,
+          117,
+          132,
+          133,
+          136,
+          139
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/applyOper.m",
+      "signals": {
+        "rewrite": [
+          59
+        ],
+        "simplify": [
+          91,
+          107,
+          139,
+          153,
+          178,
+          188
+        ],
+        "subs": [
+          149,
+          150
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/applyR.m",
+      "signals": {
+        "rewrite": [
+          30
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/autohermi.m",
+      "signals": {
+        "rewrite": [
+          37
+        ],
+        "sym": [
+          181,
+          184
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/clean.m",
+      "signals": {
+        "sym": [
+          60,
+          62,
+          81
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/deltarule.m",
+      "signals": {
+        "sym": [
+          48,
+          58,
+          70,
+          79,
+          107,
+          116,
+          117,
+          124,
+          131,
+          132,
+          144,
+          147,
+          148,
+          159,
+          162,
+          163
+        ],
+        "symvar": [
+          68
+        ],
+        "subs": [
+          117,
+          132,
+          148,
+          163
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/descritize.m",
+      "signals": {
+        "sym": [
+          29,
+          44
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/expand_empty_one.m",
+      "signals": {
+        "sym": [
+          39,
+          43
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/factorlist_parity.m",
+      "signals": {
+        "syms": [
+          24
+        ],
+        "subs": [
+          26
+        ],
+        "simplify": [
+          27
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/from_Hstruct.m",
+      "signals": {
+        "sym": [
+          38
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/from_POSCAR_SE.m",
+      "signals": {
+        "sym": [
+          91,
+          106,
+          123
+        ],
+        "simplify": [
+          139
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/from_wannier90.m",
+      "signals": {
+        "sym": [
+          65,
+          70
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/hermitize.m",
+      "signals": {
+        "subs": [
+          31,
+          32
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/hop_gen.m",
+      "signals": {
+        "simplify": [
+          20
+        ],
+        "sym": [
+          22
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/horzcat.m",
+      "signals": {
+        "sym": [
+          33
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/hrz_gen.m",
+      "signals": {
+        "sym": [
+          111,
+          115,
+          168
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/init.m",
+      "signals": {
+        "rewrite": [
+          69
+        ],
+        "sym": [
+          103,
+          104
+        ],
+        "assume": [
+          175,
+          176
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/list.m",
+      "signals": {
+        "rewrite": [
+          36
+        ],
+        "sym": [
+          43,
+          47,
+          71,
+          75
+        ],
+        "vpa": [
+          44,
+          45,
+          72,
+          73,
+          78
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/plus.m",
+      "signals": {
+        "rewrite": [
+          66,
+          67
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/project.m",
+      "signals": {
+        "sym": [
+          34
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/pythtb_gen.m",
+      "signals": {
+        "rewrite": [
+          30
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/realmap.m",
+      "signals": {
+        "sym": [
+          39,
+          56
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/reseq.m",
+      "signals": {
+        "sym": [
+          62
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/rewind.m",
+      "signals": {
+        "rewrite": [
+          15
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/rewrite.m",
+      "signals": {
+        "rewrite": [
+          1,
+          29,
+          30
+        ],
+        "simplify": [
+          47
+        ],
+        "sym": [
+          73,
+          131
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/rmhop.m",
+      "signals": {
+        "rewrite": [
+          23
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/set_hop.m",
+      "signals": {
+        "sym": [
+          64
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/set_hop_mat.m",
+      "signals": {
+        "sym": [
+          27,
+          75
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/shift_Fermi_energy.m",
+      "signals": {
+        "sym": [
+          11
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/show.m",
+      "signals": {
+        "rewrite": [
+          104
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/simplify.m",
+      "signals": {
+        "simplify": [
+          1,
+          62
+        ],
+        "sym": [
+          69
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/subs.m",
+      "signals": {
+        "subs": [
+          1,
+          30,
+          37,
+          47,
+          51,
+          54,
+          56,
+          62,
+          65,
+          67
+        ],
+        "vpa": [
+          31,
+          38,
+          59,
+          70
+        ],
+        "simplify": [
+          47,
+          54,
+          56,
+          65,
+          67
+        ],
+        "expand": [
+          47,
+          54,
+          65
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/subsOper.m",
+      "signals": {
+        "sym": [
+          21
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/supercell_hr.m",
+      "signals": {
+        "rewrite": [
+          66,
+          67,
+          187
+        ],
+        "sym": [
+          114,
+          118
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/sym.m",
+      "signals": {
+        "sym": [
+          1,
+          32,
+          35
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/symmetrization.m",
+      "signals": {
+        "rewrite": [
+          54
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/translation.m",
+      "signals": {
+        "rewrite": [
+          32,
+          33,
+          69
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/unfold_hr.m",
+      "signals": {
+        "rewrite": [
+          53,
+          54,
+          100
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HR/unique.m",
+      "signals": {
+        "sym": [
+          25,
+          32,
+          33
+        ],
+        "expand": [
+          35
+        ],
+        "subs": [
+          37
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@HollowKnight/HollowKnight.m",
+      "signals": {
+        "sym": [
+          235,
+          240,
+          248,
+          251,
+          259,
+          334,
+          525,
+          551
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/Delta_Oper.m",
+      "signals": {
+        "syms": [
+          37
+        ],
+        "matlabFunction": [
+          70
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/EIGENCAR_gen.m",
+      "signals": {
+        "matlabFunction": [
+          106,
+          195
+        ],
+        "sym": [
+          186,
+          192,
+          195
+        ],
+        "subs": [
+          192,
+          195
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/EIGENCAR_gen_slab.m",
+      "signals": {
+        "matlabFunction": [
+          101
+        ],
+        "sym": [
+          146,
+          153
+        ],
+        "subs": [
+          153
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/EIGENCAR_gen_wire.m",
+      "signals": {
+        "matlabFunction": [
+          124,
+          281
+        ],
+        "sym": [
+          187,
+          195,
+          275,
+          279
+        ],
+        "subs": [
+          195,
+          279
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/HCAR_gen.m",
+      "signals": {
+        "subs": [
+          97
+        ],
+        "sym": [
+          98
+        ],
+        "matlabFunction": [
+          98
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/Htrig.m",
+      "signals": {
+        "sym": [
+          5,
+          15,
+          56,
+          65,
+          69,
+          82,
+          101,
+          103,
+          104,
+          114,
+          122,
+          225
+        ],
+        "symvar": [
+          98
+        ],
+        "subs": [
+          132,
+          231
+        ],
+        "syms": [
+          135,
+          141
+        ],
+        "latex": [
+          152,
+          226
+        ],
+        "rewrite": [
+          192
+        ],
+        "diff": [
+          193
+        ],
+        "simplify": [
+          194
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/Htrig2HK.m",
+      "signals": {
+        "syms": [
+          43
+        ],
+        "sym": [
+          48
+        ],
+        "subs": [
+          59
+        ],
+        "taylor": [
+          60
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/Htrig2HR.m",
+      "signals": {
+        "rewrite": [
+          39
+        ],
+        "sym": [
+          63,
+          81
+        ],
+        "subs": [
+          73
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/Smatgen.m",
+      "signals": {
+        "syms": [
+          57
+        ],
+        "subs": [
+          60,
+          63,
+          66
+        ],
+        "simplify": [
+          68
+        ],
+        "expand": [
+          68
+        ],
+        "sym": [
+          91,
+          97
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/Subsall.m",
+      "signals": {
+        "sym": [
+          38,
+          44,
+          87,
+          93
+        ],
+        "subs": [
+          57,
+          58,
+          59,
+          60,
+          61,
+          73,
+          83,
+          99,
+          111
+        ],
+        "symvar": [
+          63
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/add_empty_one.m",
+      "signals": {
+        "sym": [
+          56
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/applyOper.m",
+      "signals": {
+        "subs": [
+          70,
+          71
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/coeff_extract.m",
+      "signals": {
+        "sym": [
+          37,
+          38
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/diff.m",
+      "signals": {
+        "diff": [
+          33,
+          44,
+          67
+        ],
+        "syms": [
+          65
+        ],
+        "simplify": [
+          89
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/diff_klist.m",
+      "signals": {
+        "diff": [
+          44,
+          47
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/discretize.m",
+      "signals": {
+        "sym": [
+          41,
+          50,
+          93
+        ],
+        "subs": [
+          80,
+          81
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/dualize.m",
+      "signals": {
+        "sym": [
+          29
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/factorlist_parity.m",
+      "signals": {
+        "syms": [
+          21
+        ],
+        "subs": [
+          27
+        ],
+        "simplify": [
+          30
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/find_HsymL_trig_bk.m",
+      "signals": {
+        "sym": [
+          4
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/gt.m",
+      "signals": {
+        "sym": [
+          72,
+          73
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/hermitize.m",
+      "signals": {
+        "subs": [
+          31,
+          32
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/horzcat.m",
+      "signals": {
+        "sym": [
+          31,
+          38
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/init.m",
+      "signals": {
+        "sym": [
+          43,
+          53,
+          63,
+          73,
+          74,
+          76
+        ],
+        "syms": [
+          48
+        ],
+        "expand": [
+          84
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/latex.m",
+      "signals": {
+        "latex": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/plus.m",
+      "signals": {
+        "sym": [
+          54,
+          74
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/reseq.m",
+      "signals": {
+        "sym": [
+          76,
+          87
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/rewrite.m",
+      "signals": {
+        "rewrite": [
+          1,
+          54
+        ],
+        "sym": [
+          55,
+          57,
+          86
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/rotation.m",
+      "signals": {
+        "sym": [
+          26,
+          31
+        ],
+        "subs": [
+          43
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/set_hop.m",
+      "signals": {
+        "sym": [
+          53
+        ],
+        "simplify": [
+          101
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/setup.m",
+      "signals": {
+        "sym": [
+          60
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/setup_rough.m",
+      "signals": {
+        "simplify": [
+          40
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/simplify.m",
+      "signals": {
+        "simplify": [
+          1,
+          57
+        ],
+        "sym": [
+          46,
+          61
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/split_sym_eq.m",
+      "signals": {
+        "rewrite": [
+          43,
+          45,
+          47,
+          49
+        ],
+        "simplify": [
+          45,
+          47,
+          49,
+          73,
+          75,
+          89,
+          93
+        ],
+        "expand": [
+          45,
+          47,
+          49,
+          70
+        ],
+        "symvar": [
+          52
+        ],
+        "sym": [
+          85,
+          91,
+          92,
+          133,
+          134
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/subs.m",
+      "signals": {
+        "subs": [
+          1,
+          42,
+          44,
+          46
+        ],
+        "simplify": [
+          42,
+          44,
+          46
+        ],
+        "expand": [
+          42,
+          44,
+          46
+        ],
+        "sym": [
+          49,
+          51
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/subsOper.m",
+      "signals": {
+        "sym": [
+          40
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/subsVar.m",
+      "signals": {
+        "simplify": [
+          57,
+          63,
+          70,
+          74,
+          75
+        ],
+        "subs": [
+          57,
+          61,
+          63,
+          68,
+          70,
+          74,
+          75
+        ],
+        "expand": [
+          57
+        ],
+        "vpa": [
+          65,
+          72,
+          76,
+          77
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Htrig/sym.m",
+      "signals": {
+        "sym": [
+          1
+        ],
+        "simplify": [
+          61,
+          65
+        ],
+        "rewrite": [
+          65
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/Oper.m",
+      "signals": {
+        "sym": [
+          180
+        ],
+        "latex": [
+          194
+        ],
+        "pretty": [
+          197
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/Rotation2eul.m",
+      "signals": {
+        "simplify": [
+          59,
+          74
+        ],
+        "sym": [
+          61
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/Rotation2nTheta.m",
+      "signals": {
+        "simplify": [
+          26,
+          45,
+          46
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/Umat.m",
+      "signals": {
+        "sym": [
+          20,
+          23,
+          24,
+          25
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/axang2rotm.m",
+      "signals": {
+        "simplify": [
+          25
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/commute.m",
+      "signals": {
+        "sym": [
+          6
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/disp.m",
+      "signals": {
+        "pretty": [
+          10,
+          22,
+          27
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/eq.m",
+      "signals": {
+        "sym": [
+          12
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/isclose.m",
+      "signals": {
+        "sym": [
+          3
+        ],
+        "simplify": [
+          3
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/latex.m",
+      "signals": {
+        "latex": [
+          1
+        ],
+        "pretty": [
+          2
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/mirror.m",
+      "signals": {
+        "simplify": [
+          24,
+          27
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/name_angle.m",
+      "signals": {
+        "simplify": [
+          7,
+          10
+        ],
+        "latex": [
+          13
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/num2latex.m",
+      "signals": {
+        "sym": [
+          12,
+          14,
+          19
+        ],
+        "latex": [
+          12,
+          14,
+          19
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/pretty.m",
+      "signals": {
+        "pretty": [
+          1
+        ],
+        "latex": [
+          114
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/repr_latex.m",
+      "signals": {
+        "pretty": [
+          2
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/repr_pretty.m",
+      "signals": {
+        "latex": [
+          2
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/rotation.m",
+      "signals": {
+        "sym": [
+          47,
+          49
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/rotm2quat.m",
+      "signals": {
+        "sym": [
+          3
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/round_axis.m",
+      "signals": {
+        "simplify": [
+          3
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/sorteig.m",
+      "signals": {
+        "sym": [
+          12
+        ],
+        "simplify": [
+          13
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/string.m",
+      "signals": {
+        "pretty": [
+          2
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Oper/sym.m",
+      "signals": {
+        "sym": [
+          1,
+          4,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Qnum/Qnum.m",
+      "signals": {
+        "sym": [
+          181
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Spin/Spin.m",
+      "signals": {
+        "pretty": [
+          180
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Spin/Sx.m",
+      "signals": {
+        "sym": [
+          18
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Spin/Sy.m",
+      "signals": {
+        "sym": [
+          18
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Spin/Sz.m",
+      "signals": {
+        "sym": [
+          18
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Spin/WignerD.m",
+      "signals": {
+        "sym": [
+          8,
+          12
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Spin/WignerD_single.m",
+      "signals": {
+        "sym": [
+          10,
+          11,
+          12,
+          13,
+          22
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Spin/pretty.m",
+      "signals": {
+        "pretty": [
+          1,
+          39,
+          41
+        ],
+        "sym": [
+          20,
+          22,
+          25,
+          27,
+          31
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Spin/rotation.m",
+      "signals": {
+        "sym": [
+          46,
+          49,
+          62,
+          65,
+          83
+        ],
+        "simplify": [
+          94
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Spin/rotation2.m",
+      "signals": {
+        "sym": [
+          47,
+          50,
+          60,
+          63,
+          78
+        ],
+        "simplify": [
+          98
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Spin/string.m",
+      "signals": {
+        "pretty": [
+          2
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@SpinModel/Gen_UCF.m",
+      "signals": {
+        "subs": [
+          53
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@SpinModel/add_interlayer.m",
+      "signals": {
+        "sym": [
+          17
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@SpinModel/add_nn.m",
+      "signals": {
+        "sym": [
+          15
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/BerryConnection_definition.m",
+      "signals": {
+        "diff": [
+          17
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/BerryPhaseLine_definition_sym_i.m",
+      "signals": {
+        "syms": [
+          23
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/BerryPhaseLine_fun.m",
+      "signals": {
+        "diff": [
+          66
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/Degree2Kinds.m",
+      "signals": {
+        "expand": [
+          21
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/EIGENCAR_Value.m",
+      "signals": {
+        "diff": [
+          72
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/GammaDecomposition.m",
+      "signals": {
+        "sym": [
+          5,
+          7,
+          8,
+          25,
+          29
+        ],
+        "simplify": [
+          24
+        ],
+        "latex": [
+          32,
+          33
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/HstrL_classify.m",
+      "signals": {
+        "symvar": [
+          21
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/Hstr_mapping.m",
+      "signals": {
+        "simplify": [
+          117
+        ],
+        "symvar": [
+          118
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/PlaneWaveExpand.m",
+      "signals": {
+        "sym": [
+          21,
+          56,
+          74
+        ],
+        "syms": [
+          48
+        ],
+        "symvar": [
+          52
+        ],
+        "simplify": [
+          65
+        ],
+        "expand": [
+          65
+        ],
+        "subs": [
+          69,
+          77
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/Subsall.m",
+      "signals": {
+        "subs": [
+          27,
+          38,
+          41,
+          42
+        ],
+        "symvar": [
+          28
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/SymbolicVarible.m",
+      "signals": {
+        "sym": [
+          42,
+          44
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/TBkit.m",
+      "signals": {
+        "sym": [
+          74
+        ],
+        "syms": [
+          116,
+          120
+        ],
+        "symvar": [
+          144
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/TBkit_init.m",
+      "signals": {
+        "syms": [
+          20,
+          24
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/VarBayes.m",
+      "signals": {
+        "sym": [
+          24
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/WilsonLoop_fun.m",
+      "signals": {
+        "syms": [
+          55
+        ],
+        "matlabFunction": [
+          56
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/WindingNumber.m",
+      "signals": {
+        "syms": [
+          73,
+          84
+        ],
+        "diff": [
+          75,
+          76,
+          77,
+          86,
+          87,
+          88,
+          100
+        ],
+        "matlabFunction": [
+          78,
+          79,
+          80,
+          81,
+          89,
+          90,
+          91,
+          92
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/applyOper.m",
+      "signals": {
+        "sym": [
+          30
+        ],
+        "simplify": [
+          71,
+          102,
+          125
+        ],
+        "subs": [
+          81,
+          82
+        ],
+        "symvar": [
+          86,
+          130
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/applyR.m",
+      "signals": {
+        "sym": [
+          46
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/applyRU.m",
+      "signals": {
+        "sym": [
+          49
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/applyU.m",
+      "signals": {
+        "sym": [
+          51
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/checkDegree.m",
+      "signals": {
+        "sym": [
+          19
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/cleanVar.m",
+      "signals": {
+        "vpa": [
+          27
+        ],
+        "sym": [
+          51
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/coeff_extract.m",
+      "signals": {
+        "sym": [
+          6
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/factorAll.m",
+      "signals": {
+        "sym": [
+          15,
+          16
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/fixedchildren.m",
+      "signals": {
+        "sym": [
+          26,
+          31,
+          40,
+          45
+        ],
+        "simplify": [
+          26,
+          31,
+          40,
+          45
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/hermitize.m",
+      "signals": {
+        "sym": [
+          21
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/horzcat.m",
+      "signals": {
+        "sym": [
+          20,
+          26
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/init.m",
+      "signals": {
+        "sym": [
+          15
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/input_orb_struct.m",
+      "signals": {
+        "sym": [
+          202,
+          222
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/isolateAll.m",
+      "signals": {
+        "sym": [
+          17,
+          37,
+          45
+        ],
+        "simplify": [
+          20,
+          21
+        ],
+        "symvar": [
+          21,
+          36,
+          46
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/k_symbol2Kind.m",
+      "signals": {
+        "symvar": [
+          14
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/kp2TB.m",
+      "signals": {
+        "sym": [
+          81,
+          90,
+          102,
+          112,
+          117,
+          147
+        ],
+        "rewrite": [
+          94,
+          138
+        ],
+        "symvar": [
+          105,
+          123
+        ],
+        "vpa": [
+          108
+        ],
+        "simplify": [
+          110
+        ],
+        "solve": [
+          111
+        ],
+        "subs": [
+          122,
+          142
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/loss_func.m",
+      "signals": {
+        "subs": [
+          78,
+          85,
+          109,
+          112
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/matgen.m",
+      "signals": {
+        "sym": [
+          30
+        ],
+        "subs": [
+          40
+        ],
+        "simplify": [
+          43
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/name_angle.m",
+      "signals": {
+        "simplify": [
+          7
+        ],
+        "latex": [
+          9
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/nn_sparse_gen.m",
+      "signals": {
+        "sym": [
+          31,
+          49
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/pauliDecomposition.m",
+      "signals": {
+        "sym": [
+          3,
+          5,
+          9,
+          21,
+          26,
+          46,
+          47,
+          73,
+          79,
+          81,
+          83
+        ],
+        "latex": [
+          29,
+          30,
+          82,
+          83
+        ],
+        "syms": [
+          61
+        ],
+        "simplify": [
+          72
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/pauliDecompositionNumerial.m",
+      "signals": {
+        "latex": [
+          32,
+          33
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/plus.m",
+      "signals": {
+        "sym": [
+          46
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/reseq.m",
+      "signals": {
+        "sym": [
+          27,
+          31
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/setup.m",
+      "signals": {
+        "sym": [
+          29
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/setup_rough.m",
+      "signals": {
+        "expand": [
+          17
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/simplify.m",
+      "signals": {
+        "simplify": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/subs.m",
+      "signals": {
+        "subs": [
+          1,
+          16,
+          17,
+          19,
+          20,
+          22,
+          23
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/subs_xyz.m",
+      "signals": {
+        "sym": [
+          4,
+          6,
+          9,
+          12
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/subspage.m",
+      "signals": {
+        "subs": [
+          3
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/sym.m",
+      "signals": {
+        "sym": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/timtj_gen.m",
+      "signals": {
+        "sym": [
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@TBkit/unique.m",
+      "signals": {
+        "sym": [
+          24,
+          34,
+          35
+        ],
+        "expand": [
+          37
+        ],
+        "subs": [
+          39
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/InnerY_l__m.m",
+      "signals": {
+        "sym": [
+          5,
+          6,
+          13,
+          18,
+          19,
+          20,
+          21,
+          26
+        ],
+        "simplify": [
+          28
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/Nlm.m",
+      "signals": {
+        "sym": [
+          5
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/Plm.m",
+      "signals": {
+        "sym": [
+          15,
+          26,
+          54,
+          56
+        ],
+        "simplify": [
+          58
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/Tesseral.m",
+      "signals": {
+        "sym": [
+          14
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/Wigner3j_sym.m",
+      "signals": {
+        "sym": [
+          21,
+          27,
+          30,
+          33
+        ],
+        "simplify": [
+          35
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/Y_l__m.m",
+      "signals": {
+        "sym": [
+          25,
+          26,
+          41,
+          43,
+          112
+        ],
+        "syms": [
+          108
+        ],
+        "simplify": [
+          113,
+          121
+        ],
+        "vpa": [
+          117
+        ],
+        "pretty": [
+          152
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/d.m",
+      "signals": {
+        "legendreP": [
+          19
+        ],
+        "sym": [
+          23,
+          35,
+          47
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/d_mm__j.m",
+      "signals": {
+        "sym": [
+          25,
+          32
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/explicitformula.m",
+      "signals": {
+        "sym": [
+          16,
+          17,
+          22,
+          119
+        ],
+        "syms": [
+          19
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/formula.m",
+      "signals": {
+        "sym": [
+          8
+        ],
+        "simplify": [
+          19
+        ],
+        "vpa": [
+          30
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/innertimes.m",
+      "signals": {
+        "sym": [
+          11,
+          13,
+          16
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/isMultiple.m",
+      "signals": {
+        "diff": [
+          4
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/nlm2atomic.m",
+      "signals": {
+        "sym": [
+          24,
+          27,
+          29
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/pretty.m",
+      "signals": {
+        "pretty": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_l__m/sym_fact.m",
+      "signals": {
+        "sym": [
+          3,
+          6,
+          9
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@Y_lm/Y_lm.m",
+      "signals": {
+        "sym": [
+          91
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@group/group.m",
+      "signals": {
+        "simplify": [
+          305
+        ]
+      }
+    },
+    {
+      "path": "src/classes/@pauli_matrix/pauli_matrix.m",
+      "signals": {
+        "sym": [
+          121,
+          129,
+          169,
+          184,
+          187
+        ]
+      }
+    },
+    {
+      "path": "src/classes/Basis.m",
+      "signals": {
+        "sym": [
+          8,
+          28,
+          55
+        ]
+      }
+    },
+    {
+      "path": "src/classes/Braid.m",
+      "signals": {
+        "syms": [
+          196,
+          285,
+          320,
+          362,
+          425,
+          507,
+          538,
+          555,
+          1311,
+          1312
+        ],
+        "simplify": [
+          199,
+          201,
+          275,
+          380,
+          395,
+          447,
+          471,
+          485,
+          490,
+          528
+        ],
+        "rewrite": [
+          199,
+          201
+        ],
+        "subs": [
+          207,
+          295,
+          401,
+          496,
+          550
+        ],
+        "matlabFunction": [
+          277,
+          434,
+          439,
+          715,
+          754,
+          843,
+          883,
+          972,
+          1006
+        ],
+        "diff": [
+          280
+        ],
+        "sym": [
+          286,
+          287,
+          399,
+          494,
+          508,
+          546,
+          715,
+          754,
+          843,
+          883,
+          972,
+          1006,
+          1313
+        ],
+        "solve": [
+          288
+        ],
+        "latex": [
+          712,
+          751,
+          841,
+          881,
+          970,
+          1004,
+          1091,
+          1123
+        ]
+      }
+    },
+    {
+      "path": "src/classes/Term.m",
+      "signals": {
+        "sym": [
+          17,
+          36,
+          38,
+          78,
+          79
+        ],
+        "syms": [
+          119
+        ],
+        "subs": [
+          128
+        ]
+      }
+    },
+    {
+      "path": "src/classes/Trig.m",
+      "signals": {
+        "sym": [
+          18
+        ]
+      }
+    },
+    {
+      "path": "src/classes/gamma_matrix.m",
+      "signals": {
+        "sym": [
+          63,
+          82,
+          85,
+          91,
+          98
+        ],
+        "syms": [
+          99,
+          100
+        ]
+      }
+    },
+    {
+      "path": "src/classes/quaternion.m",
+      "signals": {
+        "syms": [
+          29
+        ]
+      }
+    },
+    {
+      "path": "src/datas/Direct_kp.m",
+      "signals": {
+        "syms": [
+          2
+        ]
+      }
+    },
+    {
+      "path": "src/function_moire/construct_moire_H.m",
+      "signals": {
+        "syms": [
+          50
+        ],
+        "matlabFunction": [
+          53,
+          93
+        ]
+      }
+    },
+    {
+      "path": "src/functions_api/POSCAR_readin.m",
+      "signals": {
+        "sym": [
+          152
+        ]
+      }
+    },
+    {
+      "path": "src/functions_api/cif_read.m",
+      "signals": {
+        "syms": [
+          57,
+          143
+        ],
+        "equationsToMatrix": [
+          78,
+          146
+        ],
+        "sym": [
+          148
+        ]
+      }
+    },
+    {
+      "path": "src/functions_api/wout_read.m",
+      "signals": {
+        "diff": [
+          105
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/CGsingle.m",
+      "signals": {
+        "sym": [
+          77
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/EIGENCAR_Value.m",
+      "signals": {
+        "diff": [
+          56
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/Gen_LS.m",
+      "signals": {
+        "subs": [
+          14
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/Gen_LxLyLz.m",
+      "signals": {
+        "sym": [
+          25,
+          26,
+          35,
+          36,
+          72,
+          99,
+          101,
+          102,
+          105,
+          106
+        ],
+        "diff": [
+          39,
+          40
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/Ham_diff.m",
+      "signals": {
+        "syms": [
+          16
+        ],
+        "diff": [
+          31,
+          32,
+          33
+        ],
+        "matlabFunction": [
+          45,
+          46,
+          47
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/NormalizeSymVar.m",
+      "signals": {
+        "syms": [
+          17
+        ],
+        "sym": [
+          24,
+          25,
+          59,
+          60,
+          84,
+          88
+        ],
+        "simplify": [
+          59
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/SOC_on_site.m",
+      "signals": {
+        "sym": [
+          43,
+          46,
+          55,
+          59
+        ],
+        "simplify": [
+          97
+        ],
+        "symvar": [
+          105
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/double2sym.m",
+      "signals": {
+        "sym": [
+          59
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/fitprepare.m",
+      "signals": {
+        "sym": [
+          37
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/loss_func_HK.m",
+      "signals": {
+        "subs": [
+          36,
+          53,
+          56
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/symmetry_adapted_tensor/BCbasis2xyz.m",
+      "signals": {
+        "sym": [
+          22,
+          24,
+          26
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/symmetry_adapted_tensor/init.m",
+      "signals": {
+        "sym": [
+          6
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/symmetry_adapted_tensor/pretty.m",
+      "signals": {
+        "pretty": [
+          1,
+          31
+        ],
+        "sym": [
+          12,
+          45,
+          79,
+          83,
+          84
+        ],
+        "simplify": [
+          43
+        ]
+      }
+    },
+    {
+      "path": "src/functions_tools/symmetry_adapted_tensor/table2latex.m",
+      "signals": {
+        "latex": [
+          73
+        ]
+      }
+    },
+    {
+      "path": "src/script/matlab/soc_fit.m",
+      "signals": {
+        "subs": [
+          47
+        ]
+      }
+    }
+  ]
+}

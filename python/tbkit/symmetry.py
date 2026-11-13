@@ -45,10 +45,15 @@ def symmetrize(model,generators,*,max_order=256):
     return _Symmetrized(model,finite_group(generators,max_order=max_order))
 
 
-def invariant_kp(norb,dim,order,generators,*,max_unknowns=300,method="symbolic",tolerance=1e-10):
+def invariant_kp(norb,dim,order,generators,*,max_unknowns=300,method="symbolic",tolerance=1e-10,
+                 output="hk",coordinates=None):
     """Exact SymPy nullspace of Hermitian polynomial symmetry constraints.
 
-    Returns independent HK models, each multiplied by a free real parameter.
+    Returns independent basis models, to be multiplied by free real parameters.
+    output='hk' (default) lowers coefficients to numerical HK. output='symbolic'
+    preserves exact SymPy expressions as SymbolicHamiltonian objects and accepts
+    explicit real coordinates. This requires method='symbolic'; numerical SVD
+    vectors cannot be promoted to exact algebraic results.
     Supports constant basis representations and orthogonal momentum actions;
     nonsymmorphic k-dependent representation matrices are not covered.
     method='symbolic' uses exact polynomial nullspaces after checked algebraic
@@ -57,10 +62,18 @@ def invariant_kp(norb,dim,order,generators,*,max_unknowns=300,method="symbolic",
     """
     import sympy as sp
     from .symbolic import HK
+    from .symbolic_model import SymbolicHamiltonian
     if norb<1 or dim<1 or order<0 or any(int(x)!=x for x in (norb,dim,order)): raise ValueError("integer model sizes/order required")
     norb,dim,order=int(norb),int(dim),int(order)
     generators=tuple(generators)
     if method not in ('symbolic','numeric') or tolerance<=0:raise ValueError('invalid invariant generation method/tolerance')
+    if output not in ('hk','symbolic'):raise ValueError('output must be hk or symbolic')
+    if coordinates is not None and output!='symbolic':raise ValueError('coordinates require symbolic output')
+    if output=='symbolic' and method!='symbolic':raise ValueError('exact symbolic output requires symbolic constraints')
+    x=sp.symbols(f'k0:{dim}',real=True) if coordinates is None else tuple(coordinates)
+    if output=='symbolic':
+        check=SymbolicHamiltonian(sp.zeros(norb),x)
+        if check.dim!=dim:raise ValueError('wrong coordinate count')
     powers=[p for p in itertools.product(range(order+1),repeat=dim) if sum(p)<=order]
     if len(powers)*norb**2>max_unknowns: raise ValueError("symbolic problem exceeds max_unknowns")
     if any(g.unitary.shape!=(norb,norb) or g.rotation.shape!=(dim,dim) for g in generators): raise ValueError("symmetry/model dimensions differ")
@@ -72,7 +85,9 @@ def invariant_kp(norb,dim,order,generators,*,max_unknowns=300,method="symbolic",
         for j in range(i+1,norb):
             m=sp.zeros(norb);m[i,j]=m[j,i]=1;basis.append(m)
             m=sp.zeros(norb);m[i,j]=-sp.I;m[j,i]=sp.I;basis.append(m)
-    x=sp.symbols(f'k0:{dim}',real=True); coeff=sp.symbols(f'c0:{len(powers)*len(basis)}',real=True)
+    # Public coordinates may themselves be named c0, c1, ... . Internal unknowns
+    # must have distinct identity even when their printed names coincide.
+    coeff=tuple(sp.Dummy(f'coefficient{i}',real=True) for i in range(len(powers)*len(basis)))
     h=sp.zeros(norb); column=0
     for p in powers:
         monomial=sp.prod(k**degree for k,degree in zip(x,p))
@@ -92,13 +107,16 @@ def invariant_kp(norb,dim,order,generators,*,max_unknowns=300,method="symbolic",
     matrix=sp.linear_eq_to_matrix(equations,coeff)[0] if equations else sp.zeros(0,len(coeff))
     result=[]
     for vector in matrix.nullspace():
-        terms={};column=0
+        terms={};exact=sp.zeros(norb);column=0
         for p in powers:
             block=sp.zeros(norb)
             for b in basis:
                 block+=vector[column]*b;column+=1
-            if block!=sp.zeros(norb): terms[p]=np.array(block).astype(complex)
-        if terms: result.append(HK(terms))
+            if block!=sp.zeros(norb):
+                if output=='symbolic':exact+=block*sp.prod(k**degree for k,degree in zip(x,p))
+                else:terms[p]=np.array(block).astype(complex)
+        if output=='symbolic':result.append(SymbolicHamiltonian(exact,x))
+        elif terms: result.append(HK(terms))
     return result
 
 

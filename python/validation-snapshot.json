@@ -6,66 +6,60 @@
     {
       "name": "upstream",
       "exit_code": 0,
-      "seconds": 6.328276503998495,
+      "seconds": 0.6132239540020237,
       "log": "upstream.log"
+    },
+    {
+      "name": "symbolic_inventory",
+      "exit_code": 0,
+      "seconds": 1.3812252140014607,
+      "log": "symbolic_inventory.log"
     },
     {
       "name": "tests",
       "exit_code": 0,
-      "seconds": 84.99854879100167,
+      "seconds": 59.06682463600009,
       "log": "tests.log"
     },
     {
       "name": "examples",
       "exit_code": 0,
-      "seconds": 2.5389760789985303,
+      "seconds": 2.244469138000568,
       "log": "examples.log"
     },
     {
       "name": "plot_example",
       "exit_code": 0,
-      "seconds": 2.1234124319998955,
+      "seconds": 3.4476229940009944,
       "log": "plot_example.log"
     },
     {
       "name": "external_example",
       "exit_code": 0,
-      "seconds": 2.372102420002193,
+      "seconds": 2.693613728002674,
       "log": "external_example.log"
     },
     {
       "name": "advanced_example",
       "exit_code": 0,
-      "seconds": 1.4231774379986746,
+      "seconds": 1.5180370839989337,
       "log": "advanced_example.log"
     },
     {
       "name": "response_sweep",
       "exit_code": 0,
-      "seconds": 1.4281249519990524,
+      "seconds": 1.3913030970034015,
       "log": "response_sweep.log"
     },
     {
-      "name": "benchmark",
+      "name": "symbolic_example",
       "exit_code": 0,
-      "seconds": 2.815359502001229,
-      "log": "benchmark.log"
-    },
-    {
-      "name": "sparse_benchmark",
-      "exit_code": 0,
-      "seconds": 1.520715709997603,
-      "log": "sparse_benchmark.log"
-    },
-    {
-      "name": "response_reuse_benchmark",
-      "exit_code": 0,
-      "seconds": 3.2752311369986273,
-      "log": "response_reuse_benchmark.log"
+      "seconds": 6.435322790999635,
+      "log": "symbolic_example.log"
     }
   ],
   "tests": {
-    "tests": 141,
+    "tests": 161,
     "failures": 0,
     "errors": 0,
     "skipped": 0

@@ -55,3 +55,6 @@ __all__ += ["OrbitalEmbedding","embed_orbitals","wilson_transport"]
 from .spectral import SpectralBatch,prepare_spectral
 from .responses import GeometryBatch,prepare_geometry,response_from_geometry
 __all__ += ["SpectralBatch","prepare_spectral","GeometryBatch","prepare_geometry","response_from_geometry"]
+
+from .symbolic_model import SymbolicHamiltonian,CompiledSymbolic,PauliDecomposition
+__all__ += ["SymbolicHamiltonian","CompiledSymbolic","PauliDecomposition"]

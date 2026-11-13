@@ -60,6 +60,22 @@ write_wannier90(restored, "normalized_hr.dat")
 
 HK 与符号建模：
 
+精确符号模型、参数保留、解析操作、Pauli 分解与公式展示是核心功能，
+完整用法和待迁移清单见 [SYMBOLIC.zh-CN.md](SYMBOLIC.zh-CN.md)。
+`HK.from_sympy` 是数值化入口；需要保留自由参数时使用 `SymbolicHamiltonian`：
+
+```python
+import sympy as s
+from tbkit import SymbolicHamiltonian
+kx, ky, m = s.symbols('kx ky m', real=True)
+h = SymbolicHamiltonian([[m, kx-s.I*ky], [kx+s.I*ky, -m]], (kx, ky))
+print(h.latex())
+print(h.pauli_decomposition().coefficients)
+kp = h.to_hk({m: s.Rational(1, 2)})
+```
+
+以下旧入口继续保留：
+
 ```python
 import sympy as s
 from tbkit import HK
