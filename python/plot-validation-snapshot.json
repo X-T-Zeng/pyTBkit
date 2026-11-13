@@ -1,0 +1,70 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.47201112999755424,
+      "log": "upstream.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 52.21412640700146,
+      "log": "tests.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.4499395989987534,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 3.1382911190012237,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 4.7910221480015025,
+      "log": "external_example.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.7992582070000935,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.5381341169995721,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "plot_gallery",
+      "exit_code": 0,
+      "seconds": 3.8598356130023603,
+      "log": "plot_gallery.log"
+    }
+  ],
+  "tests": {
+    "tests": 144,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Independent plotting branch based on main 13a5832; symbolic PR #2 is separate and not included in this test count.",
+  "manual_visual_review": [
+    "research-gallery.png",
+    "bands.png",
+    "dft_bands.png"
+  ],
+  "final_research_example_rerun": true,
+  "final_external_example_rerun": true,
+  "final_plotting_regression_rerun": true
+}
