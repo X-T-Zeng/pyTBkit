@@ -30,6 +30,7 @@ def main():
            ('external_example',[sys.executable,'python/examples/external_data.py','--output',str(out/'external')]),
            ('advanced_example',[sys.executable,'python/examples/advanced.py','--output',str(out/'advanced')]),
            ('response_sweep',[sys.executable,'python/examples/response_sweep.py','--output',str(out/'response_sweep')])]
+    tasks.append(('plot_gallery',[sys.executable,'python/examples/plot_gallery.py','--output',str(out/'plot_gallery')]))
     if args.benchmarks:
         tasks.extend([('benchmark',[sys.executable,'python/benchmarks/benchmark.py']),('sparse_benchmark',[sys.executable,'python/benchmarks/sparse_benchmark.py']),
                       ('response_reuse_benchmark',[sys.executable,'python/benchmarks/response_reuse.py'])])

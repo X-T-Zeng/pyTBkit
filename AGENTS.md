@@ -17,3 +17,7 @@
 - Keep scientific audit findings, source revision and validation records current.
   Full validation: python python/tools/validate.py --output work/python-validation
   --benchmarks (after environment setup, upstream retrieval and native build).
+
+- Scientific plots must be visually reviewed, legible at intended size and
+  consistently styled. Use python/PLOTTING.zh-CN.md and scoped plotting helpers;
+  retain units, signs, gaps and raw data, and export vector figures where useful.

@@ -178,3 +178,10 @@ Numba 用户可直接将谱数组传入 `kernels.band_velocities` 和
 
 可执行例子：`python python/examples/response_sweep.py`。
 有限 eta 审计、理论边界及复用基准见 `audit/RESPONSE-BATCH-REVIEW.zh-CN.md`。
+
+## 科学绘图与导出
+
+绘图默认使用统一的字体、数学排版、线宽和配色，并保留原始数据与断带。
+`tbkit.plotting` 提供局部 `plot_style('paper'/'presentation')`、`bandplot` 和
+`save_figure`；支持300 dpi PNG与PDF/SVG输出，不修改全局Matplotlib设置。
+用法、图集与后续验收规范见 [PLOTTING.zh-CN.md](PLOTTING.zh-CN.md)。
