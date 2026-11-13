@@ -109,11 +109,14 @@ def bandplot(distance, energies, *, ticks=None, labels=None, ax=None,
     if ax is None:
         with plot_style():
             _, ax = plt.subplots()
+            default_linewidth = plt.rcParams['lines.linewidth']
+    else:
+        default_linewidth = plt.rcParams['lines.linewidth']
     properties = dict(kwargs)
     if not {'color', 'c'} & properties.keys():
         properties['color'] = PALETTE[0]
     if not {'linewidth', 'lw'} & properties.keys():
-        properties['linewidth'] = 1.5
+        properties['linewidth'] = default_linewidth
     properties.setdefault('zorder', 2)
     ax.plot(distance, energy, **properties)
     if ticks is not None:

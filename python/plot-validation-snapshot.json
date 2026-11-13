@@ -65,5 +65,6 @@
     "dft_bands.png"
   ],
   "final_research_example_rerun": true,
-  "final_external_example_rerun": true
+  "final_external_example_rerun": true,
+  "final_plotting_regression_rerun": true
 }

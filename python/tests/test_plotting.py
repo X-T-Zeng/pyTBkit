@@ -34,6 +34,10 @@ def test_style_context_restores_user_configuration_even_on_error():
     with pytest.raises(RuntimeError):
         with plot_style('presentation',**{'font.size':18}):
             assert matplotlib.rcParams['font.size']==18
+            fig,ax=plt.subplots()
+            bandplot([0,1],[1,2],ax=ax)
+            assert ax.lines[0].get_linewidth()==matplotlib.rcParams['lines.linewidth']
+            plt.close(fig)
             raise RuntimeError('user computation fails inside plotting context')
     for key,value in original.items():
         assert matplotlib.rcParams[key]==value
