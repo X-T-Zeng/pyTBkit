@@ -1,9 +1,9 @@
 # 当前验证快照：pyTBkit 0.2.1
 
-独立仓库 `/workspace/pyTBkit` 完整验证结果：**141 passed，0 failures，0 errors，0 skipped**。
+符号功能分支完整验证结果：**161 passed，0 failures，0 errors，0 skipped**。
 Python 3.12.15；NumPy/Numba/稀疏及已编译 Fortran/OpenMP 后端；Octave 实际执行。
 测试、6组基础研究例子、绘图、真实官方 DFT/Wannier 文件例子、高级研究例子均成功。
-原始结果：validation-snapshot.json；完整日志：work/python-validation/。
+原始结果：validation-snapshot.json；完整日志：work/symbolic-validation/。
 
 MATLAB 基线严格固定为 BUAA-TCMP/TBkit @
 48e5217593598c8e1d634cdee3976e1dc6984516（2026-07-12），880 个源文件。
@@ -33,3 +33,15 @@ benchmarks/response-reuse-results.json。8轨道/512k/9次响应，Numba 2线程
 预热单次API工作流363.29ms、准备复用77.23ms，约4.70倍；两者均包括所需准备工作，
 输出最大差异0。首次准备258.46ms可能含JIT/缓存载入；不是MATLAB对比结论。
 完整日志在 work/spectral-batch-validation/，本次测试141项、全部例子及三组基准通过。
+
+
+## 精确符号层与展示验证
+
+本轮完整验证161项测试，0失败/错误/跳过；原有例子和新增符号例子全部通过。
+新增20项覆盖精确参数/不可变矩阵、同时替换、总阶数展开与非零中心、TR/PH/C3/C4、
+Pauli张量重构、公式导出、符号变量命名冲突、Numba nopython与原几何管线接线。
+解析两带能谱最大差异2.22e-16，二阶局部模型动量减半的误差比7.997，符合三阶余项。
+
+源码候选索引在固定官方880个源文件中定位252个相关文件，校验通过；这不是迁移比例。
+CLI示例生成的公式/收敛图已查看；LaTeX源文件已导出，没有声称PDF或Jupyter前端已运行。
+本轮未重新测量性能基准；前述性能数字仍为各自历史工作负载。

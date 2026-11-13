@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,graphicx}
+\begin{document}
+\section*{Exact Hamiltonian}
+\[\left[\begin{matrix}b \left(- \cos{\left(k_{x} \right)} - \cos{\left(k_{y} \right)} + 2\right) + m & v \sin{\left(k_{x} \right)} - i v \sin{\left(k_{y} \right)}\\v \sin{\left(k_{x} \right)} + i v \sin{\left(k_{y} \right)} & - b \left(- \cos{\left(k_{x} \right)} - \cos{\left(k_{y} \right)} + 2\right) - m\end{matrix}\right]\]
+\section*{Pauli tensor basis}
+\[\left(v \sin{\left(k_{x} \right)}\right)\,\sigma_{x} + \left(v \sin{\left(k_{y} \right)}\right)\,\sigma_{y} + \left(- b \left(\cos{\left(k_{x} \right)} + \cos{\left(k_{y} \right)} - 2\right) + m\right)\,\sigma_{z}\]
+\section*{Second-order total-degree expansion}
+\[\left[\begin{matrix}\frac{b k_{x}^{2}}{2} + \frac{b k_{y}^{2}}{2} + m & k_{x} v - i k_{y} v\\k_{x} v + i k_{y} v & - \frac{b k_{x}^{2}}{2} - \frac{b k_{y}^{2}}{2} - m\end{matrix}\right]\]
+\section*{Momentum derivative}
+\[\left[\begin{matrix}b \sin{\left(k_{x} \right)} & v \cos{\left(k_{x} \right)}\\v \cos{\left(k_{x} \right)} & - b \sin{\left(k_{x} \right)}\end{matrix}\right]\]
+\section*{C4 input-action convention}
+\[\mathcal{T}[H](\mathbf{k})=U H(R\mathbf{k})U^{\dagger},\quad U=\left[\begin{matrix}\frac{\sqrt{2} \left(1 - i\right)}{2} & 0\\0 & \frac{\sqrt{2} \left(1 + i\right)}{2}\end{matrix}\right],\quad R=\left[\begin{matrix}0 & 1\\-1 & 0\end{matrix}\right]\]
+\section*{Normalized coupled-label superposition}
+\[\left(\frac{\sqrt{3}}{3}\right)\,\left|l=1,\,m=0,\,s=\frac{1}{2},\,s_z=\frac{1}{2}\right\rangle + \left(\frac{\sqrt{6}}{3}\right)\,\left|l=1,\,m=1,\,s=\frac{1}{2},\,s_z=- \frac{1}{2}\right\rangle\]
+\includegraphics[width=\textwidth]{symbolic-bands.png}
+\end{document}

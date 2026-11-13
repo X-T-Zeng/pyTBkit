@@ -5,6 +5,7 @@
 并提供 NumPy、稀疏计算与可选 Fortran/OpenMP 后端。
 
 目标是成为多功能、好用、计算高效且物理结果可信的研究工具，而非逐行翻译 MATLAB。
+精确符号建模、解析推导与科学展示是核心功能，和 Numba 数值计算共同发展。
 **目前是持续开发的研究核心版本，不宣称已完成原库全部 API，也不笼统声称快于 MATLAB。**
 
 ## 安装
@@ -62,6 +63,7 @@ python python/tools/validate.py --output work/python-validation --benchmarks
 ## 文档与维护
 
 - [使用和物理约定](python/README.zh-CN.md)
+- [符号建模、公式展示与迁移清单](python/SYMBOLIC.zh-CN.md)
 - [迁移范围与边界](python/PORTING.md)
 - [物理与代码审计](python/audit/PHYSICS-AUDIT.zh-CN.md)
 - [长线目标与接续清单](python/LONG_TASK.zh-CN.md)

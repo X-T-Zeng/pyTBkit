@@ -8,6 +8,10 @@
   Never force-push main or claim all original MATLAB behavior is implemented.
 - Prioritize physical correctness (Hermiticity, units, gauges, group/antiunitary
   actions, degeneracies and convergence) before performance or more APIs.
+- Treat exact symbolic construction, derivation and scientific presentation as
+  core product features. Preserve symbolic parameters until explicit numerical
+  lowering. Read python/SYMBOLIC.zh-CN.md and its pending migration checklist;
+  do not drop original symbolic/display workflows when optimizing numeric code.
 - Include a runnable example and independent regression for each substantive
   numerical change. Explain assumptions and unsupported cases explicitly.
 - Keep Numba nopython kernels array-based, with no hidden cross-model mutable

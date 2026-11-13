@@ -6,7 +6,7 @@
   "autonomous_background_worker": false,
   "remote_schedule": "github_actions_workflow_published",
   "validation": {
-    "tests": 141,
+    "tests": 161,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -19,9 +19,11 @@
     "tested DFT/Wannier data formats",
     "documented response kernels and BZ integration",
     "Chern/Wilson/nested/mirror/inversion/no-inversion 2D Z2",
-    "documented continuum/transport/spin/circuit numerical cores"
+    "documented continuum/transport/spin/circuit numerical cores",
+    "exact parametric matrix models, constant symbolic constraints and basic scientific formula presentation"
   ],
   "remaining": [
+    "complete symbolic HR/Htrig editing, Gamma conventions, symbolic orbital/group workflows and original scientific presentation examples",
     "all original MATLAB APIs and workflow examples",
     "higher-l hopping and full symbolic radial/irrep workflows",
     "magnetic space groups and general representations",
@@ -34,7 +36,7 @@
   "source_reference": "python/upstream.json",
   "official_repository": "https://github.com/BUAA-TCMP/TBkit",
   "official_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
-  "long_term_goal": "A physically trustworthy, multifunctional and usable native Python TBkit; Python-first architecture and measured Numba-capable performance.",
+  "long_term_goal": "A physically trustworthy, multifunctional and usable native Python TBkit, with exact symbolic construction/derivation/scientific presentation as core features and measured Numba-capable numerical performance.",
   "automation_status": "enabled",
   "scheduled_continuation": {
     "title": "pyTBkit 物理审计与开发",
@@ -45,9 +47,18 @@
     "delivery": "reviewable branch and PR, no automatic merge"
   },
   "latest_development": {
-    "scope": "caller-owned spectral/geometry reuse and finite-eta NCTE audit",
-    "branch": "feature/spectral-batch-response-audit",
-    "status": "validated; awaiting review",
+    "scope": "first-class exact symbolic models, derivation, presentation and explicit Numba lowering",
+    "branch": "feature/symbolic-model-presentation",
+    "status": "validated locally; remote CI pending",
     "reference_commit": "48e5217593598c8e1d634cdee3976e1dc6984516"
+  },
+  "symbolic_migration": {
+    "core_requirement": true,
+    "inventory": "audit/symbolic-source-inventory.json",
+    "candidate_files": 252,
+    "source_files": 880,
+    "candidate_count_is_not_completion": true,
+    "checklist": "SYMBOLIC.zh-CN.md",
+    "full_parity": false
   }
 }

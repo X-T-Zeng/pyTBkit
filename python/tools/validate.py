@@ -24,12 +24,14 @@ def main():
     env['MKL_NUM_THREADS']='1';env['MPLBACKEND']='Agg';env['PYTHONHASHSEED']='0'
     env['NUMBA_CACHE_DIR']=str(root/'work/numba-cache');env['MPLCONFIGDIR']=str(root/'work/matplotlib')
     tasks=[('upstream',[sys.executable,'python/tools/prepare_upstream.py']),
+           ('symbolic_inventory',[sys.executable,'python/tools/inventory_symbolic.py','--check','--output',str(out/'symbolic-source-inventory.json')]),
            ('tests',[sys.executable,'-m','pytest','python/tests','-q',f'--junitxml={out / "junit.xml"}']),
            ('examples',[sys.executable,'python/examples/full_suite.py','--output',str(out/'examples')]),
            ('plot_example',[sys.executable,'python/examples/research.py']),
            ('external_example',[sys.executable,'python/examples/external_data.py','--output',str(out/'external')]),
            ('advanced_example',[sys.executable,'python/examples/advanced.py','--output',str(out/'advanced')]),
-           ('response_sweep',[sys.executable,'python/examples/response_sweep.py','--output',str(out/'response_sweep')])]
+           ('response_sweep',[sys.executable,'python/examples/response_sweep.py','--output',str(out/'response_sweep')]),
+           ('symbolic_example',[sys.executable,'python/examples/symbolic_workflow.py','--output',str(out/'symbolic')])]
     if args.benchmarks:
         tasks.extend([('benchmark',[sys.executable,'python/benchmarks/benchmark.py']),('sparse_benchmark',[sys.executable,'python/benchmarks/sparse_benchmark.py']),
                       ('response_reuse_benchmark',[sys.executable,'python/benchmarks/response_reuse.py'])])

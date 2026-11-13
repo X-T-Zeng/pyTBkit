@@ -27,6 +27,15 @@ class Qnum:
         if self.n is not None and (not isinstance(self.n,int) or self.n<=self.l):raise ValueError('radial principal n must exceed l')
         object.__setattr__(self,'s',s);object.__setattr__(self,'sz',z)
 
+    def latex(self):
+        labels=[] if self.n is None else ['n='+sp.latex(self.n)]
+        labels+=['l='+sp.latex(self.l),'m='+sp.latex(self.m),
+                 's='+sp.latex(self.s),'s_z='+sp.latex(self.sz)]
+        return r'\left|'+r',\,'.join(labels)+r'\right\rangle'
+
+    def _repr_latex_(self):
+        return '$'+self.latex()+'$'
+
 
 def spherical_harmonic(l,m,theta=None,phi=None,*,real=False):
     """Normalized Condon-Shortley harmonics; real m>0 cosine, m<0 sine.
@@ -65,6 +74,17 @@ class BasisFunc:
 
     def inner(self,other):
         return sp.simplify(sum(sp.conjugate(c)*other.terms.get(q,0) for q,c in self.terms.items()))
+
+    def subs(self,substitutions,*,simultaneous=True):
+        """Substitute expansion coefficients, preserving the quantum labels."""
+        return BasisFunc({q:c.subs(substitutions,simultaneous=simultaneous) for q,c in self.terms.items()})
+
+    def latex(self):
+        return ' + '.join(r'\left('+sp.latex(c)+r'\right)\,'+q.latex()
+                          for q,c in self.terms.items()) or '0'
+
+    def _repr_latex_(self):
+        return '$\\displaystyle '+self.latex()+'$'
 
     def rotate(self,axis,angle):
         """Numerical active orbital+spin rotation, returns symbolic coefficients."""
