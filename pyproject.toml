@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tbkit-python"
+version = "0.2.1"
+description = "Native Python Hamiltonian models, Wannier interpolation and topology for TBkit"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "LGPL-2.1"}
+dependencies = ["numpy>=1.24", "scipy>=1.10", "numba>=0.59", "sympy>=1.12", "h5py>=3.8"]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.7"]
+crystal = ["spglib>=2.6,<3"]
+test = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+where = ["python"]
+include = ["tbkit*"]
+
+[tool.pytest.ini_options]
+testpaths = ["python/tests"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["*.so", "*.pyc", "*.nbc", "*.nbi"]

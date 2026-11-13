@@ -1,0 +1,48 @@
+name: Python scientific validation
+on:
+  push:
+    paths: ['python/**', 'codex-env/**', '.github/workflows/python-science.yml']
+  pull_request:
+    paths: ['python/**', 'codex-env/**', '.github/workflows/python-science.yml']
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1'
+permissions:
+  contents: read
+jobs:
+  science:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      NUMBA_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: python/requirements-tested.txt
+      - name: Install Octave for MATLAB numerical references
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends octave gfortran
+      - name: Install tested Python environment
+        run: |
+          python -m pip install -r python/requirements-tested.txt
+          python -m pip install --no-deps -e ./python
+      - name: Build optional Fortran OpenMP backend
+        run: python python/tools/build_fortran.py
+      - name: Run all scientific tests and examples
+        run: python python/tools/validate.py --output work/python-validation
+      - name: Retain reports and example artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scientific-validation
+          path: |
+            work/python-validation/
+            work/python-example/

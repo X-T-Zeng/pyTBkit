@@ -1,0 +1,19 @@
+{
+  "numba_threads": 2,
+  "blas_threads": 1,
+  "interpolation": {
+    "norb": 64,
+    "nk": 256,
+    "sparse_numba_s": 0.001936889000262454,
+    "dense_numba_s": 0.003401608999865857,
+    "dense_over_sparse": 1.7562229944023275
+  },
+  "large_storage": {
+    "norb": 800,
+    "nnz": 2400,
+    "csr_bytes": 57612,
+    "coo_jit_bytes": 96000,
+    "equivalent_dense_hopping_bytes": 30720000,
+    "sparse_eigsh_median_s": 0.0036003440000058617
+  }
+}

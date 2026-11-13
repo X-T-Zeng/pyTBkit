@@ -1,0 +1,353 @@
+diff --git a/src/classes/@HR/fft.m b/src/classes/@HR/fft.m
+index 71a2e4e..651480f 100644
+--- a/src/classes/@HR/fft.m
++++ b/src/classes/@HR/fft.m
+@@ -1,92 +1,60 @@
+ function [W,D,dH_dk_R,vec] = fft(H_hr, klist_cart, rotate_cart)
++%FFT Evaluate this model at one Cartesian momentum; no shared model cache.
++% Fourier convention: H(k)=sum_R H(R)*exp(+i k.R).
++% rotate_cart acts on derivative components: dH'_a=sum_b rotate_cart(a,b)dH_b.
+ arguments
+     H_hr HR
+-    klist_cart % cart
+-    rotate_cart = [] ; % 可选缓存
++    klist_cart
++    rotate_cart = []
+ end
+-persistent HnumList vectorList_R NBANDS NRPTS
+-if isempty(HnumList)
+-    HnumList = H_hr.HnumL;
+-    vectorList = double(H_hr.vectorL(:,1:H_hr.Dim));  % M×3
+-    vectorList_R = vectorList * H_hr.Rm;  % M×3 real-space R
+-    NBANDS = H_hr.WAN_NUM;
+-    NRPTS = H_hr.NRPTS;
++HnumList = H_hr.HnumL;
++vectorList = double(H_hr.vectorL(:,1:H_hr.Dim));
++vectorList_R = vectorList * double(H_hr.Rm(1:H_hr.Dim,:));
++NBANDS = H_hr.WAN_NUM;
++NRPTS = size(vectorList_R,1);
++ncart = size(vectorList_R,2);
++if numel(klist_cart) ~= ncart || any(~isfinite(klist_cart(:)))
++    error('TBkit:InvalidMomentum','One finite Cartesian k point is required.');
+ end
+-
+-% klist_cart = klist_cart;
+-% 计算因子：exp(i * R · k)
+-phase = exp(1i * (vectorList_R * klist_cart(:)));  % M×1
+-
+-
+-% Hk = zeros(NBANDS, NBANDS, 'like', phase);  % 初始化哈密顿量
+-% for i = 1:NRPTS
+-%     Hk = Hk + HnumList(:,:,i) * phase(i);
+-% end
+-
+-Hk = tensorprod(HnumList, phase, 3, 1);
+-
+-Hk = (Hk + Hk') / 2;  % Hermitian 修正
+-[W,D] = eig(Hk, 'vector');
+-
+-dH_dk_R = zeros(NBANDS, NBANDS, 3);
+-for i = 1:3
+-    dH_dk_R(:,:,i) = 1i * tensorprod(HnumList , phase.*vectorList_R(:,i), 3, 1);
+-    %dH_dk_R(:,:,i) = dH;
+-    %dH_dk_R(:,:,i) = (dH + dH') / 2;  % Hermitian修正 ?
++if size(HnumList,1) ~= NBANDS || size(HnumList,2) ~= NBANDS || size(HnumList,3) ~= NRPTS
++    error('TBkit:InvalidHopping','Dense HnumL and vectorL dimensions disagree.');
+ end
+-
+-% if isempty(rotate_cart)
+-%     return;
+-% else
+-%     % dH_dk_R_new(:,:,1) = rotate_cart(1,1)*dH_dk_R(:,:,1) + ...
+-%     %                      rotate_cart(1,2)*dH_dk_R(:,:,2) + ...
+-%     %                      rotate_cart(1,3)*dH_dk_R(:,:,3);
+-%     % dH_dk_R_new(:,:,2) = rotate_cart(2,1)*dH_dk_R(:,:,1) + ...
+-%     %                      rotate_cart(2,2)*dH_dk_R(:,:,2) + ...
+-%     %                      rotate_cart(2,3)*dH_dk_R(:,:,3);
+-%     % dH_dk_R_new(:,:,3) = rotate_cart(3,1)*dH_dk_R(:,:,1) + ...
+-%     %                      rotate_cart(3,2)*dH_dk_R(:,:,2) + ...
+-%     %                      rotate_cart(3,3)*dH_dk_R(:,:,3);
+-%     % if sum(sum(dH_dk_R - dH_dk_R_new)) == 0
+-%     %     warning("!");
+-%     %     pause
+-%     % end
+-%     % dH_dk_R = dH_dk_R_new;
+-% end
+-
+-% dH_dk_R = zeros(NBANDS, NBANDS, 3);
+-% for dir = 1:3  % x,y,z方向
+-%     dH = zeros(NBANDS, NBANDS);
+-%     for i = 1:NRPTS
+-%         % 导数项: i * R_dir * H(R) * exp(iR·k)
+-%         dH = dH + HnumList(:,:,i) * (1i * vectorList_R(i, dir) * phase(i));
+-%     end
+-%     %dH_dk_R(:,:,dir) = dH;
+-%     dH_dk_R(:,:,dir) = (dH + dH') / 2;  % Hermitian修正
+-% end
+-
+-%% velocity matrix with atomic gauge correction
+-if nargout > 3
+-    dEnm = repmat(D, 1, NBANDS) - repmat(D', NBANDS, 1);
+-    vec = zeros(NBANDS, NBANDS, 3);
+-    for i = 1:3
+-        vec(:,:,i) = W' * dH_dk_R(:,:,i) * W + (W' * diag(H_hr.orbL_cart(:,i)) * W) .* dEnm .* -1i;
++if any(~isfinite(HnumList(:))) || any(~isfinite(vectorList_R(:)))
++    error('TBkit:NonfiniteModel','Hamiltonian and lattice must be finite.');
++end
++phase = exp(1i * (vectorList_R * klist_cart(:)));
++Hflat = reshape(HnumList,NBANDS*NBANDS,NRPTS);
++Hk = reshape(Hflat*phase,NBANDS,NBANDS);
++if norm(Hk-Hk','fro') > 1e-10*max(1,norm(Hk,'fro'))
++    error('TBkit:NonHermitian','H(k) is not Hermitian; check conjugate hoppings.');
++end
++Hk = (Hk+Hk')/2; % remove roundoff only, after validation
++[W,D] = eig(Hk,'vector');
++[D,index] = sort(real(D));
++W = W(:,index);
++dH_dk_R = zeros(NBANDS,NBANDS,ncart,'like',Hk);
++for i = 1:ncart
++    derivative = reshape(Hflat*(1i*phase.*vectorList_R(:,i)),NBANDS,NBANDS);
++    if norm(derivative-derivative','fro') > 1e-10*max(1,norm(derivative,'fro'))
++        error('TBkit:NonHermitianDerivative','dH/dk is not Hermitian.');
+     end
++    dH_dk_R(:,:,i) = (derivative+derivative')/2;
+ end
++if ~isempty(rotate_cart)
++    if ~isequal(size(rotate_cart),[ncart,ncart]) || norm(rotate_cart*rotate_cart'-eye(ncart),'fro')>1e-10
++        error('TBkit:InvalidRotation','Derivative frame must be orthogonal.');
++    end
++    dH_dk_R = reshape(reshape(dH_dk_R,[],ncart)*rotate_cart.',NBANDS,NBANDS,ncart);
++end
++if nargout > 3
++    centers=double(H_hr.orbL_cart(:,1:ncart));
++    if ~isempty(rotate_cart);centers=centers*rotate_cart.';end
++    dEnm=D-D.';
++    vec=zeros(NBANDS,NBANDS,ncart,'like',Hk);
++    for i=1:ncart
++        tau=W'*diag(centers(:,i))*W;
++        vec(:,:,i)=W'*dH_dk_R(:,:,i)*W + 1i*tau.*dEnm;
++    end
+ end
+ 
+-
+-% try
+-%     [W, D, dH_dk_R] = fft_mex(H_hr.HnumL, double(H_hr.vectorL(:,1:H_hr.Dim))* H_hr.Rm, klist);
+-% catch
+-%     HnumList = H_hr.HnumL ;
+-%     vectorList = double(H_hr.vectorL(:,1:H_hr.Dim)) ;
+-%     vectorList_R = vectorList * H_hr.Rm;
+-%     FactorList = exp(1i*vectorList_R*klist.');
+-%     Hout = tensorprod(HnumList, FactorList, 3, 1);
+-%     [W,D]= eig((Hout+Hout')/2,'vector');
+-%     for i = 1:3
+-%         dH_dk_R(:,:,i) = 1i * tensorprod(HnumList , FactorList.*vectorList_R(:,i), 3, 1); % only for one kpoint?
+-%     end
+-% end
+-% % return;
+\ No newline at end of file
++end
+diff --git a/src/classes/@HK/applyRU.m b/src/classes/@HK/applyRU.m
+index d9369bc..6d0690a 100644
+--- a/src/classes/@HK/applyRU.m
++++ b/src/classes/@HK/applyRU.m
+@@ -17,19 +17,18 @@ function [H_hk_R,H_hk] = applyRU(H_hk,SymOper)
+ %   to the Hamiltonian. Handles conjugate operations and antisymmetry
+ %   requirements. The transformation follows:
+ %   H'(k) = U·H(R^-1·k)·U^-1 (with possible conjugation/antisymmetry)
+-if ~SymOper.conjugate && ~SymOper.antisymmetry && isequal(SymOper.R,eye(3))
+-    H_hk_R = H_hk;
+-    return;
+-end
++% A spatial identity can still act nontrivially in Hilbert space. Do not
++% discard a pure basis/chiral/internal symmetry operation here.
+ if isequal(zeros(size(H_hk.HnumL)),H_hk.HnumL)
+     num_label = false;
+ else
+     num_label = true;
+ end
+-if isequal(sym(zeros(size(H_hk.HcoeL))),H_hk.HcoeL)
+-    coe_label = false;
++if isa(H_hk.HcoeL,'sym')
++    coe_label = ~isequal(sym(zeros(size(H_hk.HcoeL))),H_hk.HcoeL);
+ else
+-    coe_label = true;
++    % A numerical model must not require the Symbolic Math Toolbox.
++    coe_label = any(H_hk.HcoeL(:) ~= 0);
+ end
+ if SymOper.conjugate
+     R_inv = -inv(SymOper.R);
+@@ -50,9 +49,9 @@ if coe_label
+         H_hk_R.HcoeL(:,:,Orderlist) = HK.matrixtimespage(matcell{i+1}.',H_hk_R.HcoeL(:,:,Orderlist));
+     end
+ end
+-if isnan(SymOper.U)
+-else
+-    U = SymOper.U;
++U = SymOper.U;
++if any(isnan(U(:)))
++    error('TBkit:MissingRepresentation','Symmetry operation requires an explicit U.');
+ end
+ U_inv = inv(U);
+ if coe_label == true
+@@ -70,11 +69,12 @@ if num_label == true
+     U_page = repmat(U,[1 1 size(H_hk_R.HnumL,3)]);
+     U_inv_page = repmat(U_inv,[1 1 size(H_hk_R.HnumL,3)]);
+     HnumLtmp = H_hk_R.HnumL;
+-    if conjugate
++    if SymOper.conjugate
++        % k -> -R^-1 k was already applied by matgen above. Applying the
++        % odd-degree parity again would undo time reversal's momentum sign.
+         HnumLtmp = conj(HnumLtmp);
+-        HnumLtmp = HK.matrixtimepage(HK.factorlist_parity(H_hk_R.Degree),HnumLtmp);
+     end
+-    if antisymmetry
++    if SymOper.antisymmetry
+         HnumLtmp = -HnumLtmp;
+     end
+     HnumLtmp = pagemtimes(pagemtimes(U_page,HnumLtmp),U_inv_page);
+diff --git a/src/classes/@HK/applyU.m b/src/classes/@HK/applyU.m
+index c72b741..0c7ea92 100644
+--- a/src/classes/@HK/applyU.m
++++ b/src/classes/@HK/applyU.m
+@@ -36,10 +36,11 @@ if isequal(zeros(size(H_hk.HnumL)),H_hk.HnumL)
+ else
+     num_label = true;
+ end
+-if isequal(sym(zeros(size(H_hk.HcoeL))),H_hk.HcoeL)
+-    coe_label = false;
++if isa(H_hk.HcoeL,'sym')
++    coe_label = ~isequal(sym(zeros(size(H_hk.HcoeL))),H_hk.HcoeL);
+ else
+-    coe_label = true;
++    % A numerical model must not require the Symbolic Math Toolbox.
++    coe_label = any(H_hk.HcoeL(:) ~= 0);
+ end
+ U_inv = inv(U);
+ if coe_label == true
+@@ -60,7 +61,7 @@ if num_label == true
+     HnumLtmp = H_hk.HnumL;
+     if conjugate
+         HnumLtmp = conj(HnumLtmp);
+-        HnumLtmp = HK.matrixtimepage(HK.factorlist_parity(H_hk.Degree),HnumLtmp);
++        HnumLtmp = HK.matrixtimespage(HK.factorlist_parity(H_hk.Degree),HnumLtmp);
+     end
+     if antisymmetry
+         HnumLtmp = -HnumLtmp;
+diff --git a/src/classes/@HK/fft.m b/src/classes/@HK/fft.m
+index b421014..b352e1f 100644
+--- a/src/classes/@HK/fft.m
++++ b/src/classes/@HK/fft.m
+@@ -1,12 +1,26 @@
+ function [W,D,dH_dk_xyz] = fft(H_hk, kpoint, precomputed)
++%FFT Cartesian eigenpairs and analytic derivatives; validate Hermitian family.
+ arguments
+     H_hk HK
+-    kpoint % cart
+-    precomputed = [] ; % 可选缓存
++    kpoint
++    precomputed = []
++end
++if numel(kpoint) ~= 3 || any(~isfinite(kpoint(:)))
++    error('TBkit:InvalidMomentum','One finite 3D Cartesian momentum is required.');
++end
++Hout = H_hk.Hfun(kpoint(1),kpoint(2),kpoint(3));
++if any(~isfinite(Hout(:))) || norm(Hout-Hout','fro')>1e-10*max(1,norm(Hout,'fro'))
++    error('TBkit:NonHermitian','H(k) must be finite and Hermitian.');
+ end
+-
+-Hout = H_hk.Hfun(kpoint(1), kpoint(2), kpoint(3));
+ Hout = (Hout+Hout')/2;
+-[W,D] = eig(Hout, 'vector');
+-dH_dk_xyz = H_hk.dH_dk_fun(kpoint(1), kpoint(2), kpoint(3));
++[W,D] = eig(Hout,'vector');
++[D,index] = sort(real(D));W=W(:,index);
++dH_dk_xyz = H_hk.dH_dk_fun(kpoint(1),kpoint(2),kpoint(3));
++for a=1:size(dH_dk_xyz,3)
++    derivative=dH_dk_xyz(:,:,a);
++    if any(~isfinite(derivative(:))) || norm(derivative-derivative','fro')>1e-10*max(1,norm(derivative,'fro'))
++        error('TBkit:NonHermitianDerivative','dH/dk must be finite and Hermitian.');
++    end
++    dH_dk_xyz(:,:,a)=(derivative+derivative')/2;
++end
+ end
+diff --git a/src/functions_transport/Fermi_0.m b/src/functions_transport/Fermi_0.m
+index d6d1cc5..c4b71f2 100644
+--- a/src/functions_transport/Fermi_0.m
++++ b/src/functions_transport/Fermi_0.m
+@@ -1,12 +1,17 @@
+ function f0 = Fermi_0(E_minus_mu, T)
+-% Fermi-Dirac distribution
+-k_B = 8.6173324e-5; % eV/K
+-beta = 1/(T * k_B);
+-
+-exp_power = E_minus_mu * beta;
+-
+-mask = exp_power < 50;
+-
+-f0 = zeros(size(E_minus_mu));
+-f0(mask) = 1./(exp(exp_power(mask)) + 1);
+-end
+\ No newline at end of file
++%FERMI_0 Stable Fermi occupation, energies eV and temperature Kelvin.
++if ~isscalar(T) || ~isfinite(T) || T < 0
++    error('TBkit:InvalidTemperature','Temperature must be finite and nonnegative.');
++end
++if T == 0
++    f0 = double(E_minus_mu < 0) + 0.5*double(E_minus_mu == 0);
++    return;
++end
++k_B = 8.617333262145e-5;
++x = E_minus_mu/(T*k_B);
++% exp(-abs(x)) avoids overflow in either energy tail.
++z = exp(-abs(x));
++f0 = z./(1+z);
++negative = x < 0;
++f0(negative) = 1./(1+z(negative));
++end
+diff --git a/src/functions_transport/Fermi_1.m b/src/functions_transport/Fermi_1.m
+index f688f39..afa3e18 100644
+--- a/src/functions_transport/Fermi_1.m
++++ b/src/functions_transport/Fermi_1.m
+@@ -1,8 +1,13 @@
+ function f1 = Fermi_1(E_minus_mu, T)
+ % first derivative of Fermi-Dirac distribution 
+-k_B = 8.6173324e-5; % eV/K
++if ~isscalar(T) || ~isfinite(T) || T <= 0
++    error('TBkit:InvalidTemperature','Fermi energy derivatives require finite T>0; at T=0 they are distributions.');
++end
++k_B = 8.617333262145e-5; % eV/K
+ beta = 1/(T * k_B);
+ 
+-f0 = Fermi_0(E_minus_mu, T);
+-f1  = -beta .* f0 .* (1 - f0);
+-end
+\ No newline at end of file
++x = E_minus_mu * beta;
++z = exp(-abs(x));
++variance = z./(1+z).^2;
++f1 = -beta .* variance;
++end
+diff --git a/src/functions_transport/Fermi_2.m b/src/functions_transport/Fermi_2.m
+index 7110e32..8fc3124 100644
+--- a/src/functions_transport/Fermi_2.m
++++ b/src/functions_transport/Fermi_2.m
+@@ -1,9 +1,14 @@
+ function f2 = Fermi_2(E_minus_mu, T)
+ % second derivative of Fermi-Dirac distribution 
+ % 二阶导容易出现数值不稳定性，尽量改用差分代替
+-k_B = 8.6173324e-5; % eV/K
++if ~isscalar(T) || ~isfinite(T) || T <= 0
++    error('TBkit:InvalidTemperature','Fermi energy derivatives require finite T>0; at T=0 they are distributions.');
++end
++k_B = 8.617333262145e-5; % eV/K
+ beta = 1/(T * k_B);
+ 
+-f0 = Fermi_0(E_minus_mu, T);
+-f2  = beta^2 .* f0 .* (1 - f0) .* (1 - 2*f0);
+-end
+\ No newline at end of file
++x = E_minus_mu * beta;
++z = exp(-abs(x));
++variance = z./(1+z).^2;
++f2 = beta^2 .* variance .* tanh(x/2);
++end

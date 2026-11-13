@@ -1,0 +1,13 @@
+.venv/
+.toolchain/
+work/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+*.pyc
+*.nbc
+*.nbi
+build/
+dist/
+python/tbkit/_tbkit_fortran*.so
+.DS_Store

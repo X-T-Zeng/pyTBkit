@@ -1,0 +1,49 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.29493873399951553,
+      "log": "upstream.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 18.51834563600096,
+      "log": "tests.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.2751027409995004,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 2.1758830429989757,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 2.561266684000657,
+      "log": "external_example.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.3013241450007627,
+      "log": "advanced_example.log"
+    }
+  ],
+  "tests": {
+    "tests": 133,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

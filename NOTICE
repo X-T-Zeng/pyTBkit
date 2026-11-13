@@ -1,0 +1,11 @@
+pyTBkit is a native Python implementation informed by TBkit by BUAA-TCMP
+and its contributors: https://github.com/BUAA-TCMP/TBkit .
+The reviewed canonical MATLAB commit is pinned in upstream.json.
+Development originally started from X-T-Zeng/TBkit commit
+290224bfb0312e8f6f320fe930ff79ed7a45ed2c; that fork is historical context,
+not the current MATLAB reference.
+This implementation, examples, tests and proposed upstream patches are
+provided under GNU Lesser General Public License version 2.1. See LICENSE.
+Reference tests execute selected official MATLAB numerical functions via
+Octave with explicit data/page-algebra adapters; this does not certify
+all MATLAB classes or the commercial MATLAB Symbolic Math Toolbox.

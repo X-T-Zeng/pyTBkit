@@ -1,0 +1,39 @@
+{
+  "version": "0.2.1",
+  "overall_status": "in_progress",
+  "matlab_source_files": 880,
+  "full_api_parity": false,
+  "autonomous_background_worker": false,
+  "remote_schedule": "prepared_not_published",
+  "validation": {
+    "tests": 133,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "completed_scopes": [
+    "Numba/Python/Fortran Fourier core",
+    "dense and sparse model storage/construction",
+    "structure/SK/orbitals/quantum angular basis",
+    "unitary/antiunitary/nonsymmorphic symmetry",
+    "tested DFT/Wannier data formats",
+    "documented response kernels and BZ integration",
+    "Chern/Wilson/nested/mirror/inversion/no-inversion 2D Z2",
+    "documented continuum/transport/spin/circuit numerical cores"
+  ],
+  "remaining": [
+    "all original MATLAB APIs and workflow examples",
+    "higher-l hopping and full symbolic radial/irrep workflows",
+    "magnetic space groups and general representations",
+    "general 3D no-inversion topology assembly",
+    "all response variants and material-unit/scattering models",
+    "all external-format variants and proprietary workflow interoperability",
+    "GPU/distributed execution"
+  ],
+  "continuation_document": "LONG_TASK.zh-CN.md",
+  "source_reference": "python/upstream.json",
+  "official_repository": "https://github.com/BUAA-TCMP/TBkit",
+  "official_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "long_term_goal": "A physically trustworthy, multifunctional and usable native Python TBkit; Python-first architecture and measured Numba-capable performance.",
+  "automation_status": "pending creation after publication"
+}

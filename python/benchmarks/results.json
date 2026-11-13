@@ -1,0 +1,39 @@
+{
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "processor": "",
+  "numpy": "2.2.6",
+  "numba": "0.61.2",
+  "numba_threads": 2,
+  "blas_threads": 1,
+  "seed": 20261113,
+  "results": [
+    {
+      "model": "two_band",
+      "nk": 20000,
+      "norb": 2,
+      "nr": 5,
+      "first_numba_call_s": 0.4434962750001432,
+      "numpy_median_s": 0.005695340999864129,
+      "numba_median_s": 0.0025496150001345086,
+      "numpy_over_numba": 2.2338043193045474,
+      "max_error": 2.482534153247273e-16,
+      "reference_loop_100_s": 0.0013260079999781738,
+      "bands_numpy_s": 0.025487163999969198,
+      "bands_numba_s": 0.02046699999982593
+    },
+    {
+      "model": "wannier_like",
+      "nk": 3000,
+      "norb": 8,
+      "nr": 220,
+      "first_numba_call_s": 0.07213916800037623,
+      "numpy_median_s": 0.05149809099975755,
+      "numba_median_s": 0.05851257300037105,
+      "numpy_over_numba": 0.8801200897357733,
+      "max_error": 5.007191999532953e-14,
+      "reference_loop_100_s": 0.08666283799993835,
+      "bands_numpy_s": 0.08384707999994134,
+      "bands_numba_s": 0.08021412300013253
+    }
+  ]
+}

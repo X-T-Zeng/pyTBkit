@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/BUAA-TCMP/TBkit.git",
+  "commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "commit_date": "2026-07-12",
+  "source_count": 880,
+  "checkout": "work/official-tbkit",
+  "patched_checkout": "work/official-fixed",
+  "patch": "python/audit/official-fixes.patch",
+  "fixtures": [
+    "example/example06-HK/HK_symmetry/Tutorial_HK_under_symmetry.m",
+    "example/example09-TopoIndices/MirrorChern/EIGENVAL",
+    "example/example09-TopoIndices/MirrorChern/KPOINTS",
+    "example/example09-TopoIndices/MirrorChern/wannier90.wout",
+    "example/example01-DFT_PostProcessing/VASP_pbandplot/Graphene/PROCAR"
+  ]
+}
