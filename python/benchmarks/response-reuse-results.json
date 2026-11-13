@@ -1,0 +1,21 @@
+{
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "numpy": "2.2.6",
+  "numba": "0.61.2",
+  "seed": 20261113,
+  "numba_threads": 2,
+  "blas_threads": 1,
+  "nk": 512,
+  "norb": 8,
+  "nr": 55,
+  "requests": 9,
+  "first_geometry_preparation_s": 0.2584645670031023,
+  "warm_one_shot_s": 0.36328521800169256,
+  "warm_prepared_s": 0.07723329899818054,
+  "one_shot_over_prepared": 4.703738189537272,
+  "max_absolute_error": 0.0,
+  "geometry_bytes": 1016320,
+  "one_shot_batch_eigensystem_preparations": 9,
+  "reused_batch_eigensystem_preparations": 1,
+  "scope": "workflow reuse benchmark, not a MATLAB comparison or a universal kernel speedup"
+}

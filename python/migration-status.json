@@ -6,7 +6,7 @@
   "autonomous_background_worker": false,
   "remote_schedule": "github_actions_workflow_published",
   "validation": {
-    "tests": 133,
+    "tests": 141,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -43,5 +43,11 @@
     "approximate_local_time": "08:00",
     "first_scheduled_date": "2026-11-14",
     "delivery": "reviewable branch and PR, no automatic merge"
+  },
+  "latest_development": {
+    "scope": "caller-owned spectral/geometry reuse and finite-eta NCTE audit",
+    "branch": "feature/spectral-batch-response-audit",
+    "status": "validated; awaiting review",
+    "reference_commit": "48e5217593598c8e1d634cdee3976e1dc6984516"
   }
 }

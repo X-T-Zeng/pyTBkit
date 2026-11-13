@@ -143,22 +143,31 @@ def coo_gradient(k,vectors,rindex,rows,cols,values,norb):
 
 
 @njit(cache=True,nogil=True,parallel=True)
-def spectral_geometry(energy,eigenvectors,gradient,gap_tol):
-    """Band geometry from a batch of eigenpairs and analytic H gradients.
+def band_velocities(eigenvectors,gradient):
+    """Transform analytic gradients once; callable from user nopython code."""
+    nk,n,_=eigenvectors.shape;dim=gradient.shape[1]
+    out=np.empty((nk,dim,n,n),np.complex128)
+    for q in prange(nk):
+        u=np.ascontiguousarray(eigenvectors[q])
+        adjoint=np.ascontiguousarray(u.conj().T)
+        for a in range(dim):out[q,a]=adjoint@np.ascontiguousarray(gradient[q,a])@u
+    return out
 
-    Returns velocity, Berry, metric, BCP and per-k degeneracy flags. No SI
-    prefactors or occupations; callable from user nopython pipelines.
+
+@njit(cache=True,nogil=True,parallel=True)
+def geometry_from_velocities(energy,velocities,gap_tol):
+    """Clean-limit tensors from shared spectra; no repeated basis rotation.
+
+    Public low-level array kernel. It reports near-degenerate k points so the
+    validated Python API can apply an explicit raise/omit policy.
     """
-    nk,n=energy.shape;dim=gradient.shape[1]
+    nk,n=energy.shape;dim=velocities.shape[1]
     velocity=np.zeros((nk,dim,n))
     berry=np.zeros((nk,dim,dim,n));metric=np.zeros_like(berry);bcp=np.zeros_like(berry)
     degenerate=np.zeros(nk,np.bool_)
     for q in prange(nk):
-        u=eigenvectors[q]
-        v=np.empty((dim,n,n),np.complex128)
         for a in range(dim):
-            v[a]=np.ascontiguousarray(u.conj().T)@np.ascontiguousarray(gradient[q,a])@np.ascontiguousarray(u)
-            for i in range(n):velocity[q,a,i]=v[a,i,i].real
+            for i in range(n):velocity[q,a,i]=velocities[q,a,i,i].real
         for i in range(n):
             for j in range(n):
                 if i==j:continue
@@ -169,8 +178,14 @@ def spectral_geometry(energy,eigenvectors,gradient,gap_tol):
                 inv=1/gap
                 for a in range(dim):
                     for b in range(dim):
-                        product=v[a,i,j]*v[b,j,i]
+                        product=velocities[q,a,i,j]*velocities[q,b,j,i]
                         berry[q,a,b,i]+=-2*product.imag*inv**2
                         metric[q,a,b,i]+=product.real*inv**2
                         bcp[q,a,b,i]+=2*product.real*inv**3
     return velocity,berry,metric,bcp,degenerate
+
+
+@njit(cache=True,nogil=True)
+def spectral_geometry(energy,eigenvectors,gradient,gap_tol):
+    """Backward-compatible nopython composition of the two reusable kernels."""
+    return geometry_from_velocities(energy,band_velocities(eigenvectors,gradient),gap_tol)

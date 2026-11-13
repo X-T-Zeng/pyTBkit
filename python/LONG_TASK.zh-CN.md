@@ -19,7 +19,7 @@
 若环境、权限或资源阻断运行，任务应报告阻断，不得虚报已完成。
 
 GitHub Actions 的 push/PR/手动/每周回归是另一条验证流程，不等同于
-自动开发任务。当前本地133项测试已通过，远端 CI 状态应以实际运行结果为准。
+自动开发任务。当前本地141项测试已通过，远端 CI 状态应以实际运行结果为准。
 
 ## 接续开发顺序与验收
 
@@ -59,3 +59,12 @@ python python/tools/validate.py --output work/python-validation --benchmarks
 
 
 MATLAB reference: BUAA-TCMP/TBkit @ `48e5217593598c8e1d634cdee3976e1dc6984516`; see `upstream.json`.
+
+
+## 最近一轮：谱与响应复用
+
+已验证显式只读 SpectralBatch/GeometryBatch、Numba 可组合数组内核、mu/T/张量扫描
+复用和点轨道框架选择；保持单次API兼容。有限eta的官方NCTE路径已复现其复数和
+全带曲率和偏离标准几何的行为，未擅自引入散射模型或取real替代物理推导。
+详见 audit/RESPONSE-BATCH-REVIEW.zh-CN.md；下一步应继续核查响应处方与单位，
+以及完整Wannier位置连接/非正交响应，而非直接复制全部公式。
