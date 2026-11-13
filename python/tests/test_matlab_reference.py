@@ -24,6 +24,9 @@ def test_original_fft_numerical_body(tmp_path):
     source=re.sub(r'\narguments\b.*?\nend\n','\n',source,flags=re.S)
     source=source.replace('= fft(', '= hr_fft_reference(',1)
     (tmp_path/'hr_fft_reference.m').write_text(source)
+    # Ubuntu's Octave may lack tensorprod; keep the same narrow adapter on
+    # every platform so the official numerical body is tested identically.
+    shutil.copy(Path(__file__).parent/'matlab_fixtures/tensorprod.m',tmp_path/'tensorprod.m')
     rng=np.random.default_rng(2)
     r=np.array([[0,0,0],[1,0,0],[-1,0,0],[0,1,1],[0,-1,-1]])
     h=rng.normal(size=(5,3,3))+1j*rng.normal(size=(5,3,3))
