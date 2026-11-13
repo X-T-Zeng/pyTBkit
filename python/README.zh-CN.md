@@ -149,3 +149,32 @@ python python/tools/validate.py --output work/python-validation --benchmarks
 
 
 MATLAB reference: BUAA-TCMP/TBkit @ `48e5217593598c8e1d634cdee3976e1dc6984516`; see `upstream.json`.
+
+## 复用谱与几何：温度、化学势和多个响应通道
+
+```python
+from tbkit import prepare_spectral, prepare_geometry, response_from_geometry
+
+spectral = prepare_spectral(model, k, backend="numba", frame="model")
+geometry = prepare_geometry(spectral, gap_tol=1e-8, degeneracy="raise")
+for temperature in [50., 200., 500.]:
+    berry = response_from_geometry(
+        geometry, [-.2, 0., .2], kind="berry", indices=(0, 1),
+        temperature=temperature,
+    )
+```
+
+同一批 k 点只准备一次谱和几何，后续加权不再次对角化。快照独立于源模型，
+由调用方持有，只读且不自动更新。参数或基底改变后应重新准备。
+所有快照数组保留批次维，单点准备的响应输出会去掉该维，兼容原单点 API。
+
+`frame="point-orbital"` 显式选择点轨道嵌入；`frame="model"` 保留传入模型的框架。
+对 HR 而言，后者是周期系数框架。两者不能混用，也不包含 hr.dat 中缺失的完整
+Wannier 偶极矩阵。快照接口当前只适用于正交基；Fermi 权重使用 eV/K。
+
+Numba 用户可直接将谱数组传入 `kernels.band_velocities` 和
+`kernels.geometry_from_velocities`；两者都支持 nopython 调用。
+大网格应在 `integrate_bz` 的每个小批次内准备/复用，快照不是磁盘或分布式缓存。
+
+可执行例子：`python python/examples/response_sweep.py`。
+有限 eta 审计、理论边界及复用基准见 `audit/RESPONSE-BATCH-REVIEW.zh-CN.md`。

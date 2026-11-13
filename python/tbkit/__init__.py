@@ -51,3 +51,7 @@ __all__ += ["z2_wilson"]
 from .gauge import OrbitalEmbedding,embed_orbitals
 from .topology import wilson_transport
 __all__ += ["OrbitalEmbedding","embed_orbitals","wilson_transport"]
+
+from .spectral import SpectralBatch,prepare_spectral
+from .responses import GeometryBatch,prepare_geometry,response_from_geometry
+__all__ += ["SpectralBatch","prepare_spectral","GeometryBatch","prepare_geometry","response_from_geometry"]

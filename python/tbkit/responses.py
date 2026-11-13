@@ -3,10 +3,12 @@
 Derivatives are dH/dk (not velocity divided by hbar). Return mathematical
 kernels; material-specific SI prefactors are not silently applied.
 """
+from dataclasses import dataclass
 import itertools
 import numpy as np
 from scipy.special import expit
-from .base import points,hermitian
+from .spectral import SpectralBatch,prepare_spectral
+from .hr import immutable
 
 from .constants import KB_EV_PER_K as KB
 
@@ -22,79 +24,137 @@ def fermi_derivative(energy,mu=0.,temperature=50.,order=1):
     return beta**2*variance*np.tanh(x/2)
 
 
-def _spectral(model,k,backend,gap_tol,degeneracy):
-    if gap_tol<=0 or degeneracy not in ('raise','omit'): raise ValueError("positive gap_tol and degeneracy='raise'/'omit' required")
-    k,single=points(k,model.dim)
-    e,u=model.bands(k,eigenvectors=True,backend=backend)
-    dh=model.gradient(k,backend=backend)
-    hermitian(dh)
-    v=u.conj().swapaxes(-1,-2)[:,None]@dh@u[:,None]
-    delta=e[:,:,None]-e[:,None,:];eye=np.eye(model.norb,dtype=bool)
-    valid=(abs(delta)>gap_tol)&~eye
-    if degeneracy=='raise' and np.any(~valid&~eye): raise ValueError("degenerate bands in band response kernel")
-    inv=np.zeros_like(delta); np.divide(1.,delta,out=inv,where=valid)
-    return e,v,inv,single
+@dataclass(frozen=True)
+class GeometryBatch:
+    """Reusable, clean-limit real band geometry with an explicit gap policy.
 
-
-def geometric_tensors(model,k,*,backend='numba',gap_tol=1e-8,degeneracy='raise'):
-    """Return energies, band gradients, Berry tensor, quantum metric and BCP.
-
-    Layout: energy (...,n), velocity (...,dim,n), all tensors (...,dim,dim,n).
-    BCP=2 Re sum(v_a[n,m]v_b[m,n])/(E_n-E_m)^3.
-    omit reproduces MATLAB's gap cutoff; raise is safer near degeneracies.
+    Arrays always retain their batch axis. Degenerate single-band quantities
+    in omit mode are basis dependent; only justified subspace sums are physical.
     """
+    energy: np.ndarray
+    velocity: np.ndarray
+    berry: np.ndarray
+    metric: np.ndarray
+    bcp: np.ndarray
+    degenerate: np.ndarray
+    single: bool=False
+    frame: str='model'
+    gap_tol: float=1e-8
+    degeneracy: str='raise'
+
+    def __post_init__(self):
+        if not np.isfinite(self.gap_tol) or self.gap_tol<=0 or self.degeneracy not in ('raise','omit'):
+            raise ValueError('positive finite gap_tol and explicit raise/omit policy required')
+        values={}
+        for name in ('energy','velocity','berry','metric','bcp'):
+            a=getattr(self,name)
+            if np.iscomplexobj(a):raise ValueError('clean band geometry must be real; finite complex pole response is a different prescription')
+            values[name]=immutable(a,float)
+        e,v=values['energy'],values['velocity']
+        if e.ndim!=2 or not len(e) or e.shape[1]<1 or v.ndim!=3 or v.shape[0]!=len(e) or v.shape[2]!=e.shape[1] or v.shape[1]<1:
+            raise ValueError('invalid batched energy/velocity shape')
+        expected=(len(e),v.shape[1],v.shape[1],e.shape[1])
+        if any(values[name].shape!=expected for name in ('berry','metric','bcp')):
+            raise ValueError('geometry tensor shape mismatch')
+        d=immutable(self.degenerate,bool)
+        if d.shape!=(len(e),) or (self.single and len(e)!=1):raise ValueError('invalid batch metadata')
+        if self.frame not in ('model','point-orbital'):raise ValueError('unknown geometry frame')
+        if self.degeneracy=='raise' and np.any(d):raise ValueError('band degeneracy; use occupied-subspace geometry or a justified explicit omit policy')
+        for name,value in values.items():object.__setattr__(self,name,value)
+        object.__setattr__(self,'degenerate',d)
+
+    @property
+    def dim(self):return self.velocity.shape[1]
+
+    @property
+    def nbytes(self):
+        return sum(getattr(self,name).nbytes for name in ('energy','velocity','berry','metric','bcp','degenerate'))
+
+    def as_dict(self,*,copy=False):
+        result={name:(getattr(self,name)[0] if self.single else getattr(self,name)) for name in ('energy','velocity','berry','metric','bcp')}
+        return {name:value.copy() for name,value in result.items()} if copy else result
+
+
+def prepare_geometry(model_or_spectral,k=None,*,backend='numba',gap_tol=1e-8,degeneracy='raise',frame='model'):
+    """Compute clean band geometry once, then reuse it for tensors/mu/T scans.
+
+    A SpectralBatch needs no k argument. Its frame is already fixed and cannot
+    be changed retroactively. Finite-eta/lifetime models are not inferred.
+    """
+    if not np.isfinite(gap_tol) or gap_tol<=0 or degeneracy not in ('raise','omit'):
+        raise ValueError('finite positive gap_tol and degeneracy=raise/omit required')
+    if isinstance(model_or_spectral,SpectralBatch):
+        if k is not None or frame!='model':raise ValueError('a prepared snapshot already fixes k points and frame')
+        batch=model_or_spectral
+    else:
+        if k is None:raise ValueError('k points required for a model')
+        batch=prepare_spectral(model_or_spectral,k,backend=backend,frame=frame)
+    e=batch.energy;v=batch.velocity_matrices
     if backend=='numba':
-        from . import backends
-        if gap_tol<=0 or degeneracy not in ('raise','omit'): raise ValueError("invalid gap_tol/degeneracy policy")
-        k,single=points(k,model.dim)
-        e,u=model.bands(k,eigenvectors=True,backend=backend)
-        dh=model.gradient(k,backend=backend)
-        hermitian(dh)
-        velocity,berry,metric,bcp,degenerate=backends.spectral_geometry(e,u,dh,gap_tol)
-        if degeneracy=='raise' and np.any(degenerate): raise ValueError("degenerate bands in band response kernel")
-        result={'energy':e,'velocity':velocity,'berry':berry,'metric':metric,'bcp':bcp}
-        return {key:value[0] for key,value in result.items()} if single else result
-    e,v,inv,single=_spectral(model,k,backend,gap_tol,degeneracy)
-    shape=(len(e),model.dim,model.dim,model.norb)
-    berry=np.zeros(shape);metric=np.zeros(shape);bcp=np.zeros(shape)
-    for a,b in itertools.product(range(model.dim),repeat=2):
-        product=v[:,a]*v[:,b].swapaxes(-1,-2)
-        berry[:,a,b]=(-2*product.imag*inv**2).sum(axis=-1)
-        metric[:,a,b]=(product.real*inv**2).sum(axis=-1)
-        bcp[:,a,b]=(2*product.real*inv**3).sum(axis=-1)
-    result={'energy':e,'velocity':v.diagonal(axis1=-2,axis2=-1).real,'berry':berry,'metric':metric,'bcp':bcp}
-    return {key:value[0] for key,value in result.items()} if single else result
+        from .backends import geometry_from_velocities
+        velocity,berry,metric,bcp,degenerate=geometry_from_velocities(e,v,gap_tol)
+    else:
+        if backend not in ('numpy','fortran'):raise ValueError('backend must be numba, numpy or fortran')
+        delta=e[:,:,None]-e[:,None,:];eye=np.eye(e.shape[1],dtype=bool)
+        valid=(abs(delta)>gap_tol)&~eye
+        degenerate=np.any((~valid)&~eye,axis=(-2,-1))
+        inv=np.zeros_like(delta);np.divide(1.,delta,out=inv,where=valid)
+        shape=(len(e),batch.dim,batch.dim,e.shape[1])
+        berry=np.zeros(shape);metric=np.zeros(shape);bcp=np.zeros(shape)
+        for a,b in itertools.product(range(batch.dim),repeat=2):
+            product=v[:,a]*v[:,b].swapaxes(-1,-2)
+            berry[:,a,b]=(-2*product.imag*inv**2).sum(axis=-1)
+            metric[:,a,b]=(product.real*inv**2).sum(axis=-1)
+            bcp[:,a,b]=(2*product.real*inv**3).sum(axis=-1)
+        velocity=v.diagonal(axis1=-2,axis2=-1).real
+    return GeometryBatch(e,velocity,berry,metric,bcp,degenerate,single=batch.single,frame=batch.frame,gap_tol=gap_tol,degeneracy=degeneracy)
 
 
-def response_kernel(model,k,mu,*,kind='berry',indices=(0,1),temperature=50.,coefficients=(1.,1.,-1.),backend='numba',gap_tol=1e-8,degeneracy='raise'):
-    """Occupation-weighted Berry, SOAHC or NCTE kernels per k and mu.
+def geometric_tensors(model,k,*,backend='numba',gap_tol=1e-8,degeneracy='raise',frame='model'):
+    """Dictionary compatibility API; use prepare_geometry for explicit reuse."""
+    return prepare_geometry(model,k,backend=backend,gap_tol=gap_tol,degeneracy=degeneracy,frame=frame).as_dict(copy=True)
 
-    SOAHC=(G_bc v_a-G_ac v_b) f'(E-mu).
-    NCTE=(c1 v_a Omega_bc+c2 v_b Omega_ca+c3 v_c Omega_ab)
-    * (E-mu) f'(E-mu), identical to repository single-index formulas.
+
+def response_from_geometry(geometry,mu,*,kind='berry',indices=(0,1),temperature=50.,coefficients=(1.,1.,-1.)):
+    """Apply occupations to caller-owned GeometryBatch without diagonalization.
+
+    Returns (nk,nmu), or (nmu,) for a single-point preparation. Derivatives
+    retain dH/dk units; material/SI prefactors are never applied implicitly.
     """
     from .topology import fermi
-    k,single=points(k,model.dim);mu=np.atleast_1d(np.asarray(mu,float))
-    if mu.ndim!=1 or not np.isfinite(mu).all(): raise ValueError("finite scalar or 1D mu required")
+    if not isinstance(geometry,GeometryBatch):raise TypeError('validated GeometryBatch required')
+    if np.iscomplexobj(mu):raise ValueError('chemical potential must be real')
+    mu=np.atleast_1d(np.asarray(mu,float))
+    if mu.ndim!=1 or not len(mu) or not np.isfinite(mu).all():raise ValueError('nonempty finite scalar or 1D mu required')
     count=2 if kind=='berry' else 3
-    if kind not in ('berry','soahc','ncte') or len(indices)!=count or any(not isinstance(x,(int,np.integer)) or not 0<=x<model.dim for x in indices):
-        raise ValueError("invalid response kind/indices")
-    if len(coefficients)!=3: raise ValueError("three NCTE coefficients required")
-    data=geometric_tensors(model,k,backend=backend,gap_tol=gap_tol,degeneracy=degeneracy)
-    e=data['energy'];vel=data['velocity'];omega=data['berry'];g=data['bcp']
+    if kind not in ('berry','soahc','ncte') or len(indices)!=count or any(not isinstance(x,(int,np.integer)) or not 0<=x<geometry.dim for x in indices):
+        raise ValueError('invalid response kind/indices')
+    if np.iscomplexobj(coefficients) or np.shape(coefficients)!=(3,) or not np.isfinite(coefficients).all():raise ValueError('three finite real NCTE coefficients required')
+    e=geometry.energy;vel=geometry.velocity;omega=geometry.berry;g=geometry.bcp
     if kind=='berry':
         a,b=indices;band=omega[:,a,b]
         weight=fermi(e[:,:,None],mu[None,None,:],temperature)
     else:
         a,b,c=indices
-        if kind=='soahc': band=g[:,b,c]*vel[:,a]-g[:,a,c]*vel[:,b]
+        if kind=='soahc':band=g[:,b,c]*vel[:,a]-g[:,a,c]*vel[:,b]
         else:
             c1,c2,c3=coefficients
             band=c1*vel[:,a]*omega[:,b,c]+c2*vel[:,b]*omega[:,c,a]+c3*vel[:,c]*omega[:,a,b]
         weight=fermi_derivative(e[:,:,None],mu[None,None,:],temperature)
-        if kind=='ncte': weight=weight*(e[:,:,None]-mu[None,None,:])
+        if kind=='ncte':weight=weight*(e[:,:,None]-mu[None,None,:])
     out=np.einsum('kn,knm->km',band,weight)
-    return out[0] if single else out
+    return out[0] if geometry.single else out
+
+
+def response_kernel(model,k,mu,*,kind='berry',indices=(0,1),temperature=50.,coefficients=(1.,1.,-1.),backend='numba',gap_tol=1e-8,degeneracy='raise',frame='model'):
+    """One-shot compatibility API for clean-limit Berry/SOAHC/NCTE kernels.
+
+    For parameter/temperature/tensor sweeps prepare_geometry once and call
+    response_from_geometry repeatedly. This API does not implement the official
+    MATLAB finite-eta complex-pole prescription.
+    """
+    geometry=prepare_geometry(model,k,backend=backend,gap_tol=gap_tol,degeneracy=degeneracy,frame=frame)
+    return response_from_geometry(geometry,mu,kind=kind,indices=indices,temperature=temperature,coefficients=coefficients)
 
 
 def integrate_bz(function,shape,*,lattice=None,chunk_size=512,normalization='average'):

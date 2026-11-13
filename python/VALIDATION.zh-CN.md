@@ -1,6 +1,6 @@
 # 当前验证快照：pyTBkit 0.2.1
 
-独立仓库 `/workspace/pyTBkit` 完整验证结果：**133 passed，0 failures，0 errors，0 skipped**。
+独立仓库 `/workspace/pyTBkit` 完整验证结果：**141 passed，0 failures，0 errors，0 skipped**。
 Python 3.12.15；NumPy/Numba/稀疏及已编译 Fortran/OpenMP 后端；Octave 实际执行。
 测试、6组基础研究例子、绘图、真实官方 DFT/Wannier 文件例子、高级研究例子均成功。
 原始结果：validation-snapshot.json；完整日志：work/python-validation/。
@@ -20,3 +20,16 @@ MATLAB 基线严格固定为 BUAA-TCMP/TBkit @
 
 性能快照在 benchmarks/；这些历史测量不是本次跨机器安装测试的新基准，
 不能据此宣称全面快于 MATLAB。完整验证器可以用 --benchmarks 重新测量。
+
+
+## 接续验证：共享谱与响应扫描
+
+SpectralBatch/GeometryBatch 准备和复用、随机本征态相位不变性、点轨道框架、
+解析 Dirac 度量/曲率、简并策略与用户 @njit 管线测试通过。官方 NCTE 有限 eta
+路径由原式执行与独立带对求和刻画；干净极限匹配，复响应处方未自动移植。
+
+完整例子与性能记录：examples/response_sweep.py、benchmarks/response_reuse.py、
+benchmarks/response-reuse-results.json。8轨道/512k/9次响应，Numba 2线程、BLAS 1线程，
+预热单次API工作流363.29ms、准备复用77.23ms，约4.70倍；两者均包括所需准备工作，
+输出最大差异0。首次准备258.46ms可能含JIT/缓存载入；不是MATLAB对比结论。
+完整日志在 work/spectral-batch-validation/，本次测试141项、全部例子及三组基准通过。

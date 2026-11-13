@@ -6,42 +6,66 @@
     {
       "name": "upstream",
       "exit_code": 0,
-      "seconds": 0.29493873399951553,
+      "seconds": 6.328276503998495,
       "log": "upstream.log"
     },
     {
       "name": "tests",
       "exit_code": 0,
-      "seconds": 18.51834563600096,
+      "seconds": 84.99854879100167,
       "log": "tests.log"
     },
     {
       "name": "examples",
       "exit_code": 0,
-      "seconds": 1.2751027409995004,
+      "seconds": 2.5389760789985303,
       "log": "examples.log"
     },
     {
       "name": "plot_example",
       "exit_code": 0,
-      "seconds": 2.1758830429989757,
+      "seconds": 2.1234124319998955,
       "log": "plot_example.log"
     },
     {
       "name": "external_example",
       "exit_code": 0,
-      "seconds": 2.561266684000657,
+      "seconds": 2.372102420002193,
       "log": "external_example.log"
     },
     {
       "name": "advanced_example",
       "exit_code": 0,
-      "seconds": 1.3013241450007627,
+      "seconds": 1.4231774379986746,
       "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.4281249519990524,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.815359502001229,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.520715709997603,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 3.2752311369986273,
+      "log": "response_reuse_benchmark.log"
     }
   ],
   "tests": {
-    "tests": 133,
+    "tests": 141,
     "failures": 0,
     "errors": 0,
     "skipped": 0
