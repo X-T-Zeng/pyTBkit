@@ -143,8 +143,9 @@ Fortran 阵列转换有开销，不保证优于 Numba，应按实际负载测量
 python python/tools/validate.py --output work/python-validation --benchmarks
 ```
 
-长线状态与明确未完事项保存在 `LONG_TASK.zh-CN.md`；CI 文件只在提交到
-远端并启用 GitHub Actions 后运行。当前会话没有注册后台自动开发代理。
+长线状态与明确未完事项保存在 `LONG_TASK.zh-CN.md`。代码与 CI 已发布；
+周期开发任务从 2026-11-14 起每天北京时间 08:00 附近接续，通过分支和 PR
+供维护者审阅。它不是全天连续运行，也不代表全库迁移已完成。
 
 
 MATLAB reference: BUAA-TCMP/TBkit @ `48e5217593598c8e1d634cdee3976e1dc6984516`; see `upstream.json`.
