@@ -1,0 +1,79 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.37460517400177196,
+      "log": "upstream.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 35.527340574000846,
+      "log": "tests.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.4220083499967586,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 3.02148587499687,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "transport_scaling",
+      "exit_code": 0,
+      "seconds": 3.4288899950042833,
+      "log": "transport_scaling.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 2.465056626999285,
+      "log": "external_example.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.473120298993308,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.3359763059997931,
+      "log": "response_sweep.log"
+    }
+  ],
+  "tests": {
+    "tests": 161,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Independent transport branch on main 13a5832; excludes unmerged symbolic PR #2 and plotting PR #3.",
+  "python_base_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "pristine_matlab_test": "GW_iter defect characterization; numerical equations unchanged, only arguments block removed for Octave.",
+  "example": {
+    "max_single_level_analytic_error": 4.440892098500626e-16,
+    "max_perfect_chain_unit_error": 0.0,
+    "energy_rescaling_range": [
+      1e-20,
+      1e+20
+    ],
+    "extra_device_eta_default": 0,
+    "lead_eta_over_hopping": 1e-06,
+    "fixed_absorber_curve": "independent analytic formula, not original solver output",
+    "transmission_units": "dimensionless; no conductance/spin prefactor"
+  },
+  "visual_review": "transport-scaling.png inspected; PNG/PDF/SVG generated.",
+  "performance_claim": false
+}
