@@ -1,0 +1,128 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.45491972198942676,
+      "log": "upstream.log"
+    },
+    {
+      "name": "symbolic_inventory",
+      "exit_code": 0,
+      "seconds": 1.1267425489932066,
+      "log": "symbolic_inventory.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 34.453510817998904,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 3.0159815159859136,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "group_generators",
+      "exit_code": 0,
+      "seconds": 3.3998767110024346,
+      "log": "group_generators.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.3088027280027745,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 2.0579892710084096,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "transport_scaling",
+      "exit_code": 0,
+      "seconds": 2.957315892999759,
+      "log": "transport_scaling.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 2.8153518780018203,
+      "log": "external_example.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.338682223999058,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.216483126001549,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "symbolic_example",
+      "exit_code": 0,
+      "seconds": 5.163147137005581,
+      "log": "symbolic_example.log"
+    },
+    {
+      "name": "group_closure_benchmark",
+      "exit_code": 0,
+      "seconds": 1.2699304479901912,
+      "log": "group_closure_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.5085700070048915,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.303898077996564,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 2.5918525410088478,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "plot_gallery",
+      "exit_code": 0,
+      "seconds": 3.4565928030060604,
+      "log": "plot_gallery.log"
+    }
+  ],
+  "tests": {
+    "tests": 220,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Temporary uncommitted automatic merge of PR #2/#3/#4 and generator follow-up including PR #5; never merged to remote main.",
+  "main_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "heads": {
+    "symbolic_pr_2": "96ba96d00276b0a54c0db14ba7bd6dde55634926",
+    "plotting_pr_3": "7c0beb68e0721225ca6c42717581e275c458d13d",
+    "transport_pr_4": "8dbfd74592b39301d016c048466f13a63c974b96",
+    "group_parent_pr_5": "6720b6ff1dbf35e96fdb090341052d9710454120",
+    "generator_pr_6": "96ce06d5ee60c347116658bde75b2b624aaf61f2"
+  },
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "warnings": [
+    "Matplotlib mathtext uses deprecated Pyparsing enablePackrat; one dependency deprecation warning, no skipped tests."
+  ]
+}

@@ -4,16 +4,49 @@ Elements are hashable labels; the immutable integer Cayley table owns the
 operation. No equivalence up to phase or automatic projective quotient occurs.
 """
 from abc import ABC,abstractmethod
+from collections import deque
 from dataclasses import dataclass
 from types import MappingProxyType
 import numpy as np
-from .group_kernels import associative
+from .group_kernels import associative,generated_subgroup_indices
 
 
 def _integer(value,name,minimum=0):
     if not isinstance(value,(int,np.integer)) or isinstance(value,(bool,np.bool_)) or value<minimum:
         raise ValueError(f'{name} must be an integer >= {minimum}')
     return int(value)
+
+
+class GroupSearchLimitError(RuntimeError):
+    """Exact search stopped at a budget; no minimum/rank was returned.
+
+    lower_bound is justified by completed BFS layers, not a guessed rank.
+    Counts describe stored subgroup states and attempted closure extensions.
+    """
+    def __init__(self,limit,*,lower_bound,subgroup_states,extensions):
+        self.limit=limit;self.lower_bound=lower_bound
+        self.subgroup_states=subgroup_states;self.extensions=extensions
+        super().__init__(f'generator search exceeded {limit}; only rank >= {lower_bound} is established, no minimum returned')
+
+
+@dataclass(frozen=True)
+class GeneratorSearchResult:
+    """Successful minimum-cardinality search, with one deterministic witness.
+
+    subgroup_states counts stored BFS states, including the trivial subgroup;
+    the full-group terminal is returned directly rather than stored separately.
+    """
+    group_name: str
+    generators: tuple
+    subgroup_states: int
+    extensions: int
+
+    @property
+    def rank(self):return len(self.generators)
+
+    def _repr_latex_(self):
+        import sympy as sp
+        return '$'+r'd('+sp.latex(sp.Symbol(self.group_name))+')='+str(self.rank)+r',\quad S='+sp.latex(sp.Tuple(*[sp.Symbol(str(g)) for g in self.generators]))+'$'
 
 
 class AbstractFiniteGroup(ABC):
@@ -148,13 +181,8 @@ class FiniteGroup(AbstractFiniteGroup):
 
     def _generated_indices(self,generators):
         gens=set(generators);gens.update(int(self._inverse[i]) for i in tuple(gens))
-        known={self.index(self.identity)};pending=list(known)
-        while pending:
-            a=pending.pop()
-            for b in sorted(gens):
-                c=int(self.table[a,b])
-                if c not in known:known.add(c);pending.append(c)
-        return tuple(sorted(known))
+        indices=np.array(sorted(gens),dtype=np.int64)
+        return tuple(int(i) for i in generated_subgroup_indices(self.table,indices,self.index(self.identity)))
 
     def _subset(self,elements):
         labels=tuple(elements)
@@ -178,6 +206,57 @@ class FiniteGroup(AbstractFiniteGroup):
 
     def generated_subgroup(self,generators):
         return self._subgroup(self._generated_indices([self.index(g) for g in generators]))
+
+    def is_generating(self,generators):
+        """Whether these labels generate the whole group, allowing the empty set."""
+        return len(self._generated_indices([self.index(g) for g in generators]))==self.order
+
+    def generator_search(self,*,max_subgroups=1024,max_extensions=100000):
+        """Find one globally smallest generating tuple by BFS on subgroup states.
+
+        Each edge adjoins one element. States with the same generated subgroup
+        have identical possible continuations, so merging them preserves the
+        shortest path. This proves cardinality minimality, not just irredundancy.
+        The trivial group has rank zero and an empty generating tuple.
+
+        Budgets bound stored states and attempted extensions. The full terminal
+        need not be stored. On exhaustion, raise GroupSearchLimitError with a
+        proved lower bound, never return a heuristic or partial minimum.
+        """
+        state_limit=_integer(max_subgroups,'max_subgroups',1)
+        work_limit=_integer(max_extensions,'max_extensions',0)
+        start=(self.index(self.identity),)
+        if self.order==1:return GeneratorSearchResult(self.name,(),1,0)
+        parents={start:None};pending=deque([(start,0)]);extensions=0
+        while pending:
+            h,depth=pending.popleft()
+            for g in range(self.order):
+                if g in h:continue
+                if extensions>=work_limit:
+                    raise GroupSearchLimitError('max_extensions',lower_bound=depth+1,
+                                                subgroup_states=len(parents),extensions=extensions)
+                extensions+=1
+                generated=self._generated_indices((*h,g))
+                if len(generated)==self.order:
+                    witness=[g];node=h
+                    while parents[node] is not None:
+                        node,used=parents[node];witness.append(used)
+                    witness.reverse()
+                    return GeneratorSearchResult(self.name,tuple(self.elements[i] for i in witness),len(parents),extensions)
+                if generated not in parents:
+                    if len(parents)>=state_limit:
+                        raise GroupSearchLimitError('max_subgroups',lower_bound=depth+1,
+                                                    subgroup_states=len(parents),extensions=extensions)
+                    parents[generated]=(h,g);pending.append((generated,depth+1))
+        raise RuntimeError('validated group was not generated by all its elements')
+
+    def minimum_generators(self,**budgets):
+        """One minimum-cardinality generating tuple; not all equivalent choices."""
+        return self.generator_search(**budgets).generators
+
+    def rank(self,**budgets):
+        """Minimum generator number d(G); not matrix rank or Lie-group rank."""
+        return self.generator_search(**budgets).rank
 
     def subgroups(self,*,max_subgroups=1024):
         """Enumerate by adjoining generators; raise rather than return a partial list."""

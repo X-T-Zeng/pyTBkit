@@ -3,7 +3,7 @@ from .base import TBkit
 from .hr import HR
 from .symbolic import HK, Htrig
 from .operators import Oper
-from .groups import AbstractFiniteGroup,FiniteGroup,cyclic_group,dihedral_group,permutation_group
+from .groups import AbstractFiniteGroup,FiniteGroup,cyclic_group,dihedral_group,permutation_group,GeneratorSearchResult,GroupSearchLimitError
 from .representations import MatrixRepresentation,CharacterTable,matrix_group
 from .geometry import kmesh, kpath
 from .topology import berry_curvature, chern_number, wilson_loop, fermi
@@ -18,7 +18,7 @@ __all__ = ["TBkit","HR","HK","Htrig","Oper","kmesh","kpath","berry_curvature",
            "chern_number","wilson_loop","fermi","surface_green","transmission",
            "read_wannier90","write_wannier90","load_hdf5","fit_bands","models","kernels"]
 __all__ += ["AbstractFiniteGroup","FiniteGroup","cyclic_group","dihedral_group","permutation_group",
-            "MatrixRepresentation","CharacterTable","matrix_group"]
+            "MatrixRepresentation","CharacterTable","matrix_group","GeneratorSearchResult","GroupSearchLimitError"]
 
 from .structure import Structure
 from .sparse import SparseHR

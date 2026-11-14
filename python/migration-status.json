@@ -15,11 +15,28 @@
     "usage": "GROUPS.zh-CN.md",
     "review": "audit/GROUP-REVIEW.zh-CN.md",
     "remaining": [
-      "minimal generators/rank and group isomorphisms",
+      "group isomorphisms and automorphisms",
       "general irrep generation and multiplicity-space/CG bases",
       "antiunitary corepresentations and projective factor systems",
       "complete Bloch little-group workflows"
-    ]
+    ],
+    "minimum_generator_search": {
+      "branch": "feature/group-minimal-generators",
+      "depends_on_pr": 5,
+      "status": "validated locally; awaiting review",
+      "validation": {
+        "tests": 177,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "report": "audit/generator-validation.json",
+      "review": "audit/GENERATOR-REVIEW.zh-CN.md",
+      "scope": "One globally minimum generating tuple, exact finite-group rank, Numba closure; bounded BFS raises on exhaustion.",
+      "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/6",
+      "integration_report": "audit/generator-integration-validation.json",
+      "combined_tests": 220
+    }
   },
   "full_api_parity": false,
   "autonomous_background_worker": false,
@@ -56,7 +73,7 @@
   "long_term_goal": "A physically trustworthy, multifunctional and usable native Python TBkit; Python-first architecture and measured Numba-capable performance.",
   "automation_status": "enabled",
   "scheduled_continuation": {
-    "title": "pyTBkit 物理审计与开发",
+    "title": "pyTBkit \u7269\u7406\u5ba1\u8ba1\u4e0e\u5f00\u53d1",
     "timezone": "Asia/Shanghai",
     "cadence": "daily",
     "approximate_local_time": "08:00",
