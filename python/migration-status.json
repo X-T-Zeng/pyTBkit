@@ -25,14 +25,17 @@
       "depends_on_pr": 5,
       "status": "validated locally; awaiting review",
       "validation": {
-        "tests": 177,
+        "tests": 178,
         "failures": 0,
         "errors": 0,
         "skipped": 0
       },
       "report": "audit/automatic-irrep-validation.json",
       "review": "audit/AUTOMATIC-IRREP-REVIEW.zh-CN.md",
-      "scope": "Complete validated ordinary complex numeric irreps, bounded dense regular-action algorithm; not exact symbolic reconstruction, coreps or projective/Bloch representations."
+      "scope": "Complete validated ordinary complex numeric irreps, bounded dense regular-action algorithm; not exact symbolic reconstruction, coreps or projective/Bloch representations.",
+      "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/7",
+      "combined_tests": 237,
+      "integration_report": "audit/automatic-irrep-integration-validation.json"
     }
   },
   "full_api_parity": false,

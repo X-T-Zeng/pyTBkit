@@ -6,84 +6,84 @@
     {
       "name": "upstream",
       "exit_code": 0,
-      "seconds": 0.5006634799938183,
+      "seconds": 0.3549363200145308,
       "log": "upstream.log"
     },
     {
       "name": "tests",
       "exit_code": 0,
-      "seconds": 45.06558861100348,
+      "seconds": 19.107882718002656,
       "log": "tests.log"
     },
     {
       "name": "group_theory",
       "exit_code": 0,
-      "seconds": 4.937273348012241,
+      "seconds": 3.221425416006241,
       "log": "group_theory.log"
     },
     {
       "name": "automatic_irreps",
       "exit_code": 0,
-      "seconds": 3.4484505910077132,
+      "seconds": 3.525513527012663,
       "log": "automatic_irreps.log"
     },
     {
       "name": "examples",
       "exit_code": 0,
-      "seconds": 1.554174763004994,
+      "seconds": 1.428406033985084,
       "log": "examples.log"
     },
     {
       "name": "plot_example",
       "exit_code": 0,
-      "seconds": 1.8287183040229138,
+      "seconds": 1.8812513079901692,
       "log": "plot_example.log"
     },
     {
       "name": "external_example",
       "exit_code": 0,
-      "seconds": 2.48373647898552,
+      "seconds": 2.3910647880111355,
       "log": "external_example.log"
     },
     {
       "name": "advanced_example",
       "exit_code": 0,
-      "seconds": 1.4512760889774654,
+      "seconds": 1.3854168960242532,
       "log": "advanced_example.log"
     },
     {
       "name": "response_sweep",
       "exit_code": 0,
-      "seconds": 1.5043219520011917,
+      "seconds": 1.3635718430159613,
       "log": "response_sweep.log"
     },
     {
       "name": "regular_block_benchmark",
       "exit_code": 0,
-      "seconds": 1.7374892759835348,
+      "seconds": 1.6071217150019947,
       "log": "regular_block_benchmark.log"
     },
     {
       "name": "benchmark",
       "exit_code": 0,
-      "seconds": 2.549780432978878,
+      "seconds": 2.5146841410023626,
       "log": "benchmark.log"
     },
     {
       "name": "sparse_benchmark",
       "exit_code": 0,
-      "seconds": 1.4454924689780455,
+      "seconds": 1.4458436080021784,
       "log": "sparse_benchmark.log"
     },
     {
       "name": "response_reuse_benchmark",
       "exit_code": 0,
-      "seconds": 3.0425129779905546,
+      "seconds": 2.883148462016834,
       "log": "response_reuse_benchmark.log"
     }
   ],
   "tests": {
-    "tests": 177,
+    "tests": 178,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -92,6 +92,9 @@
   "parent_commit": "6720b6ff1dbf35e96fdb090341052d9710454120",
   "main_base": "13a5832df636c68839b59859adbc330567a02121",
   "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "visual_review": "PNG inspected, readable table and symmetry-resolved singlet/triplet. PNG/PDF/SVG and formula sources exported; no document PDF/frontend certification.",
+  "matlab_scope": "Source-level Character_gen distinction; no new MATLAB patch. Existing pristine vs candidate group tests execute separately.",
+  "source_commit": "35712988c8b1d31fbfc70466f5526c7e3ae1bfda",
   "example": {
     "group_order": 24,
     "irrep_dimensions": [
@@ -133,6 +136,5 @@
     "assumptions": "spinless scalar sites at regular tetrahedron vertices, equal real hopping between every pair; full Td permutation action is S4",
     "latex_exported_not_document_compiled": true
   },
-  "visual_review": "PNG inspected, readable table and symmetry-resolved singlet/triplet. PNG/PDF/SVG and formula sources exported; no document PDF/frontend certification.",
-  "matlab_scope": "Source-level Character_gen distinction; no new MATLAB patch. Existing pristine vs candidate group tests execute separately."
+  "higher_dimensional_complex_regression": "Q8 x C3: 12 one-dimensional and 3 two-dimensional irreps; FS counts +1:4, 0:10, -1:1; analytic direct-product characters verified."
 }

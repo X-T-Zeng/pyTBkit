@@ -27,9 +27,12 @@ GitHub Actions 的 push/PR/手动/每周回归是另一条验证流程，不等�
 从复正则表示的中心分块和右作用重数空间提取全部普通irrep，返回明确的数值表示，
 保留手工精确SymPy路径；不把浮点结果猜成精确根式。C3复共轭、Q8四元数型、
 S4/A4/A5等独立字符判据及四面体量子模型已验证。
-完整本分支177项测试、所有例子和四项基准通过，见audit/automatic-irrep-validation.json。
-准备好的分块内核相对向量化NumPy约3.5倍；只适用于该负载，完整生成器未声称等比例加速。
+完整本分支178项测试、所有例子和四项基准通过，见audit/automatic-irrep-validation.json。
+准备好的分块内核相对向量化NumPy约2.9倍；只适用于该负载，完整生成器未声称等比例加速。
 测量线程、误差、JIT/缓存加载、完整生成耗时见audit/regular-block-benchmark.json。
+已提交PR #7。补充Q8×C3真正二维复型回归；与PR #2/#3/#4/#5/#6临时组合，
+保留双方新增接口/内核/例子并手动解决5处文本冲突后，237项测试、19个验证步骤通过。
+精确提交及冲突处理见audit/automatic-irrep-integration-validation.json；远端main未合并。
 
 下一步仍优先推进精确代数数域irrep、CG与重数空间基底；反幺正核心表示、投影因子系统、
 Bloch小群不可直接套普通字符公式。MATLAB本轮为源码入口审阅，未新增补丁。
