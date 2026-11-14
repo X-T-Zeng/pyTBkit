@@ -33,9 +33,9 @@ def main():
            ('advanced_example',[sys.executable,'python/examples/advanced.py','--output',str(out/'advanced')]),
            ('response_sweep',[sys.executable,'python/examples/response_sweep.py','--output',str(out/'response_sweep')])]
     if args.benchmarks:
+        tasks.append(('group_closure_benchmark',[sys.executable,'python/benchmarks/group_closure.py','--output',str(out/'group-closure-benchmark.json')]))
         tasks.extend([('benchmark',[sys.executable,'python/benchmarks/benchmark.py']),('sparse_benchmark',[sys.executable,'python/benchmarks/sparse_benchmark.py']),
-                      ('response_reuse_benchmark',[sys.executable,'python/benchmarks/response_reuse.py']),
-                      ('group_closure_benchmark',[sys.executable,'python/benchmarks/group_closure.py','--output',str(out/'group-closure-benchmark.json')])])
+                      ('response_reuse_benchmark',[sys.executable,'python/benchmarks/response_reuse.py'])])
     results=[]
     for name,command in tasks:
         start=time.perf_counter()
