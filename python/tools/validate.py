@@ -27,6 +27,7 @@ def main():
            ('tests',[sys.executable,'-m','pytest','python/tests','-q',f'--junitxml={out / "junit.xml"}']),
            ('examples',[sys.executable,'python/examples/full_suite.py','--output',str(out/'examples')]),
            ('plot_example',[sys.executable,'python/examples/research.py']),
+           ('transport_scaling',[sys.executable,'python/examples/transport_scaling.py','--output',str(out/'transport_scaling')]),
            ('external_example',[sys.executable,'python/examples/external_data.py','--output',str(out/'external')]),
            ('advanced_example',[sys.executable,'python/examples/advanced.py','--output',str(out/'advanced')]),
            ('response_sweep',[sys.executable,'python/examples/response_sweep.py','--output',str(out/'response_sweep')])]

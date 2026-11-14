@@ -112,6 +112,11 @@ Numba 的线程由 `NUMBA_NUM_THREADS` 或 `numba.set_num_threads()` 控制，**
 - 单带 Kubo 曲率遇到简并报错；占据子空间 Chern/Wilson 用重叠矩阵并检查能隙与奇异链接。网格上未命中不等于排除所有能隙闭合，研究结果应检查网格收敛。
 - Chern 仅适用于二维周期 BZ，符号为连接 `A=i<u|du>`；QWZ m=-1 的占据带为 +1。不要直接将非周期 k·p 模型的有限区域当作完整 BZ。
 - `surface_green` 仅支持最近邻主层结构。`principal_layer(model, axis=..., transverse_fractional=...)` 可将长程跃迁自动分组为最近邻主层，再用 `chain_transmission` 验证理想导线。返回前检查 Riccati 方程残差，小主层在需要时做 Newton 修正；大主层若残差异常会报错，建议检查展宽与主层构造。`transmission` 接收已经嵌入 device 维数的 retarded 自能。
+- 输运的求解与检查使用无量纲缩放，`surface_green` 的 `tol` 为无量纲精度。
+  `transmission(..., eta=0)` 默认不增加设备吸收；`chain_transmission(..., eta=..., device_eta=0)`
+  将引线展宽和额外设备展宽分开。正的设备展宽会压低透射率，必须显式选择。
+  能量输入为有限实数；H、E、自能与所有展宽换单位时须一起缩放。
+  解析反例、兼容性变化和原MATLAB审计见 [输运审阅](audit/TRANSPORT-REVIEW.zh-CN.md)。
 
 ## 性能与内存
 

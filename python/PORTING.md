@@ -21,7 +21,7 @@ implementations represent pending capabilities. All MATLAB sources are retained.
 | Chern/Wilson/BP_1D | gauge-invariant occupied links, Wilson flow | SSH phase, +/-/zero QWZ Chern, gap/link checks |
 | nested/mirror Wilson, Z2/Z4 | isolated Wannier-window nested polarization, constant mirror sectors, inversion indicators and no-inversion 2D Wilson Z2 | BBH topological/trivial phases; mirror opposite-Chern blocks; strong/weak/trivial 3D TI |
 | Landau/Peierls/plane waves | Weyl-ordered truncated oscillator HK, finite affine-A Peierls phases, supplied reciprocal-harmonic expansion | harmonic oscillator/Dirac levels, gauge/plaquette, free/coupled plane waves |
-| Green/surf/transport | principal-layer decimation, residual refinement, Caroli transmission | analytic chain roots inside/outside band/at center, unit transmission |
+| Green/surf/transport | scaled principal-layer decimation, residual refinement, Caroli transmission with explicit device absorption | analytic chain roots, 1e-20..1e20 energy-unit covariance, multiorbital finite-chain resolvent, PSD/causality and basis invariance; see audit/TRANSPORT-REVIEW.zh-CN.md |
 | fitting/plotting | model-builder least squares, headless Matplotlib | fitted SSH parameters, generated QWZ plot/data |
 | SpinModel | classical tensor exchange/anisotropy/field, JIT energy/field, deterministic LLG, small quantum Heisenberg clusters | energy derivatives, damping/norms, singlet/triplet |
 | Hckt/Subckt | native RLC admittance, finite current solve, periodic circuit Laplacian, basic SPICE export | resistor voltages, analytic RLC admittances/periodic dispersion |
