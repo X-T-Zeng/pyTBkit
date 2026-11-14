@@ -26,6 +26,12 @@ GitHub Actions 的 push/PR/手动/每周回归是另一条验证流程，不等�
 1. **晶体对称性接线（数值核心已验证，完整接口待补）**：已完成真实金刚石
    nonsymmorphic Bloch sewing、s/p/d 自旋表示、HR 对称化及非零 k 测试。
    继续补高角动量、磁空间群及原仓库所有表示接口。
+   群论基础已另建 `AbstractFiniteGroup/FiniteGroup/MatrixRepresentation`，覆盖
+   群公理、子群/陪集/商群、普通特征标及投影，见 GROUPS.zh-CN.md。
+   本分支完整161项测试及全部例子通过，独立快照见audit/group-validation.json；
+   不覆盖其他未合并PR的验证记录。本轮未比较性能。
+   后续优先补一般不可约表示自动生成、投影后的重数空间分离/CG系数、
+   双群因子系统与反幺正核心表示；不将现有Hamiltonian相位商当作完整表示。
 2. **外部数据闭环（主要格式已验证，变体待补）**：POSCAR/KPOINTS/EIGENVAL/
    非共线 PROCAR、Wannier win/wout 已用真实仓库文件验证。继续扩展格式变体、
    vasprun.xml、DFT 拟合全流程与更大真实材料的 golden fixtures。

@@ -11,6 +11,10 @@
 `work/official-fixed/` 中应用 official-fixes.patch。原始官方 checkout 不修改。
 补丁可审阅、可单独应用；没有将它推送到官方 MATLAB 仓库。
 
+群论基类与特征标专项审阅见 [GROUP-REVIEW.zh-CN.md](GROUP-REVIEW.zh-CN.md)：
+包括原group.times左单位元错误与最小候选补丁、简并逐带对角量的使用边界，
+以及普通表示/相位商/反幺正核心表示的区别。原式与补丁仍分开执行验证。
+
 ## 已找到并有回归验证的问题
 
 | 编号 | 问题与物理后果 | 修复/证据 |
