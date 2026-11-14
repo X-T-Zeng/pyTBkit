@@ -351,3 +351,14 @@ index 7110e32..8fc3124 100644
 +variance = z./(1+z).^2;
 +f2 = beta^2 .* variance .* tanh(x/2);
 +end
+diff --git a/src/classes/@group/group.m b/src/classes/@group/group.m
+--- a/src/classes/@group/group.m
++++ b/src/classes/@group/group.m
+@@ -289,7 +289,6 @@
+                 % Case when G1 is the identity element
+                 if G1.isIdentity
+                     G3 = G2;
+-                    G3.U = inv(G2); % Inverse of G2
+                     return;
+                     % Case when G2 is the identity element
+                 elseif G2.isIdentity

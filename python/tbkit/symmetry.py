@@ -14,6 +14,13 @@ def _equivalent(a,b,tol):
 
 
 def finite_group(generators,*,max_order=256,tol=1e-9):
+    """Close Hamiltonian actions, quotienting irrelevant overall U phases.
+
+    This list is suitable for U H U^dagger averaging, not an ordinary Hilbert
+    representation or a double-group character table. Use tbkit.groups and
+    tbkit.representations when central phases/faithful multiplication matter.
+    Antiunitary elements retain their conjugation flags.
+    """
     if not generators or max_order<1: raise ValueError("nonempty generators and positive max_order required")
     n=len(generators[0].unitary); dim=len(generators[0].rotation)
     if any(len(g.unitary)!=n or len(g.rotation)!=dim for g in generators): raise ValueError("generator dimensions differ")

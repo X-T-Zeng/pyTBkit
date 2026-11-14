@@ -25,6 +25,7 @@ def main():
     env['NUMBA_CACHE_DIR']=str(root/'work/numba-cache');env['MPLCONFIGDIR']=str(root/'work/matplotlib')
     tasks=[('upstream',[sys.executable,'python/tools/prepare_upstream.py']),
            ('tests',[sys.executable,'-m','pytest','python/tests','-q',f'--junitxml={out / "junit.xml"}']),
+           ('group_theory',[sys.executable,'python/examples/group_theory.py','--output',str(out/'group_theory')]),
            ('examples',[sys.executable,'python/examples/full_suite.py','--output',str(out/'examples')]),
            ('plot_example',[sys.executable,'python/examples/research.py']),
            ('external_example',[sys.executable,'python/examples/external_data.py','--output',str(out/'external')]),

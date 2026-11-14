@@ -2,6 +2,25 @@
   "version": "0.2.1",
   "overall_status": "in_progress",
   "matlab_source_files": 880,
+  "group_theory_audit": {
+    "branch": "feature/finite-group-representations",
+    "status": "validated locally; awaiting review",
+    "validation": {
+      "tests": 161,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "report": "audit/group-validation.json",
+    "usage": "GROUPS.zh-CN.md",
+    "review": "audit/GROUP-REVIEW.zh-CN.md",
+    "remaining": [
+      "minimal generators/rank and group isomorphisms",
+      "general irrep generation and multiplicity-space/CG bases",
+      "antiunitary corepresentations and projective factor systems",
+      "complete Bloch little-group workflows"
+    ]
+  },
   "full_api_parity": false,
   "autonomous_background_worker": false,
   "remote_schedule": "github_actions_workflow_published",

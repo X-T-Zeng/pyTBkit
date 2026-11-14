@@ -128,6 +128,10 @@ Numba 的线程由 `NUMBA_NUM_THREADS` 或 `numba.set_num_threads()` 控制，**
 - `SparseHR`：真正的 CSR 存储，稀疏超胞/slab/切片与部分本征谱。
 - `NonOrthogonal`：Hc=ESc 及带梯度；不套用错误的正交基 Berry 公式。
 - `finite_group/invariant_kp`：有限群与符号约束基底；可选 spglib 给出空间群、原子映射，`sewing_matrix/symmetrize_hr` 包含分数平移 Bloch 相位与 s/p/d 自旋表示。
+- `AbstractFiniteGroup/FiniteGroup/MatrixRepresentation/CharacterTable`：群公理、子群/
+  陪集/商群、普通特征标、表示分解、Frobenius–Schur类型与精确投影。
+  使用与物理边界见 [GROUPS.zh-CN.md](GROUPS.zh-CN.md)；不把哈密顿量作用群
+  的整体相位商集直接当成自旋双群或反幺正核心表示。
 - `geometric_tensors/response_kernel/integrate_bz`：Numba 曲率/度量/BCP、NCTE/SOAHC 和流式积分。
 - `nested_polarization/mirror_chern/inversion_indicators/z2_wilson`：BBH、镜面拓扑、反演对称强/弱 TI、无反演二维 Z2；各自适用条件见函数文档。
 - `landau_hamiltonian/plane_wave_hamiltonian`、`SpinModel`、`Hckt/Subckt`：Landau/连续模型、自旋和 RLC 数值核心。

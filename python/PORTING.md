@@ -25,6 +25,7 @@ implementations represent pending capabilities. All MATLAB sources are retained.
 | fitting/plotting | model-builder least squares, headless Matplotlib | fitted SSH parameters, generated QWZ plot/data |
 | SpinModel | classical tensor exchange/anisotropy/field, JIT energy/field, deterministic LLG, small quantum Heisenberg clusters | energy derivatives, damping/norms, singlet/triplet |
 | Hckt/Subckt | native RLC admittance, finite current solve, periodic circuit Laplacian, basic SPICE export | resistor voltages, analytic RLC admittances/periodic dispersion |
+| group base/ordinary representation theory | AbstractFiniteGroup, validated Cayley groups, cyclic/dihedral/permutation and strict matrix closure, subgroup/coset/quotient, ordinary characters and isotypic projectors | D3/S3/D4 known subgroup and character data, exact trimer blocks, FS real/complex/quaternionic examples, nonassociative-loop rejection; GROUPS.zh-CN.md lists remaining corepresentation/irrep-generation work |
 
 ## Important boundaries
 
