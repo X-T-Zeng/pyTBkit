@@ -74,3 +74,20 @@ MATLAB reference: BUAA-TCMP/TBkit @ `48e5217593598c8e1d634cdee3976e1dc6984516`; 
 全带曲率和偏离标准几何的行为，未擅自引入散射模型或取real替代物理推导。
 详见 audit/RESPONSE-BATCH-REVIEW.zh-CN.md；下一步应继续核查响应处方与单位，
 以及完整Wannier位置连接/非正交响应，而非直接复制全部公式。
+
+
+## 接续轮：最少生成元与有限群秩
+
+`feature/group-minimal-generators`依赖尚未合并的群论PR #5，基线为`6720b6f`；
+应先审阅父PR，再审阅此增量。新增精确BFS最小生成元搜索、`rank/is_generating`、
+Numba纯数组闭包及预算异常。C6不可约简二元组与全局单生成元的反例已测试，
+并用组合穷举、GF(2)维数和SymPy置换群独立验证。完整本分支177项测试、
+所有例子及四项基准通过，见audit/generator-validation.json。
+
+阶64的C2^6预制表上1,024次闭包与集合参考完全一致，预热中位数约17.7倍；
+该结果不代表整体搜索或相对MATLAB的加速。首次JIT/缓存加载和线程见
+audit/group-closure-benchmark.json。MATLAB本轮只追加generator/rank源码对照，
+不新增候选补丁，不宣称完整运行其对象组合枚举。
+
+下一步：同构/自同构、一般不可约表示生成、CG/重数空间基底，优先给出可独立验证的
+小群及量子模型例子。仍需保留反幺正/投影表示、Bloch小群等未覆盖边界。

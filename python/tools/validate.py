@@ -26,6 +26,7 @@ def main():
     tasks=[('upstream',[sys.executable,'python/tools/prepare_upstream.py']),
            ('tests',[sys.executable,'-m','pytest','python/tests','-q',f'--junitxml={out / "junit.xml"}']),
            ('group_theory',[sys.executable,'python/examples/group_theory.py','--output',str(out/'group_theory')]),
+           ('group_generators',[sys.executable,'python/examples/group_generators.py','--output',str(out/'group_generators')]),
            ('examples',[sys.executable,'python/examples/full_suite.py','--output',str(out/'examples')]),
            ('plot_example',[sys.executable,'python/examples/research.py']),
            ('external_example',[sys.executable,'python/examples/external_data.py','--output',str(out/'external')]),
@@ -33,7 +34,8 @@ def main():
            ('response_sweep',[sys.executable,'python/examples/response_sweep.py','--output',str(out/'response_sweep')])]
     if args.benchmarks:
         tasks.extend([('benchmark',[sys.executable,'python/benchmarks/benchmark.py']),('sparse_benchmark',[sys.executable,'python/benchmarks/sparse_benchmark.py']),
-                      ('response_reuse_benchmark',[sys.executable,'python/benchmarks/response_reuse.py'])])
+                      ('response_reuse_benchmark',[sys.executable,'python/benchmarks/response_reuse.py']),
+                      ('group_closure_benchmark',[sys.executable,'python/benchmarks/group_closure.py','--output',str(out/'group-closure-benchmark.json')])])
     results=[]
     for name,command in tasks:
         start=time.perf_counter()

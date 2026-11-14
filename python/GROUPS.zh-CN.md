@@ -47,6 +47,45 @@ G.quotient(rotation)       # 实际阶2商群；非正规子群会报错
 此层显式存储O(|G|²)乘法表，结合律检查为O(|G|³)，主要面向小有限群及点群。
 置换/矩阵生成有max_order边界，子群数也有显式上限；不是大型置换群的Schreier–Sims替代品。
 
+## 最小生成元与有限群秩
+
+```python
+G = dihedral_group(3)
+result = G.generator_search(max_subgroups=1024, max_extensions=100000)
+result.generators          # 一个最小生成元组，按固定元素顺序确定
+result.rank                # 2；成功搜索才返回此结果
+G.minimum_generators()     # 同一接口的元组简写，不枚举所有最小选择
+G.rank()                   # 最少生成元数 d(G)，不是矩阵秩或Lie群秩
+G.is_generating([(1, 0), (0, 1)])
+cyclic_group(1).rank()     # 0；平凡群由空集生成
+```
+
+搜索按“已生成子群”作广度优先遍历，每条边加入一个元素。到达同一子群的不同路径
+具有相同后续扩张，合并状态不丢失最短路径；首次生成整个群即给出全局最少生成元数。
+这强于删除冗余元素：加法群C6的`{2,3}`不能再删，但`{1}`才是最少选择。
+秩在同构下不变，返回的具体元组则依赖元素标签的顺序，并非同构的规范形式。
+
+最坏情形仍可能有很多子群。`max_subgroups`限制存储的状态数（包括初始平凡子群，
+到达整个群即返回，不额外存储终点），`max_extensions`限制实际闭包扩张次数。
+超限抛出`GroupSearchLimitError`，只提供由已完成BFS层证明的`lower_bound`和计数，
+**不会把不完整搜索当成最小值**。预算不等于严格内存或墙钟时间上限。
+`generator_search`返回不可变记录；不会在对象内偷偷缓存搜索结果。
+
+官方MATLAB的`generator/rank`在基类中按组合数枚举候选。本实现保留最少基数这一目标，
+改用子群状态去重；只返回一个见证，并显式采用平凡群秩0的数学约定。
+本轮对此MATLAB接口作源码对照，未声称完整执行其对象数组组合流程。
+
+```bash
+python python/examples/group_generators.py --output work/group-generators
+python -m pytest python/tests/test_group_generators.py -q
+NUMBA_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 python python/benchmarks/group_closure.py
+```
+
+例子包含C1、C6、D3、D4、Q8与C2的三/四次直积，输出JSON、原始数组、PNG/PDF/SVG。
+独立验证包括穷举组合、GF(2)向量空间维数下界和SymPy的S4置换生成群。
+
+![最少生成元与不可约简生成集的区别](examples/assets/group-generators.png)
+
 ## 普通表示与精确符号
 
 ```python
@@ -118,7 +157,8 @@ spinor.characters()  # (2,0,-2,0)
 
 ## Numba与展示示例
 
-`group_kernels.associative`和`group_kernels.character_projector`接受纯数组，可在用户
+`group_kernels.associative`、`group_kernels.generated_subgroup_indices`和
+`group_kernels.character_projector`接受纯数组，可在用户
 `@njit`中调用。群表与表示验证、符号化简在准备阶段完成；应把算好的投影或数值数组
 复用于研究热循环。没有跨模型可变全局缓存，也不宣称所有符号操作会被Numba加速。
 
@@ -134,7 +174,7 @@ python -m pytest python/tests/test_group_theory.py python/tests/test_matlab_grou
 
 ![群论与三站点量子模型](examples/assets/group-theory.png)
 
-最小生成元/群秩及同构/自同构算法、一般irrep自动生成、Clebsch–Gordan系数/重数基底、
+同构/自同构算法、一般irrep自动生成、Clebsch–Gordan系数/重数基底、
 反幺正核心表示、投影表示因子系统、
 完整空间群小群及无限/Lie群仍待继续实现。MATLAB基类审阅和候选补丁证据见
 [audit/GROUP-REVIEW.zh-CN.md](audit/GROUP-REVIEW.zh-CN.md)。
