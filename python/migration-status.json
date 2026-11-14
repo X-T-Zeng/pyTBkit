@@ -32,7 +32,10 @@
       },
       "report": "audit/generator-validation.json",
       "review": "audit/GENERATOR-REVIEW.zh-CN.md",
-      "scope": "One globally minimum generating tuple, exact finite-group rank, Numba closure; bounded BFS raises on exhaustion."
+      "scope": "One globally minimum generating tuple, exact finite-group rank, Numba closure; bounded BFS raises on exhaustion.",
+      "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/6",
+      "integration_report": "audit/generator-integration-validation.json",
+      "combined_tests": 220
     }
   },
   "full_api_parity": false,

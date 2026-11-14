@@ -7,6 +7,8 @@
 Numba纯数组闭包及预算异常。C6不可约简二元组与全局单生成元的反例已测试，
 并用组合穷举、GF(2)维数和SymPy置换群独立验证。完整本分支177项测试、
 所有例子及四项基准通过，见audit/generator-validation.json。
+增量已提交PR #6；与PR #2/#3/#4及父PR #5临时自动组合后，220项测试、
+全部例子及基准通过，见audit/generator-integration-validation.json。远端main未合并。
 
 阶64的C2^6预制表上1,024次闭包与集合参考完全一致，预热中位数约17.7倍；
 该结果不代表整体搜索或相对MATLAB的加速。首次JIT/缓存加载和线程见
@@ -15,6 +17,8 @@ audit/group-closure-benchmark.json。MATLAB本轮只追加generator/rank源码�
 
 下一步：同构/自同构、一般不可约表示生成、CG/重数空间基底，优先给出可独立验证的
 小群及量子模型例子。仍需保留反幺正/投影表示、Bloch小群等未覆盖边界。
+
+## 长线目标
 
 目标：按 Python 架构复现原 TBkit 的研究功能，核心热路径可由 Numba
 编译；模块完成后必须有可运行例子、解析/独立数值验证，适合时直接与

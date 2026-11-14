@@ -54,3 +54,9 @@ BFS首次到G的路径长度即d(G)，父指针给出实际生成元组。
 内核是串行的；记录Numba和BLAS环境线程数。只测准备好的闭包，
 不将结果宣称为整个最少生成元搜索的加速，也未作MATLAB速度比较。
 完整结果见`generator-validation.json`及`group-closure-benchmark.json`。
+
+本分支完整177项测试和所有例子/四项基准通过。与未合并PR #2/#3/#4和父PR #5
+临时自动组合后220项测试、17个验证步骤全部成功，无失败/错误/跳过；
+仅有一条Matplotlib/Pyparsing弃用警告。精确组合提交及步骤见
+`generator-integration-validation.json`。组合测试不等于远端main已经合并，
+也不能据此声称全部群论或MATLAB功能迁移完成。
