@@ -62,6 +62,20 @@ def test_q8_retains_quaternionic_complex_irrep_and_central_minus_identity():
     assert all(r.frobenius_schur()==1 for r in irreps if r.dimension==1)
 
 
+def test_q8_times_c3_has_genuinely_complex_two_dimensional_irreps():
+    sx=sp.Matrix([[0,1],[1,0]]);sy=sp.Matrix([[0,-sp.I],[sp.I,0]])
+    defining=matrix_group([sp.I*sx,sp.I*sy],name='Q8')
+    # Independent direct-product multiplication, labels indexed 3*a+b.
+    table=[[3*int(defining.group.table[a,c])+(b+d)%3 for c in range(8) for d in range(3)]
+           for a in range(8) for b in range(3)]
+    group=FiniteGroup(table,name='Q8 x C3');irreps=irreducible_representations(group)
+    assert sorted(r.dimension for r in irreps)==[1]*12+[2]*3
+    assert sorted(r.frobenius_schur() for r in irreps)==[-1]+[0]*10+[1]*4
+    exact_spinor=np.asarray(defining.characters(),dtype=complex)
+    expected=[(exact_spinor[:,None]*np.exp(2j*np.pi*k*np.arange(3)/3)).ravel() for k in range(3)]
+    assert_rows_match([r.characters() for r in irreps if r.dimension==2],expected)
+
+
 def cycle_type(permutation):
     unseen=set(range(len(permutation)));lengths=[]
     while unseen:
