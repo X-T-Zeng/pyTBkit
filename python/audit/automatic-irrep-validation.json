@@ -1,0 +1,140 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.3549363200145308,
+      "log": "upstream.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 19.107882718002656,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 3.221425416006241,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 3.525513527012663,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.428406033985084,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 1.8812513079901692,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 2.3910647880111355,
+      "log": "external_example.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.3854168960242532,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.3635718430159613,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.6071217150019947,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.5146841410023626,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.4458436080021784,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 2.883148462016834,
+      "log": "response_reuse_benchmark.log"
+    }
+  ],
+  "tests": {
+    "tests": 178,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Automatic numeric ordinary irreps on group PR #5; excludes unmerged PR #2/#3/#4 and sibling generator PR #6.",
+  "parent_commit": "6720b6ff1dbf35e96fdb090341052d9710454120",
+  "main_base": "13a5832df636c68839b59859adbc330567a02121",
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "visual_review": "PNG inspected, readable table and symmetry-resolved singlet/triplet. PNG/PDF/SVG and formula sources exported; no document PDF/frontend certification.",
+  "matlab_scope": "Source-level Character_gen distinction; no new MATLAB patch. Existing pristine vs candidate group tests execute separately.",
+  "source_commit": "35712988c8b1d31fbfc70466f5526c7e3ae1bfda",
+  "example": {
+    "group_order": 24,
+    "irrep_dimensions": [
+      1,
+      1,
+      2,
+      3,
+      3
+    ],
+    "site_multiplicities": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    "triplet_irrep": "rho_3",
+    "spectrum": [
+      -1.9,
+      0.9,
+      0.9,
+      0.9
+    ],
+    "max_errors": {
+      "symmetric_projector": 2.220446049250313e-16,
+      "triplet_projector": 8.881784197001252e-16,
+      "rotated_triplet_character": 2.8866133448163366e-15,
+      "integer_display": 2.220446049250313e-15
+    },
+    "fs_indicators": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "numeric_irreps_not_exact": true,
+    "analytic_hamiltonian_exact": true,
+    "assumptions": "spinless scalar sites at regular tetrahedron vertices, equal real hopping between every pair; full Td permutation action is S4",
+    "latex_exported_not_document_compiled": true
+  },
+  "higher_dimensional_complex_regression": "Q8 x C3: 12 one-dimensional and 3 two-dimensional irreps; FS counts +1:4, 0:10, -1:1; analytic direct-product characters verified."
+}

@@ -29,3 +29,23 @@ def character_projector(matrices,characters,degree):
             for j in range(n):
                 out[i,j]+=weight*matrices[g,i,j]
     return out
+
+
+@njit(cache=True,nogil=True)
+def regular_blocks(table,basis):
+    """Q† L(g) Q without materializing all left-regular matrices.
+
+    table[g,h] indexes g*h, so L(g)|h>=|g*h>. basis is a validated complex128
+    (order,dimension) orthonormal invariant column space. Raw arrays are trusted;
+    the object API checks unitarity and the complete representation law.
+    """
+    order,dimension=basis.shape
+    out=np.zeros((order,dimension,dimension),dtype=np.complex128)
+    for g in range(order):
+        for i in range(dimension):
+            for j in range(dimension):
+                value=0.0j
+                for h in range(order):
+                    value+=basis[table[g,h],i].conjugate()*basis[h,j]
+                out[g,i,j]=value
+    return out

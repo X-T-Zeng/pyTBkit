@@ -1,0 +1,17 @@
+{
+  "group": "D12",
+  "order": 24,
+  "block_dimension": 2,
+  "basis_count": 256,
+  "seed": 59,
+  "first_jit_or_cache_seconds": 0.004085363994818181,
+  "warm_numpy_median_seconds": 0.004297035018680617,
+  "warm_numba_median_seconds": 0.001475120021495968,
+  "speedup": 2.9130070476047445,
+  "max_absolute_error": 6.66156878522772e-16,
+  "kernel_serial": true,
+  "numba_threads_env": "2",
+  "blas_threads_env": "1",
+  "warm_full_generation_median_seconds": 0.08409415101050399,
+  "scope": "prepared Q-dagger L(g) Q blocks versus vectorized NumPy gather/batched matmul; separate full-generation runtime, no end-to-end speedup or MATLAB comparison"
+}

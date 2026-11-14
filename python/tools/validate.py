@@ -26,12 +26,14 @@ def main():
     tasks=[('upstream',[sys.executable,'python/tools/prepare_upstream.py']),
            ('tests',[sys.executable,'-m','pytest','python/tests','-q',f'--junitxml={out / "junit.xml"}']),
            ('group_theory',[sys.executable,'python/examples/group_theory.py','--output',str(out/'group_theory')]),
+           ('automatic_irreps',[sys.executable,'python/examples/automatic_irreps.py','--output',str(out/'automatic_irreps')]),
            ('examples',[sys.executable,'python/examples/full_suite.py','--output',str(out/'examples')]),
            ('plot_example',[sys.executable,'python/examples/research.py']),
            ('external_example',[sys.executable,'python/examples/external_data.py','--output',str(out/'external')]),
            ('advanced_example',[sys.executable,'python/examples/advanced.py','--output',str(out/'advanced')]),
            ('response_sweep',[sys.executable,'python/examples/response_sweep.py','--output',str(out/'response_sweep')])]
     if args.benchmarks:
+        tasks.append(('regular_block_benchmark',[sys.executable,'python/benchmarks/regular_blocks.py','--output',str(out/'regular-block-benchmark.json')]))
         tasks.extend([('benchmark',[sys.executable,'python/benchmarks/benchmark.py']),('sparse_benchmark',[sys.executable,'python/benchmarks/sparse_benchmark.py']),
                       ('response_reuse_benchmark',[sys.executable,'python/benchmarks/response_reuse.py'])])
     results=[]
