@@ -74,10 +74,59 @@ NumPy输入使用显式容差验证，不将数值近似称为精确群论证明
 每个表示满足`D(a*b)=D(a)D(b)`和幺正性。不同表示必须共享同一个带索引的群对象，
 不根据“看起来同构”而猜测元素对应。`characters(by_class=True)`返回每个共轭类的特征标；
 `inner`、`multiplicity`、`decompose`用于正交性和重数。`CharacterTable`检查共轭类数、
-不可约性、行正交性与`sum d**2=|G|`；当前需要用户提供不可约表示，不会自动生成任意群的全部irrep。
+不可约性、行正交性与`sum d**2=|G|`；可以传入精确不可约表示，也可显式使用下节的数值生成器。
 
 `frobenius_schur()`仅用于irrep：+1实型、0复型、-1四元数型。例如C3的复一维表示为0，
 Q8的二维表示为-1。这不等于已经实现完整的反幺正Wigner核心表示。
+
+## 自动生成普通复不可约表示
+
+```python
+from tbkit import irreducible_representations
+
+G = dihedral_group(4)
+irreps = irreducible_representations(G, max_order=64,
+                                    tolerance=1e-9, spectral_tolerance=1e-8)
+[r.dimension for r in irreps]       # 四个一维表示与一个二维表示
+table = CharacterTable.from_group(G)  # 同样生成并验证完整数值表
+G.regular_representation().decompose(irreps)  # 每个irrep的重数等于其维数
+```
+
+生成器以`L(g)|h>=|g*h>`的正则表示为起点。共轭类平均在每个等型空间上为标量，
+将它们的两个Hermitian分量逐步联合分解，得到维数`d_alpha**2`的空间；
+再用与左作用对易的右正则作用，在重数空间中取一个`d_alpha`维副本。
+两个Hermitian分量都要保留，不能只取实部：C3/A4的复共轭表示必须不同，
+Q8的四元数型表示在复数域中仍是二维，不能误分成一维或当作四维实表示。
+
+返回值是`exact=False`的`complex128`表示。全部乘法关系、幺正性、不可约性、行正交、
+共轭类数及维数平方和都会检查后才返回。它们是显式容差下的数值证据，不是符号证明。
+原有精确SymPy输入与符号投影保留；不会用`nsimplify`猜测浮点结果的“精确根式”。
+行名`rho_i`是通用标签，不自动声称Mulliken物理命名；简并空间的基底也不唯一，
+不能以两个平台输出的矩阵逐元素不同判定表示不等价。
+
+`max_order`默认64，先检查再分配正则作用的稠密准备数据。这个算法面向小有限群，
+不是大型置换群或无限群的算法。`spectral_tolerance`用于范数不超过1的分裂算符，
+相邻谱隙在阈值的1到10倍间视为歧义并报错；未分清中心、重数不符合平方数、
+表示校验失败时同样抛出`IrrepGenerationError`，不返回半张表。
+`tolerance`用于最终表示与字符关系检查。若修改这些阈值，应重新检查已知群和误差。
+
+Numba内核`group_kernels.regular_blocks(table, Q)`直接计算`Q† L(g) Q`，避免构造
+全部正则矩阵，可在用户`@njit`管线中调用。它接受已验证的数组；符号化简、
+谱分解与群对象流程仍在Python/NumPy/LAPACK层，不宣称整个生成器都被JIT编译。
+
+```bash
+python -m pytest python/tests/test_automatic_irreps.py -q
+python python/examples/automatic_irreps.py --output work/automatic-irreps
+NUMBA_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 python python/benchmarks/regular_blocks.py
+```
+
+四站点例子使用正四面体上的无自旋标量轨道和全部相等的实跃迁，完整Td作用同构于S4。
+自动识别对称单态和三维扇区，解析能量为`epsilon+3*t`与三重简并的`epsilon-t`；
+用SymPy独立推导哈密顿量和解析基底，并验证数值投影及三重态的复幺正换基不变性。
+输出原始复数表示/字符/投影、JSON、LaTeX/Markdown和PNG/PDF/SVG。
+示意表仅将显示副本舍入，原始数值数组不被修改，数值表示不因此变成精确表示。
+
+![自动表示与四面体紧束缚模型](examples/assets/automatic-irreps.png)
 
 ## 投影、重数与简并子空间
 
@@ -134,7 +183,7 @@ python -m pytest python/tests/test_group_theory.py python/tests/test_matlab_grou
 
 ![群论与三站点量子模型](examples/assets/group-theory.png)
 
-最小生成元/群秩及同构/自同构算法、一般irrep自动生成、Clebsch–Gordan系数/重数基底、
+最小生成元/群秩及同构/自同构算法、精确代数数域irrep自动生成、Clebsch–Gordan系数/重数基底、
 反幺正核心表示、投影表示因子系统、
 完整空间群小群及无限/Lie群仍待继续实现。MATLAB基类审阅和候选补丁证据见
 [audit/GROUP-REVIEW.zh-CN.md](audit/GROUP-REVIEW.zh-CN.md)。

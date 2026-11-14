@@ -5,6 +5,7 @@ from .symbolic import HK, Htrig
 from .operators import Oper
 from .groups import AbstractFiniteGroup,FiniteGroup,cyclic_group,dihedral_group,permutation_group
 from .representations import MatrixRepresentation,CharacterTable,matrix_group
+from .irreps import irreducible_representations,IrrepGenerationError
 from .geometry import kmesh, kpath
 from .topology import berry_curvature, chern_number, wilson_loop, fermi
 from .transport import surface_green, transmission
@@ -19,6 +20,7 @@ __all__ = ["TBkit","HR","HK","Htrig","Oper","kmesh","kpath","berry_curvature",
            "read_wannier90","write_wannier90","load_hdf5","fit_bands","models","kernels"]
 __all__ += ["AbstractFiniteGroup","FiniteGroup","cyclic_group","dihedral_group","permutation_group",
             "MatrixRepresentation","CharacterTable","matrix_group"]
+__all__ += ["irreducible_representations","IrrepGenerationError"]
 
 from .structure import Structure
 from .sparse import SparseHR

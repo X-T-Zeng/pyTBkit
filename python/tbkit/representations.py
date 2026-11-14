@@ -263,11 +263,17 @@ def matrix_group(generators,*,exact=None,tolerance=1e-10,max_order=128,name='mat
 
 @dataclass(frozen=True,init=False)
 class CharacterTable:
-    """Validated complete ordinary irrep table; irreps are supplied, not guessed."""
+    """Validated ordinary irrep table; supply irreps or explicitly generate numerically."""
     group: FiniteGroup
     irreps: tuple
     classes: tuple
     values: sp.ImmutableMatrix
+
+    @classmethod
+    def from_group(cls,group,**options):
+        """Numerically generate ordinary irreps; the returned table is not exact."""
+        from .irreps import irreducible_representations
+        return cls(irreducible_representations(group,**options))
 
     def __init__(self,irreps):
         irreps=tuple(irreps)
