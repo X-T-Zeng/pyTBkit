@@ -86,6 +86,10 @@ class MatrixRepresentation:
             if parameters:raise ValueError('numeric representation has no symbolic parameters')
             return self.matrices
         values=_array([m.subs(parameters or {},simultaneous=True).tolist() for m in self.matrices])
+        if parameters:
+            # A substitution can violate the assumptions used in an exact
+            # proof (e.g. assigning an imaginary value to a real angle).
+            return MatrixRepresentation(self.group,values,exact=False,tolerance=self.tolerance,name=self.name).matrices
         values=np.ascontiguousarray(values);values.setflags(write=False)
         return values
 

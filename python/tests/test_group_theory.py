@@ -195,6 +195,12 @@ def test_numeric_representation_basis_invariance_and_invalid_inputs():
     with pytest.raises(ValueError):MatrixRepresentation(cyclic_group(1),[sp.Matrix([[1.]])],exact=True)
     with pytest.raises(ValueError):matrix_group([sp.Matrix([[2]])])
     with pytest.raises(ValueError):matrix_group([np.array([[np.exp(.31j)]])],max_order=8)
+    theta=sp.Symbol('theta',real=True)
+    reflection=sp.Matrix([[sp.cos(theta),sp.sin(theta)],[sp.sin(theta),-sp.cos(theta)]])
+    family=MatrixRepresentation(cyclic_group(2),[sp.eye(2),reflection])
+    bound=family.as_arrays({theta:.3})
+    np.testing.assert_allclose(bound[1].conj().T@bound[1],np.eye(2),atol=1e-14)
+    with pytest.raises(ValueError,match='unitary'):family.as_arrays({theta:sp.I})
 
 
 def test_frobenius_schur_real_complex_and_quaternionic_types():

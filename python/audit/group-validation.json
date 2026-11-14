@@ -97,5 +97,6 @@
   "matlab_validation": "Pristine vs patched group.times tested separately; original EIGEN_Kone diagonal gauge-dependence characterized.",
   "visual_review": "group-theory.png inspected; PNG/PDF/SVG and formula source exported; no document PDF/frontend certification.",
   "performance_claim": false,
-  "final_numeric_matrix_closure_regression": true
+  "final_numeric_matrix_closure_regression": true,
+  "final_parameter_binding_regression": true
 }
