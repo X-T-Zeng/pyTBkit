@@ -45,6 +45,11 @@ def main():
             child=subprocess.run(command,cwd=root,env=env,stdout=log,stderr=subprocess.STDOUT)
         item={'name':name,'exit_code':child.returncode,'seconds':time.perf_counter()-start,'log':f'{name}.log'}
         results.append(item);print(json.dumps(item),flush=True)
+        if child.returncode:
+            # Keep full artifacts, and expose bounded diagnostics in CI logs.
+            # Artifact downloads may be unavailable in a restricted Cloud.
+            print(f'Failed step {name}: last 160 log lines',flush=True)
+            print('\n'.join((out/f'{name}.log').read_text(errors='replace').splitlines()[-160:]),flush=True)
     report={'python':sys.version,'numba_threads':env['NUMBA_NUM_THREADS'],'passed':all(r['exit_code']==0 for r in results),'steps':results}
     if (out/'junit.xml').exists():
         suites=ET.parse(out/'junit.xml').getroot()
