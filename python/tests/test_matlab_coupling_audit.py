@@ -45,7 +45,10 @@ save('-mat7-binary','result.mat','failed','message','value');
         expected=1/np.sqrt(2) if entry=='ClebschGordan' else 0
         np.testing.assert_allclose(result['value'],expected,atol=1e-14)
     elif entry=='ClebschGordan':assert 'too many inputs' in str(result['message']).lower()
-    else:assert 'assignment is undefined' in str(result['message']).lower()
+    else:
+        # Octave 8 names the unassigned output; Octave 10 names the assignment.
+        message=str(result['message']).lower()
+        assert "'cg' undefined" in message or 'assignment is undefined' in message
 
 
 def test_candidate_angular_cg_against_exact_condon_shortley_coefficients(tmp_path):
