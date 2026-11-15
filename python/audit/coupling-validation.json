@@ -6,91 +6,91 @@
     {
       "name": "upstream",
       "exit_code": 0,
-      "seconds": 0.4240495799749624,
+      "seconds": 0.3574635870172642,
       "log": "upstream.log"
     },
     {
       "name": "tests",
       "exit_code": 0,
-      "seconds": 25.779860464012017,
+      "seconds": 24.599348945979727,
       "log": "tests.log"
     },
     {
       "name": "group_theory",
       "exit_code": 0,
-      "seconds": 3.677814227005001,
+      "seconds": 4.48503755099955,
       "log": "group_theory.log"
     },
     {
       "name": "automatic_irreps",
       "exit_code": 0,
-      "seconds": 4.543018574011512,
+      "seconds": 3.6756276750238612,
       "log": "automatic_irreps.log"
     },
     {
       "name": "examples",
       "exit_code": 0,
-      "seconds": 1.9109678149980027,
+      "seconds": 1.690079952008091,
       "log": "examples.log"
     },
     {
       "name": "plot_example",
       "exit_code": 0,
-      "seconds": 1.9998594819917344,
+      "seconds": 1.7512113550037611,
       "log": "plot_example.log"
     },
     {
       "name": "external_example",
       "exit_code": 0,
-      "seconds": 2.801737594010774,
+      "seconds": 2.775919816980604,
       "log": "external_example.log"
     },
     {
       "name": "finite_group_coupling",
       "exit_code": 0,
-      "seconds": 17.70010281901341,
+      "seconds": 18.575679481000407,
       "log": "finite_group_coupling.log"
     },
     {
       "name": "advanced_example",
       "exit_code": 0,
-      "seconds": 1.5014548379986081,
+      "seconds": 1.9501002710021567,
       "log": "advanced_example.log"
     },
     {
       "name": "response_sweep",
       "exit_code": 0,
-      "seconds": 1.520222911000019,
+      "seconds": 2.0557281769870315,
       "log": "response_sweep.log"
     },
     {
       "name": "matrix_unit_benchmark",
       "exit_code": 0,
-      "seconds": 1.5844894719775766,
+      "seconds": 1.632026842009509,
       "log": "matrix_unit_benchmark.log"
     },
     {
       "name": "regular_block_benchmark",
       "exit_code": 0,
-      "seconds": 1.7695646499923896,
+      "seconds": 1.8365977939974982,
       "log": "regular_block_benchmark.log"
     },
     {
       "name": "benchmark",
       "exit_code": 0,
-      "seconds": 3.1240059359988663,
+      "seconds": 2.531888836994767,
       "log": "benchmark.log"
     },
     {
       "name": "sparse_benchmark",
       "exit_code": 0,
-      "seconds": 2.0756308189884294,
+      "seconds": 1.7766697159968317,
       "log": "sparse_benchmark.log"
     },
     {
       "name": "response_reuse_benchmark",
       "exit_code": 0,
-      "seconds": 3.0797958970069885,
+      "seconds": 3.190134042990394,
       "log": "response_reuse_benchmark.log"
     }
   ],
@@ -114,6 +114,8 @@
     "asserted_absolute_tolerance": 2e-13,
     "wrapper": "verbatim function bodies in minimal static class; no full MATLAB class certification"
   },
+  "visual_review": "Final PNG inspected; gap label has white background and ticks simplified. PNG/PDF/SVG and formula sources exported; no compiled document PDF/frontend certification.",
+  "source_commit": "23235c0b9675a3be2e29e6ec07e7ec65491919ad",
   "example": {
     "tensor_multiplicities": [
       1,
@@ -142,5 +144,10 @@
     "scope": "ordinary D3 group, no antiunitary or projective sewing; multiplicity gauge is not canonical",
     "latex_exported_not_document_compiled": true
   },
-  "visual_review": "Final PNG inspected; gap label has white background and ticks simplified. PNG/PDF/SVG and formula sources exported; no compiled document PDF/frontend certification."
+  "ci_portability": {
+    "local_octave": "10.3.0",
+    "ci_octave": "8.4.0",
+    "initial_ci_failure": "One raw-error wording assertion; 203 other tests and all examples passed. Observed undefined-output wording matched by semantics without changing numeric tolerances.",
+    "diagnostics": "Failed-step last 160 log lines also sent to console; full artifact retained."
+  }
 }

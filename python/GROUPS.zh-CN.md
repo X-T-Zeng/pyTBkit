@@ -200,7 +200,9 @@ h_coupled = resolved.transform(H)    # U† H U；不自动假定H对称或厄�
 全部表示是常量精确SymPy矩阵时，默认用精确矩阵单位与Hermitian Gram–Schmidt，
 不恢复浮点数的“精确值”。带自由参数的表示须先绑定；选择定则和算符H中的符号参数
 则可以在得到精确基底后保留。`backend='numpy'/'numba'`显式选择数值路径；
-默认数值路径用Numba。`max_dimension`默认64，张量积在构造大矩阵前检查维数限制。
+默认数值路径用Numba。数值容差须在0与0.5之间，使投影谱的0/1簇不重叠。
+固定群作用下的U应只准备一次，在H参数扫描中复用。`max_dimension`默认64，
+张量积在构造大矩阵前检查维数限制。
 Numba纯数组`group_kernels.matrix_unit_column`可在用户`@njit`中调用；群对象与符号步骤不被JIT。
 
 这不是SU(2)角动量表的相位约定。既有`quantum.coupled_basis`按Condon–Shortley约定返回

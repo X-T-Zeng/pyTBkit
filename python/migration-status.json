@@ -49,7 +49,10 @@
       },
       "report": "audit/coupling-validation.json",
       "review": "audit/COUPLING-REVIEW.zh-CN.md",
-      "scope": "Constant-exact SymPy and NumPy/Numba ordinary finite-group CG, aligned repeated copies and symbolic operator transforms; not antiunitary/projective/Bloch coupling."
+      "scope": "Constant-exact SymPy and NumPy/Numba ordinary finite-group CG, aligned repeated copies and symbolic operator transforms; not antiunitary/projective/Bloch coupling.",
+      "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/8",
+      "integration_report": "audit/coupling-integration-validation.json",
+      "combined_tests": 263
     }
   },
   "full_api_parity": false,
