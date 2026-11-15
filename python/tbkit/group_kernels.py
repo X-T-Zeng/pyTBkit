@@ -15,6 +15,23 @@ def associative(table):
 
 
 @njit(cache=True,nogil=True)
+def matrix_unit_column(matrices,irrep):
+    """E_i0=(d/|G|) sum_g conj(irrep[g,i,0])*matrices[g], trusted arrays."""
+    order,dimension,_=matrices.shape;degree=irrep.shape[1]
+    weights=np.empty((degree,order),dtype=np.complex128)
+    for i in range(degree):
+        for g in range(order):weights[i,g]=degree/order*irrep[g,i,0].conjugate()
+    out=np.empty((degree,dimension,dimension),dtype=np.complex128)
+    for i in range(degree):
+        for a in range(dimension):
+            for b in range(dimension):
+                value=0.0j
+                for g in range(order):value+=weights[i,g]*matrices[g,a,b]
+                out[i,a,b]=value
+    return out
+
+
+@njit(cache=True,nogil=True)
 def character_projector(matrices,characters,degree):
     """d/|G| sum_g conj(chi(g))*D(g), for a validated ordinary irrep chi.
 

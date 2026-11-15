@@ -165,6 +165,62 @@ spinor.characters()  # (2,0,-2,0)
 抽象群可以取商，不代表给定的Hilbert表示必然能降到商群；只有被商子群中的元素
 在该表示中均作用为I，才能直接下降为普通表示。不能用取商操作悄悄删除自旋的-I。
 
+## 有限群CG系数与重数空间
+
+```python
+from tbkit import clebsch_gordan, symmetry_adapted_basis
+
+# left/right及irreps必须在同一个带索引群对象上，且是普通幺正表示。
+result = clebsch_gordan(left, right, irreps)
+result.basis           # 列是耦合ket；行是未耦合基 a*dim(right)+b
+result.coefficients    # C[a,b,coupled_column]，即<a,b|coupled_column>
+result.multiplicities
+result.slices          # 每个irrep对应的连续列区间，含全部副本
+result.copies(0)       # 第0个irrep的各个N×d嵌入；缺失扇区返回空tuple
+
+resolved = symmetry_adapted_basis(target, irreps)
+h_coupled = resolved.transform(H)    # U† H U；不自动假定H对称或厄米
+```
+
+列顺序为**irrep、等价副本、irrep内部指标**。每个副本Q都验证
+`D_target(g) Q = Q D_alpha(g)`，比“字符相同”更强：副本的内部基底与所提供irrep严格对齐。
+完整U还要验证`U†U=I`及覆盖全部目标维数。irrep列表可以省略目标中不出现的表示，
+但不能漏掉出现的扇区、重复等价irrep或传入可约表示。不返回未经验证的部分基底。
+
+矩阵单位`E_ij=d/|G| sum_g conj(D_alpha(g)[i,j]) D_target(g)`在等型空间中作用为
+`I_m tensor |i><j|`。选取`E_00`值域的正交种子w_mu，
+然后`Q_mu[:,i]=E_i0 w_mu`即可同时得到相互正交的全部副本。
+这补充了中央字符投影无法单独提供的重数信息；原`projector`仍保留全部等价副本。
+
+若H和群作用对易，在此列顺序中满足`U† H U = direct_sum_alpha(A_alpha tensor I_d)`。
+等价副本可以通过A混合；不能把每个副本当成独立、禁止耦合的物理能级。
+种子仍可作U(m)旋转，因此A的具体矩阵不是规范唯一的；能谱、重数和相应不变子空间才是稳定量。
+`transform`接受一般算符并原样变换，不静默厄米化，也不保证不对称输入会变成分块形式。
+
+全部表示是常量精确SymPy矩阵时，默认用精确矩阵单位与Hermitian Gram–Schmidt，
+不恢复浮点数的“精确值”。带自由参数的表示须先绑定；选择定则和算符H中的符号参数
+则可以在得到精确基底后保留。`backend='numpy'/'numba'`显式选择数值路径；
+默认数值路径用Numba。`max_dimension`默认64，张量积在构造大矩阵前检查维数限制。
+Numba纯数组`group_kernels.matrix_unit_column`可在用户`@njit`中调用；群对象与符号步骤不被JIT。
+
+这不是SU(2)角动量表的相位约定。既有`quantum.coupled_basis`按Condon–Shortley约定返回
+**耦合行、未耦合列**；这里返回ket列，复杂系数下不能忽略共轭方向。
+有限群CG允许整个irrep的相位及等价副本规范自由度，不自动施加玻色/费米统计。
+反幺正核心表示、投影因子系统、Bloch sewing及Wigner–Eckart/6j重耦合不在本接口范围。
+
+```bash
+python -m pytest python/tests/test_finite_group_coupling.py python/tests/test_matlab_coupling_audit.py -q
+python python/examples/finite_group_coupling.py --output work/finite-group-coupling
+NUMBA_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 python python/benchmarks/matrix_units.py
+```
+
+例子精确构造`E tensor E=A1+A2+E`及交换奇偶，并把隐藏在常数复幺正基底中的两份E
+还原为重数哈密顿量。解析能量为`±sqrt(delta²+|t|²)`，每条分支二重简并；
+这些双态由D3的二维irrep保护，不是已经建立反幺正Kramers结构。
+输出原始数组、JSON、LaTeX/Markdown和PNG/PDF/SVG，图形已实际查看。
+
+![精确有限群CG与等价双态混合](examples/assets/finite-group-coupling.png)
+
 ## Numba与展示示例
 
 `group_kernels.associative`和`group_kernels.character_projector`接受纯数组，可在用户
@@ -183,7 +239,7 @@ python -m pytest python/tests/test_group_theory.py python/tests/test_matlab_grou
 
 ![群论与三站点量子模型](examples/assets/group-theory.png)
 
-最小生成元/群秩及同构/自同构算法、精确代数数域irrep自动生成、Clebsch–Gordan系数/重数基底、
+最小生成元/群秩及同构/自同构算法、精确代数数域irrep自动生成、规范固定的重数基底/6j重耦合、
 反幺正核心表示、投影表示因子系统、
 完整空间群小群及无限/Lie群仍待继续实现。MATLAB基类审阅和候选补丁证据见
 [audit/GROUP-REVIEW.zh-CN.md](audit/GROUP-REVIEW.zh-CN.md)。

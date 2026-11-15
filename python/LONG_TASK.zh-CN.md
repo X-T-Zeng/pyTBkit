@@ -83,6 +83,21 @@ python python/tools/validate.py --output work/python-validation --benchmarks
 MATLAB reference: BUAA-TCMP/TBkit @ `48e5217593598c8e1d634cdee3976e1dc6984516`; see `upstream.json`.
 
 
+## 2026-11-15：有限群CG与官方角动量CG审计
+
+分支`feature/finite-group-clebsch-gordan`依赖PR #7（3096541），不改main与官方pin。
+新增常量精确SymPy/NumPy/Numba的普通有限群CG及对齐的重数基底，符号H可保留自由参数。
+D3解析系数、交换奇偶、E的三重副本、复基底、C3电荷及Q8反对称不变态已验证；
+两个等价E可混合但每个能量仍二重简并，提供可运行推导与科研图。
+官方角动量入口另复现参数数目及未定义输出两个错误，候选补丁只改调用形式/输出名，
+358组精确系数、两个入口共716个数值已对照；不是完整Y_l__m或高j稳定性验证。
+完整本分支204项测试、全部例子和五项基准通过，见audit/coupling-validation.json。
+Numba内核减少重复写入，8/16/32维本次约2.00/1.35/1.30倍；全分解差距更小且有波动，
+NumPy优化路径仍保留。初始32维曾较慢，快照也保留，见audit/matrix-unit-benchmark.json。
+
+接续优先：规范固定/6j或Wigner–Eckart，反幺正核心表示及物理选择定则；并继续独立审阅
+响应处方、Wannier连接与输运等全库清单。不要把普通有限群CG视为全部角动量/空间群迁移。
+
 ## 最近一轮：谱与响应复用
 
 已验证显式只读 SpectralBatch/GeometryBatch、Numba 可组合数组内核、mu/T/张量扫描

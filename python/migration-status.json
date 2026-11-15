@@ -16,7 +16,7 @@
     "review": "audit/GROUP-REVIEW.zh-CN.md",
     "remaining": [
       "minimal generators/rank and group isomorphisms",
-      "exact algebraic-number irrep generation and multiplicity-space/CG bases",
+      "exact algebraic-number irrep generation, canonical multiplicity gauges and 6j recoupling",
       "antiunitary corepresentations and projective factor systems",
       "complete Bloch little-group workflows"
     ],
@@ -36,6 +36,20 @@
       "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/7",
       "combined_tests": 237,
       "integration_report": "audit/automatic-irrep-integration-validation.json"
+    },
+    "finite_group_coupling": {
+      "branch": "feature/finite-group-clebsch-gordan",
+      "depends_on_pr": 7,
+      "status": "validated locally; awaiting review",
+      "validation": {
+        "tests": 204,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "report": "audit/coupling-validation.json",
+      "review": "audit/COUPLING-REVIEW.zh-CN.md",
+      "scope": "Constant-exact SymPy and NumPy/Numba ordinary finite-group CG, aligned repeated copies and symbolic operator transforms; not antiunitary/projective/Bloch coupling."
     }
   },
   "full_api_parity": false,

@@ -6,6 +6,7 @@ from .operators import Oper
 from .groups import AbstractFiniteGroup,FiniteGroup,cyclic_group,dihedral_group,permutation_group
 from .representations import MatrixRepresentation,CharacterTable,matrix_group
 from .irreps import irreducible_representations,IrrepGenerationError
+from .coupling import RepresentationDecomposition,symmetry_adapted_basis,clebsch_gordan
 from .geometry import kmesh, kpath
 from .topology import berry_curvature, chern_number, wilson_loop, fermi
 from .transport import surface_green, transmission
@@ -21,6 +22,7 @@ __all__ = ["TBkit","HR","HK","Htrig","Oper","kmesh","kpath","berry_curvature",
 __all__ += ["AbstractFiniteGroup","FiniteGroup","cyclic_group","dihedral_group","permutation_group",
             "MatrixRepresentation","CharacterTable","matrix_group"]
 __all__ += ["irreducible_representations","IrrepGenerationError"]
+__all__ += ["RepresentationDecomposition","symmetry_adapted_basis","clebsch_gordan"]
 
 from .structure import Structure
 from .sparse import SparseHR

@@ -30,9 +30,11 @@ def main():
            ('examples',[sys.executable,'python/examples/full_suite.py','--output',str(out/'examples')]),
            ('plot_example',[sys.executable,'python/examples/research.py']),
            ('external_example',[sys.executable,'python/examples/external_data.py','--output',str(out/'external')]),
+           ('finite_group_coupling',[sys.executable,'python/examples/finite_group_coupling.py','--output',str(out/'finite_group_coupling')]),
            ('advanced_example',[sys.executable,'python/examples/advanced.py','--output',str(out/'advanced')]),
            ('response_sweep',[sys.executable,'python/examples/response_sweep.py','--output',str(out/'response_sweep')])]
     if args.benchmarks:
+        tasks.append(('matrix_unit_benchmark',[sys.executable,'python/benchmarks/matrix_units.py','--output',str(out/'matrix-unit-benchmark.json')]))
         tasks.append(('regular_block_benchmark',[sys.executable,'python/benchmarks/regular_blocks.py','--output',str(out/'regular-block-benchmark.json')]))
         tasks.extend([('benchmark',[sys.executable,'python/benchmarks/benchmark.py']),('sparse_benchmark',[sys.executable,'python/benchmarks/sparse_benchmark.py']),
                       ('response_reuse_benchmark',[sys.executable,'python/benchmarks/response_reuse.py'])])

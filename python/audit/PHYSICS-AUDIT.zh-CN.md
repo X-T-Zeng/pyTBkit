@@ -43,6 +43,17 @@ M-07 的检验采用明确的点轨道假设与 hbar=1：
 完整 Wannier 速度/几何还需要位置或偶极矩阵，只有 hr.dat 与中心不能恢复全部信息。
 Python 默认几何是系数框架几何；embed_orbitals 明确提供点轨道嵌入和边界 sewing。
 
+## 接续：角动量CG与有限群重数空间
+
+固定官方源的`Y_l__m.ClebschGordan`六标量调用二向量接口而失败；`Y_l__m.CG`禁止通道
+把0写入错误输出变量。原式已分别在Octave复现；独立candidate只修正这两行，按358组
+精确角动量系数验证两个入口。小j范围外的稳定性及完整MATLAB类仍未覆盖。
+
+Python补充常量精确/数值的普通有限群CG和对齐副本，不把中央等型投影误称为已经分离副本。
+与群对易的H在相应列顺序中是`A_m tensor I_d`，等价副本可混合，整体相位和U(m)规范非唯一。
+反幺正/投影表示及Bloch sewing不可直接套该公式。证据与适用边界见
+[COUPLING-REVIEW.zh-CN.md](COUPLING-REVIEW.zh-CN.md)。
+
 ## 验证层次
 
 - 解析允许空间：C3/C4/C6、C3v+T 三阶表面模型（5个参数）、BHZ 二阶（7个参数）。

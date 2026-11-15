@@ -1,0 +1,146 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.4240495799749624,
+      "log": "upstream.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 25.779860464012017,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 3.677814227005001,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 4.543018574011512,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.9109678149980027,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 1.9998594819917344,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 2.801737594010774,
+      "log": "external_example.log"
+    },
+    {
+      "name": "finite_group_coupling",
+      "exit_code": 0,
+      "seconds": 17.70010281901341,
+      "log": "finite_group_coupling.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.5014548379986081,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.520222911000019,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "matrix_unit_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5844894719775766,
+      "log": "matrix_unit_benchmark.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.7695646499923896,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 3.1240059359988663,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 2.0756308189884294,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 3.0797958970069885,
+      "log": "response_reuse_benchmark.log"
+    }
+  ],
+  "tests": {
+    "tests": 204,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Finite-group CG and multiplicity decomposition on PR #7; excludes unmerged sibling PR #2/#3/#4/#6.",
+  "parent_commit": "309654156f6daffee5348be4fab865fade07b57f",
+  "main_base": "13a5832df636c68839b59859adbc330567a02121",
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "official_candidate_patch_sha256": "0ff221a5733aafd988b2b0d25da09c9d57bd463b0af4531c4c99ffd5e1323706",
+  "matlab_validation": {
+    "pristine_defects_reproduced": 2,
+    "minimal_candidate_fixes": 2,
+    "angular_cases": 358,
+    "coefficient_values_two_functions": 716,
+    "reference": "exact SymPy Condon-Shortley coefficients",
+    "asserted_absolute_tolerance": 2e-13,
+    "wrapper": "verbatim function bodies in minimal static class; no full MATLAB class certification"
+  },
+  "example": {
+    "tensor_multiplicities": [
+      1,
+      1,
+      1
+    ],
+    "repeated_doublet_multiplicities": [
+      0,
+      0,
+      2
+    ],
+    "exact_symbolic_cg_and_schur_blocks": true,
+    "exchange_parities": [
+      1,
+      -1,
+      1,
+      1
+    ],
+    "max_energy_error": 1.1102230246251565e-15,
+    "max_doublet_splitting": 1.5543122344752192e-15,
+    "hopping": [
+      0.3,
+      0.2
+    ],
+    "convention": "columns: irrep, copy, internal index; uncoupled tensor row a*dim(right)+b",
+    "scope": "ordinary D3 group, no antiunitary or projective sewing; multiplicity gauge is not canonical",
+    "latex_exported_not_document_compiled": true
+  },
+  "visual_review": "Final PNG inspected; gap label has white background and ticks simplified. PNG/PDF/SVG and formula sources exported; no compiled document PDF/frontend certification."
+}
