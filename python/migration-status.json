@@ -68,6 +68,9 @@
       "High-j stable MATLAB candidate algorithm",
       "Bulk high-j coupling and 6j/9j",
       "Wigner-Eckart and antiunitary/projective coupling workflows"
-    ]
+    ],
+    "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/9",
+    "integration_report": "audit/angular-integration-validation.json",
+    "combined_tests": 300
   }
 }

@@ -82,3 +82,14 @@ Wigner–Eckart、6j/9j、任意参数符号量子数及完整MATLAB角动量工
 及线程。只衡量构造；不将其倍率推广到SciPy expm、CG精确求值或MATLAB比较。
 固定j的矩阵应由调用者准备并复用，无跨模型可变缓存。结果见angular-validation.json与
 angular-generator-benchmark.json。失败尾日志复用待合并PR #8已有诊断实现，不重复算作新科研功能。
+
+## 最终验收与待合并功能组合
+
+本分支直接基于main，178项测试、12个步骤通过，无失败/错误/跳过。与PR #2–#8
+先作临时组合，再三方应用本分支补丁，300项测试、23个步骤（全部例子和七项基准）成功。
+六个文件分两步处理，明确保留Symbolic BasisFunc的subs/latex/富显示与新旋转方法，
+并保留所有群论、输运和绘图注册。精确提交和处理方式见angular-integration-validation.json。
+只有一条Pyparsing依赖弃用警告，未跳过科学测试；临时组合完成后撤销，main不自动合并。
+
+测试通过覆盖本节列出的物理/数值范围，不代表原库880个文件均已审阅或全部迁移。
+高j MATLAB稳定算法仍待独立候选与验证，不能把原式失效复现或精确SymPy准备当作它已修复。

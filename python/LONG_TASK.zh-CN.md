@@ -69,6 +69,9 @@ python python/tools/validate.py --output work/python-validation --benchmarks
 完整本分支178项测试、12个步骤（全部例子与四项基准）成功，见audit/angular-validation.json。
 生成器构造相对向量化NumPy本次约2.9–8.9倍；只代表准备阶段，不是expm/CG整体加速。
 JIT/缓存加载、预热、误差、线程及公共校验API计时见audit/angular-generator-benchmark.json。
+已提交PR #9。与未合并PR #2–#8临时组合，保留全部符号呈现和数值功能后，
+300项测试、23个验证步骤通过。分两步在六个共享文件解决文本冲突，详见
+audit/angular-integration-validation.json。组合仅用于本地验证，不自动合并main。
 
 下一步：稳健高j批量CG/3j算法与明确误差控制、Wigner–Eckart/选择定则；继续保留响应、
 Wannier连接、输运等全库接续清单，不把本轮角动量范围当成全量迁移完成。

@@ -101,5 +101,6 @@
   "pristine_python": "angular-python-pristine.json",
   "pristine_matlab": "angular-matlab-pristine.json",
   "matlab_status": "Pristine high-j failures characterized; no new high-j candidate patch and no pin update.",
-  "visual_review": "Final PNG inspected after removing an annotation overlapping the j=80 point. Symlog preserves the original bound-violating values. PNG/PDF/SVG and formula sources exported; no compiled-document/frontend certification."
+  "visual_review": "Final PNG inspected after removing an annotation overlapping the j=80 point. Symlog preserves the original bound-violating values. PNG/PDF/SVG and formula sources exported; no compiled-document/frontend certification.",
+  "source_commit": "ace54ed6651f4bad983049ee87d8bf24882d063f"
 }
