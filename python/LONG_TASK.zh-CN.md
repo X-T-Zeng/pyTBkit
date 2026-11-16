@@ -58,6 +58,21 @@ python python/tools/validate.py --output work/python-validation --benchmarks
 将此清单或全库迁移状态改为 completed。
 
 
+## 2026-11-16：角动量与旋转基础审计
+
+`fix/angular-rotation-invariants`直接基于main 13a5832，独立于未合并PR #2–#8。
+修复近似半整数被误接纳、轴归一化量级依赖、隐藏小振幅剪枝、轨道正交性相对容差，
+并用SU(2)半角4pi约化处理巨大有限角，保留2pi自旋负号。新增Numba纯数组生成器，
+以及受校验的SymPy标量angular_cg准备入口，不构造不必要的完整高j矩阵。
+原始Python与MATLAB先执行存档，再修复Python；原始高j阶乘溢出和Racah消减已独立复现，
+没有新增高j MATLAB候选补丁，不把PR #8的小j修复外推为高j稳定性。
+完整本分支178项测试、12个步骤（全部例子与四项基准）成功，见audit/angular-validation.json。
+生成器构造相对向量化NumPy本次约2.9–8.9倍；只代表准备阶段，不是expm/CG整体加速。
+JIT/缓存加载、预热、误差、线程及公共校验API计时见audit/angular-generator-benchmark.json。
+
+下一步：稳健高j批量CG/3j算法与明确误差控制、Wigner–Eckart/选择定则；继续保留响应、
+Wannier连接、输运等全库接续清单，不把本轮角动量范围当成全量迁移完成。
+
 MATLAB reference: BUAA-TCMP/TBkit @ `48e5217593598c8e1d634cdee3976e1dc6984516`; see `upstream.json`.
 
 

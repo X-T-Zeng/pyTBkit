@@ -26,11 +26,13 @@ def main():
     tasks=[('upstream',[sys.executable,'python/tools/prepare_upstream.py']),
            ('tests',[sys.executable,'-m','pytest','python/tests','-q',f'--junitxml={out / "junit.xml"}']),
            ('examples',[sys.executable,'python/examples/full_suite.py','--output',str(out/'examples')]),
+           ('angular_audit',[sys.executable,'python/examples/angular_audit.py','--output',str(out/'angular_audit')]),
            ('plot_example',[sys.executable,'python/examples/research.py']),
            ('external_example',[sys.executable,'python/examples/external_data.py','--output',str(out/'external')]),
            ('advanced_example',[sys.executable,'python/examples/advanced.py','--output',str(out/'advanced')]),
            ('response_sweep',[sys.executable,'python/examples/response_sweep.py','--output',str(out/'response_sweep')])]
     if args.benchmarks:
+        tasks.append(('angular_generator_benchmark',[sys.executable,'python/benchmarks/angular_generators.py','--output',str(out/'angular-generator-benchmark.json')]))
         tasks.extend([('benchmark',[sys.executable,'python/benchmarks/benchmark.py']),('sparse_benchmark',[sys.executable,'python/benchmarks/sparse_benchmark.py']),
                       ('response_reuse_benchmark',[sys.executable,'python/benchmarks/response_reuse.py'])])
     results=[]
@@ -40,6 +42,11 @@ def main():
             child=subprocess.run(command,cwd=root,env=env,stdout=log,stderr=subprocess.STDOUT)
         item={'name':name,'exit_code':child.returncode,'seconds':time.perf_counter()-start,'log':f'{name}.log'}
         results.append(item);print(json.dumps(item),flush=True)
+        if child.returncode:
+            # Keep full artifacts, and expose bounded diagnostics in CI logs.
+            # Artifact downloads may be unavailable in a restricted Cloud.
+            print(f'Failed step {name}: last 160 log lines',flush=True)
+            print('\n'.join((out/f'{name}.log').read_text(errors='replace').splitlines()[-160:]),flush=True)
     report={'python':sys.version,'numba_threads':env['NUMBA_NUM_THREADS'],'passed':all(r['exit_code']==0 for r in results),'steps':results}
     if (out/'junit.xml').exists():
         suites=ET.parse(out/'junit.xml').getroot()

@@ -37,7 +37,7 @@
   "long_term_goal": "A physically trustworthy, multifunctional and usable native Python TBkit; Python-first architecture and measured Numba-capable performance.",
   "automation_status": "enabled",
   "scheduled_continuation": {
-    "title": "pyTBkit 物理审计与开发",
+    "title": "pyTBkit \u7269\u7406\u5ba1\u8ba1\u4e0e\u5f00\u53d1",
     "timezone": "Asia/Shanghai",
     "cadence": "daily",
     "approximate_local_time": "08:00",
@@ -49,5 +49,25 @@
     "branch": "feature/spectral-batch-response-audit",
     "status": "validated; awaiting review",
     "reference_commit": "48e5217593598c8e1d634cdee3976e1dc6984516"
+  },
+  "angular_rotation_audit": {
+    "branch": "fix/angular-rotation-invariants",
+    "base": "main 13a5832",
+    "status": "validated locally; awaiting review",
+    "validation": {
+      "tests": 178,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "report": "audit/angular-validation.json",
+    "review": "audit/ANGULAR-REVIEW.zh-CN.md",
+    "usage": "ANGULAR.zh-CN.md",
+    "scope": "Strict SU(2) labels, robust axes/4pi reduction, no hidden state cutoff, strict real orbital operations, validated exact scalar angular CG and nopython generator arrays.",
+    "remaining": [
+      "High-j stable MATLAB candidate algorithm",
+      "Bulk high-j coupling and 6j/9j",
+      "Wigner-Eckart and antiunitary/projective coupling workflows"
+    ]
   }
 }

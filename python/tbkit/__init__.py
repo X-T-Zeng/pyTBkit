@@ -40,9 +40,9 @@ from .wannier import read_win,read_wout
 from .transport import PrincipalLayer,principal_layer,chain_transmission
 __all__ += ["read_eigenval","read_kpoints","read_procar","read_win","read_wout","PrincipalLayer","principal_layer","chain_transmission"]
 
-from .quantum import Qnum,BasisFunc,spherical_harmonic,coupled_basis
+from .quantum import Qnum,BasisFunc,spherical_harmonic,coupled_basis,angular_cg
 from .crystallography import spacegroup,crystal_operations,standardize,sewing_matrix,crystal_residual,symmetrize_hr
-__all__ += ["Qnum","BasisFunc","spherical_harmonic","coupled_basis","spacegroup","crystal_operations",
+__all__ += ["Qnum","BasisFunc","spherical_harmonic","coupled_basis","angular_cg","spacegroup","crystal_operations",
             "standardize","sewing_matrix","crystal_residual","symmetrize_hr"]
 
 from .topology import z2_wilson

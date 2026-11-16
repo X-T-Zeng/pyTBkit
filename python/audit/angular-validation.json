@@ -1,0 +1,105 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.5530229860160034,
+      "log": "upstream.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 66.93881341899396,
+      "log": "tests.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.6038331749732606,
+      "log": "examples.log"
+    },
+    {
+      "name": "angular_audit",
+      "exit_code": 0,
+      "seconds": 5.7469662129879,
+      "log": "angular_audit.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 2.4786707820021547,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 9.572269340977073,
+      "log": "external_example.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 4.912160756997764,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 5.047637010982726,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "angular_generator_benchmark",
+      "exit_code": 0,
+      "seconds": 11.852478376997169,
+      "log": "angular_generator_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 4.0404134030104615,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.8486697940097656,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 3.232201589999022,
+      "log": "response_reuse_benchmark.log"
+    }
+  ],
+  "tests": {
+    "tests": 178,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Angular rotation audit directly on main 13a5832; excludes all unmerged PR #2 through #8.",
+  "python_base_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "new_regressions": 37,
+  "example": {
+    "max_small_angle_relative_error": 1.2772337753910328e-16,
+    "max_axis_rescaling_error": 0.0,
+    "large_angle_unitarity_error": 2.220446049250313e-16,
+    "max_wigner_closed_form_error": 0.0,
+    "pristine_source_python": "13a5832df636c68839b59859adbc330567a02121",
+    "official_source": "48e5217593598c8e1d634cdee3976e1dc6984516",
+    "high_j_matlab_fix_claimed": false,
+    "exact_cg_preparation_not_nopython": true,
+    "assumptions": "hbar=1, active rotations, spin-up initial ket, SU(2) 4pi period; bound follows CG normalization",
+    "latex_exported_not_document_compiled": true
+  },
+  "pristine_python": "angular-python-pristine.json",
+  "pristine_matlab": "angular-matlab-pristine.json",
+  "matlab_status": "Pristine high-j failures characterized; no new high-j candidate patch and no pin update.",
+  "visual_review": "Final PNG inspected after removing an annotation overlapping the j=80 point. Symlog preserves the original bound-violating values. PNG/PDF/SVG and formula sources exported; no compiled-document/frontend certification."
+}

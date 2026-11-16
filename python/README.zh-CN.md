@@ -132,7 +132,7 @@ Numba 的线程由 `NUMBA_NUM_THREADS` 或 `numba.set_num_threads()` 控制，**
 - `nested_polarization/mirror_chern/inversion_indicators/z2_wilson`：BBH、镜面拓扑、反演对称强/弱 TI、无反演二维 Z2；各自适用条件见函数文档。
 - `landau_hamiltonian/plane_wave_hamiltonian`、`SpinModel`、`Hckt/Subckt`：Landau/连续模型、自旋和 RLC 数值核心。
 - `read_eigenval/read_kpoints/read_procar/read_win/read_wout`：真实仓库 DFT 与 Wannier 文件的独立读入；PROCAR 保留电荷和三个自旋投影分量。
-- `Qnum/BasisFunc/spherical_harmonic/coupled_basis`：精确量子数、角向基及 Clebsch–Gordan 耦合；径向波函数和一般晶体不可约表示投影不在此接口中。
+- `Qnum/BasisFunc/spherical_harmonic/coupled_basis/angular_cg`：精确量子数、角向基与角动量CG；旋转边界、高j稳定准备及Numba生成器见[ANGULAR.zh-CN.md](ANGULAR.zh-CN.md)。径向积分和一般晶体irrep投影不在此接口中。
 
 所有模型热路径默认 Numba。HR 另有 `backend="fortran"`，先运行
 `python python/tools/build_fortran.py` 编译；构建不在 import 时自动触发。

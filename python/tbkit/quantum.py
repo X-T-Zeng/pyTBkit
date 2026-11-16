@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import numpy as np
 import sympy as sp
 from sympy.physics.wigner import clebsch_gordan
-from .orbitals import angular_momentum,spin_rotation
+from .orbitals import angular_momentum,spin_rotation,_rotation_axis,_rotation_angle
 
 
 def _half(value):
@@ -66,23 +66,25 @@ class BasisFunc:
     def inner(self,other):
         return sp.simplify(sum(sp.conjugate(c)*other.terms.get(q,0) for q,c in self.terms.items()))
 
-    def rotate(self,axis,angle):
-        """Numerical active orbital+spin rotation, returns symbolic coefficients."""
+    def rotate(self,axis,angle,*,max_dimension=1025):
+        """Numerical active rotation; retain every computed nonzero amplitude.
+
+        No implicit small-element cutoff: it would erase the infinitesimal
+        generator/linear response. Representation matrices are dense/bounded.
+        """
         from scipy.linalg import expm
-        axis=np.asarray(axis,float)
-        if axis.shape!=(3,) or np.linalg.norm(axis)==0:raise ValueError('nonzero rotation axis required')
-        axis=axis/np.linalg.norm(axis);out={}
+        axis=_rotation_axis(axis);angle=_rotation_angle(angle);out={}
         groups=set((q.n,q.l,q.s) for q in self.terms)
         for n,l,s in groups:
-            orbital=expm(-1j*angle*sum(a*j for a,j in zip(axis,angular_momentum(l))))
-            spin=spin_rotation(axis,angle,spin=float(s))
+            orbital=expm(-1j*angle*sum(a*j for a,j in zip(axis,angular_momentum(l,max_dimension=max_dimension))))
+            spin=spin_rotation(axis,angle,spin=float(s),max_dimension=max_dimension)
             ml=list(range(l,-l-1,-1));ms=[s-i for i in range(int(2*s)+1)]
             for q,c in self.terms.items():
                 if (q.n,q.l,q.s)!=(n,l,s):continue
                 for i,m in enumerate(ml):
                     for j,z in enumerate(ms):
                         factor=orbital[i,ml.index(q.m)]*spin[j,ms.index(q.sz)]
-                        if abs(factor)<1e-15:continue
+                        if factor==0:continue
                         label=Qnum(l,m,s,z,n);out[label]=out.get(label,0)+c*factor
         return BasisFunc(out)
 
@@ -101,3 +103,27 @@ def coupled_basis(l,s=.5):
         coupled.extend((j,j-z) for z in range(int(2*j)+1));j-=1
     matrix=sp.Matrix([[clebsch_gordan(l,s,j,m,z,mj) for m,z in uncoupled] for j,mj in coupled])
     return matrix,tuple(coupled),tuple(uncoupled)
+
+
+def angular_cg(j1,j2,j,m1,m2,m,*,exact=True):
+    """Condon-Shortley scalar <j1,m1;j2,m2|j,m>, via exact SymPy algebra.
+
+    Invalid states raise; triangle/parity and M-conservation selection rules
+    return zero. exact=False evaluates the exact result as float64, avoiding
+    overflowing factorial products and cancelling floating Racah sums.
+    Prepare coefficients once and pass numeric arrays to research/JIT loops;
+    this symbolic preparation function is not itself a nopython kernel.
+    """
+    labels=[]
+    for value in (j1,j2,j,m1,m2,m):
+        if isinstance(value,(bool,np.bool_)):raise ValueError('discrete angular quantum numbers required')
+        try:labels.append(_half(value))
+        except (TypeError,ValueError,OverflowError) as exc:raise ValueError('finite integer/half-integer quantum numbers required') from exc
+    j1,j2,j,m1,m2,m=labels
+    for degree,projection in ((j1,m1),(j2,m2),(j,m)):
+        if degree<0 or abs(projection)>degree or (degree-projection).q!=1:
+            raise ValueError('invalid angular momentum state or projection parity')
+    if not isinstance(exact,(bool,np.bool_)):raise ValueError('exact must be boolean')
+    if j<abs(j1-j2) or j>j1+j2 or (j1+j2+j).q!=1 or m1+m2!=m:value=sp.S.Zero
+    else:value=clebsch_gordan(j1,j2,j,m1,m2,m)
+    return value if exact else float(value.evalf(17))
