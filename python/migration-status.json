@@ -6,7 +6,7 @@
   "autonomous_background_worker": false,
   "remote_schedule": "github_actions_workflow_published",
   "validation": {
-    "tests": 141,
+    "tests": 179,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -49,5 +49,23 @@
     "branch": "feature/spectral-batch-response-audit",
     "status": "validated; awaiting review",
     "reference_commit": "48e5217593598c8e1d634cdee3976e1dc6984516"
+  },
+  "hermiticity_audit": {
+    "branch": "fix/scale-invariant-hermiticity",
+    "base_commit": "13a5832df636c68839b59859adbc330567a02121",
+    "status": "validated locally; awaiting review",
+    "review": "audit/HERMITICITY-REVIEW.zh-CN.md",
+    "report": "audit/hermiticity-validation.json",
+    "numba_metrics": true,
+    "scope": "per-matrix relative Frobenius domain checks for dense/sparse Hermitian spectra and positive-Gram generalized spectra/derivatives",
+    "remaining": [
+      "ill-conditioned positive Gram metrics and generalized eigensolver residuals",
+      "energy scales of degeneracy tolerances",
+      "nonorthogonal geometric connection",
+      "other module-specific absolute thresholds"
+    ],
+    "integration_report": "audit/hermiticity-integration-validation.json",
+    "combined_tests": 338,
+    "combined_steps": 25
   }
 }

@@ -1,0 +1,217 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.987349279,
+      "log": "upstream.log"
+    },
+    {
+      "name": "symbolic_inventory",
+      "exit_code": 0,
+      "seconds": 1.2831628690000798,
+      "log": "symbolic_inventory.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 48.00300177899999,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 3.1828036410001914,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "group_generators",
+      "exit_code": 0,
+      "seconds": 3.1524856229998477,
+      "log": "group_generators.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 3.2175920399999995,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 4.361188202999983,
+      "log": "examples.log"
+    },
+    {
+      "name": "angular_audit",
+      "exit_code": 0,
+      "seconds": 82.85056776199986,
+      "log": "angular_audit.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 2.951880387999836,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "transport_scaling",
+      "exit_code": 0,
+      "seconds": 3.384955681000065,
+      "log": "transport_scaling.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 3.0193127269999422,
+      "log": "external_example.log"
+    },
+    {
+      "name": "finite_group_coupling",
+      "exit_code": 0,
+      "seconds": 16.338298874999964,
+      "log": "finite_group_coupling.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.6369377830001213,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.37706014399987,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "symbolic_example",
+      "exit_code": 0,
+      "seconds": 5.627501068000129,
+      "log": "symbolic_example.log"
+    },
+    {
+      "name": "hermiticity_example",
+      "exit_code": 0,
+      "seconds": 2.2712846130000344,
+      "log": "hermiticity_example.log"
+    },
+    {
+      "name": "group_closure_benchmark",
+      "exit_code": 0,
+      "seconds": 1.3182073519999449,
+      "log": "group_closure_benchmark.log"
+    },
+    {
+      "name": "matrix_unit_benchmark",
+      "exit_code": 0,
+      "seconds": 1.3513614669998333,
+      "log": "matrix_unit_benchmark.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.4673900170000707,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "angular_generator_benchmark",
+      "exit_code": 0,
+      "seconds": 1.337718367999969,
+      "log": "angular_generator_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.5429587030000675,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.3915616120000323,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 2.3409276709999176,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "hermiticity_benchmark",
+      "exit_code": 0,
+      "seconds": 2.113635705999968,
+      "log": "hermiticity_benchmark.log"
+    },
+    {
+      "name": "plot_gallery",
+      "exit_code": 0,
+      "seconds": 3.52276196899993,
+      "log": "plot_gallery.log"
+    }
+  ],
+  "tests": {
+    "tests": 338,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "temporary manually resolved composition of unmerged PR heads, not a remote merge",
+  "unmerged_pr_heads": {
+    "2": {
+      "branch": "feature/symbolic-model-presentation",
+      "sha": "96ba96d00276b0a54c0db14ba7bd6dde55634926"
+    },
+    "3": {
+      "branch": "feature/scientific-plot-style",
+      "sha": "7c0beb68e0721225ca6c42717581e275c458d13d"
+    },
+    "4": {
+      "branch": "fix/scale-invariant-transport",
+      "sha": "8dbfd74592b39301d016c048466f13a63c974b96"
+    },
+    "5": {
+      "branch": "feature/finite-group-representations",
+      "sha": "6720b6ff1dbf35e96fdb090341052d9710454120"
+    },
+    "6": {
+      "branch": "feature/group-minimal-generators",
+      "sha": "6fab5ced1a1ce5f599c3bd163f247b9aedcd60ef"
+    },
+    "7": {
+      "branch": "feature/automatic-finite-irreps",
+      "sha": "309654156f6daffee5348be4fab865fade07b57f"
+    },
+    "8": {
+      "branch": "feature/finite-group-clebsch-gordan",
+      "sha": "adb5e8d8c396fd43f6b70ddb67203ef7f9e16fae"
+    },
+    "9": {
+      "branch": "fix/angular-rotation-invariants",
+      "sha": "7baf66f68bdc25472d9c445b5a5c71d4e1ca14df"
+    }
+  },
+  "base_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "manual_resolutions": [
+    "python/GROUPS.zh-CN.md",
+    "python/migration-status.json",
+    "python/tbkit/__init__.py",
+    "python/tbkit/group_kernels.py",
+    "python/tbkit/quantum.py",
+    "python/tools/validate.py"
+  ],
+  "resolution_policy": "keep symbolic coefficient/display methods; keep generator closure and irrep/coupling APIs/exports; use PR9 physical rotation implementation; union all validation tasks and historical metadata",
+  "warning": "one Matplotlib/Pyparsing enablePackrat deprecation warning; no numerical test warnings",
+  "new_task_tested_file_sha256": {
+    "python/tbkit/base.py": "ef16def255502f3f27eeae731ab30ebdc697b5db8cdedf8935bbdb964993d5fa",
+    "python/tbkit/validation_kernels.py": "8b6ca5f4a80a4a648a94803e8f5f40a6ade808c061159874a02d3f4534b7190c",
+    "python/tests/test_hermiticity_scale.py": "51477d453d6371016e3bb461dfe8de57c59ce3b75be4dcc957d99120cb650590",
+    "python/tests/test_overlap_source_audit.py": "1c38565b852e2b9fb678938145c658f1677cf210f8f207dff5fd9feb569f3ee8",
+    "python/examples/hermiticity_units.py": "76c16f07dd243db9cc686aa1404d0bcd99f2d2f10cfcaa36121981c9ba06be8f",
+    "python/benchmarks/hermiticity.py": "b96d0a412d7b9da5365fa7fb6bda07d17e327de92ac7679f01fc6d7f8c951f1b"
+  }
+}

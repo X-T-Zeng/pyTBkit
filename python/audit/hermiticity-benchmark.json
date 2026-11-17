@@ -1,0 +1,31 @@
+{
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "numpy": "2.2.6",
+  "numba": "0.61.2",
+  "seed": 20261117,
+  "numba_threads": 2,
+  "blas_threads": 1,
+  "kernel_parallel": false,
+  "fresh_compile_and_first_call_s": 1.4283380150000085,
+  "cases": [
+    {
+      "batch": 4096,
+      "norb": 8,
+      "max_absolute_ratio_error": 1.3322676295501878e-15,
+      "warm_numba_metrics_s": 0.0029681539999728557,
+      "warm_numpy_metrics_s": 0.004782532000035644,
+      "numpy_over_numba": 1.6112816249020034,
+      "warm_validating_wrapper_s": 0.004590738000160854
+    },
+    {
+      "batch": 32,
+      "norb": 128,
+      "max_absolute_ratio_error": 7.549516567451064e-15,
+      "warm_numba_metrics_s": 0.006015932000082103,
+      "warm_numpy_metrics_s": 0.006799036000074921,
+      "numpy_over_numba": 1.1301716841184593,
+      "warm_validating_wrapper_s": 0.0037683059999835677
+    }
+  ],
+  "scope": "diagnostic workload; not whole bands or MATLAB speedup"
+}

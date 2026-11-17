@@ -72,3 +72,11 @@ Python 默认几何是系数框架几何；embed_orbitals 明确提供点轨道�
 它不满足标准实数带曲率/全带曲率和约束，故未直接移植为 Python 的默认展宽。
 复响应的物理处方仍待推导，不能把这一点误写为“所有有限寿命响应均已修复”。
 细节和新快照架构见 [RESPONSE-BATCH-REVIEW.zh-CN.md](RESPONSE-BATCH-REVIEW.zh-CN.md)。
+
+## 接续：谱入口的厄米性定义域
+
+原始固定绝对容差会接受小能量非厄米 H 和小归一化非厄米 S，令厄米求解器输出
+虚假实谱。本轮以逐矩阵、默认纯相对 Frobenius 判据统一稠密/稀疏检查，并覆盖
+广义谱及导数。官方 EIGENCAR_gen 的重叠投影/不定度量路径只做原始表达式级特征验证，
+不冒称完整 MATLAB 类已验证或已修复。物理反例、容差兼容边界、Numba 和复现命令见
+[HERMITICITY-REVIEW.zh-CN.md](HERMITICITY-REVIEW.zh-CN.md)。

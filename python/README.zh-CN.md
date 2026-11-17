@@ -178,3 +178,10 @@ Numba 用户可直接将谱数组传入 `kernels.band_velocities` 和
 
 可执行例子：`python python/examples/response_sweep.py`。
 有限 eta 审计、理论边界及复用基准见 `audit/RESPONSE-BATCH-REVIEW.zh-CN.md`。
+
+## 数值检查补充：厄米性与单位
+
+谱入口现在逐矩阵检查 `||H-H†||_F <= atol + rtol*||H||_F`，默认绝对容差为零，
+避免改变能量单位后接受错误模型。显式 atol 具有输入单位，且采用矩阵范数语义。
+非正交接口要求普通轨道的正定厄米 Gram 矩阵。
+[物理反例、适用边界和复现命令](audit/HERMITICITY-REVIEW.zh-CN.md)。
