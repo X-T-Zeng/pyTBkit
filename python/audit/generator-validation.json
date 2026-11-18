@@ -1,0 +1,186 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.41254955700424034,
+      "log": "upstream.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 40.47678633699252,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 4.792383145002532,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "group_generators",
+      "exit_code": 0,
+      "seconds": 3.4833310620015254,
+      "log": "group_generators.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.2268592570035253,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 1.5237751769891474,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 2.1884457700070925,
+      "log": "external_example.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.3814342670084443,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.1570109680033056,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.5246286729961867,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.582163800005219,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 2.6105424459965434,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "group_closure_benchmark",
+      "exit_code": 0,
+      "seconds": 1.4651232100004563,
+      "log": "group_closure_benchmark.log"
+    }
+  ],
+  "tests": {
+    "tests": 177,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Minimum-generator follow-up on finite-group PR #5; excludes unmerged symbolic PR #2, plotting PR #3 and transport PR #4.",
+  "parent_commit": "6720b6ff1dbf35e96fdb090341052d9710454120",
+  "python_main_base": "13a5832df636c68839b59859adbc330567a02121",
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "example": {
+    "cases": [
+      {
+        "group": "C1",
+        "order": 1,
+        "rank": 0,
+        "generators": [],
+        "subgroup_states": 1,
+        "extensions": 0
+      },
+      {
+        "group": "C6",
+        "order": 6,
+        "rank": 1,
+        "generators": [
+          "1"
+        ],
+        "subgroup_states": 1,
+        "extensions": 1
+      },
+      {
+        "group": "D3",
+        "order": 6,
+        "rank": 2,
+        "generators": [
+          "(1, 0)",
+          "(0, 1)"
+        ],
+        "subgroup_states": 5,
+        "extensions": 6
+      },
+      {
+        "group": "D4",
+        "order": 8,
+        "rank": 2,
+        "generators": [
+          "(1, 0)",
+          "(0, 1)"
+        ],
+        "subgroup_states": 7,
+        "extensions": 8
+      },
+      {
+        "group": "Q8",
+        "order": 8,
+        "rank": 2,
+        "generators": [
+          "1",
+          "2"
+        ],
+        "subgroup_states": 5,
+        "extensions": 8
+      },
+      {
+        "group": "C2^3",
+        "order": 8,
+        "rank": 3,
+        "generators": [
+          "1",
+          "2",
+          "4"
+        ],
+        "subgroup_states": 15,
+        "extensions": 50
+      },
+      {
+        "group": "C2^4",
+        "order": 16,
+        "rank": 4,
+        "generators": [
+          "1",
+          "2",
+          "4",
+          "8"
+        ],
+        "subgroup_states": 66,
+        "extensions": 646
+      }
+    ],
+    "cyclic6_irredundant_pair": [
+      2,
+      3
+    ],
+    "cyclic6_minimum": [
+      1
+    ],
+    "definition": "minimum cardinality of a generating set; trivial group has rank zero",
+    "search": "BFS over generated subgroup states, raises on budget exhaustion"
+  },
+  "visual_review": "PNG inspected; arrows clip against node boxes. PNG/PDF/SVG exported; frontend and compiled-document rendering not certified.",
+  "matlab_scope": "Generator/rank source reviewed; no full object-array execution claimed. Existing pristine/patched group regression remains separate."
+}

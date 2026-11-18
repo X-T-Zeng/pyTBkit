@@ -1,0 +1,36 @@
+{
+  "base_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "file": "python/tbkit/base.py",
+  "sha256": "1d582b76c88a63db13f8dff3dc700e6f0e0e69967e1cec9d600789dbb1f2e7f7",
+  "execution": "unmodified base checked live before this branch edits, NumPy backend",
+  "dense_input": "E0*[[0,i],[i,0]]; analytic eigenvalues +/-i*E0",
+  "observed": [
+    {
+      "E0": 1.0,
+      "accepted": false
+    },
+    {
+      "E0": 1e-20,
+      "accepted": true,
+      "returned_eigenvalues_divided_by_E0": [
+        -1.0,
+        1.0
+      ]
+    }
+  ],
+  "overlap_input": "H=c*diag(1,2), S=c*[[1,.4i],[0,1]]",
+  "overlap_observed": [
+    {
+      "c": 1.0,
+      "accepted": false
+    },
+    {
+      "c": 1e-20,
+      "accepted": true,
+      "returned_eigenvalues": [
+        1.0,
+        2.0
+      ]
+    }
+  ]
+}

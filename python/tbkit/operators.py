@@ -62,6 +62,23 @@ class Oper:
     def residual(self,model,k,*,backend='numba'):
         return float(np.max(np.abs(model.hamiltonian(k,backend=backend)-self.apply(model).hamiltonian(k,backend=backend))))
 
+    def latex(self):
+        """Display the actual input-momentum convention, including K/sign.
+
+        Exact inputs retain exact entries; numerical inputs stay numerical.
+        Presentation does not attempt algebraic recovery of arbitrary floats.
+        """
+        import sympy as sp
+        u=sp.ImmutableMatrix(self.unitary) if self._symbolic_unitary is None else self._symbolic_unitary
+        r=sp.ImmutableMatrix(self.rotation) if self._symbolic_rotation is None else self._symbolic_rotation
+        sign='-' if self.antisymmetry else ''
+        star='^{*}' if self.antiunitary else ''
+        return (r'\mathcal{T}[H](\mathbf{k})='+sign+r'U H(R\mathbf{k})'+star
+                +r'U^{\dagger},\quad U='+sp.latex(u)+r',\quad R='+sp.latex(r))
+
+    def _repr_latex_(self):
+        return '$\\displaystyle '+self.latex()+'$'
+
 
 class _Transformed(TBkit):
     def __init__(self,model,oper):

@@ -69,6 +69,12 @@ class HK(TBkit):
             out+=sp.Matrix(c)*sp.prod(x**int(n) for x,n in zip(symbols,p))
         return out
 
+    def to_symbolic(self,symbols=None):
+        """Editable symbolic view; numerical coefficients remain floats."""
+        from .symbolic_model import SymbolicHamiltonian
+        symbols=sp.symbols(f'k0:{self.dim}',real=True) if symbols is None else tuple(symbols)
+        return SymbolicHamiltonian(self.to_sympy(symbols),symbols)
+
     def kp2tb(self,spacing=1.0):
         """Central-difference lattice regularization through quadratic order.
 
@@ -135,3 +141,17 @@ class Htrig(TBkit):
         r=self.frequencies@np.linalg.inv(lattice)
         if not np.allclose(r,np.rint(r),atol=1e-10,rtol=0): raise ValueError("frequencies not commensurate with lattice")
         return HR(np.rint(np.concatenate([r,-r])).astype(int),np.concatenate([(self.cosine-1j*self.sine)/2,(self.cosine+1j*self.sine)/2]),lattice=lattice,orbitals=self.orbitals)
+
+    def to_symbolic(self,symbols=None):
+        """Symbolic sin/cos view; existing floats are not made artificially exact.
+
+        The returned matrix view does not carry lattice/orbital metadata.
+        """
+        from .symbolic_model import SymbolicHamiltonian
+        symbols=sp.symbols(f'k0:{self.dim}',real=True) if symbols is None else tuple(symbols)
+        if len(symbols)!=self.dim:raise ValueError('wrong symbol count')
+        out=sp.zeros(self.norb)
+        for f,c,s in zip(self.frequencies,self.cosine,self.sine):
+            phase=sum(sp.Float(v)*k for v,k in zip(f,symbols))
+            out+=sp.Matrix(c)*sp.cos(phase)+sp.Matrix(s)*sp.sin(phase)
+        return SymbolicHamiltonian(out,symbols)

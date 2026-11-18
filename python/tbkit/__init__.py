@@ -3,6 +3,10 @@ from .base import TBkit
 from .hr import HR
 from .symbolic import HK, Htrig
 from .operators import Oper
+from .groups import AbstractFiniteGroup,FiniteGroup,cyclic_group,dihedral_group,permutation_group,GeneratorSearchResult,GroupSearchLimitError
+from .representations import MatrixRepresentation,CharacterTable,matrix_group
+from .irreps import irreducible_representations,IrrepGenerationError
+from .coupling import RepresentationDecomposition,symmetry_adapted_basis,clebsch_gordan
 from .geometry import kmesh, kpath
 from .topology import berry_curvature, chern_number, wilson_loop, fermi
 from .transport import surface_green, transmission
@@ -15,6 +19,10 @@ __version__ = "0.2.1"
 __all__ = ["TBkit","HR","HK","Htrig","Oper","kmesh","kpath","berry_curvature",
            "chern_number","wilson_loop","fermi","surface_green","transmission",
            "read_wannier90","write_wannier90","load_hdf5","fit_bands","models","kernels"]
+__all__ += ["AbstractFiniteGroup","FiniteGroup","cyclic_group","dihedral_group","permutation_group",
+            "MatrixRepresentation","CharacterTable","matrix_group","GeneratorSearchResult","GroupSearchLimitError"]
+__all__ += ["irreducible_representations","IrrepGenerationError"]
+__all__ += ["RepresentationDecomposition","symmetry_adapted_basis","clebsch_gordan"]
 
 from .structure import Structure
 from .sparse import SparseHR
@@ -40,9 +48,9 @@ from .wannier import read_win,read_wout
 from .transport import PrincipalLayer,principal_layer,chain_transmission
 __all__ += ["read_eigenval","read_kpoints","read_procar","read_win","read_wout","PrincipalLayer","principal_layer","chain_transmission"]
 
-from .quantum import Qnum,BasisFunc,spherical_harmonic,coupled_basis
+from .quantum import Qnum,BasisFunc,spherical_harmonic,coupled_basis,angular_cg
 from .crystallography import spacegroup,crystal_operations,standardize,sewing_matrix,crystal_residual,symmetrize_hr
-__all__ += ["Qnum","BasisFunc","spherical_harmonic","coupled_basis","spacegroup","crystal_operations",
+__all__ += ["Qnum","BasisFunc","spherical_harmonic","coupled_basis","angular_cg","spacegroup","crystal_operations",
             "standardize","sewing_matrix","crystal_residual","symmetrize_hr"]
 
 from .topology import z2_wilson
@@ -55,3 +63,6 @@ __all__ += ["OrbitalEmbedding","embed_orbitals","wilson_transport"]
 from .spectral import SpectralBatch,prepare_spectral
 from .responses import GeometryBatch,prepare_geometry,response_from_geometry
 __all__ += ["SpectralBatch","prepare_spectral","GeometryBatch","prepare_geometry","response_from_geometry"]
+
+from .symbolic_model import SymbolicHamiltonian,CompiledSymbolic,PauliDecomposition
+__all__ += ["SymbolicHamiltonian","CompiledSymbolic","PauliDecomposition"]

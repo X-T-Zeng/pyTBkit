@@ -60,6 +60,22 @@ write_wannier90(restored, "normalized_hr.dat")
 
 HK 与符号建模：
 
+精确符号模型、参数保留、解析操作、Pauli 分解与公式展示是核心功能，
+完整用法和待迁移清单见 [SYMBOLIC.zh-CN.md](SYMBOLIC.zh-CN.md)。
+`HK.from_sympy` 是数值化入口；需要保留自由参数时使用 `SymbolicHamiltonian`：
+
+```python
+import sympy as s
+from tbkit import SymbolicHamiltonian
+kx, ky, m = s.symbols('kx ky m', real=True)
+h = SymbolicHamiltonian([[m, kx-s.I*ky], [kx+s.I*ky, -m]], (kx, ky))
+print(h.latex())
+print(h.pauli_decomposition().coefficients)
+kp = h.to_hk({m: s.Rational(1, 2)})
+```
+
+以下旧入口继续保留：
+
 ```python
 import sympy as s
 from tbkit import HK
@@ -112,6 +128,11 @@ Numba 的线程由 `NUMBA_NUM_THREADS` 或 `numba.set_num_threads()` 控制，**
 - 单带 Kubo 曲率遇到简并报错；占据子空间 Chern/Wilson 用重叠矩阵并检查能隙与奇异链接。网格上未命中不等于排除所有能隙闭合，研究结果应检查网格收敛。
 - Chern 仅适用于二维周期 BZ，符号为连接 `A=i<u|du>`；QWZ m=-1 的占据带为 +1。不要直接将非周期 k·p 模型的有限区域当作完整 BZ。
 - `surface_green` 仅支持最近邻主层结构。`principal_layer(model, axis=..., transverse_fractional=...)` 可将长程跃迁自动分组为最近邻主层，再用 `chain_transmission` 验证理想导线。返回前检查 Riccati 方程残差，小主层在需要时做 Newton 修正；大主层若残差异常会报错，建议检查展宽与主层构造。`transmission` 接收已经嵌入 device 维数的 retarded 自能。
+- 输运的求解与检查使用无量纲缩放，`surface_green` 的 `tol` 为无量纲精度。
+  `transmission(..., eta=0)` 默认不增加设备吸收；`chain_transmission(..., eta=..., device_eta=0)`
+  将引线展宽和额外设备展宽分开。正的设备展宽会压低透射率，必须显式选择。
+  能量输入为有限实数；H、E、自能与所有展宽换单位时须一起缩放。
+  解析反例、兼容性变化和原MATLAB审计见 [输运审阅](audit/TRANSPORT-REVIEW.zh-CN.md)。
 
 ## 性能与内存
 
@@ -128,11 +149,15 @@ Numba 的线程由 `NUMBA_NUM_THREADS` 或 `numba.set_num_threads()` 控制，**
 - `SparseHR`：真正的 CSR 存储，稀疏超胞/slab/切片与部分本征谱。
 - `NonOrthogonal`：Hc=ESc 及带梯度；不套用错误的正交基 Berry 公式。
 - `finite_group/invariant_kp`：有限群与符号约束基底；可选 spglib 给出空间群、原子映射，`sewing_matrix/symmetrize_hr` 包含分数平移 Bloch 相位与 s/p/d 自旋表示。
+- `AbstractFiniteGroup/FiniteGroup/MatrixRepresentation/CharacterTable`：群公理、子群/
+  陪集/商群、普通特征标、表示分解、Frobenius–Schur类型与精确投影。
+  使用与物理边界见 [GROUPS.zh-CN.md](GROUPS.zh-CN.md)；不把哈密顿量作用群
+  的整体相位商集直接当成自旋双群或反幺正核心表示。
 - `geometric_tensors/response_kernel/integrate_bz`：Numba 曲率/度量/BCP、NCTE/SOAHC 和流式积分。
 - `nested_polarization/mirror_chern/inversion_indicators/z2_wilson`：BBH、镜面拓扑、反演对称强/弱 TI、无反演二维 Z2；各自适用条件见函数文档。
 - `landau_hamiltonian/plane_wave_hamiltonian`、`SpinModel`、`Hckt/Subckt`：Landau/连续模型、自旋和 RLC 数值核心。
 - `read_eigenval/read_kpoints/read_procar/read_win/read_wout`：真实仓库 DFT 与 Wannier 文件的独立读入；PROCAR 保留电荷和三个自旋投影分量。
-- `Qnum/BasisFunc/spherical_harmonic/coupled_basis`：精确量子数、角向基及 Clebsch–Gordan 耦合；径向波函数和一般晶体不可约表示投影不在此接口中。
+- `Qnum/BasisFunc/spherical_harmonic/coupled_basis/angular_cg`：精确量子数、角向基与角动量CG；旋转边界、高j稳定准备及Numba生成器见[ANGULAR.zh-CN.md](ANGULAR.zh-CN.md)。径向积分和一般晶体irrep投影不在此接口中。
 
 所有模型热路径默认 Numba。HR 另有 `backend="fortran"`，先运行
 `python python/tools/build_fortran.py` 编译；构建不在 import 时自动触发。
@@ -178,3 +203,23 @@ Numba 用户可直接将谱数组传入 `kernels.band_velocities` 和
 
 可执行例子：`python python/examples/response_sweep.py`。
 有限 eta 审计、理论边界及复用基准见 `audit/RESPONSE-BATCH-REVIEW.zh-CN.md`。
+
+## 科学绘图与导出
+
+绘图默认使用统一的字体、数学排版、线宽和配色，并保留原始数据与断带。
+`tbkit.plotting` 提供局部 `plot_style('paper'/'presentation')`、`bandplot` 和
+`save_figure`；支持300 dpi PNG与PDF/SVG输出，不修改全局Matplotlib设置。
+用法、图集与后续验收规范见 [PLOTTING.zh-CN.md](PLOTTING.zh-CN.md)。
+
+## 数值检查补充：厄米性与单位
+
+谱入口现在逐矩阵检查 `||H-H†||_F <= atol + rtol*||H||_F`，默认绝对容差为零，
+避免改变能量单位后接受错误模型。显式 atol 具有输入单位，且采用矩阵范数语义。
+非正交接口要求普通轨道的正定厄米 Gram 矩阵。
+[物理反例、适用边界和复现命令](audit/HERMITICITY-REVIEW.zh-CN.md)。
+
+## 非正交谱的可靠性
+
+`NonOrthogonal.spectrum` 返回只读的能量、本征矢、Gram 条件估计、逐带残差和框架误差；
+默认拒绝超出条件预算的基底。`band_gradient` 默认按局部带宽分辨简并，显式绝对
+能量阈值仍保留。接口、兼容边界和例子见 [NONORTHOGONAL.zh-CN.md](NONORTHOGONAL.zh-CN.md)。

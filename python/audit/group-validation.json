@@ -1,0 +1,102 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.4218772589956643,
+      "log": "upstream.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 41.43571493499621,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 4.769787596000242,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.4164953399886144,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 1.6988949830119964,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 2.195954469993012,
+      "log": "external_example.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.3340030209947145,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.27954748000775,
+      "log": "response_sweep.log"
+    }
+  ],
+  "tests": {
+    "tests": 161,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Finite-group branch on main 13a5832; excludes unmerged symbolic PR #2, plotting PR #3 and transport PR #4.",
+  "python_base_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "example": {
+    "group_order": 6,
+    "class_sizes": [
+      1,
+      2,
+      3
+    ],
+    "irreducible_dimensions": [
+      1,
+      1,
+      2
+    ],
+    "site_multiplicities": [
+      1,
+      0,
+      1
+    ],
+    "E_tensor_E": [
+      1,
+      1,
+      1
+    ],
+    "Q8_order": 8,
+    "Q8_frobenius_schur": -1,
+    "exact_projectors_and_block_diagonalization": true,
+    "spectrum": [
+      -1.2,
+      0.9,
+      0.9
+    ],
+    "matlab_parity": "basic finite-group layer; not all original APIs or corepresentations",
+    "latex_exported_not_pdf_compiled": true
+  },
+  "matlab_validation": "Pristine vs patched group.times tested separately; original EIGEN_Kone diagonal gauge-dependence characterized.",
+  "visual_review": "group-theory.png inspected; PNG/PDF/SVG and formula source exported; no document PDF/frontend certification.",
+  "performance_claim": false,
+  "final_numeric_matrix_closure_regression": true,
+  "final_parameter_binding_regression": true
+}

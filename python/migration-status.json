@@ -1,12 +1,97 @@
 {
+  "transport_audit": {
+    "date": "2026-11-14",
+    "branch": "fix/scale-invariant-transport",
+    "status": "validated in integration batch 2026-11-18",
+    "validation": {
+      "tests": 161,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "report": "audit/transport-validation.json",
+    "review": "audit/TRANSPORT-REVIEW.zh-CN.md",
+    "original_matlab_gw_iter": "absolute-threshold defect reproduced; no candidate patch in this round",
+    "next": "large-principal-layer residual refinement and systematic eta convergence"
+  },
   "version": "0.2.1",
   "overall_status": "in_progress",
   "matlab_source_files": 880,
+  "group_theory_audit": {
+    "branch": "feature/finite-group-representations",
+    "status": "validated in integration batch 2026-11-18",
+    "validation": {
+      "tests": 161,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "report": "audit/group-validation.json",
+    "usage": "GROUPS.zh-CN.md",
+    "review": "audit/GROUP-REVIEW.zh-CN.md",
+    "remaining": [
+      "group isomorphisms and automorphisms",
+      "exact algebraic-number irrep generation, canonical multiplicity gauges and 6j recoupling",
+      "antiunitary corepresentations and projective factor systems",
+      "complete Bloch little-group workflows"
+    ],
+    "minimum_generator_search": {
+      "branch": "feature/group-minimal-generators",
+      "depends_on_pr": 5,
+      "status": "validated in integration batch 2026-11-18",
+      "validation": {
+        "tests": 177,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "report": "audit/generator-validation.json",
+      "review": "audit/GENERATOR-REVIEW.zh-CN.md",
+      "scope": "One globally minimum generating tuple, exact finite-group rank, Numba closure; bounded BFS raises on exhaustion.",
+      "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/6",
+      "integration_report": "audit/generator-integration-validation.json",
+      "combined_tests": 220
+    },
+    "automatic_numeric_irreps": {
+      "branch": "feature/automatic-finite-irreps",
+      "depends_on_pr": 5,
+      "status": "validated in integration batch 2026-11-18",
+      "validation": {
+        "tests": 178,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "report": "audit/automatic-irrep-validation.json",
+      "review": "audit/AUTOMATIC-IRREP-REVIEW.zh-CN.md",
+      "scope": "Complete validated ordinary complex numeric irreps, bounded dense regular-action algorithm; not exact symbolic reconstruction, coreps or projective/Bloch representations.",
+      "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/7",
+      "combined_tests": 237,
+      "integration_report": "audit/automatic-irrep-integration-validation.json"
+    },
+    "finite_group_coupling": {
+      "branch": "feature/finite-group-clebsch-gordan",
+      "depends_on_pr": 7,
+      "status": "validated in integration batch 2026-11-18",
+      "validation": {
+        "tests": 204,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "report": "audit/coupling-validation.json",
+      "review": "audit/COUPLING-REVIEW.zh-CN.md",
+      "scope": "Constant-exact SymPy and NumPy/Numba ordinary finite-group CG, aligned repeated copies and symbolic operator transforms; not antiunitary/projective/Bloch coupling.",
+      "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/8",
+      "integration_report": "audit/coupling-integration-validation.json",
+      "combined_tests": 263
+    }
+  },
   "full_api_parity": false,
   "autonomous_background_worker": false,
   "remote_schedule": "github_actions_workflow_published",
   "validation": {
-    "tests": 141,
+    "tests": 375,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -19,7 +104,10 @@
     "tested DFT/Wannier data formats",
     "documented response kernels and BZ integration",
     "Chern/Wilson/nested/mirror/inversion/no-inversion 2D Z2",
-    "documented continuum/transport/spin/circuit numerical cores"
+    "documented continuum/transport/spin/circuit numerical cores",
+    "exact constant-symbolic Hamiltonians and scientific presentation",
+    "ordinary finite groups, generator search, numerical irreps and finite-group CG",
+    "scale-aware spectral/transport and positive-Gram reliability checks"
   ],
   "remaining": [
     "all original MATLAB APIs and workflow examples",
@@ -45,9 +133,98 @@
     "delivery": "reviewable branch and PR, no automatic merge"
   },
   "latest_development": {
-    "scope": "caller-owned spectral/geometry reuse and finite-eta NCTE audit",
-    "branch": "feature/spectral-batch-response-audit",
-    "status": "validated; awaiting review",
+    "scope": "validated integration of PR #2–#11: symbolic, plotting, transport, finite groups, angular and generalized spectra",
+    "branch": "integration/verified-prs-20261118",
+    "status": "validated",
     "reference_commit": "48e5217593598c8e1d634cdee3976e1dc6984516"
+  },
+  "symbolic_migration": {
+    "core_requirement": true,
+    "inventory": "audit/symbolic-source-inventory.json",
+    "candidate_files": 252,
+    "source_files": 880,
+    "candidate_count_is_not_completion": true,
+    "checklist": "SYMBOLIC.zh-CN.md",
+    "full_parity": false
+  },
+  "angular_rotation_audit": {
+    "branch": "fix/angular-rotation-invariants",
+    "base": "main 13a5832",
+    "status": "validated in integration batch 2026-11-18",
+    "validation": {
+      "tests": 178,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "report": "audit/angular-validation.json",
+    "review": "audit/ANGULAR-REVIEW.zh-CN.md",
+    "usage": "ANGULAR.zh-CN.md",
+    "scope": "Strict SU(2) labels, robust axes/4pi reduction, no hidden state cutoff, strict real orbital operations, validated exact scalar angular CG and nopython generator arrays.",
+    "remaining": [
+      "High-j stable MATLAB candidate algorithm",
+      "Bulk high-j coupling and 6j/9j",
+      "Wigner-Eckart and antiunitary/projective coupling workflows"
+    ],
+    "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/9",
+    "integration_report": "audit/angular-integration-validation.json",
+    "combined_tests": 300
+  },
+  "hermiticity_audit": {
+    "branch": "fix/scale-invariant-hermiticity",
+    "base_commit": "13a5832df636c68839b59859adbc330567a02121",
+    "status": "validated in integration batch 2026-11-18",
+    "review": "audit/HERMITICITY-REVIEW.zh-CN.md",
+    "report": "audit/hermiticity-validation.json",
+    "numba_metrics": true,
+    "scope": "per-matrix relative Frobenius domain checks for dense/sparse Hermitian spectra and positive-Gram generalized spectra/derivatives",
+    "remaining": [
+      "condition/input forward-error propagation beyond the new positive-Gram reliability gates",
+      "nonorthogonal geometric connection",
+      "other module-specific absolute thresholds"
+    ],
+    "integration_report": "audit/hermiticity-integration-validation.json",
+    "combined_tests": 338,
+    "combined_steps": 25
+  },
+  "nonorthogonal_reliability": {
+    "branch": "fix/nonorthogonal-metric-conditioning",
+    "base_commit": "13a5832df636c68839b59859adbc330567a02121",
+    "status": "validated in integration batch 2026-11-18",
+    "usage": "NONORTHOGONAL.zh-CN.md",
+    "review": "audit/NONORTHOGONAL-REVIEW.zh-CN.md",
+    "report": "audit/nonorthogonal-validation.json",
+    "integration_report": "audit/nonorthogonal-integration-validation.json",
+    "combined_tests": 375,
+    "combined_steps": 27,
+    "scope": "positive-Gram Hermitian spectra, explicit condition/residual/metric budgets and unit-covariant default band-gradient degeneracy policy",
+    "remaining": [
+      "condition estimates and input-error propagation",
+      "generalized degenerate directional perturbation",
+      "full nonorthogonal position/Berry/velocity connection",
+      "complete MATLAB Umat class-compatible repair",
+      "H/S lattice metadata tolerances"
+    ]
+  },
+  "integration_batch": {
+    "date": "2026-11-18",
+    "user_authorized": true,
+    "pull_requests": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "report": "audit/integration-validation-20261118.json",
+    "source_manifest": "audit/integration-prs-20261118.json",
+    "tests": 375,
+    "validation_steps": 27,
+    "numeric_code_unchanged_from_previously_validated_composition": true
   }
 }

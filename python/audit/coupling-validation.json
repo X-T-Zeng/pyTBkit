@@ -1,0 +1,153 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.3574635870172642,
+      "log": "upstream.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 24.599348945979727,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 4.48503755099955,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 3.6756276750238612,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.690079952008091,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 1.7512113550037611,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 2.775919816980604,
+      "log": "external_example.log"
+    },
+    {
+      "name": "finite_group_coupling",
+      "exit_code": 0,
+      "seconds": 18.575679481000407,
+      "log": "finite_group_coupling.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.9501002710021567,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 2.0557281769870315,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "matrix_unit_benchmark",
+      "exit_code": 0,
+      "seconds": 1.632026842009509,
+      "log": "matrix_unit_benchmark.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.8365977939974982,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.531888836994767,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.7766697159968317,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 3.190134042990394,
+      "log": "response_reuse_benchmark.log"
+    }
+  ],
+  "tests": {
+    "tests": 204,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Finite-group CG and multiplicity decomposition on PR #7; excludes unmerged sibling PR #2/#3/#4/#6.",
+  "parent_commit": "309654156f6daffee5348be4fab865fade07b57f",
+  "main_base": "13a5832df636c68839b59859adbc330567a02121",
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "official_candidate_patch_sha256": "0ff221a5733aafd988b2b0d25da09c9d57bd463b0af4531c4c99ffd5e1323706",
+  "matlab_validation": {
+    "pristine_defects_reproduced": 2,
+    "minimal_candidate_fixes": 2,
+    "angular_cases": 358,
+    "coefficient_values_two_functions": 716,
+    "reference": "exact SymPy Condon-Shortley coefficients",
+    "asserted_absolute_tolerance": 2e-13,
+    "wrapper": "verbatim function bodies in minimal static class; no full MATLAB class certification"
+  },
+  "visual_review": "Final PNG inspected; gap label has white background and ticks simplified. PNG/PDF/SVG and formula sources exported; no compiled document PDF/frontend certification.",
+  "source_commit": "23235c0b9675a3be2e29e6ec07e7ec65491919ad",
+  "example": {
+    "tensor_multiplicities": [
+      1,
+      1,
+      1
+    ],
+    "repeated_doublet_multiplicities": [
+      0,
+      0,
+      2
+    ],
+    "exact_symbolic_cg_and_schur_blocks": true,
+    "exchange_parities": [
+      1,
+      -1,
+      1,
+      1
+    ],
+    "max_energy_error": 1.1102230246251565e-15,
+    "max_doublet_splitting": 1.5543122344752192e-15,
+    "hopping": [
+      0.3,
+      0.2
+    ],
+    "convention": "columns: irrep, copy, internal index; uncoupled tensor row a*dim(right)+b",
+    "scope": "ordinary D3 group, no antiunitary or projective sewing; multiplicity gauge is not canonical",
+    "latex_exported_not_document_compiled": true
+  },
+  "ci_portability": {
+    "local_octave": "10.3.0",
+    "ci_octave": "8.4.0",
+    "initial_ci_failure": "One raw-error wording assertion; 203 other tests and all examples passed. Observed undefined-output wording matched by semantics without changing numeric tolerances.",
+    "diagnostics": "Failed-step last 160 log lines also sent to console; full artifact retained."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "group": "C2^6",
+  "order": 64,
+  "closure_count": 1024,
+  "seed": 41,
+  "first_jit_or_cache_seconds": 0.002965791994938627,
+  "warm_python_median_seconds": 0.022803073006798513,
+  "warm_numba_median_seconds": 0.0012912189995404333,
+  "speedup": 17.660112664787704,
+  "all_closures_equal": true,
+  "kernel_serial": true,
+  "numba_threads_env": "2",
+  "blas_threads_env": "1",
+  "scope": "prepared integer-table closures, not end-to-end rank search or MATLAB comparison"
+}

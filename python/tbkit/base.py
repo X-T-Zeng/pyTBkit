@@ -1,7 +1,9 @@
 """Common spectral API. Energies have the units of the input Hamiltonian."""
 from abc import ABC, abstractmethod
+from numbers import Real
 import numpy as np
 from scipy.sparse.linalg import eigsh
+from .validation_kernels import hermiticity_metrics
 
 
 def points(k, dim):
@@ -14,12 +16,79 @@ def points(k, dim):
     return np.ascontiguousarray(k), single
 
 
-def hermitian(h, atol=1e-10):
-    h=np.asarray(h)
+def _hermitian_tolerances(atol, rtol):
+    for value in (atol, rtol):
+        if isinstance(value, (bool, np.bool_)) or not isinstance(value, Real):
+            raise ValueError("Hermiticity tolerances must be finite nonnegative real scalars")
+        if not np.isfinite(value) or value < 0:
+            raise ValueError("Hermiticity tolerances must be finite nonnegative real scalars")
+
+
+def _absolute_defect_ok(defect, atol):
+    # Used for deliberately absolute-only checks. Work in the defect's own
+    # scale so a tiny asymmetry beside a huge diagonal remains observable.
+    if not np.isfinite(defect).all():
+        return False
+    scale = max(np.max(abs(defect.real), initial=0.), np.max(abs(defect.imag), initial=0.))
+    if scale == 0.:
+        return True
+    with np.errstate(over='ignore'):
+        bound = atol / scale
+    return np.sqrt(np.sum((defect.real/scale)**2 + (defect.imag/scale)**2)) <= bound
+
+
+def hermitian(h, atol=0., *, rtol=1e-10):
+    """Require ||H-H†||_F <= atol + rtol ||H||_F for EACH matrix.
+
+    The default has no implicit energy scale. The Frobenius criterion is
+    invariant under unitary basis rotations (up to roundoff), energy-unit
+    changes and batch/chunk partitioning. Explicit atol has input units.
+    This validates the supplied data; it never projects onto Hermitian data.
+    """
+    _hermitian_tolerances(atol, rtol)
+    h=np.asarray(h, dtype=np.complex128)
     if h.ndim<2 or h.shape[-1]!=h.shape[-2] or h.shape[-1]<1 or not np.isfinite(h).all():
         raise ValueError("finite square Hamiltonian matrices required")
-    if not np.allclose(h, h.conj().swapaxes(-1, -2), atol=atol, rtol=1e-10):
+    matrices = np.ascontiguousarray(h).reshape(-1, h.shape[-1], h.shape[-1])
+    if rtol == 0:
+        with np.errstate(over='ignore', invalid='ignore'):
+            valid = all(_absolute_defect_ok(a-a.conj().T, atol) for a in matrices)
+    else:
+        scales, norms, defects, _ = hermiticity_metrics(matrices)
+        with np.errstate(over='ignore', divide='ignore', invalid='ignore'):
+            bounds = rtol*norms + atol/np.where(scales == 0., 1., scales)
+        valid = not np.any(defects > bounds)
+    if not valid:
         raise ValueError("Hamiltonian is not Hermitian; check hopping conjugates")
+
+
+def hermitian_sparse(h, atol=0., *, rtol=1e-10):
+    """Sparse counterpart, O(nnz+n) storage; never densifies or mutates input."""
+    from scipy import sparse
+    _hermitian_tolerances(atol, rtol)
+    if not sparse.issparse(h) or h.ndim != 2 or h.shape[0] != h.shape[1] or not h.shape[0]:
+        raise ValueError("finite square sparse Hamiltonian required")
+    a = h.tocsr(copy=True).astype(np.complex128, copy=False)
+    with np.errstate(over='ignore', invalid='ignore'):
+        a.sum_duplicates()
+    if not np.isfinite(a.data).all():
+        raise ValueError("finite square sparse Hamiltonian required")
+    if rtol == 0:
+        with np.errstate(over='ignore', invalid='ignore'):
+            valid = _absolute_defect_ok((a-a.conj().T).data, atol)
+    else:
+        scale = max(np.max(abs(a.data.real), initial=0.), np.max(abs(a.data.imag), initial=0.))
+        if scale == 0.:
+            return
+        # Separate components avoid complex reciprocal overflow for tiny scale.
+        a.data.real /= scale
+        a.data.imag /= scale
+        defect = (a-a.conj().T).data
+        with np.errstate(over='ignore'):
+            bound = rtol*np.linalg.norm(a.data) + atol/scale
+        valid = _absolute_defect_ok(defect, bound)
+    if not valid:
+        raise ValueError("non-Hermitian sparse Hamiltonian")
 
 
 class TBkit(ABC):
@@ -82,8 +151,7 @@ class TBkit(ABC):
         if not 0 < count < self.norb-1:
             raise ValueError("count must be between 1 and norb-2")
         h = self.sparse_hamiltonian(k)
-        if np.max(np.abs((h-h.getH()).data), initial=0) > 1e-10:
-            raise ValueError("non-Hermitian sparse Hamiltonian")
+        hermitian_sparse(h)
         return np.sort(eigsh(h, k=count, sigma=sigma, return_eigenvectors=False))
 
     def dos(self, k, energies, *, width=0.02, weights=None, backend="numba"):

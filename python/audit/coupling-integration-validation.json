@@ -1,0 +1,163 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.45605965598952025,
+      "log": "upstream.log"
+    },
+    {
+      "name": "symbolic_inventory",
+      "exit_code": 0,
+      "seconds": 1.1554494180018082,
+      "log": "symbolic_inventory.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 45.133850153011736,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 3.528145544027211,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "group_generators",
+      "exit_code": 0,
+      "seconds": 4.259821358980844,
+      "log": "group_generators.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 4.006594535982003,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.6149448119977023,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 2.859379686007742,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "transport_scaling",
+      "exit_code": 0,
+      "seconds": 3.735418419993948,
+      "log": "transport_scaling.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 3.6628050099825487,
+      "log": "external_example.log"
+    },
+    {
+      "name": "finite_group_coupling",
+      "exit_code": 0,
+      "seconds": 19.14192943199305,
+      "log": "finite_group_coupling.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.796129099006066,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.6161692670139018,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "symbolic_example",
+      "exit_code": 0,
+      "seconds": 6.829164801980369,
+      "log": "symbolic_example.log"
+    },
+    {
+      "name": "group_closure_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5010350850061513,
+      "log": "group_closure_benchmark.log"
+    },
+    {
+      "name": "matrix_unit_benchmark",
+      "exit_code": 0,
+      "seconds": 1.9052458020159975,
+      "log": "matrix_unit_benchmark.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.7243636979837902,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.9461217429779936,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.601788789004786,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 2.8150217900110874,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "plot_gallery",
+      "exit_code": 0,
+      "seconds": 3.8248739679984283,
+      "log": "plot_gallery.log"
+    }
+  ],
+  "tests": {
+    "tests": 263,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Temporary combination of PR #2/#3/#4/#5/#6/#7 and coupling feature; five textual conflicts resolved preserving all features. No remote merge.",
+  "main_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "heads": {
+    "symbolic_pr_2": "96ba96d00276b0a54c0db14ba7bd6dde55634926",
+    "plotting_pr_3": "7c0beb68e0721225ca6c42717581e275c458d13d",
+    "transport_pr_4": "8dbfd74592b39301d016c048466f13a63c974b96",
+    "group_parent_pr_5": "6720b6ff1dbf35e96fdb090341052d9710454120",
+    "generators_pr_6": "6fab5ced1a1ce5f599c3bd163f247b9aedcd60ef",
+    "irreps_parent_pr_7": "309654156f6daffee5348be4fab865fade07b57f",
+    "coupling_feature_initial": "660062873841b0671bf9da3184b53cab45ef1677",
+    "coupling_portability_source": "23235c0b9675a3be2e29e6ec07e7ec65491919ad"
+  },
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "manual_resolutions": {
+    "python/GROUPS.zh-CN.md": "Keep generator/numeric-irrep/CG documentation; remaining list only retains outstanding scopes.",
+    "python/migration-status.json": "Preserve minimum_generator_search, automatic_numeric_irreps and finite_group_coupling facets.",
+    "python/tbkit/__init__.py": "Keep all generator, automatic-irrep and coupling exports.",
+    "python/tbkit/group_kernels.py": "Keep generated_subgroup_indices, regular_blocks and the separately auto-merged matrix_unit_column.",
+    "python/tools/validate.py": "Keep all examples and six benchmarks."
+  },
+  "source_application": "After initial merge of 6600628, the compatible raw-error test and audit from 23235c0 plus the 9157221 failed-log diagnostics were copied/applied into the combined tree; computational modules unchanged.",
+  "warnings": [
+    "One Matplotlib/Pyparsing enablePackrat deprecation warning; no skipped tests."
+  ]
+}

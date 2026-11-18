@@ -1,0 +1,49 @@
+{
+  "group": "D3",
+  "order": 6,
+  "irrep_dimension": 2,
+  "seed": 83,
+  "first_jit_or_cache_seconds": 0.004298018000554293,
+  "kernel_serial": true,
+  "numba_threads_env": "2",
+  "blas_threads_env": "1",
+  "loads": [
+    {
+      "dimension": 8,
+      "case_count": 128,
+      "warm_numpy_median_seconds": 0.0005831579910591245,
+      "warm_numba_median_seconds": 0.0002582849992904812,
+      "speedup": 2.257808206675114,
+      "max_absolute_error": 2.221493093487292e-16,
+      "warm_complete_decomposition_median_seconds": {
+        "numpy": 0.00028198398649692535,
+        "numba": 0.00028990997816435993
+      }
+    },
+    {
+      "dimension": 16,
+      "case_count": 128,
+      "warm_numpy_median_seconds": 0.0015216640022117645,
+      "warm_numba_median_seconds": 0.0007491369906347245,
+      "speedup": 2.0312226218097944,
+      "max_absolute_error": 1.6653743326169023e-16,
+      "warm_complete_decomposition_median_seconds": {
+        "numpy": 0.00044588700984604657,
+        "numba": 0.0010154559859074652
+      }
+    },
+    {
+      "dimension": 32,
+      "case_count": 128,
+      "warm_numpy_median_seconds": 0.004063778993440792,
+      "warm_numba_median_seconds": 0.002785554010188207,
+      "speedup": 1.4588763953516812,
+      "max_absolute_error": 2.220468436174282e-16,
+      "warm_complete_decomposition_median_seconds": {
+        "numpy": 0.001385470008244738,
+        "numba": 0.0011894499766640365
+      }
+    }
+  ],
+  "scope": "prepared matrix-unit columns versus vectorized NumPy matmul; full checked decomposition measured separately, no MATLAB comparison"
+}

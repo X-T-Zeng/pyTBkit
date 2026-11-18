@@ -1,0 +1,27 @@
+{
+  "commit": "13a5832df636c68839b59859adbc330567a02121",
+  "source_hashes": {
+    "python/tbkit/nonorthogonal.py": "46c90f530cd94bdbe6db5d8ae313ffa3f8d9792a973d21a90ebd045cb8b3dcce",
+    "python/tbkit/base.py": "1d582b76c88a63db13f8dff3dc700e6f0e0e69967e1cec9d600789dbb1f2e7f7"
+  },
+  "execution": "unmodified main code executed before this branch edits",
+  "gradient_counterexample": {
+    "H": "E0*k*sz",
+    "S": "I",
+    "k": 0.2,
+    "E0_1": "returns [-1,1]",
+    "E0_1e_minus20": "raises degeneracy error",
+    "analytic_gradient": "E0*[-1,1] at k=.2"
+  },
+  "rounded_metric_counterexample": {
+    "construction": "Q=qr(default_rng(13).normal((3,3)))[0]; B=diag(1,1,sqrt(delta))*Q; H=B.T*diag(1,2,3)*B; S=B.T*B",
+    "delta": 1e-16,
+    "displayed_original_energies": [
+      1.0,
+      2.0,
+      5.33333333
+    ],
+    "interpretation": "exact congruence energies 1,2,3; rounded floating pencil may be different; not evidence LAPACK incorrectly solved the supplied rounded pencil"
+  },
+  "not_a_new_fix": "common H/S normalization c from 1e-300 to 1e300 already worked in the original tested diagonal fixture"
+}

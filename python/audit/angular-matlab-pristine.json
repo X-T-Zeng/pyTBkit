@@ -1,0 +1,72 @@
+{
+  "official_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "source_sha256": {
+    "CG": "a9f974fa7015b9bc704084f3eb84640e08ae38647c9dceddd2e0bfa76b62f80b",
+    "Wigner3j": "c0930cd98efba5e8370614cac82ce2cd0183e6477887fba66773df4f0cdbb65a"
+  },
+  "scope": "pristine functions copied verbatim; no high-j candidate patch",
+  "cases": [
+    {
+      "j": 10,
+      "cg_original": 0.2182178902359924,
+      "cg_nonfinite_kind": null,
+      "cg_closed_form": 0.2182178902359924,
+      "wigner_original": -0.057688538682564204,
+      "wigner_closed_form": -0.05768853868256272,
+      "wigner_max_allowed": 0.2182178902359924
+    },
+    {
+      "j": 20,
+      "cg_original": 0.15617376188860607,
+      "cg_nonfinite_kind": null,
+      "cg_closed_form": 0.15617376188860607,
+      "wigner_original": 0.02956688413461976,
+      "wigner_closed_form": 0.02956688413461967,
+      "wigner_max_allowed": 0.15617376188860607
+    },
+    {
+      "j": 50,
+      "cg_original": null,
+      "cg_nonfinite_kind": "infinity",
+      "cg_closed_form": 0.09950371902099892,
+      "wigner_original": -0.012004771837738995,
+      "wigner_closed_form": -0.012004713979850024,
+      "wigner_max_allowed": 0.09950371902099892
+    },
+    {
+      "j": 80,
+      "cg_original": null,
+      "cg_nonfinite_kind": "infinity",
+      "cg_closed_form": 0.07881104062391006,
+      "wigner_original": 0.10199221344088977,
+      "wigner_closed_form": 0.007531081585095739,
+      "wigner_max_allowed": 0.07881104062391006
+    },
+    {
+      "j": 100,
+      "cg_original": null,
+      "cg_nonfinite_kind": "nan",
+      "cg_closed_form": 0.07053456158585983,
+      "wigner_original": -242.067317233543,
+      "wigner_closed_form": 0.006032391313465684,
+      "wigner_max_allowed": 0.07053456158585983
+    },
+    {
+      "j": 120,
+      "cg_original": null,
+      "cg_nonfinite_kind": "nan",
+      "cg_closed_form": 0.06441566264008308,
+      "wigner_original": -9498676.80269133,
+      "wigner_closed_form": 0.005031179279757285,
+      "wigner_max_allowed": 0.06441566264008308
+    }
+  ],
+  "execution_versions": {
+    "python": "3.12.15",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "sympy": "1.14.0",
+    "numba": "0.61.2"
+  },
+  "octave_version": "GNU Octave, version 10.3.0"
+}
