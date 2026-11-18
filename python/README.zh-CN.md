@@ -178,3 +178,9 @@ Numba 用户可直接将谱数组传入 `kernels.band_velocities` 和
 
 可执行例子：`python python/examples/response_sweep.py`。
 有限 eta 审计、理论边界及复用基准见 `audit/RESPONSE-BATCH-REVIEW.zh-CN.md`。
+
+## 非正交谱的可靠性
+
+`NonOrthogonal.spectrum` 返回只读的能量、本征矢、Gram 条件估计、逐带残差和框架误差；
+默认拒绝超出条件预算的基底。`band_gradient` 默认按局部带宽分辨简并，显式绝对
+能量阈值仍保留。接口、兼容边界和例子见 [NONORTHOGONAL.zh-CN.md](NONORTHOGONAL.zh-CN.md)。

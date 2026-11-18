@@ -6,7 +6,7 @@
   "autonomous_background_worker": false,
   "remote_schedule": "github_actions_workflow_published",
   "validation": {
-    "tests": 141,
+    "tests": 178,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -49,5 +49,24 @@
     "branch": "feature/spectral-batch-response-audit",
     "status": "validated; awaiting review",
     "reference_commit": "48e5217593598c8e1d634cdee3976e1dc6984516"
+  },
+  "nonorthogonal_reliability": {
+    "branch": "fix/nonorthogonal-metric-conditioning",
+    "base_commit": "13a5832df636c68839b59859adbc330567a02121",
+    "status": "validated locally; awaiting review",
+    "usage": "NONORTHOGONAL.zh-CN.md",
+    "review": "audit/NONORTHOGONAL-REVIEW.zh-CN.md",
+    "report": "audit/nonorthogonal-validation.json",
+    "integration_report": "audit/nonorthogonal-integration-validation.json",
+    "combined_tests": 375,
+    "combined_steps": 27,
+    "scope": "positive-Gram Hermitian spectra, explicit condition/residual/metric budgets and unit-covariant default band-gradient degeneracy policy",
+    "remaining": [
+      "condition estimates and input-error propagation",
+      "generalized degenerate directional perturbation",
+      "full nonorthogonal position/Berry/velocity connection",
+      "complete MATLAB Umat class-compatible repair",
+      "H/S lattice metadata tolerances"
+    ]
   }
 }

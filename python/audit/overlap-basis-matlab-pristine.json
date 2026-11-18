@@ -1,0 +1,24 @@
+{
+  "repository": "https://github.com/BUAA-TCMP/TBkit",
+  "commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "file": "src/classes/@HR/EIGENCAR_gen.m",
+  "sha256": "033348f769cdfba203ef94a7b35eb3c03b7c6693f491dbbec249ae3d4120d74a",
+  "original_static_umat_block": "        if UmatMode\n            Hout = Umat\\Hout*Umat;\n            Hout = Hout(subband,subband);\n            if Hermite\n                Hout = (Hout+Hout')/2;\n            end\n        end",
+  "H": "diag(1,3)",
+  "S": "diag(1,2)",
+  "U": "[[0,1],[1,0]]",
+  "original_energies": [
+    1.0,
+    1.5
+  ],
+  "after_original_umat_block": [
+    0.5,
+    3.0
+  ],
+  "independent_simultaneous_gram_transform": [
+    1.0,
+    1.5
+  ],
+  "scope": "selected pristine block and eig statement executed in Octave; not full HR class or a candidate patch",
+  "matlab_candidate_patch_added": false
+}

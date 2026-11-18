@@ -72,3 +72,11 @@ Python 默认几何是系数框架几何；embed_orbitals 明确提供点轨道�
 它不满足标准实数带曲率/全带曲率和约束，故未直接移植为 Python 的默认展宽。
 复响应的物理处方仍待推导，不能把这一点误写为“所有有限寿命响应均已修复”。
 细节和新快照架构见 [RESPONSE-BATCH-REVIEW.zh-CN.md](RESPONSE-BATCH-REVIEW.zh-CN.md)。
+
+## 接续：非正交 Gram 条件与换基
+
+固定绝对简并阈值会使非简并广义带梯度因能量单位变化而报错；病态 Gram 缺少
+可靠性门，舍入后可能已不代表原来的精确模型。新增逐带残差/Gram 误差与条件估计，
+默认拒绝超预算基底，不自动删基。官方 Umat 只改 H、不改 S 的原始表达式已有
+严格幺正换基反例，尚未形成完整 MATLAB 类补丁。
+证明、接口变化和验证边界见 [NONORTHOGONAL-REVIEW.zh-CN.md](NONORTHOGONAL-REVIEW.zh-CN.md)。

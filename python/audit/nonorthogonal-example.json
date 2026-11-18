@@ -1,0 +1,17 @@
+{
+  "seed": 13,
+  "condition_limit": 100000000.0,
+  "scales": [
+    1e-100,
+    1.0,
+    1e+100
+  ],
+  "max_absolute_scaled_gradient_error": 4.440892098500626e-16,
+  "basis_scan_points": 65,
+  "accepted": 32,
+  "rejected": 33,
+  "max_accepted_residual": 4.863891465593139e-16,
+  "max_accepted_metric_error": 2.5436321374960427e-09,
+  "mathematical_reference": "exact congruence B\u2020diag(1,2,3)B, B\u2020B gives energies 1,2,3",
+  "scope": "small residual alone does not bound forward error of rounded ill-conditioned input; no automatic basis truncation"
+}
