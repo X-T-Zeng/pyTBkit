@@ -1,0 +1,87 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.37666532500009,
+      "log": "upstream.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 25.734961449000025,
+      "log": "tests.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.529803152999989,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 2.0980688210000835,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 2.6313502840000638,
+      "log": "external_example.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.6862141520000478,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.5508548819999532,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "nonorthogonal_example",
+      "exit_code": 0,
+      "seconds": 3.0943582649999826,
+      "log": "nonorthogonal_example.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 3.009581604999994,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.8068452530000059,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 4.239980413000012,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "generalized_diagnostics_benchmark",
+      "exit_code": 0,
+      "seconds": 5.505637288000003,
+      "log": "generalized_diagnostics_benchmark.log"
+    }
+  ],
+  "tests": {
+    "tests": 178,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "base_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "scope": "standalone main-based positive-Gram spectrum/gradient reliability audit; not complete TBkit parity"
+}

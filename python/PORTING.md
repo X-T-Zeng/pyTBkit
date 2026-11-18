@@ -8,6 +8,7 @@ implementations represent pending capabilities. All MATLAB sources are retained.
 | Original area | Native Python | Validation and current boundary |
 | --- | --- | --- |
 | TBkit, HR, HK, Htrig | common bands/DOS, HR Fourier, polynomial/sin-cos, symbolic extraction | analytic spectra, finite differences, exact HR/fft.m numerical body via Octave |
+| exact symbolic/presentation layer | SymbolicHamiltonian, retained parameters, exact constant symmetry/invariants, total-degree Taylor, Pauli tensors, matrix/ket/operator LaTeX and notebook rich display | analytic Dirac/QWZ, TR/PH/C4, exact reconstruction, independent spectra/Taylor convergence; detailed pending list in SYMBOLIC.zh-CN.md |
 | sparse HR, EIGENCAR_gen_sparse | CSR storage, COO Numba kernels, sparse shift-invert | dense/sparse numerical parity and real memory benchmark |
 | hrdat_read, from_wannier90 | indexed complex data, degeneracies, wsvec expansion | round trips, wsvec phases/gradients; hr.dat requires external lattice |
 | HR/Htrig/HK conversion | exact commensurate Fourier/trig, Taylor expansion, quadratic lattice regularization | analytic examples and derivative tests |
@@ -21,10 +22,11 @@ implementations represent pending capabilities. All MATLAB sources are retained.
 | Chern/Wilson/BP_1D | gauge-invariant occupied links, Wilson flow | SSH phase, +/-/zero QWZ Chern, gap/link checks |
 | nested/mirror Wilson, Z2/Z4 | isolated Wannier-window nested polarization, constant mirror sectors, inversion indicators and no-inversion 2D Wilson Z2 | BBH topological/trivial phases; mirror opposite-Chern blocks; strong/weak/trivial 3D TI |
 | Landau/Peierls/plane waves | Weyl-ordered truncated oscillator HK, finite affine-A Peierls phases, supplied reciprocal-harmonic expansion | harmonic oscillator/Dirac levels, gauge/plaquette, free/coupled plane waves |
-| Green/surf/transport | principal-layer decimation, residual refinement, Caroli transmission | analytic chain roots inside/outside band/at center, unit transmission |
+| Green/surf/transport | scaled principal-layer decimation, residual refinement, Caroli transmission with explicit device absorption | analytic chain roots, 1e-20..1e20 energy-unit covariance, multiorbital finite-chain resolvent, PSD/causality and basis invariance; see audit/TRANSPORT-REVIEW.zh-CN.md |
 | fitting/plotting | model-builder least squares, headless Matplotlib | fitted SSH parameters, generated QWZ plot/data |
 | SpinModel | classical tensor exchange/anisotropy/field, JIT energy/field, deterministic LLG, small quantum Heisenberg clusters | energy derivatives, damping/norms, singlet/triplet |
 | Hckt/Subckt | native RLC admittance, finite current solve, periodic circuit Laplacian, basic SPICE export | resistor voltages, analytic RLC admittances/periodic dispersion |
+| group base/ordinary representation theory | AbstractFiniteGroup, validated Cayley groups, cyclic/dihedral/permutation and strict matrix closure, subgroup/coset/quotient, ordinary characters and isotypic projectors | D3/S3/D4 known subgroup and character data, exact trimer blocks, FS real/complex/quaternionic examples, nonassociative-loop rejection; GROUPS.zh-CN.md lists remaining corepresentation/irrep-generation work |
 
 ## Important boundaries
 

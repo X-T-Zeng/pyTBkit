@@ -1,0 +1,235 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.4316796660000364,
+      "log": "upstream.log"
+    },
+    {
+      "name": "symbolic_inventory",
+      "exit_code": 0,
+      "seconds": 1.1488872320001065,
+      "log": "symbolic_inventory.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 51.43023014100004,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 3.486628448000033,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "group_generators",
+      "exit_code": 0,
+      "seconds": 3.489910444999964,
+      "log": "group_generators.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 3.806639467000082,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.8611648529999911,
+      "log": "examples.log"
+    },
+    {
+      "name": "angular_audit",
+      "exit_code": 0,
+      "seconds": 4.095150338999929,
+      "log": "angular_audit.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 4.122178283000039,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "transport_scaling",
+      "exit_code": 0,
+      "seconds": 3.9902465970000094,
+      "log": "transport_scaling.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 3.06857851999996,
+      "log": "external_example.log"
+    },
+    {
+      "name": "finite_group_coupling",
+      "exit_code": 0,
+      "seconds": 16.84494946899997,
+      "log": "finite_group_coupling.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.4506971629999725,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.682254941999986,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "symbolic_example",
+      "exit_code": 0,
+      "seconds": 5.83612885499997,
+      "log": "symbolic_example.log"
+    },
+    {
+      "name": "hermiticity_example",
+      "exit_code": 0,
+      "seconds": 2.5046925939998346,
+      "log": "hermiticity_example.log"
+    },
+    {
+      "name": "nonorthogonal_example",
+      "exit_code": 0,
+      "seconds": 3.060375219999969,
+      "log": "nonorthogonal_example.log"
+    },
+    {
+      "name": "group_closure_benchmark",
+      "exit_code": 0,
+      "seconds": 1.657794918000036,
+      "log": "group_closure_benchmark.log"
+    },
+    {
+      "name": "matrix_unit_benchmark",
+      "exit_code": 0,
+      "seconds": 1.7341471140000522,
+      "log": "matrix_unit_benchmark.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.7342180660000395,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "angular_generator_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5108980339998652,
+      "log": "angular_generator_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.9071272340001997,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5396428219999052,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 2.638049461999799,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "hermiticity_benchmark",
+      "exit_code": 0,
+      "seconds": 2.4473155580001276,
+      "log": "hermiticity_benchmark.log"
+    },
+    {
+      "name": "generalized_diagnostics_benchmark",
+      "exit_code": 0,
+      "seconds": 3.813913253999999,
+      "log": "generalized_diagnostics_benchmark.log"
+    },
+    {
+      "name": "plot_gallery",
+      "exit_code": 0,
+      "seconds": 4.141573603000097,
+      "log": "plot_gallery.log"
+    }
+  ],
+  "tests": {
+    "tests": 375,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "base_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "scope": "temporary composition with unmerged PRs, not remote merges or complete migration",
+  "unmerged_pr_heads": {
+    "2": {
+      "branch": "feature/symbolic-model-presentation",
+      "sha": "96ba96d00276b0a54c0db14ba7bd6dde55634926"
+    },
+    "3": {
+      "branch": "feature/scientific-plot-style",
+      "sha": "7c0beb68e0721225ca6c42717581e275c458d13d"
+    },
+    "4": {
+      "branch": "fix/scale-invariant-transport",
+      "sha": "8dbfd74592b39301d016c048466f13a63c974b96"
+    },
+    "5": {
+      "branch": "feature/finite-group-representations",
+      "sha": "6720b6ff1dbf35e96fdb090341052d9710454120"
+    },
+    "6": {
+      "branch": "feature/group-minimal-generators",
+      "sha": "6fab5ced1a1ce5f599c3bd163f247b9aedcd60ef"
+    },
+    "7": {
+      "branch": "feature/automatic-finite-irreps",
+      "sha": "309654156f6daffee5348be4fab865fade07b57f"
+    },
+    "8": {
+      "branch": "feature/finite-group-clebsch-gordan",
+      "sha": "adb5e8d8c396fd43f6b70ddb67203ef7f9e16fae"
+    },
+    "9": {
+      "branch": "fix/angular-rotation-invariants",
+      "sha": "7baf66f68bdc25472d9c445b5a5c71d4e1ca14df"
+    },
+    "10": {
+      "branch": "fix/scale-invariant-hermiticity",
+      "sha": "0fe13a3528840c99cddb3778480c9400494af2e3"
+    }
+  },
+  "manual_resolutions": [
+    "python/GROUPS.zh-CN.md",
+    "python/LONG_TASK.zh-CN.md",
+    "python/README.zh-CN.md",
+    "python/migration-status.json",
+    "python/tbkit/__init__.py",
+    "python/tbkit/group_kernels.py",
+    "python/tbkit/quantum.py",
+    "python/tools/validate.py"
+  ],
+  "resolution_policy": "preserve symbolic presentation methods, all group/irrep/generator/coupling kernels and exports, PR9 rotations, PR10 Hermiticity, and union every validation example/benchmark; temporary documents merge scopes separately",
+  "warning": "one Matplotlib/Pyparsing enablePackrat deprecation warning; no numerical test warnings",
+  "new_task_tested_file_sha256": {
+    "python/tbkit/nonorthogonal.py": "5c06cad08f0dde0f4eaccadc0ce7907ed9486a82f5870755a339df85b3751478",
+    "python/tbkit/generalized_kernels.py": "0a75939cbae8bcae13b1023c113548556afd58697d512ee2e38672ae4d95caab",
+    "python/tests/test_generalized_spectra.py": "9c7b34f321b9b00b89a70e5d939e1920e6287c9ead040f676360b99259d83776",
+    "python/tests/test_matlab_overlap_basis.py": "154a358e31fe53f6596b5ae1fa8f910eaf7ade1584a4091c8204e5cfea9c9986",
+    "python/examples/nonorthogonal_reliability.py": "2ba9482663382e69e9a0438941547a4fce62b7f0362f6315e6666775a99bcf23",
+    "python/benchmarks/generalized_diagnostics.py": "65920551afe847d9f7401fc1506a8f647c69d284a4da1ad94bfa0af7f035f3d3"
+  }
+}

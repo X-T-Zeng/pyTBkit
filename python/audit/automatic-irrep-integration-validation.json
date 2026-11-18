@@ -1,0 +1,149 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.26943479201872833,
+      "log": "upstream.log"
+    },
+    {
+      "name": "symbolic_inventory",
+      "exit_code": 0,
+      "seconds": 1.1323741249798331,
+      "log": "symbolic_inventory.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 36.04440179199446,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 3.5569498740078416,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "group_generators",
+      "exit_code": 0,
+      "seconds": 3.642890176997753,
+      "log": "group_generators.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 3.4344244610110763,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.4173642849782482,
+      "log": "examples.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 2.4113890109874774,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "transport_scaling",
+      "exit_code": 0,
+      "seconds": 3.1199812189734075,
+      "log": "transport_scaling.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 3.1675200019963086,
+      "log": "external_example.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.5780330470006447,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.3702700990252197,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "symbolic_example",
+      "exit_code": 0,
+      "seconds": 6.277861623006174,
+      "log": "symbolic_example.log"
+    },
+    {
+      "name": "group_closure_benchmark",
+      "exit_code": 0,
+      "seconds": 1.4931982179987244,
+      "log": "group_closure_benchmark.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5582616860046983,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.621664274018258,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.4673655980150215,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 3.008550260012271,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "plot_gallery",
+      "exit_code": 0,
+      "seconds": 4.411321217019577,
+      "log": "plot_gallery.log"
+    }
+  ],
+  "tests": {
+    "tests": 237,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Temporary combination with PR #2/#3/#4/#5/#6. Five textual conflicts were manually resolved preserving both features; never merged to remote main.",
+  "main_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "heads": {
+    "symbolic_pr_2": "96ba96d00276b0a54c0db14ba7bd6dde55634926",
+    "plotting_pr_3": "7c0beb68e0721225ca6c42717581e275c458d13d",
+    "transport_pr_4": "8dbfd74592b39301d016c048466f13a63c974b96",
+    "group_parent_pr_5": "6720b6ff1dbf35e96fdb090341052d9710454120",
+    "generator_pr_6": "6fab5ced1a1ce5f599c3bd163f247b9aedcd60ef",
+    "automatic_irreps_pr_7": "35712988c8b1d31fbfc70466f5526c7e3ae1bfda"
+  },
+  "manual_resolutions": {
+    "python/GROUPS.zh-CN.md": "Pending list removes both completed minimum-generator and numeric-irrep features; exact algebraic generation remains pending.",
+    "python/migration-status.json": "Keep both minimum_generator_search and automatic_numeric_irreps facets and the independently updated remaining scopes.",
+    "python/tbkit/__init__.py": "Export both generator and automatic-irrep public APIs.",
+    "python/tbkit/group_kernels.py": "Retain both generated_subgroup_indices and regular_blocks with their njit decorators.",
+    "python/tools/validate.py": "Register both examples and both new benchmarks."
+  },
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "warnings": [
+    "One Matplotlib/Pyparsing enablePackrat deprecation warning, no skipped tests."
+  ],
+  "additional_source_application": "The final Q8 x C3 test and audit entry from 3571298 were copied into the temporary combined tree after the initial merge of bb38370; computational modules were unchanged."
+}

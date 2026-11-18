@@ -351,3 +351,36 @@ index 7110e32..8fc3124 100644
 +variance = z./(1+z).^2;
 +f2 = beta^2 .* variance .* tanh(x/2);
 +end
+diff --git a/src/classes/@group/group.m b/src/classes/@group/group.m
+--- a/src/classes/@group/group.m
++++ b/src/classes/@group/group.m
+@@ -289,7 +289,6 @@
+                 % Case when G1 is the identity element
+                 if G1.isIdentity
+                     G3 = G2;
+-                    G3.U = inv(G2); % Inverse of G2
+                     return;
+                     % Case when G2 is the identity element
+                 elseif G2.isIdentity
+diff --git a/src/classes/@Y_l__m/ClebschGordan.m b/src/classes/@Y_l__m/ClebschGordan.m
+--- a/src/classes/@Y_l__m/ClebschGordan.m
++++ b/src/classes/@Y_l__m/ClebschGordan.m
+@@ -44,5 +44,5 @@
+ cg = 0;
+ return;
+ end
+-cg = (-1)^(j1-j2+m) * sqrt(2*j + 1) * Y_l__m.Wigner3j(j1,j2,j,m1,m2,-m);
++cg = (-1)^(j1-j2+m) * sqrt(2*j + 1) * Y_l__m.Wigner3j([j1,j2,j],[m1,m2,-m]);
+ end
+diff --git a/src/classes/@Y_l__m/CG.m b/src/classes/@Y_l__m/CG.m
+--- a/src/classes/@Y_l__m/CG.m
++++ b/src/classes/@Y_l__m/CG.m
+@@ -9,7 +9,7 @@
+ mod(j1+j2+j,1) ~= 0
+ error(sprintf('Clebsch-Gordan coefficient only defined if: \n 1. j1, j2, j are integer or half-integer non-negative numbers. \n 2. m1, m2, m are integer or half-integer numbers. \n 3. abs(m1)<=j1, abs(m2)<=j2, abs(m)<=j \n 4. j1+m1, j2+m2, j+m, j1+j2+j are integer non-negative numbers.'))
+ elseif m1+m2-m ~= 0 || j < abs(j1-j2) || j > j1+j2
+-C = 0;
++cg = 0;
+ return
+ end
+ k = max([0,j2-j-m1,j1-j+m2]):min([j1+j2-j,j1-m1,j2+m2]);

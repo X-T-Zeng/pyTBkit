@@ -1,0 +1,172 @@
+{
+  "date": "2026-11-18",
+  "timezone": "Asia/Shanghai",
+  "base_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "user_authorization": "可否自动通过所有PR?",
+  "scope": "current open PR batch #2–#11; complete validation before GitHub merge",
+  "source_pull_requests": [
+    {
+      "number": 2,
+      "url": "https://github.com/X-T-Zeng/pyTBkit/pull/2",
+      "branch": "feature/symbolic-model-presentation",
+      "head_sha": "96ba96d00276b0a54c0db14ba7bd6dde55634926",
+      "original_base": "main",
+      "ci_runs": [
+        {
+          "id": 43381900530,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "reviews": 0,
+      "review_threads": 0
+    },
+    {
+      "number": 3,
+      "url": "https://github.com/X-T-Zeng/pyTBkit/pull/3",
+      "branch": "feature/scientific-plot-style",
+      "head_sha": "7c0beb68e0721225ca6c42717581e275c458d13d",
+      "original_base": "main",
+      "ci_runs": [
+        {
+          "id": 43416455420,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "reviews": 0,
+      "review_threads": 0
+    },
+    {
+      "number": 4,
+      "url": "https://github.com/X-T-Zeng/pyTBkit/pull/4",
+      "branch": "fix/scale-invariant-transport",
+      "head_sha": "8dbfd74592b39301d016c048466f13a63c974b96",
+      "original_base": "main",
+      "ci_runs": [
+        {
+          "id": 43534736352,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "reviews": 0,
+      "review_threads": 0
+    },
+    {
+      "number": 5,
+      "url": "https://github.com/X-T-Zeng/pyTBkit/pull/5",
+      "branch": "feature/finite-group-representations",
+      "head_sha": "6720b6ff1dbf35e96fdb090341052d9710454120",
+      "original_base": "main",
+      "ci_runs": [
+        {
+          "id": 43541119718,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "reviews": 0,
+      "review_threads": 0
+    },
+    {
+      "number": 6,
+      "url": "https://github.com/X-T-Zeng/pyTBkit/pull/6",
+      "branch": "feature/group-minimal-generators",
+      "head_sha": "6fab5ced1a1ce5f599c3bd163f247b9aedcd60ef",
+      "original_base": "feature/finite-group-representations",
+      "ci_runs": [
+        {
+          "id": 43578091603,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "reviews": 0,
+      "review_threads": 0
+    },
+    {
+      "number": 7,
+      "url": "https://github.com/X-T-Zeng/pyTBkit/pull/7",
+      "branch": "feature/automatic-finite-irreps",
+      "head_sha": "309654156f6daffee5348be4fab865fade07b57f",
+      "original_base": "feature/finite-group-representations",
+      "ci_runs": [
+        {
+          "id": 43614659021,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "reviews": 0,
+      "review_threads": 0
+    },
+    {
+      "number": 8,
+      "url": "https://github.com/X-T-Zeng/pyTBkit/pull/8",
+      "branch": "feature/finite-group-clebsch-gordan",
+      "head_sha": "adb5e8d8c396fd43f6b70ddb67203ef7f9e16fae",
+      "original_base": "feature/automatic-finite-irreps",
+      "ci_runs": [
+        {
+          "id": 43661132303,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "reviews": 0,
+      "review_threads": 0
+    },
+    {
+      "number": 9,
+      "url": "https://github.com/X-T-Zeng/pyTBkit/pull/9",
+      "branch": "fix/angular-rotation-invariants",
+      "head_sha": "7baf66f68bdc25472d9c445b5a5c71d4e1ca14df",
+      "original_base": "main",
+      "ci_runs": [
+        {
+          "id": 43787595472,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "reviews": 0,
+      "review_threads": 0
+    },
+    {
+      "number": 10,
+      "url": "https://github.com/X-T-Zeng/pyTBkit/pull/10",
+      "branch": "fix/scale-invariant-hermiticity",
+      "head_sha": "0fe13a3528840c99cddb3778480c9400494af2e3",
+      "original_base": "main",
+      "ci_runs": [
+        {
+          "id": 43991461103,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "reviews": 0,
+      "review_threads": 0
+    },
+    {
+      "number": 11,
+      "url": "https://github.com/X-T-Zeng/pyTBkit/pull/11",
+      "branch": "fix/nonorthogonal-metric-conditioning",
+      "head_sha": "39b2014fa80b020eaf8ae63967020d000b8ba3a7",
+      "original_base": "main",
+      "ci_runs": [
+        {
+          "id": 44210338580,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "reviews": 0,
+      "review_threads": 0
+    }
+  ],
+  "method": "one history-preserving integration merge commit with all ten PR heads as parents; merge its reviewed and CI-checked PR via GitHub, without force-pushing main",
+  "numerical_code_policy": "107 Python source/test/example/benchmark/tool files identical to the previously validated 375-test composition; only integration documentation/metadata added",
+  "unresolved_scope": "full_api_parity remains false; individual physics audits retain their stated limits"
+}

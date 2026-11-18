@@ -1,8 +1,9 @@
 """Headless end-to-end example. Run from python/ after installing the package."""
 from pathlib import Path
 import numpy as np
+import matplotlib.pyplot as plt
 from tbkit import models, kpath, kmesh, chern_number, berry_curvature, surface_green, transmission
-from tbkit.plotting import bandplot
+from tbkit.plotting import bandplot,plot_style,save_figure
 
 
 def main(output='work/python-example'):
@@ -10,8 +11,12 @@ def main(output='work/python-example'):
     model=models.qi_wu_zhang(mass=-1)
     k,distance,ticks=kpath([[0,0],[np.pi,0],[np.pi,np.pi],[0,0]],80)
     bands=model.bands(k,backend='numba')
-    ax=bandplot(distance,bands,ticks=distance[ticks],labels=['Gamma','X','M','Gamma'])
-    ax.figure.savefig(output/'bands.png',dpi=150)
+    with plot_style():
+        ax=bandplot(distance,bands,ticks=distance[ticks],labels=[r'$\Gamma$','X','M',r'$\Gamma$'],
+                    reference=0,ylabel=r'$E/t$')
+        ax.set_title('Qi–Wu–Zhang model')
+        save_figure(ax.figure,output/'bands')
+        plt.close(ax.figure)
     grid=kmesh([41,41]); curvature=berry_curvature(model,grid)
     np.savez_compressed(output/'bands_and_curvature.npz',k=k,energies=bands,mesh=grid,curvature=curvature)
     model.save(output/'model.h5')

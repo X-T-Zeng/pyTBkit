@@ -1,0 +1,11 @@
+{
+  "energy_scales": [
+    1e-200,
+    1.0,
+    1e+200
+  ],
+  "rejected_nonhermitian": 3,
+  "rejected_overlap": 3,
+  "max_relative_spectral_error": 3.898253293370586e-16,
+  "scope": "Hermitian two-band H; positive orbital Gram S; no indefinite BdG metric"
+}

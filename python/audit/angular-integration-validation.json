@@ -1,0 +1,187 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.9847247520228848,
+      "log": "upstream.log"
+    },
+    {
+      "name": "symbolic_inventory",
+      "exit_code": 0,
+      "seconds": 1.3586238250136375,
+      "log": "symbolic_inventory.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 50.13308416199288,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 4.839875628007576,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "group_generators",
+      "exit_code": 0,
+      "seconds": 4.278218404011568,
+      "log": "group_generators.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 3.561973936011782,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.8049984310055152,
+      "log": "examples.log"
+    },
+    {
+      "name": "angular_audit",
+      "exit_code": 0,
+      "seconds": 4.558266056003049,
+      "log": "angular_audit.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 3.262784882012056,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "transport_scaling",
+      "exit_code": 0,
+      "seconds": 4.2724156719923485,
+      "log": "transport_scaling.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 3.8303079589968547,
+      "log": "external_example.log"
+    },
+    {
+      "name": "finite_group_coupling",
+      "exit_code": 0,
+      "seconds": 19.37811737699667,
+      "log": "finite_group_coupling.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.5096753840043675,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.6248000980122015,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "symbolic_example",
+      "exit_code": 0,
+      "seconds": 7.5017014920013025,
+      "log": "symbolic_example.log"
+    },
+    {
+      "name": "group_closure_benchmark",
+      "exit_code": 0,
+      "seconds": 2.0634420749847777,
+      "log": "group_closure_benchmark.log"
+    },
+    {
+      "name": "matrix_unit_benchmark",
+      "exit_code": 0,
+      "seconds": 1.9538628500013147,
+      "log": "matrix_unit_benchmark.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.6420237869897392,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "angular_generator_benchmark",
+      "exit_code": 0,
+      "seconds": 1.9208215199760161,
+      "log": "angular_generator_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.8075166159833316,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.4041587740066461,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 3.509206125017954,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "plot_gallery",
+      "exit_code": 0,
+      "seconds": 5.283577033987967,
+      "log": "plot_gallery.log"
+    }
+  ],
+  "tests": {
+    "tests": 300,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Temporary uncommitted merge of PR #2-#8, followed by a three-way indexed application of PR #9; no remote merge.",
+  "main_commit": "13a5832df636c68839b59859adbc330567a02121",
+  "heads": {
+    "symbolic_pr_2": "96ba96d00276b0a54c0db14ba7bd6dde55634926",
+    "plotting_pr_3": "7c0beb68e0721225ca6c42717581e275c458d13d",
+    "transport_pr_4": "8dbfd74592b39301d016c048466f13a63c974b96",
+    "group_parent_pr_5": "6720b6ff1dbf35e96fdb090341052d9710454120",
+    "generators_pr_6": "6fab5ced1a1ce5f599c3bd163f247b9aedcd60ef",
+    "irreps_pr_7": "309654156f6daffee5348be4fab865fade07b57f",
+    "finite_cg_pr_8": "adb5e8d8c396fd43f6b70ddb67203ef7f9e16fae",
+    "angular_pr_9": "ace54ed6651f4bad983049ee87d8bf24882d063f"
+  },
+  "assembly": {
+    "first_step": "Merge prior feature branches without committing; resolve five pre-existing shared-file conflicts preserving all scopes.",
+    "second_step": "git diff --binary main-base angular-head; git apply --3way --index into the prepared tree; resolve three file conflicts.",
+    "prior_shared_files": [
+      "python/GROUPS.zh-CN.md",
+      "python/migration-status.json",
+      "python/tbkit/__init__.py",
+      "python/tbkit/group_kernels.py",
+      "python/tools/validate.py"
+    ],
+    "angular_application_files": [
+      "python/migration-status.json",
+      "python/tbkit/quantum.py",
+      "python/tools/validate.py"
+    ],
+    "unique_resolved_file_count": 6,
+    "quantum_resolution": "Retain symbolic subs/latex/_repr_latex_ methods and the new rotate implementation, helpers and scalar angular_cg.",
+    "metadata_resolution": "Retain symbolic_migration, all group facets and angular_rotation_audit.",
+    "validation_resolution": "Register every example and all seven benchmarks; retain existing failure diagnostics."
+  },
+  "official_matlab_commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "warnings": [
+    "One Matplotlib/Pyparsing enablePackrat deprecation warning; no skipped tests."
+  ]
+}

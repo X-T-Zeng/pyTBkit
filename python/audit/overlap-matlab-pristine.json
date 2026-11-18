@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/BUAA-TCMP/TBkit",
+  "commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "file": "src/classes/@HR/EIGENCAR_gen.m",
+  "sha256": "033348f769cdfba203ef94a7b35eb3c03b7c6693f491dbbec249ae3d4120d74a",
+  "tested_statements": [
+    "Sout = (Sout+Sout')/2;",
+    "[A, D]=eig(full(Hout),full(Sout));"
+  ],
+  "scope": "original expressions extracted and executed in Octave, not full class or patched reference",
+  "nonhermitian_overlap_result": "S changes to [[1,.2i],[-.2i,1]], eigenvalues solve .96E^2-3E+2=0",
+  "indefinite_metric_result": "H=diag(1,2), S=diag(1,-1) returns real [-2,1] with negative Gram norm; not ordinary orbital states",
+  "candidate_patch_added": false
+}

@@ -1,6 +1,8 @@
 """Real s/p/d orbitals and angular momentum without MATLAB dependencies."""
+import math
 import numpy as np
 from scipy.linalg import expm,block_diag
+from .angular_kernels import angular_momentum_doubled
 
 ORBITALS=('s','px','py','pz','dxy','dyz','dzx','dx2-y2','dz2')
 # Orthonormal traceless quadratic tensors: orbital orientation is explicit.
@@ -11,29 +13,74 @@ D_TENSORS[3]=np.diag([1,-1,0])/np.sqrt(2)
 D_TENSORS[4]=np.diag([-1,-1,2])/np.sqrt(6)
 
 
+def _twice_j(value):
+    if (isinstance(value,(bool,np.bool_,complex,np.complexfloating)) or not np.isscalar(value)):
+        raise ValueError('nonnegative integer/half-integer j required')
+    try:
+        integer=int(value);remainder=2*(value-integer)
+        valid=value>=0 and (remainder==0 or remainder==1)
+    except (ValueError,TypeError,OverflowError):valid=False
+    if not valid:raise ValueError('finite nonnegative exact integer/half-integer j required')
+    return 2*integer+int(remainder)
+
+
+def _dimension_limit(value):
+    if isinstance(value,(bool,np.bool_)) or not isinstance(value,(int,np.integer)) or value<1:
+        raise ValueError('positive integer max_dimension required')
+    return int(value)
+
+
+def _rotation_axis(axis):
+    raw=np.asarray(axis)
+    if np.iscomplexobj(raw):raise ValueError('real rotation axis required')
+    try:value=np.asarray(raw,dtype=float)
+    except (TypeError,ValueError) as exc:raise ValueError('finite real 3D axis required') from exc
+    if value.shape!=(3,) or not np.isfinite(value).all():raise ValueError('finite real 3D axis required')
+    scale=np.max(np.abs(value))
+    if scale==0:raise ValueError('nonzero rotation axis required')
+    scaled=value/scale
+    return scaled/np.linalg.norm(scaled)
+
+
+def _rotation_angle(angle):
+    if isinstance(angle,(bool,np.bool_,complex,np.complexfloating)) or np.ndim(angle)!=0:
+        raise ValueError('finite real scalar rotation angle required')
+    try:value=float(angle)
+    except (TypeError,ValueError,OverflowError) as exc:raise ValueError('finite real scalar rotation angle required') from exc
+    if not np.isfinite(value):raise ValueError('finite real scalar rotation angle required')
+    if abs(value)<=2*math.pi:return value
+    # Reduce the SU(2) half-angle with libm argument reduction, retaining the
+    # central sign at 2*pi. fmod(angle, 2*pi) would erase spinor information.
+    return 2*math.atan2(math.sin(value/2),math.cos(value/2))
+
+
 def orbital_rotation(rotation):
     """Real orthogonal representation in ORBITALS order, including inversion."""
-    q=np.asarray(rotation,float)
-    if q.shape!=(3,3) or not np.allclose(q.T@q,np.eye(3),atol=1e-12): raise ValueError("orthogonal 3x3 matrix required")
+    raw=np.asarray(rotation)
+    if np.iscomplexobj(raw):raise ValueError('real orthogonal 3x3 matrix required')
+    q=np.asarray(raw,float)
+    if (q.shape!=(3,3) or not np.isfinite(q).all()
+            or not np.allclose(q.T@q,np.eye(3),atol=1e-12,rtol=0)):
+        raise ValueError("real orthogonal 3x3 matrix required (absolute tolerance 1e-12)")
     d=np.einsum('aij,ik,bkl,jl->ab',D_TENSORS,q,D_TENSORS,q,optimize=True)
     return block_diag(np.ones((1,1)),q,d)
 
 
-def angular_momentum(j):
-    """(Jx,Jy,Jz) in |j,m>, m=j,j-1,...,-j; hbar=1."""
-    if j<0 or not np.isclose(2*j,round(2*j)): raise ValueError("nonnegative integer/half-integer j required")
-    n=int(round(2*j))+1; m=np.linspace(j,-j,n)
-    plus=np.zeros((n,n),complex)
-    for col in range(1,n): plus[col-1,col]=np.sqrt(j*(j+1)-m[col]*(m[col]+1))
-    minus=plus.conj().T
-    return (plus+minus)/2,(plus-minus)/(2j),np.diag(m).astype(complex)
+def angular_momentum(j,*,max_dimension=1025):
+    """Jx,Jy,Jz, m=j..-j; hbar=1 and exactly discrete nonnegative j.
+
+    Near-half-integers are rejected, not silently rounded. Dense dimension
+    defaults to 1025; explicitly raise max_dimension for larger allocations.
+    """
+    doubled=_twice_j(j);limit=_dimension_limit(max_dimension)
+    if doubled+1>limit:raise ValueError('angular momentum exceeds max_dimension')
+    return angular_momentum_doubled(doubled,limit)
 
 
-def spin_rotation(axis,angle,*,spin=.5):
-    axis=np.asarray(axis,float)
-    if axis.shape!=(3,) or np.linalg.norm(axis)==0: raise ValueError("nonzero 3D axis required")
-    axis=axis/np.linalg.norm(axis)
-    return expm(-1j*angle*sum(v*j for v,j in zip(axis,angular_momentum(spin))))
+def spin_rotation(axis,angle,*,spin=.5,max_dimension=1025):
+    """Active unitary exp(-i angle n.J), for a finite real axis/angle."""
+    axis=_rotation_axis(axis);angle=_rotation_angle(angle)
+    return expm(-1j*angle*sum(v*j for v,j in zip(axis,angular_momentum(spin,max_dimension=max_dimension))))
 
 
 def real_orbital_angular_momentum():

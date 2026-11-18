@@ -1,0 +1,39 @@
+{
+  "first_jit_or_cache_seconds": 0.42577413699473254,
+  "kernel_serial": true,
+  "numba_threads_env": "2",
+  "blas_threads_env": "1",
+  "loads": [
+    {
+      "twice_j": 1,
+      "dimension": 2,
+      "count": 256,
+      "warm_numpy_median_seconds": 0.008876152016455308,
+      "warm_numba_median_seconds": 0.0010024469811469316,
+      "warm_checked_api_median_seconds": 0.006161317985970527,
+      "prepared_kernel_speedup": 8.854485257963287,
+      "max_absolute_error": 0.0
+    },
+    {
+      "twice_j": 20,
+      "dimension": 21,
+      "count": 256,
+      "warm_numpy_median_seconds": 0.005612041015410796,
+      "warm_numba_median_seconds": 0.001155706006102264,
+      "warm_checked_api_median_seconds": 0.0009067560022231191,
+      "prepared_kernel_speedup": 4.855941723741641,
+      "max_absolute_error": 0.0
+    },
+    {
+      "twice_j": 100,
+      "dimension": 101,
+      "count": 256,
+      "warm_numpy_median_seconds": 0.01374500201200135,
+      "warm_numba_median_seconds": 0.004751555010443553,
+      "warm_checked_api_median_seconds": 0.0042395530035719275,
+      "prepared_kernel_speedup": 2.8927376367927744,
+      "max_absolute_error": 0.0
+    }
+  ],
+  "scope": "prepared generator construction versus vectorized NumPy; checked API separate; not spin_rotation/expm, CG evaluation or MATLAB comparison"
+}
