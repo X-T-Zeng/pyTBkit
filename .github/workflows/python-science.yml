@@ -27,9 +27,10 @@ jobs:
           cache: pip
           cache-dependency-path: python/requirements-tested.txt
       - name: Install Octave for MATLAB numerical references
+        timeout-minutes: 8
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends octave gfortran
+          sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 -o Dpkg::Lock::Timeout=60 update
+          sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 -o Dpkg::Lock::Timeout=60 install -y --no-install-recommends octave gfortran
       - name: Install tested Python environment
         run: |
           python -m pip install -r python/requirements-tested.txt

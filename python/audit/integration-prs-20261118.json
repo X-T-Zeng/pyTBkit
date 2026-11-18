@@ -167,6 +167,15 @@
     }
   ],
   "method": "one history-preserving integration merge commit with all ten PR heads as parents; merge its reviewed and CI-checked PR via GitHub, without force-pushing main",
-  "numerical_code_policy": "107 Python source/test/example/benchmark/tool files identical to the previously validated 375-test composition; only integration documentation/metadata added",
-  "unresolved_scope": "full_api_parity remains false; individual physics audits retain their stated limits"
+  "numerical_code_policy": "107 Python files identical to validated composition; integration documentation/metadata and bounded CI package-install waits added",
+  "unresolved_scope": "full_api_parity remains false; individual physics audits retain their stated limits",
+  "ci_bootstrap": {
+    "reason": "original integration CI remained in Octave/Fortran apt installation for over 14 minutes; no code-test failure observed",
+    "observed_run_id": 44261099330,
+    "step_timeout_minutes": 8,
+    "apt_connection_timeout_seconds": 30,
+    "apt_retries": 1,
+    "dpkg_lock_timeout_seconds": 60,
+    "scientific_checks_unchanged": true
+  }
 }
