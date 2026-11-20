@@ -39,7 +39,8 @@ def main():
            ('response_sweep',[sys.executable,'python/examples/response_sweep.py','--output',str(out/'response_sweep')]),
            ('symbolic_example',[sys.executable,'python/examples/symbolic_workflow.py','--output',str(out/'symbolic')]),
            ('hermiticity_example',[sys.executable,'python/examples/hermiticity_units.py','--output',str(out/'hermiticity')]),
-           ('nonorthogonal_example',[sys.executable,'python/examples/nonorthogonal_reliability.py','--output',str(out/'nonorthogonal')])]
+           ('nonorthogonal_example',[sys.executable,'python/examples/nonorthogonal_reliability.py','--output',str(out/'nonorthogonal')]),
+           ('lattice_units_example',[sys.executable,'python/examples/lattice_units.py','--output',str(out/'lattice_units')])]
     if args.benchmarks:
         tasks.append(('group_closure_benchmark',[sys.executable,'python/benchmarks/group_closure.py','--output',str(out/'group-closure-benchmark.json')]))
         tasks.append(('matrix_unit_benchmark',[sys.executable,'python/benchmarks/matrix_units.py','--output',str(out/'matrix-unit-benchmark.json')]))
@@ -48,7 +49,8 @@ def main():
         tasks.extend([('benchmark',[sys.executable,'python/benchmarks/benchmark.py']),('sparse_benchmark',[sys.executable,'python/benchmarks/sparse_benchmark.py']),
                       ('response_reuse_benchmark',[sys.executable,'python/benchmarks/response_reuse.py']),
                       ('hermiticity_benchmark',[sys.executable,'python/benchmarks/hermiticity.py']),
-                      ('generalized_diagnostics_benchmark',[sys.executable,'python/benchmarks/generalized_diagnostics.py'])])
+                      ('generalized_diagnostics_benchmark',[sys.executable,'python/benchmarks/generalized_diagnostics.py']),
+                      ('lattice_units_benchmark',[sys.executable,'python/benchmarks/lattice_units.py'])])
     tasks.append(('plot_gallery',[sys.executable,'python/examples/plot_gallery.py','--output',str(out/'plot_gallery')]))
     results=[]
     for name,command in tasks:

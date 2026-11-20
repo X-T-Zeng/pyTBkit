@@ -9,6 +9,7 @@ from scipy.linalg import eigh, eigvalsh
 from .base import points,hermitian
 from .hr import immutable
 from .generalized_kernels import generalized_diagnostics
+from .lattice import same_lattice
 
 
 def _real_tolerance(value, name, *, positive=False, minimum=0.):
@@ -95,7 +96,7 @@ class NonOrthogonal:
     def __init__(self,hamiltonian,overlap):
         if hamiltonian.dim!=overlap.dim or hamiltonian.norb!=overlap.norb:
             raise ValueError("H/S dimensions differ")
-        if hasattr(hamiltonian,'lattice') and hasattr(overlap,'lattice') and not np.allclose(hamiltonian.lattice,overlap.lattice):
+        if hasattr(hamiltonian,'lattice') and hasattr(overlap,'lattice') and not same_lattice(hamiltonian.lattice,overlap.lattice):
             raise ValueError("H/S lattices differ")
         self.h,self.s=hamiltonian,overlap
         self.dim,self.norb=hamiltonian.dim,hamiltonian.norb

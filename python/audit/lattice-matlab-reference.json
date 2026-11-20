@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/BUAA-TCMP/TBkit",
+  "commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "get_Gk_source": "src/classes/@TBkit/TBkit.m",
+  "get_Gk_sha256": "7eee4e700a870966931679e94f9ed2f028c496a36aeec6d521a1f10219ab9f19",
+  "original_executed_statement": "Gk = (eye(length(TBkitobj.Rm))*2*pi/(TBkitobj.Rm)).';",
+  "nn_source": "src/classes/@TBkit/nn.m",
+  "nn_sha256": "35972100343cd87d0ea12ef89d314f0ab30360d26c37c4e456f779cb465b2457",
+  "tested_scales": [
+    1e-100,
+    1.0,
+    1e+100
+  ],
+  "verified_duality_absolute_tolerance": 4e-15,
+  "python_comparison_relative_tolerance": 2e-14,
+  "scope": "original arithmetic statement in Octave numeric struct; complete class/symbolic and NN search not executed",
+  "nn_documented_cutoff_unit": "Angstroms",
+  "new_matlab_candidate_patch": false
+}

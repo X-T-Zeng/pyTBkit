@@ -223,3 +223,9 @@ Numba 用户可直接将谱数组传入 `kernels.band_velocities` 和
 `NonOrthogonal.spectrum` 返回只读的能量、本征矢、Gram 条件估计、逐带残差和框架误差；
 默认拒绝超出条件预算的基底。`band_gradient` 默认按局部带宽分辨简并，显式绝对
 能量阈值仍保留。接口、兼容边界和例子见 [NONORTHOGONAL.zh-CN.md](NONORTHOGONAL.zh-CN.md)。
+
+## 长度单位与近邻
+
+晶格构造与共享胞检查采用无绝对长度地板的相对规则，近邻默认容差为cutoff的
+`1e-10`；显式tol仍是绝对长度。位移、倒格矢、SK回调和BZ归一化的共同单位及
+兼容边界见 [LATTICE-UNITS.zh-CN.md](LATTICE-UNITS.zh-CN.md)。

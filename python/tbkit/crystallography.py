@@ -1,6 +1,7 @@
 """Optional spglib-backed space groups, standard cells and atom mappings."""
 from dataclasses import dataclass
 import numpy as np
+from .lattice import same_lattice,reciprocal_lattice
 from .structure import Structure
 from .hr import immutable
 
@@ -107,8 +108,8 @@ def sewing_matrix(structure,operation,orbitals,k_fractional,*,spinful=False):
 
 
 def crystal_residual(model,structure,operation,orbitals,k_fractional,*,spinful=False,backend='numba'):
-    if model.dim!=3 or not np.allclose(model.lattice,structure.lattice):raise ValueError("model and structure lattices differ")
-    reciprocal=2*np.pi*np.linalg.inv(structure.lattice).T
+    if model.dim!=3 or not same_lattice(model.lattice,structure.lattice):raise ValueError("model and structure lattices differ")
+    reciprocal=reciprocal_lattice(structure.lattice)
     k=np.asarray(k_fractional,float)
     target=k@np.linalg.inv(operation.rotation)
     u=sewing_matrix(structure,operation,orbitals,k,spinful=spinful)
@@ -125,7 +126,7 @@ def symmetrize_hr(model,structure,operations,orbitals,*,spinful=False,drop_tol=0
     local representation. Pass a full space-group coset list, not generators.
     """
     from .hr import HR
-    if model.dim!=3 or not np.allclose(model.lattice,structure.lattice) or not operations:raise ValueError("3D matching model and nonempty operations required")
+    if model.dim!=3 or not same_lattice(model.lattice,structure.lattice) or not operations:raise ValueError("3D matching model and nonempty operations required")
     if drop_tol<0 or not np.isfinite(drop_tol):raise ValueError('finite nonnegative drop_tol required')
     terms={}
     for operation in operations:

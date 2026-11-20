@@ -1,5 +1,14 @@
 # 当前验证快照：pyTBkit 0.2.1
 
+## 本轮晶格单位与近邻验证
+
+当前分支完整 **424 passed，0 failures/errors/skipped**；29个步骤（含10项基准）全部成功。
+49项新增回归覆盖长度协变、多后端、真实丢键谱反例、独立R枚举、共享Bloch基底、
+晶胞/BZ数值域及官方原始倒格矢语句；具体数学边界见audit/LATTICE-REVIEW.zh-CN.md。
+原始结果与源码hash见audit/lattice-validation.json，根validation-snapshot.json同步本轮。
+下方集成记录及各历史分支测量保持为当时记录，不再代表当前测试总数。
+
+
 ## 2026-11-18：PR #2–#11 集成快照
 
 当前集成版本：**375 passed，0 failures，0 errors，0 skipped**；27个步骤全部通过，

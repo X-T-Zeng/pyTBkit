@@ -14,9 +14,11 @@ def slater_koster(displacement,parameters):
     """
     unknown=set(parameters)-set(PARAMETERS)
     if unknown: raise ValueError(f'unknown SK parameters: {sorted(unknown)}')
+    if np.iscomplexobj(displacement):raise ValueError('real bond required')
     d=np.asarray(displacement,float)
-    if d.shape!=(3,) or not np.isfinite(d).all() or np.linalg.norm(d)==0: raise ValueError("nonzero bond required")
-    z=d/np.linalg.norm(d)
+    if d.shape!=(3,) or not np.isfinite(d).all() or not np.any(d): raise ValueError("nonzero bond required")
+    scaled=d/np.max(abs(d))
+    z=scaled/np.linalg.norm(scaled)
     seed=np.eye(3)[np.argmin(np.abs(z))]
     x=np.cross(seed,z); x/=np.linalg.norm(x); y=np.cross(z,x)
     rotation=orbital_rotation(np.column_stack([x,y,z]))

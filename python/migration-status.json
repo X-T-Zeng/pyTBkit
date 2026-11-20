@@ -91,7 +91,7 @@
   "autonomous_background_worker": false,
   "remote_schedule": "github_actions_workflow_published",
   "validation": {
-    "tests": 375,
+    "tests": 424,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -133,9 +133,9 @@
     "delivery": "reviewable branch and PR, no automatic merge"
   },
   "latest_development": {
-    "scope": "validated integration of PR #2–#11: symbolic, plotting, transport, finite groups, angular and generalized spectra",
-    "branch": "integration/verified-prs-20261118",
-    "status": "validated",
+    "scope": "length-unit invariant cell validation, neighbor graphs, shared Bloch bases and scoped BZ measures",
+    "branch": "fix/lattice-length-units",
+    "status": "validated locally; awaiting review",
     "reference_commit": "48e5217593598c8e1d634cdee3976e1dc6984516"
   },
   "symbolic_migration": {
@@ -226,5 +226,29 @@
     "tests": 375,
     "validation_steps": 27,
     "numeric_code_unchanged_from_previously_validated_composition": true
+  },
+  "lattice_units_audit": {
+    "branch": "fix/lattice-length-units",
+    "base_commit": "a1f1102356d4efb8df50d7bf4bc70810adf5a38f",
+    "status": "validated locally; awaiting review",
+    "usage": "LATTICE-UNITS.zh-CN.md",
+    "review": "audit/LATTICE-REVIEW.zh-CN.md",
+    "report": "audit/lattice-validation.json",
+    "tests": 424,
+    "added_tests": 49,
+    "steps": 29,
+    "scope": "real finite numerical-full-rank row cells, positive common unit scalings, neighbor geometry and strict common-cell metadata",
+    "compatibility_changes": [
+      "default neighbor tol is relative to cutoff; explicit tol stays absolute",
+      "relative cell rank and matching replace absolute determinant/allclose floors",
+      "unrepresentable volume/measure errors; log_volume available",
+      "replicated atom image allocation budget"
+    ],
+    "remaining": [
+      "extreme negative-volume POSCAR normalization",
+      "orbital-center and gauge metadata tolerance",
+      "spglib symprec units and topology handedness",
+      "extreme integral underflow and error propagation"
+    ]
   }
 }

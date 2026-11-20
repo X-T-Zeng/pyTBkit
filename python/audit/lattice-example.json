@@ -1,0 +1,27 @@
+{
+  "length_scales": [
+    1e-150,
+    1e-09,
+    1.0,
+    1e+150
+  ],
+  "directed_bonds_per_chain_cell": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "max_absolute_energy_error": 4.440892098500626e-16,
+  "max_absolute_normalized_derivative_error": 8.881784197001252e-16,
+  "pristine_python_commit": "a1f1102356d4efb8df50d7bf4bc70810adf5a38f",
+  "pair_old": [
+    0.0,
+    0.0
+  ],
+  "pair_fixed": [
+    -1.0,
+    1.0
+  ],
+  "units": "common arbitrary length units; t=1, no implicit Angstrom/SI conversion or hbar velocity factor",
+  "assumption": "fixed s-s integral t; distance-dependent parameter callbacks must transform their length units consistently"
+}

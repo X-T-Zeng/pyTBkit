@@ -2,6 +2,7 @@
 import numpy as np
 from scipy.special import expit
 from .constants import KB_EV_PER_K
+from .lattice import reciprocal_lattice
 
 
 def fermi(energy,mu=0.0,temperature=0.0):
@@ -42,7 +43,7 @@ def _periodic_bz(model,backend,tol=1e-9):
     symbolic proof; nonperiodic orbital gauges require explicit boundary sewing.
     """
     lattice=getattr(model,'lattice',np.eye(model.dim))
-    reciprocal=2*np.pi*np.linalg.inv(lattice).T
+    reciprocal=reciprocal_lattice(lattice)
     fractional=np.array([[.137+.07*a for a in range(model.dim)],
                          [.319-.03*a for a in range(model.dim)]])
     k=fractional@reciprocal;h=model.hamiltonian(k,backend=backend)

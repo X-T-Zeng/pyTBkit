@@ -4,6 +4,7 @@ import sympy as sp
 from .base import TBkit, points
 from .hr import immutable
 from . import backends
+from .lattice import checked_lattice,inverse_lattice
 
 
 class HK(TBkit):
@@ -110,8 +111,7 @@ class Htrig(TBkit):
         if f.ndim!=2 or c.ndim!=3 or len(f)!=len(c) or c.shape[1]!=c.shape[2] or s.shape!=c.shape:
             raise ValueError("frequencies (nt,dim), cosine/sine (nt,norb,norb) required")
         self.dim,self.norb=f.shape[1],c.shape[1]
-        lattice=np.eye(self.dim) if lattice is None else np.asarray(lattice,float)
-        if lattice.shape!=(self.dim,self.dim) or abs(np.linalg.det(lattice))<1e-14:raise ValueError('invertible lattice required')
+        lattice=checked_lattice(np.eye(self.dim) if lattice is None else lattice,self.dim)
         orbitals=np.zeros((self.norb,self.dim)) if orbitals is None else orbitals
         if np.shape(orbitals)!=(self.norb,self.dim):raise ValueError('orbital center shape mismatch')
         self.lattice=immutable(lattice,float);self.orbitals=immutable(orbitals,float)
@@ -137,8 +137,8 @@ class Htrig(TBkit):
 
     def to_hr(self,lattice=None):
         from .hr import HR
-        lattice=self.lattice if lattice is None else np.asarray(lattice,float)
-        r=self.frequencies@np.linalg.inv(lattice)
+        lattice=self.lattice if lattice is None else checked_lattice(lattice,self.dim)
+        r=self.frequencies@inverse_lattice(lattice)
         if not np.allclose(r,np.rint(r),atol=1e-10,rtol=0): raise ValueError("frequencies not commensurate with lattice")
         return HR(np.rint(np.concatenate([r,-r])).astype(int),np.concatenate([(self.cosine-1j*self.sine)/2,(self.cosine+1j*self.sine)/2]),lattice=lattice,orbitals=self.orbitals)
 
