@@ -1,6 +1,7 @@
 """Integer supercells, slabs, and explicit basis operations."""
 from collections import deque
 import numpy as np
+from .lattice import same_lattice
 from .hr import HR
 
 
@@ -64,7 +65,7 @@ def direct_sum(*models):
     from scipy.linalg import block_diag
     if not models: raise ValueError("one or more models required")
     first=models[0]
-    if any(m.dim!=first.dim or not np.allclose(m.lattice,first.lattice) for m in models):
+    if any(m.dim!=first.dim or not same_lattice(m.lattice,first.lattice) for m in models):
         raise ValueError("direct sum models need the same lattice")
     keys=sorted(set(tuple(r) for m in models for r in m.vectors))
     mappings=[{tuple(r):h for r,h in zip(m.vectors,m.hopping)} for m in models]

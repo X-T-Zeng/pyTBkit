@@ -6,6 +6,7 @@ HSPICE control decks and proprietary file parsers are not emulated.
 from dataclasses import dataclass
 from pathlib import Path
 import numpy as np
+from .lattice import checked_lattice
 from scipy.linalg import solve
 from .base import points
 
@@ -65,8 +66,7 @@ class Hckt:
         """
         if not isinstance(nnodes,int) or nnodes<1 or not isinstance(dim,int) or not 1<=dim<=3:raise ValueError("invalid circuit dimensions")
         self.nnodes,self.dim=nnodes,dim;self.bonds=tuple(bonds);self.ground=tuple(ground)
-        self.lattice=np.eye(dim) if lattice is None else np.asarray(lattice,float)
-        if self.lattice.shape!=(dim,dim) or not np.isfinite(self.lattice).all() or abs(np.linalg.det(self.lattice))<1e-12:raise ValueError("invertible lattice required")
+        self.lattice=checked_lattice(np.eye(dim) if lattice is None else lattice,dim)
         for i,j,r,c in self.bonds:
             if not 0<=i<nnodes or not 0<=j<nnodes or np.shape(r)!=(dim,) or not np.all(np.asarray(r)==np.rint(r)) or not isinstance(c,Component) or (i==j and not np.any(r)):
                 raise ValueError("invalid circuit bond")

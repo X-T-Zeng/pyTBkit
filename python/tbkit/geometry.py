@@ -1,4 +1,5 @@
 import numpy as np
+from .lattice import checked_lattice,reciprocal_lattice
 
 
 def kmesh(shape,*,lattice=None):
@@ -7,8 +8,8 @@ def kmesh(shape,*,lattice=None):
     if shape.ndim!=1 or np.any(shape<1) or not np.all(shape==np.rint(shape)):
         raise ValueError("positive integer grid sizes required")
     dim=len(shape)
-    lattice=np.eye(dim) if lattice is None else np.asarray(lattice,float)
-    reciprocal=2*np.pi*np.linalg.inv(lattice).T
+    lattice=checked_lattice(np.eye(dim) if lattice is None else lattice,dim)
+    reciprocal=reciprocal_lattice(lattice)
     grid=np.stack(np.meshgrid(*(np.arange(int(n))/n for n in shape),indexing="ij"),axis=-1).reshape(-1,dim)
     return grid@reciprocal
 

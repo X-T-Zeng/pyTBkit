@@ -5,6 +5,7 @@ import itertools
 import numpy as np
 from scipy.spatial import cKDTree
 from .hr import immutable
+from .lattice import checked_lattice,inverse_lattice,log_cell_volume,finite_measure
 
 
 @dataclass(frozen=True)
@@ -18,13 +19,13 @@ class Neighbors:
 
 class Structure:
     def __init__(self,lattice,positions,species,*,cartesian=False,selective=None):
-        lattice=np.asarray(lattice,float); positions=np.asarray(positions,float)
-        if lattice.shape!=(3,3) or abs(np.linalg.det(lattice))<1e-12:
-            raise ValueError("invertible 3D lattice required")
+        lattice=checked_lattice(lattice,3)
+        if np.iscomplexobj(positions):raise ValueError('positions must be real')
+        positions=np.asarray(positions,float)
         if positions.ndim!=2 or positions.shape[1]!=3 or len(species)!=len(positions):
             raise ValueError("positions (natoms,3), one species per atom required")
         self.lattice=immutable(lattice,float)
-        self.positions=immutable(positions@np.linalg.inv(lattice) if cartesian else positions,float)
+        self.positions=immutable(positions@inverse_lattice(lattice) if cartesian else positions,float)
         self.species=tuple(map(str,species))
         if selective is not None and np.shape(selective)!=(len(positions),3):
             raise ValueError("selective flags shape must match positions")
@@ -34,7 +35,10 @@ class Structure:
     def cartesian(self): return self.positions@self.lattice
 
     @property
-    def volume(self): return abs(np.linalg.det(self.lattice))
+    def volume(self): return finite_measure(self.log_volume)
+
+    @property
+    def log_volume(self): return log_cell_volume(self.lattice)
 
     @classmethod
     def from_poscar(cls,path):
@@ -86,26 +90,67 @@ class Structure:
             rows.append(row)
         Path(path).write_text('\n'.join(rows)+'\n')
 
-    def neighbors(self,cutoff,*,periodic=(True,True,True),tol=1e-10):
-        """All directed i -> j+R bonds within cutoff, excluding self at R=0.
+    def neighbors(self,cutoff,*,periodic=(True,True,True),tol=None,max_images=2_000_000):
+        """Directed i -> j+R bonds with tol < distance <= cutoff+tol.
 
         Reciprocal bounds remain valid for skew cells. Positions are not
         silently wrapped, so reported R refers to the original coordinates.
+        Default tol is 1e-10 times cutoff; explicit tol has length units.
+        Search geometry uses cutoff units, avoiding norm over/underflow when
+        length units change. max_images bounds replicated atoms before allocation.
         """
-        if cutoff<=0 or tol<0: raise ValueError("positive cutoff and nonnegative tolerance required")
+        if (isinstance(cutoff,(bool,np.bool_)) or np.ndim(cutoff)!=0 or np.iscomplexobj(cutoff)
+                or not np.isfinite(cutoff) or cutoff<=0):
+            raise ValueError("finite positive cutoff required")
+        cutoff=float(cutoff)
+        if tol is not None and (np.ndim(tol)!=0 or np.iscomplexobj(tol) or not np.isfinite(tol) or tol<0):
+            raise ValueError('finite nonnegative length tolerance required')
+        with np.errstate(over='ignore'):
+            tolerance=1e-10 if tol is None else float(tol)/cutoff
+        radius=1.+tolerance
+        if not np.isfinite(radius):raise ValueError('neighbor tolerance not representable in cutoff units')
+        if isinstance(max_images,(bool,np.bool_)) or not isinstance(max_images,(int,np.integer)) or max_images<1:
+            raise ValueError('positive integer max_images required')
         periodic=np.asarray(periodic,bool)
         if periodic.shape!=(3,): raise ValueError("three periodic flags required")
         if not len(self.positions):
             return Neighbors(np.empty(0,int),np.empty(0,int),np.empty((0,3),int),np.empty((0,3)),np.empty(0))
-        span=np.ptp(self.positions,axis=0)
-        bounds=np.ceil(cutoff*np.linalg.norm(np.linalg.inv(self.lattice),axis=0)+span).astype(int)
+        with np.errstate(over='ignore',under='ignore',invalid='ignore'):
+            cell=self.lattice/cutoff
+            # A common origin reduces cancellation without changing image labels.
+            coordinates=(self.positions-self.positions[0])@cell
+        if not np.isfinite(cell).all() or not np.any(cell) or not np.isfinite(coordinates).all():
+            raise ValueError('neighbor geometry not representable in cutoff units')
+        bounds=np.zeros(3,dtype=np.int64)
+        if np.any(periodic):
+            inverse=inverse_lattice(cell)
+            span=np.ptp(self.positions,axis=0)
+            limit=np.ceil(radius*np.hypot.reduce(inverse,axis=0)+span)
+            # Python integer arithmetic prevents an overflowing image count.
+            count=len(self.positions)
+            for axis in range(3):
+                if periodic[axis]:
+                    if (not np.isfinite(limit[axis]) or limit[axis]>max_images
+                            or limit[axis]>np.iinfo(np.int64).max//2-1):
+                        raise MemoryError('neighbor replicated atoms exceed max_images')
+                    bounds[axis]=int(limit[axis]);count*=2*int(bounds[axis])+1
+            if count>max_images:raise MemoryError('neighbor replicated atoms exceed max_images')
+        elif len(self.positions)>max_images:
+            raise MemoryError('neighbor replicated atoms exceed max_images')
         cells=np.array(list(itertools.product(*(range(-b,b+1) if periodic[a] else [0] for a,b in enumerate(bounds)))))
-        replicas=(self.cartesian[None,:,:]+(cells@self.lattice)[:,None,:]).reshape(-1,3)
-        tree=cKDTree(replicas); ii=[]; jj=[]; rr=[]; dd=[]
-        for i,indices in enumerate(tree.query_ball_point(self.cartesian,cutoff+tol)):
+        replicas=(coordinates[None,:,:]+(cells@cell)[:,None,:]).reshape(-1,3)
+        if not np.isfinite(replicas).all():raise ValueError('nonfinite neighbor replicas')
+        tree=cKDTree(replicas); ii=[]; jj=[]; rr=[]; dd=[]; distances=[]
+        for i,indices in enumerate(tree.query_ball_point(coordinates,np.nextafter(radius,np.inf))):
             for index in sorted(indices):
-                ci,j=divmod(index,len(self.positions)); delta=replicas[index]-self.cartesian[i]
-                if np.linalg.norm(delta)>tol:
-                    ii.append(i); jj.append(j); rr.append(cells[ci]); dd.append(delta)
+                ci,j=divmod(index,len(self.positions))
+                delta=(self.positions[j]-self.positions[i]+cells[ci])@cell
+                distance=float(np.hypot.reduce(delta))
+                if tolerance<distance<=radius:
+                    ii.append(i); jj.append(j); rr.append(cells[ci]); dd.append(delta*cutoff)
+                    distances.append(distance*cutoff)
         delta=np.asarray(dd,float).reshape(-1,3)
-        return Neighbors(np.asarray(ii,int),np.asarray(jj,int),np.asarray(rr,int).reshape(-1,3),delta,np.linalg.norm(delta,axis=1))
+        distances=np.asarray(distances,float)
+        if not np.isfinite(delta).all() or not np.isfinite(distances).all() or np.any(distances==0.):
+            raise ValueError('neighbor displacement/distance not representable')
+        return Neighbors(np.asarray(ii,int),np.asarray(jj,int),np.asarray(rr,int).reshape(-1,3),delta,distances)

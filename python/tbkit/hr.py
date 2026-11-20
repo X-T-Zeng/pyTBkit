@@ -8,6 +8,7 @@ import numpy as np
 from scipy import sparse
 from .base import TBkit, points
 from . import backends
+from .lattice import checked_lattice
 
 
 def immutable(a, dtype):
@@ -30,9 +31,7 @@ class HR(TBkit):
         if len(r)==0:
             r=np.zeros((1,self.dim),int)
             h=np.zeros((1,self.norb,self.norb),complex)
-        lattice = np.eye(self.dim) if lattice is None else lattice
-        if np.shape(lattice) != (self.dim, self.dim) or abs(np.linalg.det(lattice)) < 1e-14:
-            raise ValueError("lattice must be square and invertible")
+        lattice = checked_lattice(np.eye(self.dim) if lattice is None else lattice,self.dim)
         unique, inv = np.unique(np.rint(r).astype(int), axis=0, return_inverse=True)
         combined = np.zeros((len(unique), self.norb, self.norb), complex)
         np.add.at(combined, inv, h)

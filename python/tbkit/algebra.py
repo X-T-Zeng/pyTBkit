@@ -2,6 +2,7 @@
 import numbers
 import numpy as np
 from .base import TBkit
+from .lattice import same_lattice
 
 
 class LinearCombination(TBkit):
@@ -11,7 +12,7 @@ class LinearCombination(TBkit):
         if any(m.dim!=self.dim or m.norb!=self.norb for m in models):raise ValueError("model dimensions differ")
         lattices=[m.lattice for m in models if hasattr(m,'lattice')]
         if lattices:
-            if any(not np.allclose(x,lattices[0]) for x in lattices):raise ValueError("model lattices differ")
+            if any(not same_lattice(x,lattices[0]) for x in lattices):raise ValueError("model lattices differ")
             self.lattice=lattices[0]
         centers=[m.orbitals for m in models if hasattr(m,'orbitals')]
         if centers and any(not np.allclose(x,centers[0]) for x in centers):raise ValueError("orbital gauges/centers differ")

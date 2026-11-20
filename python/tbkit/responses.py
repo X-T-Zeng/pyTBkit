@@ -6,6 +6,7 @@ kernels; material-specific SI prefactors are not silently applied.
 from dataclasses import dataclass
 import itertools
 import numpy as np
+from .lattice import checked_lattice,reciprocal_lattice,log_cell_volume,finite_measure
 from scipy.special import expit
 from .spectral import SpectralBatch,prepare_spectral
 from .hr import immutable
@@ -167,10 +168,9 @@ def integrate_bz(function,shape,*,lattice=None,chunk_size=512,normalization='ave
     if shape.ndim!=1 or not len(shape) or np.any(shape<1) or not np.all(shape==np.rint(shape)) or chunk_size<1:
         raise ValueError("positive integer grid sizes/chunk_size required")
     shape=shape.astype(int);dim=len(shape)
-    lattice=np.eye(dim) if lattice is None else np.asarray(lattice,float)
-    if lattice.shape!=(dim,dim) or abs(np.linalg.det(lattice))<1e-12: raise ValueError("invertible lattice required")
+    lattice=checked_lattice(np.eye(dim) if lattice is None else lattice,dim)
     if normalization not in ('average','integral','states'): raise ValueError("invalid normalization")
-    reciprocal=2*np.pi*np.linalg.inv(lattice).T;n=int(np.prod(shape));total=None;compensation=None
+    reciprocal=reciprocal_lattice(lattice);n=int(np.prod(shape));total=None;compensation=None
     for start in range(0,n,chunk_size):
         fractional=np.array(np.unravel_index(np.arange(start,min(start+chunk_size,n)),tuple(shape))).T/shape
         values=np.asarray(function(fractional@reciprocal))
@@ -179,5 +179,11 @@ def integrate_bz(function,shape,*,lattice=None,chunk_size=512,normalization='ave
         if total is None: total=np.zeros_like(part,dtype=np.result_type(part,float));compensation=np.zeros_like(total)
         # Compensated sum of batch totals, deterministic for fixed chunk size.
         y=part-compensation;t=total+y;compensation=(t-total)-y;total=t
-    factor={'average':1.,'integral':abs(np.linalg.det(reciprocal)),'states':1/abs(np.linalg.det(lattice))}[normalization]
-    return total*(factor/n)
+    mean=total/n
+    if normalization=='average' or not np.any(mean):return mean
+    log_measure=-log_cell_volume(lattice)
+    if normalization=='integral':log_measure+=dim*np.log(2*np.pi)
+    with np.errstate(over='ignore',invalid='ignore'):
+        result=mean*finite_measure(log_measure)
+    if not np.isfinite(result).all():raise ValueError('BZ result not representable; change units')
+    return result

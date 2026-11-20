@@ -1,0 +1,41 @@
+{
+  "base_commit": "a1f1102356d4efb8df50d7bf4bc70810adf5a38f",
+  "source_sha256": {
+    "python/tbkit/hr.py": "ceaf080eccb4ddcd3ec078d4eb5a02189fd345b404f0ac7f8d163f96a95dd719",
+    "python/tbkit/structure.py": "02287dc06267b6c379a4f840b22df23a1b188043e69216817871333a2c18849d",
+    "python/tbkit/slater_koster.py": "1b59c02dfe33ebae6ab2b88795bd49e9ae629528b682716ea248038aabc4638a",
+    "python/tbkit/algebra.py": "dda42a417c3e4e86e1bc558466247e615dd2bb611462f64656eb23ddb00f075b",
+    "python/tbkit/nonorthogonal.py": "5c06cad08f0dde0f4eaccadc0ce7907ed9486a82f5870755a339df85b3751478"
+  },
+  "close_pair": {
+    "distance": 5e-11,
+    "cutoff": 8e-11,
+    "observed_bond_count": 0,
+    "observed_energies": [
+      0.0,
+      0.0
+    ],
+    "analytic_energies_with_ss_hopping_one": [
+      -1.0,
+      1.0
+    ]
+  },
+  "merged_lattice_counterexample": {
+    "relative_mismatch": 1e-07,
+    "k": [
+      31415926.535897933
+    ],
+    "actual_sum_of_functions": 0.0,
+    "collapsed_sum": 4.0
+  },
+  "sk_direction": {
+    "1e-200": {
+      "error": "ValueError",
+      "message": "nonzero bond required"
+    },
+    "1e+200": {
+      "error": "ValueError",
+      "message": "real orthogonal 3x3 matrix required (absolute tolerance 1e-12)"
+    }
+  }
+}

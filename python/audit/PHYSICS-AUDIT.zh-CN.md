@@ -123,3 +123,12 @@ Python提供SymPy精确标量CG再数值化的准备路径，不将不稳定Raca
 默认拒绝超预算基底，不自动删基。官方 Umat 只改 H、不改 S 的原始表达式已有
 严格幺正换基反例，尚未形成完整 MATLAB 类补丁。
 证明、接口变化和验证边界见 [NONORTHOGONAL-REVIEW.zh-CN.md](NONORTHOGONAL-REVIEW.zh-CN.md)。
+
+## 接续：长度单位、近邻与共同晶格
+
+原始固定近邻长度容差会删掉真实非零键，两个ss轨道的谱从[-1,1]错变为[0,0]；
+宽松共享胞比较还会把两个不同Bloch函数合成错误的HR。行列式绝对阈值与直接norm
+也使晶胞/Slater–Koster方向依赖长度单位。现以共用相对几何校验、cutoff单位近邻搜索、
+稳定方向归一化与有界像分配修正，并按解析谱、独立R枚举、倒格矢双基和多后端验证。
+官方get.Gk原始语句另在Octave验证；nn的Å约定只做接口审阅，不冒称完整MATLAB类已验证。
+详见 [LATTICE-REVIEW.zh-CN.md](LATTICE-REVIEW.zh-CN.md)。

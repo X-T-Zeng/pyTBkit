@@ -1,0 +1,211 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.22946280399992247,
+      "log": "upstream.log"
+    },
+    {
+      "name": "symbolic_inventory",
+      "exit_code": 0,
+      "seconds": 1.383135435999975,
+      "log": "symbolic_inventory.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 68.00085827800012,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 3.431248199000038,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "group_generators",
+      "exit_code": 0,
+      "seconds": 3.9503716980000263,
+      "log": "group_generators.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 3.5651363570000285,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.4832614310000736,
+      "log": "examples.log"
+    },
+    {
+      "name": "angular_audit",
+      "exit_code": 0,
+      "seconds": 4.280594612999948,
+      "log": "angular_audit.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 3.226502861999961,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "transport_scaling",
+      "exit_code": 0,
+      "seconds": 3.8677728400000433,
+      "log": "transport_scaling.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 3.3425724300000184,
+      "log": "external_example.log"
+    },
+    {
+      "name": "finite_group_coupling",
+      "exit_code": 0,
+      "seconds": 16.13082839599997,
+      "log": "finite_group_coupling.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.8942245440000534,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.7860908469999686,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "symbolic_example",
+      "exit_code": 0,
+      "seconds": 7.61197878400003,
+      "log": "symbolic_example.log"
+    },
+    {
+      "name": "hermiticity_example",
+      "exit_code": 0,
+      "seconds": 2.848842549999972,
+      "log": "hermiticity_example.log"
+    },
+    {
+      "name": "nonorthogonal_example",
+      "exit_code": 0,
+      "seconds": 3.0062663090000115,
+      "log": "nonorthogonal_example.log"
+    },
+    {
+      "name": "lattice_units_example",
+      "exit_code": 0,
+      "seconds": 3.699954646999913,
+      "log": "lattice_units_example.log"
+    },
+    {
+      "name": "group_closure_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5851246749998609,
+      "log": "group_closure_benchmark.log"
+    },
+    {
+      "name": "matrix_unit_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5580988910000997,
+      "log": "matrix_unit_benchmark.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.9069455240000934,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "angular_generator_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5710880310000448,
+      "log": "angular_generator_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.8603470870000365,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.763837661000025,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 3.2834323829999903,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "hermiticity_benchmark",
+      "exit_code": 0,
+      "seconds": 2.7933089119999295,
+      "log": "hermiticity_benchmark.log"
+    },
+    {
+      "name": "generalized_diagnostics_benchmark",
+      "exit_code": 0,
+      "seconds": 4.487763628000039,
+      "log": "generalized_diagnostics_benchmark.log"
+    },
+    {
+      "name": "lattice_units_benchmark",
+      "exit_code": 0,
+      "seconds": 4.024629544000163,
+      "log": "lattice_units_benchmark.log"
+    },
+    {
+      "name": "plot_gallery",
+      "exit_code": 0,
+      "seconds": 4.126833200999954,
+      "log": "plot_gallery.log"
+    }
+  ],
+  "tests": {
+    "tests": 424,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "base_commit": "a1f1102356d4efb8df50d7bf4bc70810adf5a38f",
+  "scope": "length-unit and common-row-cell audit; not all unit conventions or full TBkit parity",
+  "added_tests": 49,
+  "tested_code_sha256": {
+    "python/benchmarks/lattice_units.py": "eefe9fcb8d2ad752fda97cdc9a78106ca04ee03ae2b9fe7f5030c01db0f7f217",
+    "python/examples/lattice_units.py": "89a5db4879d400e781ed7635fe98b2bb32fe1117ed7fc4f3683083300bc18ef4",
+    "python/tbkit/algebra.py": "466ea1053cb9c4724508a151482ce2b8b7a010fb808037241bbff5b1d9ffe45e",
+    "python/tbkit/circuit.py": "696ae2bb3d8a2b88fdd109b8d98356e96b0e7b1b84af6eb168578d0e3e00817b",
+    "python/tbkit/construction.py": "a05aa22cb5e2204e96006a00807f6038a88088b525d9e2befa1d8efca27e7fe1",
+    "python/tbkit/crystallography.py": "43ee2a28260336ee84f13066bfe944c8cc1d83db6e225342feca09b3fabbd30c",
+    "python/tbkit/geometry.py": "5aba10a11a23dafad5e399f46dccb2c10bb08a67eab3ae0ab403ff527b9bb073",
+    "python/tbkit/hr.py": "53f439e34f17471c6e80b8cb148bb404d796c71b3d9bfad9efeb59a6812a7459",
+    "python/tbkit/lattice.py": "c8377ab9708a9b00a7414e2e043434dc0765115068ec2efb13cbaf42ff70504e",
+    "python/tbkit/nonorthogonal.py": "af3180b45ade9ac45d2a9398bdaf6bf5c46f9139679034d0e2ba25dd52a19412",
+    "python/tbkit/responses.py": "f69d9a2d2da7f8f4c98aecdfff0c88a703459679d463b8c5d53aaf6392d68db6",
+    "python/tbkit/slater_koster.py": "74b84fc9f2fae9c7f2dcb3aa1039c5eceffe8682b19de489fe6c6d96cbbdf2ed",
+    "python/tbkit/sparse.py": "7138a1c6b573b362319424d9c2653fef5d57da5202a959cdf8671f16293035a9",
+    "python/tbkit/structure.py": "507057854eafe19021227948e57f39217ef40d727df928cdf6a50e194c0c63c5",
+    "python/tbkit/symbolic.py": "3f928a52a4ba71c7940a8acd65ad7681cd71681a5a1f15140c4230842b6628c4",
+    "python/tbkit/topology.py": "51ca1595227585e94c2b4e0cb8ab238b8d76df73de877ab37052e9c658488be4",
+    "python/tests/test_lattice_units.py": "dc234fff8922a1606d86a3ac406078443d1bb9bc9508bbbdc8134ab3739aeff2",
+    "python/tests/test_matlab_reciprocal_audit.py": "22181e80eb69adf071a38b52a3fbf47fba14878d24d009ca802cde71f7ec49f1",
+    "python/tools/validate.py": "49a58308a14cfa367a54f86f988858d7800fba120963380778cddb34cbc79110"
+  }
+}

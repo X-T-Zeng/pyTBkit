@@ -4,6 +4,7 @@ from scipy import sparse
 from .hr import HR,immutable
 from .base import TBkit,points
 from . import backends
+from .lattice import checked_lattice
 
 
 class SparseHR(TBkit):
@@ -15,8 +16,7 @@ class SparseHR(TBkit):
         matrices=[sparse.csr_matrix(h,dtype=complex,copy=True) for h in terms.values()]
         n=matrices[0].shape[0]; self.dim=r.shape[1]; self.norb=n
         if n<1 or any(h.shape!=(n,n) for h in matrices): raise ValueError("equal square matrices required")
-        lattice=np.eye(self.dim) if lattice is None else np.asarray(lattice,float)
-        if lattice.shape!=(self.dim,self.dim) or abs(np.linalg.det(lattice))<1e-12: raise ValueError("invertible lattice required")
+        lattice=checked_lattice(np.eye(self.dim) if lattice is None else lattice,self.dim)
         self.lattice=immutable(lattice,float); self.vectors=immutable(r,np.int64)
         self.cartesian_vectors=immutable(r@lattice,float)
         self.orbitals=immutable(np.zeros((n,self.dim)) if orbitals is None else orbitals,float)
