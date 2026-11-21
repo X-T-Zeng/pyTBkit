@@ -9,6 +9,9 @@
 当前分支未包含仍待审阅的长度单位PR #13（其独立424项测试/CI success）；
 401与424属于不同分支，不能相加当作已合并main的完成度。
 例子、Numba/NumPy计时和适用边界见 `audit/ORBITAL-GAUGE-REVIEW.zh-CN.md`。
+独立代码提交eeac457的GitHub CI已success。与PR #13的本地临时组合450项/31步
+也全部通过，117个Python文件hash见 `audit/gauge-lattice-integration-validation.json`；
+此结果不代表main已合并两轮改动。
 
 ## 2026-11-18：PR #2–#11 集成快照
 

@@ -198,5 +198,11 @@
     "python/examples/orbital_gauge.py": "162a0761b0315058ec2ebd78d23c0d76b4f475321e6d081b139f9786dba40ed0",
     "python/benchmarks/orbital_embedding.py": "ec3a4cf41725e7668a6c12630c9facadf3fbd98cc9c7d758a31518ba23d8a00b",
     "python/tools/validate.py": "21c8c519e1a940b71487b64ff6ba95d5bdeef93df3860eb4b90f46cf837a80b3"
+  },
+  "github_ci": {
+    "commit": "eeac4577e0f2f2e09755c54fc48b15a6a03e9e55",
+    "run": 44844699044,
+    "conclusion": "success",
+    "url": "https://github.com/X-T-Zeng/pyTBkit/actions/runs/44844699044"
   }
 }

@@ -1,0 +1,334 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.46481456699984847,
+      "log": "upstream.log"
+    },
+    {
+      "name": "symbolic_inventory",
+      "exit_code": 0,
+      "seconds": 1.2783287819984253,
+      "log": "symbolic_inventory.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 122.44029311600025,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 3.5430545060007717,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "group_generators",
+      "exit_code": 0,
+      "seconds": 3.2573313280008733,
+      "log": "group_generators.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 3.4432145140017383,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.4189786940041813,
+      "log": "examples.log"
+    },
+    {
+      "name": "angular_audit",
+      "exit_code": 0,
+      "seconds": 3.668723416994908,
+      "log": "angular_audit.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 2.3186903389942017,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "transport_scaling",
+      "exit_code": 0,
+      "seconds": 3.5371559019986307,
+      "log": "transport_scaling.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 3.210030475995154,
+      "log": "external_example.log"
+    },
+    {
+      "name": "finite_group_coupling",
+      "exit_code": 0,
+      "seconds": 17.668201328997384,
+      "log": "finite_group_coupling.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.5196590210034628,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.4512610340025276,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "symbolic_example",
+      "exit_code": 0,
+      "seconds": 7.2933066800032975,
+      "log": "symbolic_example.log"
+    },
+    {
+      "name": "hermiticity_example",
+      "exit_code": 0,
+      "seconds": 2.6647447719951742,
+      "log": "hermiticity_example.log"
+    },
+    {
+      "name": "nonorthogonal_example",
+      "exit_code": 0,
+      "seconds": 2.964753412998107,
+      "log": "nonorthogonal_example.log"
+    },
+    {
+      "name": "lattice_units_example",
+      "exit_code": 0,
+      "seconds": 3.4178586229973007,
+      "log": "lattice_units_example.log"
+    },
+    {
+      "name": "orbital_gauge_example",
+      "exit_code": 0,
+      "seconds": 4.222690242000681,
+      "log": "orbital_gauge_example.log"
+    },
+    {
+      "name": "orbital_embedding_benchmark",
+      "exit_code": 0,
+      "seconds": 9.30873463700118,
+      "log": "orbital_embedding_benchmark.log"
+    },
+    {
+      "name": "group_closure_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5462621090046014,
+      "log": "group_closure_benchmark.log"
+    },
+    {
+      "name": "matrix_unit_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5801162990028388,
+      "log": "matrix_unit_benchmark.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.840298907001852,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "angular_generator_benchmark",
+      "exit_code": 0,
+      "seconds": 1.6113202650012681,
+      "log": "angular_generator_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.6088720629995805,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.4658059180001146,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 2.261738280998543,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "hermiticity_benchmark",
+      "exit_code": 0,
+      "seconds": 2.1526694359999965,
+      "log": "hermiticity_benchmark.log"
+    },
+    {
+      "name": "generalized_diagnostics_benchmark",
+      "exit_code": 0,
+      "seconds": 3.4827725640061544,
+      "log": "generalized_diagnostics_benchmark.log"
+    },
+    {
+      "name": "lattice_units_benchmark",
+      "exit_code": 0,
+      "seconds": 3.3469156049977755,
+      "log": "lattice_units_benchmark.log"
+    },
+    {
+      "name": "plot_gallery",
+      "exit_code": 0,
+      "seconds": 3.951533075996849,
+      "log": "plot_gallery.log"
+    }
+  ],
+  "tests": {
+    "tests": 450,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "local temporary integration of PR #13 and #14; neither merged remotely",
+  "source_commits": {
+    "main": "a1f1102356d4efb8df50d7bf4bc70810adf5a38f",
+    "pr_13": "e6c8f6374e3f3aff3a947bb18a98b1f88716f574",
+    "pr_14_code": "eeac4577e0f2f2e09755c54fc48b15a6a03e9e55"
+  },
+  "local_combined_commit": "58c1674c733bfba1018f0f5d104ffb212d3c0fe3",
+  "local_combined_tree": "1f7836962c762b74a2efdcd979c9febe9aa84b84",
+  "remote_merge_performed": false,
+  "tested_code_sha256": {
+    "python/benchmarks/angular_generators.py": "a7e7d418c187af1a2e4c2e871af57434306ee6999dba8dd5ca223e4f3c1540c6",
+    "python/benchmarks/benchmark.py": "1d763d4c156bc9a6701e6b2338a458638db7b698447dfe00e3cd6b645d8117ce",
+    "python/benchmarks/generalized_diagnostics.py": "65920551afe847d9f7401fc1506a8f647c69d284a4da1ad94bfa0af7f035f3d3",
+    "python/benchmarks/group_closure.py": "0ed1e204c17be22ee6cb7743c85d71283a5f60e576ac37acfb0e9e45b31fd9b6",
+    "python/benchmarks/hermiticity.py": "b96d0a412d7b9da5365fa7fb6bda07d17e327de92ac7679f01fc6d7f8c951f1b",
+    "python/benchmarks/lattice_units.py": "eefe9fcb8d2ad752fda97cdc9a78106ca04ee03ae2b9fe7f5030c01db0f7f217",
+    "python/benchmarks/matrix_units.py": "b9c1abda911029758bc96d95502163d6e87af228193649c530eae2662fe169f7",
+    "python/benchmarks/orbital_embedding.py": "ec3a4cf41725e7668a6c12630c9facadf3fbd98cc9c7d758a31518ba23d8a00b",
+    "python/benchmarks/regular_blocks.py": "191a9d520bf4f46269413cce1e694beac407f6b23035f9bafbc4be3f2d3ee2ff",
+    "python/benchmarks/response_reuse.py": "9a0ceb41141e286d52fe3c9a0bbf5914e395f0c37d41b17b821510785c8803c3",
+    "python/benchmarks/sparse_benchmark.py": "ff8b0ba12b4d25fcbae4112a2c8f078bec1c62fd34c7858ed29f36f03a456f30",
+    "python/examples/advanced.py": "19261a7aeed4f8fe5026c3227d1984fe8a23f39e7e00f58170429a364181c0c4",
+    "python/examples/angular_audit.py": "bd086575b51735e726da71c6ce6ac22b2010a8d4aa826b11854bc1ae5070ac86",
+    "python/examples/automatic_irreps.py": "917ed3cab03985a90399490215b7e2351436981af64755007a6712fcb628d8db",
+    "python/examples/external_data.py": "f6a7a7ad1bd79e36b6d083102c7515a39445f9cb9aba4ad372d7c92663e52548",
+    "python/examples/finite_group_coupling.py": "b163561a83644b882a67a3890c6724b42fc95b693935415c09e641ca713dc184",
+    "python/examples/full_suite.py": "5a8a1fefcee59159639b16c41a20dcb75ac4937e3529734b5fd8c9a3be73a799",
+    "python/examples/group_generators.py": "80f01fb1cf1f8561efc59653ae90840f63c8feeaa3c027e4dd26f7d3cd01bb16",
+    "python/examples/group_theory.py": "8fdce40fef92960b5049f5b22486e510de59b26160d1750595bb8ce60f028a63",
+    "python/examples/hermiticity_units.py": "76c16f07dd243db9cc686aa1404d0bcd99f2d2f10cfcaa36121981c9ba06be8f",
+    "python/examples/lattice_units.py": "89a5db4879d400e781ed7635fe98b2bb32fe1117ed7fc4f3683083300bc18ef4",
+    "python/examples/nonorthogonal_reliability.py": "2ba9482663382e69e9a0438941547a4fce62b7f0362f6315e6666775a99bcf23",
+    "python/examples/orbital_gauge.py": "162a0761b0315058ec2ebd78d23c0d76b4f475321e6d081b139f9786dba40ed0",
+    "python/examples/plot_gallery.py": "3bfc371aa4d03b53e1b99460a1e5c7633b8552c1823d8c77dab7a8bdb9d69a10",
+    "python/examples/research.py": "e6df1d7e6cf6eafbdc0c2edc304194ce3287c6992f73b0fb0ec62cfb45ad3934",
+    "python/examples/response_sweep.py": "aae835b290e9176d1726a68bf154992709b706d049518b2745bf1d68971c4451",
+    "python/examples/symbolic_workflow.py": "a19d9a4dc71656351fed232471e1408c3cc2321dc041cf3c7fba5f153ad521e3",
+    "python/examples/transport_scaling.py": "f30093b620edac8b64aefba5a2d1a156e9c4946ea680a466bc3b996884969481",
+    "python/tbkit/__init__.py": "c8b8359f7d63e7000311698978cdf99966361f51223c88fad6f8fbb93259a87e",
+    "python/tbkit/algebra.py": "72ad8061f3e765a2d7b0cf3109eba40ef04bde41ac7f38ae83dd86bf52e75864",
+    "python/tbkit/angular_kernels.py": "66efd4e71099448b154906c382f098bc04a8fad5c71a41d54d8bbf168d5e8d48",
+    "python/tbkit/backends.py": "31b858e25939a5385bc8606dbc0b75e8ad75b46a782a1fd1be7970e1159f2e3d",
+    "python/tbkit/base.py": "ef16def255502f3f27eeae731ab30ebdc697b5db8cdedf8935bbdb964993d5fa",
+    "python/tbkit/circuit.py": "696ae2bb3d8a2b88fdd109b8d98356e96b0e7b1b84af6eb168578d0e3e00817b",
+    "python/tbkit/constants.py": "8f4035889ce620983e46a8dfc6b00c536e0365e85ed6366a97664f9fa260a15f",
+    "python/tbkit/construction.py": "a05aa22cb5e2204e96006a00807f6038a88088b525d9e2befa1d8efca27e7fe1",
+    "python/tbkit/continuum.py": "d52db487bc788ad197d69bf6e1e7ab944e2459c234baf0a72432b5eafb0a0baa",
+    "python/tbkit/coupling.py": "d9b97d1b42094bcd71856449eb2867a6294cdde37290d13c6ab8db3c6dfd4ff5",
+    "python/tbkit/crystallography.py": "43ee2a28260336ee84f13066bfe944c8cc1d83db6e225342feca09b3fabbd30c",
+    "python/tbkit/dft.py": "fd4f14f8172617708662851cdb3363289087f5ffdf054e66b7c4188bc29312a9",
+    "python/tbkit/fitting.py": "9c7caffafa7a873efd875999e920cd28dba7521507ebce47a85db9b9347f6967",
+    "python/tbkit/gauge.py": "5cb14fb04b90124129110987640877282901434345606185341a4c775d4a0858",
+    "python/tbkit/gauge_kernels.py": "ac5a605d82818c3faeffccefadec2afa1ccdd1718e9552a678a7caf972d6e52c",
+    "python/tbkit/generalized_kernels.py": "0a75939cbae8bcae13b1023c113548556afd58697d512ee2e38672ae4d95caab",
+    "python/tbkit/geometry.py": "5aba10a11a23dafad5e399f46dccb2c10bb08a67eab3ae0ab403ff527b9bb073",
+    "python/tbkit/group_kernels.py": "05cfff6dbd475bb24fcfb296f44c2e95e6e2d0b86601b5957b37151d3cdb0f8f",
+    "python/tbkit/groups.py": "7697c7cee6c39a8761b0280900e32f4dfe26628b28058dd63643a19ab91ed1cd",
+    "python/tbkit/hr.py": "53f439e34f17471c6e80b8cb148bb404d796c71b3d9bfad9efeb59a6812a7459",
+    "python/tbkit/io.py": "d29f731b790b426535e2e7da8ed4712142e639556eaca387ad1cefd42afd944c",
+    "python/tbkit/irreps.py": "3bee782bf90c044e60c27574ae6e18d1b4aa37f6adb60adf81ac42196b49e8d2",
+    "python/tbkit/lattice.py": "c8377ab9708a9b00a7414e2e043434dc0765115068ec2efb13cbaf42ff70504e",
+    "python/tbkit/models.py": "0d14d6e7e2858a55c21cef9bab795335adb3d6e86096980324b3e09eb83fc3b1",
+    "python/tbkit/native.py": "90ea9a56041ffb666051445229cd974517718d7a61f2aa6e3c6ec83937edd930",
+    "python/tbkit/nonorthogonal.py": "af3180b45ade9ac45d2a9398bdaf6bf5c46f9139679034d0e2ba25dd52a19412",
+    "python/tbkit/operators.py": "e89f3b0eb5eb38f56b8349f70a44d97316146a639b7ab7ff03b83536c03a6b24",
+    "python/tbkit/orbitals.py": "8914bfb6442caa3ee0443975af2904387ef264e97b8cdee0df4d550892d59506",
+    "python/tbkit/plotting.py": "464431b0aff4cc0cd1afe38e2be3158706566a223b388baabddd8d18ebc8f7eb",
+    "python/tbkit/quantum.py": "eae215e5b23898c4502de6ff4c6346e799b043e41ca44f00c5a489f7a24f8737",
+    "python/tbkit/representations.py": "c286259579bde8834211dfc72d023c645750ee7c2eaa05c6d5863a163872e7ad",
+    "python/tbkit/responses.py": "f69d9a2d2da7f8f4c98aecdfff0c88a703459679d463b8c5d53aaf6392d68db6",
+    "python/tbkit/slater_koster.py": "74b84fc9f2fae9c7f2dcb3aa1039c5eceffe8682b19de489fe6c6d96cbbdf2ed",
+    "python/tbkit/sparse.py": "7138a1c6b573b362319424d9c2653fef5d57da5202a959cdf8671f16293035a9",
+    "python/tbkit/spectral.py": "dad1e4b406d85c07e2b1073d0d15817c4be18321b5a53a5420d1184497d189d5",
+    "python/tbkit/spin.py": "cb422dd7ba7170811aad6f2264769d66d686c18cb2eba7f4477fa79793abcecd",
+    "python/tbkit/structure.py": "507057854eafe19021227948e57f39217ef40d727df928cdf6a50e194c0c63c5",
+    "python/tbkit/symbolic.py": "3f928a52a4ba71c7940a8acd65ad7681cd71681a5a1f15140c4230842b6628c4",
+    "python/tbkit/symbolic_model.py": "a3e70ccc9e5b84b53563168616f7f4d23f3bdac10bb59993a875c9f2208c351c",
+    "python/tbkit/symmetry.py": "3aa8e129ec0b48b69f67cf94875ac7418a1e07c153789f4017499cdfe466cdbb",
+    "python/tbkit/topology.py": "df68e5f5d8ca20e7d1e8a6f37ec60e7d44eea1b64b34767e73173a51bda87ea9",
+    "python/tbkit/transport.py": "2e2763475fd73daa7455eddec49e0978506f5be2c54f81e5f2a24a2ec4e149df",
+    "python/tbkit/validation_kernels.py": "8b6ca5f4a80a4a648a94803e8f5f40a6ade808c061159874a02d3f4534b7190c",
+    "python/tbkit/wannier.py": "181d44214ae2e656ab7996fcf419a2dabf94e5ee1636150c404ba6be3d771091",
+    "python/tests/reference_source.py": "021050ca43a29263eea5d0baea4e921c5c02e0ca236bca3cd2be217e750dd4cf",
+    "python/tests/test_angular_invariants.py": "e793c05ef7845d6caba6572292fbf399f437faaa086d6917fcb3a9f3d341f413",
+    "python/tests/test_automatic_irreps.py": "0b496cfe68827ac2504ed95ab65e7701b27f8272a4653292591cb5aead23d917",
+    "python/tests/test_continuum.py": "ba69e3251d5d5830d86e8de913be5704d3c484c25fcf79afa646f18dc92860b8",
+    "python/tests/test_core.py": "799e51af2b9bd1c4fa6867e6cf446bd0e47231b7f9121744d552bb19d714e381",
+    "python/tests/test_crystallography.py": "a8623ef2f2f7d9aca49758c5d927f13ca712cd370e291398fadee6eda566a845",
+    "python/tests/test_extended_models.py": "aaccd105926a29272ed9f182b6757cb7588fc2c2d34e5c790261c9f24990b9c7",
+    "python/tests/test_external_data.py": "69277b6007d07f2602ad51ab1ef1ff1562a109d709af32006a510b5a4f21807b",
+    "python/tests/test_finite_group_coupling.py": "23a06f2d42fbdafd1d0a2ee42f2bfbcf670b5e719b1cacf2ab2e1895b65bc4c6",
+    "python/tests/test_fortran_model.py": "7aad4c8cd5c767be68940426e4eca0e57016e291787252c33be0813ca8e35b08",
+    "python/tests/test_generalized_spectra.py": "9c7b34f321b9b00b89a70e5d939e1920e6287c9ead040f676360b99259d83776",
+    "python/tests/test_group_generators.py": "df0633fc91580072d05690a76171946185b9fae9ac6b04503865aa6718760bfd",
+    "python/tests/test_group_theory.py": "01e0754d57e72559a40a2b9bff2896f10dc007d4ab15cd3e2edee0ccd153563b",
+    "python/tests/test_hermiticity_scale.py": "51477d453d6371016e3bb461dfe8de57c59ce3b75be4dcc957d99120cb650590",
+    "python/tests/test_io.py": "42ee32193693bda51e0b4550e7c5452e494eb0eda31d05380d3675dd701f5c29",
+    "python/tests/test_lattice_units.py": "dc234fff8922a1606d86a3ac406078443d1bb9bc9508bbbdc8134ab3739aeff2",
+    "python/tests/test_matlab_audit.py": "3e80fce720372e435a36ed2a208af56c2fdd33db5c335873e27b517302dddea4",
+    "python/tests/test_matlab_coupling_audit.py": "c616b3e8f2dab32d65da6926950b007326b5f07b63d67aed349d162715af8242",
+    "python/tests/test_matlab_group_audit.py": "9db5e02b417ad51bfc9cf36952af011fe982d0bccab1a0d5c2d7de6676c58d8e",
+    "python/tests/test_matlab_high_j_audit.py": "baa23ff67bfc219bbd3a5aaeea212f023a4be3492070d1d37962f576c30bc665",
+    "python/tests/test_matlab_orbital_velocity.py": "78bc76e8c2feb02ac151bb9841d3c33bea124350f3b3af2bc61050835d7e154c",
+    "python/tests/test_matlab_overlap_basis.py": "154a358e31fe53f6596b5ae1fa8f910eaf7ade1584a4091c8204e5cfea9c9986",
+    "python/tests/test_matlab_reciprocal_audit.py": "22181e80eb69adf071a38b52a3fbf47fba14878d24d009ca802cde71f7ec49f1",
+    "python/tests/test_matlab_reference.py": "8a5dfaa2c68813d3576396343122fb7e7503ef47971bf9086f8a8e3f3c53e3cd",
+    "python/tests/test_matlab_transport_audit.py": "5cd66e174c4105662923688d214af6dd63fadf54a03f07f9dd89815b55009dee",
+    "python/tests/test_ncte_broadening_audit.py": "e80d0d153f22590dd565120a272a5bc6f3ed23810709299c012e32c30e4b2910",
+    "python/tests/test_orbital_gauge_algebra.py": "527501e89aca3274c140800bd90bf0ee9efc164462f08ab2f522ad1ff03378ba",
+    "python/tests/test_overlap_source_audit.py": "1c38565b852e2b9fb678938145c658f1677cf210f8f207dff5fd9feb569f3ee8",
+    "python/tests/test_physics.py": "1e302fa641ac4b88dcb74abd43fda3bc58636a3ab59c429f6f7ab64b642fac01",
+    "python/tests/test_physics_audit.py": "eb137d9cb0ca1f08cee35da8285bc5bf86b4b41b5ba840a6d24a35355a7cf941",
+    "python/tests/test_plotting.py": "093c1ed99013a7b1cfe48a34b86d499ffe3ff5dc68f8814e040447a38bb5c7b4",
+    "python/tests/test_quantum.py": "a141f26b31a750872de362218c8f70d349d12c296438b42ebc4aca6c8c617bc7",
+    "python/tests/test_responses.py": "b7364aea998deae401851677608cf4a0e8376c78d06d47510af4548e2912b31b",
+    "python/tests/test_spectral_batches.py": "3fa5f638ceb0ee75c96ae5df9d0ce56e4e2efc62e7c5c64cf7b660f3de7c4532",
+    "python/tests/test_spin_circuit_indicators.py": "eea542fd31fe52425f412d1de34f1f88949b9a259218b13884c68b59f4e81cd6",
+    "python/tests/test_structure_orbitals.py": "bb595fd5d0a545b35d3761b616ae3300cca633eff962302e4c2a83b14ca3ba47",
+    "python/tests/test_symbolic_workflows.py": "ad3e47e5b45a95f51be9a6c7436d7ba8a448706292eb2a53c768e926b7829198",
+    "python/tests/test_symmetry_construction.py": "a30f75f9bbf53c93269a87080450908cca8a9bc2a54f5ee34df39bf2f7c1e785",
+    "python/tests/test_topology_extended.py": "be8f09eb59614e478ff15b767d921fe9485b87f803168661832dd392b1d07692",
+    "python/tests/test_transport_scaling.py": "e8003d1713cbb5dc46f0da82edf054d5605d00b0285436fec07e4b61b3754a55",
+    "python/tests/test_upstream_provenance.py": "dccbcf574e49869adc94c8f81b34e66a0e81cd7f73bc30a019c62d88d9627ae6",
+    "python/tools/build_fortran.py": "e47c628a36172f053abd52b64c172ce3ec2ade6ffa510f0ff3966c7bf08a0c58",
+    "python/tools/inventory_symbolic.py": "3f823a98cf83d9cdddb1104e1f13aa0f14452fa085641d08599a018842489554",
+    "python/tools/prepare_upstream.py": "677d6c6803be69ec49323c020ab8c6deb7284deb94497c7cb8a70ba189a0b651",
+    "python/tools/validate.py": "9b1469d872a9a951fb1091a2f9e9e3c4bd05a8a90c9e581b7defb9085e9925d6"
+  },
+  "conflict_resolution": {
+    "python/tools/validate.py": "retain both lattice_units_example and orbital_gauge_example plus both benchmarks",
+    "python/VALIDATION.zh-CN.md": "retain both independent validation sections",
+    "python/migration-status.json": "retain both audit records; temporary combination marked awaiting execution at commit time",
+    "python/validation-snapshot.json": "retain PR #14 historical snapshot before running; full combined result is this report"
+  },
+  "physics_code_resolution": "algebra.py and topology.py merged automatically; no manual numerical formula edits"
+}

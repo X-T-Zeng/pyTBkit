@@ -254,6 +254,13 @@
       "full Wannier dipole/position and nonorthogonal connection",
       "sewn 2D topology grids and projected mirror-sector connections",
       "explicit center relabeling and general frame transforms"
-    ]
+    ],
+    "pull_request": "https://github.com/X-T-Zeng/pyTBkit/pull/14",
+    "combined_validation": {
+      "tests": 450,
+      "steps": 31,
+      "report": "audit/gauge-lattice-integration-validation.json",
+      "scope": "local combination with PR #13, not merged or released"
+    }
   }
 }
