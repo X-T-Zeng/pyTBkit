@@ -1,8 +1,18 @@
 # 当前验证快照：pyTBkit 0.2.1
 
+## 2026-11-21：点轨道规范与模型代数分支
+
+从 main a1f1102 独立修复并新增26项回归，完整 **401 passed，0 failures/errors/skipped**，
+29个步骤全部通过（含所有研究例子和10项基准）。Fortran与Octave实际执行；
+只有一条Matplotlib/Pyparsing依赖弃用警告。报告及10个被测文件hash见
+`audit/gauge-validation.json`，原始日志在 `work/gauge-validation/`。
+当前分支未包含仍待审阅的长度单位PR #13（其独立424项测试/CI success）；
+401与424属于不同分支，不能相加当作已合并main的完成度。
+例子、Numba/NumPy计时和适用边界见 `audit/ORBITAL-GAUGE-REVIEW.zh-CN.md`。
+
 ## 2026-11-18：PR #2–#11 集成快照
 
-当前集成版本：**375 passed，0 failures，0 errors，0 skipped**；27个步骤全部通过，
+历史集成版本：**375 passed，0 failures，0 errors，0 skipped**；27个步骤全部通过，
 包含全部研究例子与9项基准，仅1条Matplotlib/Pyparsing依赖弃用警告。Fortran/OpenMP
 后端和Octave参考继续执行。数值源码与此前通过375项测试的组合逐文件一致（107个Python文件）。
 当前完整报告见 `audit/integration-validation-20261118.json` / `validation-snapshot.json`，

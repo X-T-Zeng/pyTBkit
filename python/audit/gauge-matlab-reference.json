@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/BUAA-TCMP/TBkit",
+  "commit": "48e5217593598c8e1d634cdee3976e1dc6984516",
+  "source_sha256": {
+    "src/classes/@HR/fft.m": "b773bd24b940f8c6e4d337bdb25af7875e23d24896414a381e435b8905ff4749",
+    "src/classes/@HR/plus.m": "45384cbfa8d384508a71816d978a6cbc2addfc3df1174c6509a7ac98af715c35",
+    "src/classes/@HR/mtimes.m": "6a8e64a2d8b6093dc2dec13a94d127db041971826f810fd3e1dab4eb8130ce6c"
+  },
+  "execution": "pristine fft numerical body with MATLAB argument validation removed, function renamed, existing tensorprod adapter; no equation change",
+  "scope": "M-07 reaffirmed by intracell flat-dimer i[H,r], hbar=1; plus/mtimes only source-reviewed for metadata, not executed as MATLAB classes",
+  "candidate_patch_added": false,
+  "pin_changed": false,
+  "original_minus_commutator_norm": 1.4707821048680183,
+  "original_plus_commutator_norm": 1.5718409691127698e-16
+}

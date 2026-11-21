@@ -1,0 +1,10 @@
+{
+  "base_commit": "a1f1102356d4efb8df50d7bf4bc70810adf5a38f",
+  "max_zak_phase_unit_circle_error": 8.005932084973443e-16,
+  "max_point_geometry_scaling_error": 6.661338147750939e-16,
+  "max_qwz_position_correction_error": 6.106226635438361e-16,
+  "old_scaled_unsewn_ssh_phase": 3.141592653589793,
+  "correct_scaled_ssh_phase": -1.884955592153876,
+  "old_double_position_curvature_error": 0.11904928913904633,
+  "scope": "orthogonal point orbitals, hbar=1, a_cell=1; no full Wannier dipole or nonorthogonal connection"
+}

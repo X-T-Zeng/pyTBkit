@@ -6,282 +6,182 @@
     {
       "name": "upstream",
       "exit_code": 0,
-      "seconds": 0.4934088260000067,
+      "seconds": 0.20844081000541337,
       "log": "upstream.log"
     },
     {
       "name": "symbolic_inventory",
       "exit_code": 0,
-      "seconds": 1.6342450380000173,
+      "seconds": 1.2611557950003771,
       "log": "symbolic_inventory.log"
     },
     {
       "name": "tests",
       "exit_code": 0,
-      "seconds": 90.17722798,
+      "seconds": 116.85909125400212,
       "log": "tests.log"
     },
     {
       "name": "group_theory",
       "exit_code": 0,
-      "seconds": 5.385222002999967,
+      "seconds": 3.476696294004796,
       "log": "group_theory.log"
     },
     {
       "name": "group_generators",
       "exit_code": 0,
-      "seconds": 4.730124013999955,
+      "seconds": 3.5752177789981943,
       "log": "group_generators.log"
     },
     {
       "name": "automatic_irreps",
       "exit_code": 0,
-      "seconds": 4.920117932000039,
+      "seconds": 3.4969142740010284,
       "log": "automatic_irreps.log"
     },
     {
       "name": "examples",
       "exit_code": 0,
-      "seconds": 2.6497941740000215,
+      "seconds": 1.8779677510028705,
       "log": "examples.log"
     },
     {
       "name": "angular_audit",
       "exit_code": 0,
-      "seconds": 5.61202214299999,
+      "seconds": 4.574879626998154,
       "log": "angular_audit.log"
     },
     {
       "name": "plot_example",
       "exit_code": 0,
-      "seconds": 3.7094458870000153,
+      "seconds": 3.0908509979999508,
       "log": "plot_example.log"
     },
     {
       "name": "transport_scaling",
       "exit_code": 0,
-      "seconds": 4.609753275000003,
+      "seconds": 4.643749688002572,
       "log": "transport_scaling.log"
     },
     {
       "name": "external_example",
       "exit_code": 0,
-      "seconds": 4.626225890000001,
+      "seconds": 3.616587728000013,
       "log": "external_example.log"
     },
     {
       "name": "finite_group_coupling",
       "exit_code": 0,
-      "seconds": 22.049438973999997,
+      "seconds": 20.201501085000928,
       "log": "finite_group_coupling.log"
     },
     {
       "name": "advanced_example",
       "exit_code": 0,
-      "seconds": 1.9991544260000182,
+      "seconds": 1.7453279290057253,
       "log": "advanced_example.log"
     },
     {
       "name": "response_sweep",
       "exit_code": 0,
-      "seconds": 1.8031945430000178,
+      "seconds": 1.8060272089933278,
       "log": "response_sweep.log"
     },
     {
       "name": "symbolic_example",
       "exit_code": 0,
-      "seconds": 7.875657305000004,
+      "seconds": 7.489336660997651,
       "log": "symbolic_example.log"
     },
     {
       "name": "hermiticity_example",
       "exit_code": 0,
-      "seconds": 3.8774306709999564,
+      "seconds": 2.832065987997339,
       "log": "hermiticity_example.log"
     },
     {
       "name": "nonorthogonal_example",
       "exit_code": 0,
-      "seconds": 4.144659179999962,
+      "seconds": 3.1417205649995594,
       "log": "nonorthogonal_example.log"
+    },
+    {
+      "name": "orbital_gauge_example",
+      "exit_code": 0,
+      "seconds": 4.386866421002196,
+      "log": "orbital_gauge_example.log"
+    },
+    {
+      "name": "orbital_embedding_benchmark",
+      "exit_code": 0,
+      "seconds": 8.944152760006546,
+      "log": "orbital_embedding_benchmark.log"
     },
     {
       "name": "group_closure_benchmark",
       "exit_code": 0,
-      "seconds": 2.3915611670000203,
+      "seconds": 1.4457016029991792,
       "log": "group_closure_benchmark.log"
     },
     {
       "name": "matrix_unit_benchmark",
       "exit_code": 0,
-      "seconds": 2.7147719360000337,
+      "seconds": 1.4059062439991976,
       "log": "matrix_unit_benchmark.log"
     },
     {
       "name": "regular_block_benchmark",
       "exit_code": 0,
-      "seconds": 1.9880463959999588,
+      "seconds": 1.7228507539985003,
       "log": "regular_block_benchmark.log"
     },
     {
       "name": "angular_generator_benchmark",
       "exit_code": 0,
-      "seconds": 2.3120184179999796,
+      "seconds": 1.5312830569964717,
       "log": "angular_generator_benchmark.log"
     },
     {
       "name": "benchmark",
       "exit_code": 0,
-      "seconds": 3.218957635000038,
+      "seconds": 2.636484925998957,
       "log": "benchmark.log"
     },
     {
       "name": "sparse_benchmark",
       "exit_code": 0,
-      "seconds": 2.0656544060000215,
+      "seconds": 1.470663369000249,
       "log": "sparse_benchmark.log"
     },
     {
       "name": "response_reuse_benchmark",
       "exit_code": 0,
-      "seconds": 3.8348905269999705,
+      "seconds": 2.4518356030021096,
       "log": "response_reuse_benchmark.log"
     },
     {
       "name": "hermiticity_benchmark",
       "exit_code": 0,
-      "seconds": 3.237625960999992,
+      "seconds": 2.1444748229987454,
       "log": "hermiticity_benchmark.log"
     },
     {
       "name": "generalized_diagnostics_benchmark",
       "exit_code": 0,
-      "seconds": 5.29170325299998,
+      "seconds": 3.5562790679978207,
       "log": "generalized_diagnostics_benchmark.log"
     },
     {
       "name": "plot_gallery",
       "exit_code": 0,
-      "seconds": 5.761649602999967,
+      "seconds": 3.9256344090026687,
       "log": "plot_gallery.log"
     }
   ],
   "tests": {
-    "tests": 375,
+    "tests": 401,
     "failures": 0,
     "errors": 0,
     "skipped": 0
-  },
-  "source_manifest": "integration-prs-20261118.json",
-  "scope": "current PR batch integration; not full TBkit parity",
-  "warning": "one Matplotlib/Pyparsing deprecation warning",
-  "tested_python_sha256": {
-    "python/tbkit/__init__.py": "c8b8359f7d63e7000311698978cdf99966361f51223c88fad6f8fbb93259a87e",
-    "python/tbkit/algebra.py": "dda42a417c3e4e86e1bc558466247e615dd2bb611462f64656eb23ddb00f075b",
-    "python/tbkit/angular_kernels.py": "66efd4e71099448b154906c382f098bc04a8fad5c71a41d54d8bbf168d5e8d48",
-    "python/tbkit/backends.py": "31b858e25939a5385bc8606dbc0b75e8ad75b46a782a1fd1be7970e1159f2e3d",
-    "python/tbkit/base.py": "ef16def255502f3f27eeae731ab30ebdc697b5db8cdedf8935bbdb964993d5fa",
-    "python/tbkit/circuit.py": "d4d05b3a677c5435473f22d16f6b664167cde542ecb2de268590efbee674afc3",
-    "python/tbkit/constants.py": "8f4035889ce620983e46a8dfc6b00c536e0365e85ed6366a97664f9fa260a15f",
-    "python/tbkit/construction.py": "e9e7715ec7620069a76285ba28818165a4068df6aa667ecfcac8e148e6d8ecc8",
-    "python/tbkit/continuum.py": "d52db487bc788ad197d69bf6e1e7ab944e2459c234baf0a72432b5eafb0a0baa",
-    "python/tbkit/coupling.py": "d9b97d1b42094bcd71856449eb2867a6294cdde37290d13c6ab8db3c6dfd4ff5",
-    "python/tbkit/crystallography.py": "8e765b9b916f989b7a39989173b0f709313f1b26a3b29187bd0b915f7247764b",
-    "python/tbkit/dft.py": "fd4f14f8172617708662851cdb3363289087f5ffdf054e66b7c4188bc29312a9",
-    "python/tbkit/fitting.py": "9c7caffafa7a873efd875999e920cd28dba7521507ebce47a85db9b9347f6967",
-    "python/tbkit/gauge.py": "8b1f4a94c0d19b233798367741b4526dddb7bf62b06c00a1b17eb4804dbd46b9",
-    "python/tbkit/generalized_kernels.py": "0a75939cbae8bcae13b1023c113548556afd58697d512ee2e38672ae4d95caab",
-    "python/tbkit/geometry.py": "aa7035b02a25088e5a4625621bd3945b4544feb691eacf5541675b1fdd71066c",
-    "python/tbkit/group_kernels.py": "05cfff6dbd475bb24fcfb296f44c2e95e6e2d0b86601b5957b37151d3cdb0f8f",
-    "python/tbkit/groups.py": "7697c7cee6c39a8761b0280900e32f4dfe26628b28058dd63643a19ab91ed1cd",
-    "python/tbkit/hr.py": "ceaf080eccb4ddcd3ec078d4eb5a02189fd345b404f0ac7f8d163f96a95dd719",
-    "python/tbkit/io.py": "d29f731b790b426535e2e7da8ed4712142e639556eaca387ad1cefd42afd944c",
-    "python/tbkit/irreps.py": "3bee782bf90c044e60c27574ae6e18d1b4aa37f6adb60adf81ac42196b49e8d2",
-    "python/tbkit/models.py": "0d14d6e7e2858a55c21cef9bab795335adb3d6e86096980324b3e09eb83fc3b1",
-    "python/tbkit/native.py": "90ea9a56041ffb666051445229cd974517718d7a61f2aa6e3c6ec83937edd930",
-    "python/tbkit/nonorthogonal.py": "5c06cad08f0dde0f4eaccadc0ce7907ed9486a82f5870755a339df85b3751478",
-    "python/tbkit/operators.py": "e89f3b0eb5eb38f56b8349f70a44d97316146a639b7ab7ff03b83536c03a6b24",
-    "python/tbkit/orbitals.py": "8914bfb6442caa3ee0443975af2904387ef264e97b8cdee0df4d550892d59506",
-    "python/tbkit/plotting.py": "464431b0aff4cc0cd1afe38e2be3158706566a223b388baabddd8d18ebc8f7eb",
-    "python/tbkit/quantum.py": "eae215e5b23898c4502de6ff4c6346e799b043e41ca44f00c5a489f7a24f8737",
-    "python/tbkit/representations.py": "c286259579bde8834211dfc72d023c645750ee7c2eaa05c6d5863a163872e7ad",
-    "python/tbkit/responses.py": "eaa537184626d1112fe0709249384875ce398d31b9d15b99ccc2f328791ac458",
-    "python/tbkit/slater_koster.py": "1b59c02dfe33ebae6ab2b88795bd49e9ae629528b682716ea248038aabc4638a",
-    "python/tbkit/sparse.py": "147d305a218b0a06df2255f90781db30fd4f8c97e381b157499d9a4b81f295fa",
-    "python/tbkit/spectral.py": "93990ad9d61bc68b741437155594dc4d09ec79470a09284bf6f0bd85ef8d78d4",
-    "python/tbkit/spin.py": "cb422dd7ba7170811aad6f2264769d66d686c18cb2eba7f4477fa79793abcecd",
-    "python/tbkit/structure.py": "02287dc06267b6c379a4f840b22df23a1b188043e69216817871333a2c18849d",
-    "python/tbkit/symbolic.py": "c9ecfdeafd606a9658390fc3ff0585239cc5adf1e62d11e082603676b15848cd",
-    "python/tbkit/symbolic_model.py": "a3e70ccc9e5b84b53563168616f7f4d23f3bdac10bb59993a875c9f2208c351c",
-    "python/tbkit/symmetry.py": "3aa8e129ec0b48b69f67cf94875ac7418a1e07c153789f4017499cdfe466cdbb",
-    "python/tbkit/topology.py": "fbbe19279beffacd648ae3f3498c02dfc23777bcd7569354cb58a4329a27d9e5",
-    "python/tbkit/transport.py": "2e2763475fd73daa7455eddec49e0978506f5be2c54f81e5f2a24a2ec4e149df",
-    "python/tbkit/validation_kernels.py": "8b6ca5f4a80a4a648a94803e8f5f40a6ade808c061159874a02d3f4534b7190c",
-    "python/tbkit/wannier.py": "181d44214ae2e656ab7996fcf419a2dabf94e5ee1636150c404ba6be3d771091",
-    "python/tests/reference_source.py": "021050ca43a29263eea5d0baea4e921c5c02e0ca236bca3cd2be217e750dd4cf",
-    "python/tests/test_angular_invariants.py": "e793c05ef7845d6caba6572292fbf399f437faaa086d6917fcb3a9f3d341f413",
-    "python/tests/test_automatic_irreps.py": "0b496cfe68827ac2504ed95ab65e7701b27f8272a4653292591cb5aead23d917",
-    "python/tests/test_continuum.py": "ba69e3251d5d5830d86e8de913be5704d3c484c25fcf79afa646f18dc92860b8",
-    "python/tests/test_core.py": "799e51af2b9bd1c4fa6867e6cf446bd0e47231b7f9121744d552bb19d714e381",
-    "python/tests/test_crystallography.py": "a8623ef2f2f7d9aca49758c5d927f13ca712cd370e291398fadee6eda566a845",
-    "python/tests/test_extended_models.py": "aaccd105926a29272ed9f182b6757cb7588fc2c2d34e5c790261c9f24990b9c7",
-    "python/tests/test_external_data.py": "69277b6007d07f2602ad51ab1ef1ff1562a109d709af32006a510b5a4f21807b",
-    "python/tests/test_finite_group_coupling.py": "23a06f2d42fbdafd1d0a2ee42f2bfbcf670b5e719b1cacf2ab2e1895b65bc4c6",
-    "python/tests/test_fortran_model.py": "7aad4c8cd5c767be68940426e4eca0e57016e291787252c33be0813ca8e35b08",
-    "python/tests/test_generalized_spectra.py": "9c7b34f321b9b00b89a70e5d939e1920e6287c9ead040f676360b99259d83776",
-    "python/tests/test_group_generators.py": "df0633fc91580072d05690a76171946185b9fae9ac6b04503865aa6718760bfd",
-    "python/tests/test_group_theory.py": "01e0754d57e72559a40a2b9bff2896f10dc007d4ab15cd3e2edee0ccd153563b",
-    "python/tests/test_hermiticity_scale.py": "51477d453d6371016e3bb461dfe8de57c59ce3b75be4dcc957d99120cb650590",
-    "python/tests/test_io.py": "42ee32193693bda51e0b4550e7c5452e494eb0eda31d05380d3675dd701f5c29",
-    "python/tests/test_matlab_audit.py": "3e80fce720372e435a36ed2a208af56c2fdd33db5c335873e27b517302dddea4",
-    "python/tests/test_matlab_coupling_audit.py": "c616b3e8f2dab32d65da6926950b007326b5f07b63d67aed349d162715af8242",
-    "python/tests/test_matlab_group_audit.py": "9db5e02b417ad51bfc9cf36952af011fe982d0bccab1a0d5c2d7de6676c58d8e",
-    "python/tests/test_matlab_high_j_audit.py": "baa23ff67bfc219bbd3a5aaeea212f023a4be3492070d1d37962f576c30bc665",
-    "python/tests/test_matlab_overlap_basis.py": "154a358e31fe53f6596b5ae1fa8f910eaf7ade1584a4091c8204e5cfea9c9986",
-    "python/tests/test_matlab_reference.py": "8a5dfaa2c68813d3576396343122fb7e7503ef47971bf9086f8a8e3f3c53e3cd",
-    "python/tests/test_matlab_transport_audit.py": "5cd66e174c4105662923688d214af6dd63fadf54a03f07f9dd89815b55009dee",
-    "python/tests/test_ncte_broadening_audit.py": "e80d0d153f22590dd565120a272a5bc6f3ed23810709299c012e32c30e4b2910",
-    "python/tests/test_overlap_source_audit.py": "1c38565b852e2b9fb678938145c658f1677cf210f8f207dff5fd9feb569f3ee8",
-    "python/tests/test_physics.py": "1e302fa641ac4b88dcb74abd43fda3bc58636a3ab59c429f6f7ab64b642fac01",
-    "python/tests/test_physics_audit.py": "eb137d9cb0ca1f08cee35da8285bc5bf86b4b41b5ba840a6d24a35355a7cf941",
-    "python/tests/test_plotting.py": "093c1ed99013a7b1cfe48a34b86d499ffe3ff5dc68f8814e040447a38bb5c7b4",
-    "python/tests/test_quantum.py": "a141f26b31a750872de362218c8f70d349d12c296438b42ebc4aca6c8c617bc7",
-    "python/tests/test_responses.py": "b7364aea998deae401851677608cf4a0e8376c78d06d47510af4548e2912b31b",
-    "python/tests/test_spectral_batches.py": "3fa5f638ceb0ee75c96ae5df9d0ce56e4e2efc62e7c5c64cf7b660f3de7c4532",
-    "python/tests/test_spin_circuit_indicators.py": "eea542fd31fe52425f412d1de34f1f88949b9a259218b13884c68b59f4e81cd6",
-    "python/tests/test_structure_orbitals.py": "bb595fd5d0a545b35d3761b616ae3300cca633eff962302e4c2a83b14ca3ba47",
-    "python/tests/test_symbolic_workflows.py": "ad3e47e5b45a95f51be9a6c7436d7ba8a448706292eb2a53c768e926b7829198",
-    "python/tests/test_symmetry_construction.py": "a30f75f9bbf53c93269a87080450908cca8a9bc2a54f5ee34df39bf2f7c1e785",
-    "python/tests/test_topology_extended.py": "be8f09eb59614e478ff15b767d921fe9485b87f803168661832dd392b1d07692",
-    "python/tests/test_transport_scaling.py": "e8003d1713cbb5dc46f0da82edf054d5605d00b0285436fec07e4b61b3754a55",
-    "python/tests/test_upstream_provenance.py": "dccbcf574e49869adc94c8f81b34e66a0e81cd7f73bc30a019c62d88d9627ae6",
-    "python/examples/advanced.py": "19261a7aeed4f8fe5026c3227d1984fe8a23f39e7e00f58170429a364181c0c4",
-    "python/examples/angular_audit.py": "bd086575b51735e726da71c6ce6ac22b2010a8d4aa826b11854bc1ae5070ac86",
-    "python/examples/automatic_irreps.py": "917ed3cab03985a90399490215b7e2351436981af64755007a6712fcb628d8db",
-    "python/examples/external_data.py": "f6a7a7ad1bd79e36b6d083102c7515a39445f9cb9aba4ad372d7c92663e52548",
-    "python/examples/finite_group_coupling.py": "b163561a83644b882a67a3890c6724b42fc95b693935415c09e641ca713dc184",
-    "python/examples/full_suite.py": "5a8a1fefcee59159639b16c41a20dcb75ac4937e3529734b5fd8c9a3be73a799",
-    "python/examples/group_generators.py": "80f01fb1cf1f8561efc59653ae90840f63c8feeaa3c027e4dd26f7d3cd01bb16",
-    "python/examples/group_theory.py": "8fdce40fef92960b5049f5b22486e510de59b26160d1750595bb8ce60f028a63",
-    "python/examples/hermiticity_units.py": "76c16f07dd243db9cc686aa1404d0bcd99f2d2f10cfcaa36121981c9ba06be8f",
-    "python/examples/nonorthogonal_reliability.py": "2ba9482663382e69e9a0438941547a4fce62b7f0362f6315e6666775a99bcf23",
-    "python/examples/plot_gallery.py": "3bfc371aa4d03b53e1b99460a1e5c7633b8552c1823d8c77dab7a8bdb9d69a10",
-    "python/examples/research.py": "e6df1d7e6cf6eafbdc0c2edc304194ce3287c6992f73b0fb0ec62cfb45ad3934",
-    "python/examples/response_sweep.py": "aae835b290e9176d1726a68bf154992709b706d049518b2745bf1d68971c4451",
-    "python/examples/symbolic_workflow.py": "a19d9a4dc71656351fed232471e1408c3cc2321dc041cf3c7fba5f153ad521e3",
-    "python/examples/transport_scaling.py": "f30093b620edac8b64aefba5a2d1a156e9c4946ea680a466bc3b996884969481",
-    "python/benchmarks/angular_generators.py": "a7e7d418c187af1a2e4c2e871af57434306ee6999dba8dd5ca223e4f3c1540c6",
-    "python/benchmarks/benchmark.py": "1d763d4c156bc9a6701e6b2338a458638db7b698447dfe00e3cd6b645d8117ce",
-    "python/benchmarks/generalized_diagnostics.py": "65920551afe847d9f7401fc1506a8f647c69d284a4da1ad94bfa0af7f035f3d3",
-    "python/benchmarks/group_closure.py": "0ed1e204c17be22ee6cb7743c85d71283a5f60e576ac37acfb0e9e45b31fd9b6",
-    "python/benchmarks/hermiticity.py": "b96d0a412d7b9da5365fa7fb6bda07d17e327de92ac7679f01fc6d7f8c951f1b",
-    "python/benchmarks/matrix_units.py": "b9c1abda911029758bc96d95502163d6e87af228193649c530eae2662fe169f7",
-    "python/benchmarks/regular_blocks.py": "191a9d520bf4f46269413cce1e694beac407f6b23035f9bafbc4be3f2d3ee2ff",
-    "python/benchmarks/response_reuse.py": "9a0ceb41141e286d52fe3c9a0bbf5914e395f0c37d41b17b821510785c8803c3",
-    "python/benchmarks/sparse_benchmark.py": "ff8b0ba12b4d25fcbae4112a2c8f078bec1c62fd34c7858ed29f36f03a456f30",
-    "python/tools/build_fortran.py": "e47c628a36172f053abd52b64c172ce3ec2ade6ffa510f0ff3966c7bf08a0c58",
-    "python/tools/inventory_symbolic.py": "3f823a98cf83d9cdddb1104e1f13aa0f14452fa085641d08599a018842489554",
-    "python/tools/prepare_upstream.py": "677d6c6803be69ec49323c020ab8c6deb7284deb94497c7cb8a70ba189a0b651",
-    "python/tools/validate.py": "b7e805c8e746f7cca5c832260782b5e4ba862e5b560969941bd58b4ba8b0c1c0"
   }
 }

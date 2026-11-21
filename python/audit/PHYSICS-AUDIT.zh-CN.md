@@ -1,5 +1,14 @@
 # 物理与代码审计：阶段记录
 
+## 2026-11-21：点轨道规范与模型代数
+
+缩放/相加后的嵌入对象丢失框架与sewing标记，可使SSH的1.4pi Zak相位错误返回pi；
+几何准备再次嵌入时又重复位置项。新增显式框架传播与幂等嵌入、严格的分数中心及
+倒格矢整数检查、纯数组Numba嵌入内核。SymPy导数、位置对易子、解析Zak/QWZ与
+简并子空间U(2)规范验证见 [ORBITAL-GAUGE-REVIEW.zh-CN.md](ORBITAL-GAUGE-REVIEW.zh-CN.md)。
+独立分支401项/29步通过，不包含未合并PR #13的长度单位代码。
+官方四输出速度的M-07符号问题仅以原式再验证，无新增MATLAB候选补丁。
+
 ## 当前唯一 MATLAB 基线
 
 官方库 https://github.com/BUAA-TCMP/TBkit ，提交

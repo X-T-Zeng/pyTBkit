@@ -41,6 +41,8 @@ def _periodic_bz(model,backend,tol=1e-9):
     This catches continuum models and missing lattice metadata. It is not a
     symbolic proof; nonperiodic orbital gauges require explicit boundary sewing.
     """
+    if getattr(model,'requires_boundary_sewing',False):
+        raise ValueError('periodic-gauge BZ required; this frame requires explicit boundary sewing')
     lattice=getattr(model,'lattice',np.eye(model.dim))
     reciprocal=2*np.pi*np.linalg.inv(lattice).T
     fractional=np.array([[.137+.07*a for a in range(model.dim)],
@@ -92,7 +94,8 @@ def wilson_loop(model,k,*,occupied=1,backend="numba",closed=True,boundary_sewing
         raise ValueError('embedded orbital frame requires explicit boundary_sewing for loop closure')
     if boundary_sewing is not None:
         boundary_sewing=np.asarray(boundary_sewing,complex)
-        if boundary_sewing.shape!=(model.norb,model.norb) or not np.allclose(boundary_sewing.conj().T@boundary_sewing,np.eye(model.norb),atol=1e-10):
+        if (boundary_sewing.shape!=(model.norb,model.norb) or not np.isfinite(boundary_sewing).all()
+                or not np.allclose(boundary_sewing.conj().T@boundary_sewing,np.eye(model.norb),atol=1e-10,rtol=0)):
             raise ValueError('boundary_sewing must be unitary in the orbital basis')
     if not 0<occupied<=model.norb: raise ValueError("invalid occupied count")
     e,u=model.bands(k,eigenvectors=True,backend=backend)

@@ -91,7 +91,7 @@
   "autonomous_background_worker": false,
   "remote_schedule": "github_actions_workflow_published",
   "validation": {
-    "tests": 375,
+    "tests": 401,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -133,9 +133,10 @@
     "delivery": "reviewable branch and PR, no automatic merge"
   },
   "latest_development": {
-    "scope": "validated integration of PR #2–#11: symbolic, plotting, transport, finite groups, angular and generalized spectra",
-    "branch": "integration/verified-prs-20261118",
-    "status": "validated",
+    "scope": "point-orbital gauge propagation through numerical model algebra",
+    "branch": "fix/orbital-embedding-gauge",
+    "status": "local validation passed; reviewable branch, not merged",
+    "base_commit": "a1f1102356d4efb8df50d7bf4bc70810adf5a38f",
     "reference_commit": "48e5217593598c8e1d634cdee3976e1dc6984516"
   },
   "symbolic_migration": {
@@ -226,5 +227,33 @@
     "tests": 375,
     "validation_steps": 27,
     "numeric_code_unchanged_from_previously_validated_composition": true
+  },
+  "orbital_gauge_audit": {
+    "date": "2026-11-21",
+    "branch": "fix/orbital-embedding-gauge",
+    "base_commit": "a1f1102356d4efb8df50d7bf4bc70810adf5a38f",
+    "status": "validated independently; pending PR review",
+    "validation": {
+      "tests": 401,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "validation_steps": 29,
+    "review": "audit/ORBITAL-GAUGE-REVIEW.zh-CN.md",
+    "report": "audit/gauge-validation.json",
+    "usage": "ORBITAL-GAUGE.zh-CN.md",
+    "numba_array_kernels": true,
+    "scope": "idempotent point-orbital embedding, preserved algebra frame/sewing, strict fractional centers/reciprocal shifts",
+    "not_included": {
+      "pull_request": 13,
+      "head": "e6c8f6374e3f3aff3a947bb18a98b1f88716f574",
+      "status": "open; its own CI success; no automatic merge"
+    },
+    "remaining": [
+      "full Wannier dipole/position and nonorthogonal connection",
+      "sewn 2D topology grids and projected mirror-sector connections",
+      "explicit center relabeling and general frame transforms"
+    ]
   }
 }

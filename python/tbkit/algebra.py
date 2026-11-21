@@ -6,16 +6,31 @@ from .base import TBkit
 
 class LinearCombination(TBkit):
     def __init__(self,models,weights):
+        from .gauge import model_frame,checked_centers
         self.models=tuple(models);self.weights=tuple(weights)
         self.dim,self.norb=models[0].dim,models[0].norb
         if any(m.dim!=self.dim or m.norb!=self.norb for m in models):raise ValueError("model dimensions differ")
+        frames=[model_frame(m) for m in models]
+        sewing=[bool(getattr(m,'requires_boundary_sewing',False)) for m in models]
+        if len(set(frames))!=1 or len(set(sewing))!=1:
+            raise ValueError('orbital frames differ; transform models explicitly before combining')
+        self.orbital_frame=frames[0];self.requires_boundary_sewing=sewing[0]
+        if self.requires_boundary_sewing:
+            if self.orbital_frame!='point-orbital' or not all(callable(getattr(m,'boundary_sewing',None)) for m in models):
+                raise ValueError('model algebra supports boundary sewing only for the common point-orbital frame')
+            self._boundary_model=models[0]
         lattices=[m.lattice for m in models if hasattr(m,'lattice')]
         if lattices:
             if any(not np.allclose(x,lattices[0]) for x in lattices):raise ValueError("model lattices differ")
             self.lattice=lattices[0]
-        centers=[m.orbitals for m in models if hasattr(m,'orbitals')]
-        if centers and any(not np.allclose(x,centers[0]) for x in centers):raise ValueError("orbital gauges/centers differ")
+        centers=[checked_centers(m.orbitals,self.norb,self.dim) for m in models if hasattr(m,'orbitals')]
+        if centers and (len(centers)!=len(models) or any(not np.allclose(x,centers[0],atol=1e-12,rtol=0) for x in centers)):
+            raise ValueError("orbital gauges/centers differ or are missing")
         if centers:self.orbitals=centers[0]
+
+    def boundary_sewing(self,reciprocal_shift):
+        if not self.requires_boundary_sewing:raise ValueError('model has no explicit boundary sewing')
+        return self._boundary_model.boundary_sewing(reciprocal_shift)
 
     def hamiltonian(self,k,*,backend='numba'):
         return sum(w*m.hamiltonian(k,backend=backend) for m,w in zip(self.models,self.weights))

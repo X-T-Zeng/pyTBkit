@@ -1,0 +1,27 @@
+{
+  "base_commit": "a1f1102356d4efb8df50d7bf4bc70810adf5a38f",
+  "source_sha256": {
+    "python/tbkit/gauge.py": "8b1f4a94c0d19b233798367741b4526dddb7bf62b06c00a1b17eb4804dbd46b9",
+    "python/tbkit/algebra.py": "dda42a417c3e4e86e1bc558466247e615dd2bb611462f64656eb23ddb00f075b",
+    "python/tbkit/spectral.py": "93990ad9d61bc68b741437155594dc4d09ec79470a09284bf6f0bd85ef8d78d4",
+    "python/tbkit/topology.py": "fbbe19279beffacd648ae3f3498c02dfc23777bcd7569354cb58a4329a27d9e5"
+  },
+  "ssh_expected_phase": [
+    -1.884955592153876
+  ],
+  "scaled_unsewn_phase": [
+    3.141592653589793
+  ],
+  "scaled_requires_sewing": false,
+  "twice_embedded_phase": [
+    -1.8849555921538756
+  ],
+  "scaled_berry_difference_double_position": 0.11904928913904633,
+  "frames": [
+    "model",
+    "point-orbital"
+  ],
+  "nonreciprocal_large_shift_accepted": true,
+  "distinct_centers_accepted": true,
+  "mixed_frames_accepted": true
+}

@@ -4,6 +4,10 @@
 
 ## 安装与运行
 
+点轨道几何与闭合 Wilson 回路的框架约定、模型代数及可运行例子见
+[ORBITAL-GAUGE.zh-CN.md](ORBITAL-GAUGE.zh-CN.md)。嵌入对象的缩放/相加需保留
+边界 sewing；同谱不等于可省略轨道位置连接。
+
 从 TBkit 仓库根目录：
 
 ```bash

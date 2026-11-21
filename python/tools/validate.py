@@ -40,7 +40,9 @@ def main():
            ('symbolic_example',[sys.executable,'python/examples/symbolic_workflow.py','--output',str(out/'symbolic')]),
            ('hermiticity_example',[sys.executable,'python/examples/hermiticity_units.py','--output',str(out/'hermiticity')]),
            ('nonorthogonal_example',[sys.executable,'python/examples/nonorthogonal_reliability.py','--output',str(out/'nonorthogonal')])]
+    tasks.append(('orbital_gauge_example',[sys.executable,'python/examples/orbital_gauge.py','--output',str(out/'orbital_gauge')]))
     if args.benchmarks:
+        tasks.append(('orbital_embedding_benchmark',[sys.executable,'python/benchmarks/orbital_embedding.py','--output',str(out/'orbital-embedding-benchmark.json')]))
         tasks.append(('group_closure_benchmark',[sys.executable,'python/benchmarks/group_closure.py','--output',str(out/'group-closure-benchmark.json')]))
         tasks.append(('matrix_unit_benchmark',[sys.executable,'python/benchmarks/matrix_units.py','--output',str(out/'matrix-unit-benchmark.json')]))
         tasks.append(('regular_block_benchmark',[sys.executable,'python/benchmarks/regular_blocks.py','--output',str(out/'regular-block-benchmark.json')]))
