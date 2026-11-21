@@ -1,0 +1,208 @@
+{
+  "python": "3.12.15 (main, Oct  6 2026, 23:50:18) [GCC 15.3.0]",
+  "numba_threads": "2",
+  "passed": true,
+  "steps": [
+    {
+      "name": "upstream",
+      "exit_code": 0,
+      "seconds": 0.20844081000541337,
+      "log": "upstream.log"
+    },
+    {
+      "name": "symbolic_inventory",
+      "exit_code": 0,
+      "seconds": 1.2611557950003771,
+      "log": "symbolic_inventory.log"
+    },
+    {
+      "name": "tests",
+      "exit_code": 0,
+      "seconds": 116.85909125400212,
+      "log": "tests.log"
+    },
+    {
+      "name": "group_theory",
+      "exit_code": 0,
+      "seconds": 3.476696294004796,
+      "log": "group_theory.log"
+    },
+    {
+      "name": "group_generators",
+      "exit_code": 0,
+      "seconds": 3.5752177789981943,
+      "log": "group_generators.log"
+    },
+    {
+      "name": "automatic_irreps",
+      "exit_code": 0,
+      "seconds": 3.4969142740010284,
+      "log": "automatic_irreps.log"
+    },
+    {
+      "name": "examples",
+      "exit_code": 0,
+      "seconds": 1.8779677510028705,
+      "log": "examples.log"
+    },
+    {
+      "name": "angular_audit",
+      "exit_code": 0,
+      "seconds": 4.574879626998154,
+      "log": "angular_audit.log"
+    },
+    {
+      "name": "plot_example",
+      "exit_code": 0,
+      "seconds": 3.0908509979999508,
+      "log": "plot_example.log"
+    },
+    {
+      "name": "transport_scaling",
+      "exit_code": 0,
+      "seconds": 4.643749688002572,
+      "log": "transport_scaling.log"
+    },
+    {
+      "name": "external_example",
+      "exit_code": 0,
+      "seconds": 3.616587728000013,
+      "log": "external_example.log"
+    },
+    {
+      "name": "finite_group_coupling",
+      "exit_code": 0,
+      "seconds": 20.201501085000928,
+      "log": "finite_group_coupling.log"
+    },
+    {
+      "name": "advanced_example",
+      "exit_code": 0,
+      "seconds": 1.7453279290057253,
+      "log": "advanced_example.log"
+    },
+    {
+      "name": "response_sweep",
+      "exit_code": 0,
+      "seconds": 1.8060272089933278,
+      "log": "response_sweep.log"
+    },
+    {
+      "name": "symbolic_example",
+      "exit_code": 0,
+      "seconds": 7.489336660997651,
+      "log": "symbolic_example.log"
+    },
+    {
+      "name": "hermiticity_example",
+      "exit_code": 0,
+      "seconds": 2.832065987997339,
+      "log": "hermiticity_example.log"
+    },
+    {
+      "name": "nonorthogonal_example",
+      "exit_code": 0,
+      "seconds": 3.1417205649995594,
+      "log": "nonorthogonal_example.log"
+    },
+    {
+      "name": "orbital_gauge_example",
+      "exit_code": 0,
+      "seconds": 4.386866421002196,
+      "log": "orbital_gauge_example.log"
+    },
+    {
+      "name": "orbital_embedding_benchmark",
+      "exit_code": 0,
+      "seconds": 8.944152760006546,
+      "log": "orbital_embedding_benchmark.log"
+    },
+    {
+      "name": "group_closure_benchmark",
+      "exit_code": 0,
+      "seconds": 1.4457016029991792,
+      "log": "group_closure_benchmark.log"
+    },
+    {
+      "name": "matrix_unit_benchmark",
+      "exit_code": 0,
+      "seconds": 1.4059062439991976,
+      "log": "matrix_unit_benchmark.log"
+    },
+    {
+      "name": "regular_block_benchmark",
+      "exit_code": 0,
+      "seconds": 1.7228507539985003,
+      "log": "regular_block_benchmark.log"
+    },
+    {
+      "name": "angular_generator_benchmark",
+      "exit_code": 0,
+      "seconds": 1.5312830569964717,
+      "log": "angular_generator_benchmark.log"
+    },
+    {
+      "name": "benchmark",
+      "exit_code": 0,
+      "seconds": 2.636484925998957,
+      "log": "benchmark.log"
+    },
+    {
+      "name": "sparse_benchmark",
+      "exit_code": 0,
+      "seconds": 1.470663369000249,
+      "log": "sparse_benchmark.log"
+    },
+    {
+      "name": "response_reuse_benchmark",
+      "exit_code": 0,
+      "seconds": 2.4518356030021096,
+      "log": "response_reuse_benchmark.log"
+    },
+    {
+      "name": "hermiticity_benchmark",
+      "exit_code": 0,
+      "seconds": 2.1444748229987454,
+      "log": "hermiticity_benchmark.log"
+    },
+    {
+      "name": "generalized_diagnostics_benchmark",
+      "exit_code": 0,
+      "seconds": 3.5562790679978207,
+      "log": "generalized_diagnostics_benchmark.log"
+    },
+    {
+      "name": "plot_gallery",
+      "exit_code": 0,
+      "seconds": 3.9256344090026687,
+      "log": "plot_gallery.log"
+    }
+  ],
+  "tests": {
+    "tests": 401,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "base_commit": "a1f1102356d4efb8df50d7bf4bc70810adf5a38f",
+  "scope": "point-orbital frame through model algebra, not full Wannier/nonorthogonal connections",
+  "added_tests": 26,
+  "tested_code_sha256": {
+    "python/tbkit/algebra.py": "d0e95bde7aa05226978a6cd9dfcbeae27d165aef8a4c4fe79d9a6890d0f4bd56",
+    "python/tbkit/gauge.py": "5cb14fb04b90124129110987640877282901434345606185341a4c775d4a0858",
+    "python/tbkit/gauge_kernels.py": "ac5a605d82818c3faeffccefadec2afa1ccdd1718e9552a678a7caf972d6e52c",
+    "python/tbkit/spectral.py": "dad1e4b406d85c07e2b1073d0d15817c4be18321b5a53a5420d1184497d189d5",
+    "python/tbkit/topology.py": "4076a9559f4fecc9683deec165003ed0a99b483f326c7af13c810ee255f54d7a",
+    "python/tests/test_orbital_gauge_algebra.py": "527501e89aca3274c140800bd90bf0ee9efc164462f08ab2f522ad1ff03378ba",
+    "python/tests/test_matlab_orbital_velocity.py": "78bc76e8c2feb02ac151bb9841d3c33bea124350f3b3af2bc61050835d7e154c",
+    "python/examples/orbital_gauge.py": "162a0761b0315058ec2ebd78d23c0d76b4f475321e6d081b139f9786dba40ed0",
+    "python/benchmarks/orbital_embedding.py": "ec3a4cf41725e7668a6c12630c9facadf3fbd98cc9c7d758a31518ba23d8a00b",
+    "python/tools/validate.py": "21c8c519e1a940b71487b64ff6ba95d5bdeef93df3860eb4b90f46cf837a80b3"
+  },
+  "github_ci": {
+    "commit": "eeac4577e0f2f2e09755c54fc48b15a6a03e9e55",
+    "run": 44844699044,
+    "conclusion": "success",
+    "url": "https://github.com/X-T-Zeng/pyTBkit/actions/runs/44844699044"
+  }
+}

@@ -1,5 +1,24 @@
 # TBkit Python 长线迁移工作记录
 
+## 2026-11-21：点轨道规范经过模型代数
+
+独立分支 `fix/orbital-embedding-gauge` 基于 main a1f1102，未自动合并PR #13；
+接续已确认其CI success。修复数值模型代数丢失嵌入框架/sewing和重复位置项，
+收紧分数中心/倒格矢匹配；新增可组合nopython数组内核及SSH/QWZ研究图。
+独立401项测试、29步（含10项基准）全部通过，证据见 audit/gauge-validation.json。
+实测数组dressing变快不等于整个API总是更快；32轨道完整API本次NumPy更快。
+官方M-07以平坦二聚体原始四输出再验证，没有修改pin或候选MATLAB补丁。
+
+已提交PR #14；首次代码提交eeac457的远端CI success。与PR #13 的 e6c8f63
+在本地临时组合后450项测试、31步（含11项基准）全部通过，两个例子入口均保留；
+三个状态/文档文件和验证器的文本冲突手动处理，数值实现自动合并。
+117个被测Python文件hash及确切提交见 audit/gauge-lattice-integration-validation.json。
+组合仅作兼容验证，没有推送/合并main；本分支本身仍是独立401项范围。
+
+接续：完整Wannier位置/偶极连接、非正交连接、带sewing的二维网格与镜面投影sector，
+显式轨道整数重标记/框架变换；继续保留群论/符号实空间/输运等全库清单。
+本轮不是全部几何或880个原始文件迁移完成。
+
 ## 接续轮：最少生成元与有限群秩
 
 `feature/group-minimal-generators`依赖尚未合并的群论PR #5，基线为`6720b6f`；

@@ -8,7 +8,7 @@ from dataclasses import dataclass
 import numpy as np
 from .base import TBkit,points,hermitian
 from .hr import immutable
-from .gauge import OrbitalEmbedding,embed_orbitals
+from .gauge import model_frame,embed_orbitals
 
 
 @dataclass(frozen=True)
@@ -65,7 +65,7 @@ def prepare_spectral(model,k,*,backend='numba',frame='model',chunk_size=2048):
     if not isinstance(model,TBkit):
         raise TypeError('orthogonal TBkit model required; nonorthogonal response needs a metric/connection formulation')
     if frame not in ('model','point-orbital'):raise ValueError('frame must be model or point-orbital')
-    if frame=='point-orbital' and not isinstance(model,OrbitalEmbedding):model=embed_orbitals(model)
+    if frame=='point-orbital':model=embed_orbitals(model)
     k,single=points(k,model.dim)
     if len(k)==0:raise ValueError('nonempty k batch required')
     e,u=model.bands(k,eigenvectors=True,backend=backend,chunk_size=chunk_size)
@@ -76,4 +76,4 @@ def prepare_spectral(model,k,*,backend='numba',frame='model',chunk_size=2048):
         v=band_velocities(u,gradient)
     else:
         v=u.conj().swapaxes(-1,-2)[:,None]@gradient@u[:,None]
-    return SpectralBatch(k,e,u,v,single=single,frame='point-orbital' if isinstance(model,OrbitalEmbedding) else 'model')
+    return SpectralBatch(k,e,u,v,single=single,frame=model_frame(model))
